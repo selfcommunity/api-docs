@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+*.code-workspace
 coverage
 InstalledFiles
 lib/bundler/man
