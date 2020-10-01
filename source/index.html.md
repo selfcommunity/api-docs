@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - endpoints
+  - schemas
   - errors
 
 search: true
