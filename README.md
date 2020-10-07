@@ -21,7 +21,7 @@ Getting Started with Docker
 To start a container for slate, run:
 
 ```
-docker run -d --rm --name api-docs -p 4567:4567 -v $(pwd)/build:/srv/slate/build -v $(pwd)/source:/srv/slate/source api-docs
+docker run -d --rm --name api-docs -p 4567:4567 -v $(pwd):/srv/slate api-docs
 ```
 
 and you will be able to access your site at http://127.0.0.1:4567.
