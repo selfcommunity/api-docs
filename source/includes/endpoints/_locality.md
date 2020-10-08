@@ -1,6 +1,6 @@
-<h1 id="selfcommunity-api-locality">locality</h1>
+<h1 id="selfcommunity-api-locality">Locality</h1>
 
-## listLocalitys
+## Get Localities
 
 <a id="opIdlistLocalitys"></a>
 
@@ -33,9 +33,11 @@ fetch('/api/v2/locality/',
 
 ```
 
-`GET /api/v2/locality/`
+This Endpoint retrieve the list of available localities for [Discussion](#selfcommunity-api-discussion) and/or [Post](#selfcommunity-api-post) geolocalization.
 
-A viewset that provides CRUD actions for the locality
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/locality/`
 
 <h3 id="listlocalitys-parameters">Parameters</h3>
 
@@ -82,10 +84,10 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|none|
-|» next|string¦null|false|none|none|
-|» previous|string¦null|false|none|none|
-|» results|[[Locality](#schemalocality)]|false|none|none|
+|» count|integer|false|none|Total number of results|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Locality](#schemalocality)]|false|none|List of results|
 |»» full_address|string|false|read-only|none|
 |»» postal_code|string|false|read-only|none|
 |»» town|string|false|read-only|none|

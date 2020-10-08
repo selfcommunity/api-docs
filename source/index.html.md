@@ -15,6 +15,11 @@ includes:
   - endpoints/media
   - endpoints/discussion
   - schemas
+  - schemas/captcha
+  - schemas/locality
+  - schemas/media
+  - schemas/discussion
+  - schemas/vote
   - errors
 
 search: true
