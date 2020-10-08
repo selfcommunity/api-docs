@@ -840,6 +840,13 @@ active: true
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[Tag](#schematag)|false|none|
+|» id|body|integer|false|none|
+|» name|body|string|true|none|
+|» description|body|string¦null|false|none|
+|» color|body|string|false|none|
+|» visible|body|boolean|false|none|
+|» active|body|boolean|false|none|
+|» created_at|body|string(date-time)|false|none|
 
 > Example responses
 
@@ -1035,6 +1042,13 @@ active: true
 |id|path|string|true|A unique integer value identifying this user tag.|
 |search|query|string|false|A search term.|
 |body|body|[Tag](#schematag)|false|none|
+|» id|body|integer|false|none|
+|» name|body|string|true|none|
+|» description|body|string¦null|false|none|
+|» color|body|string|false|none|
+|» visible|body|boolean|false|none|
+|» active|body|boolean|false|none|
+|» created_at|body|string(date-time)|false|none|
 
 > Example responses
 
@@ -1148,6 +1162,13 @@ active: true
 |id|path|string|true|A unique integer value identifying this user tag.|
 |search|query|string|false|A search term.|
 |body|body|[Tag](#schematag)|false|none|
+|» id|body|integer|false|none|
+|» name|body|string|true|none|
+|» description|body|string¦null|false|none|
+|» color|body|string|false|none|
+|» visible|body|boolean|false|none|
+|» active|body|boolean|false|none|
+|» created_at|body|string(date-time)|false|none|
 
 > Example responses
 
