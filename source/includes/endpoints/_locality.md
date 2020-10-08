@@ -98,6 +98,6 @@ Status Code **200**
 |»» lat|number|false|read-only|none|
 |»» lng|number|false|read-only|none|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>

@@ -146,12 +146,12 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|Total results count|
+|» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
+|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -173,58 +173,8 @@ curl -X POST /api/v2/discussion/ \
 const inputBody = '{
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -281,58 +231,8 @@ The endpoint creates a discussion.
 {
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -401,7 +301,6 @@ addressing:
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
 |» poll|body|object¦null|false|The poll object to associate at the discussion|
-|»» id|body|integer|false|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
@@ -542,8 +441,8 @@ addressing:
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Discussion](#schemadiscussion)|
 
-<aside class="success">
-This operation does require authentication
+<aside class="notice">
+This operation require authentication
 </aside>
 
 ## Search a Discussion
@@ -745,12 +644,12 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|Total results count|
+|» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[ListDiscussion](#schemalistdiscussion)]|false|none|List of results|
+|» results|[[ListDiscussion](#schemalistdiscussion)]|true|none|List of results|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -941,7 +840,7 @@ This endpoint retrieves a specific discussion using ID.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Discussion](#schemadiscussion)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -976,58 +875,8 @@ print(r.json())
 const inputBody = '{
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -1081,58 +930,8 @@ This endpoint update a specific discussion.
 {
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -1194,7 +993,6 @@ addressing:
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
 |» poll|body|object¦null|false|The poll object to associate at the discussion|
-|»» id|body|integer|false|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
@@ -1334,7 +1132,7 @@ addressing:
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateDiscussion](#schemaupdatediscussion)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the discussion creator.
 </aside>
 
@@ -1392,7 +1190,7 @@ This Endpoint delete a Discussion.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the discussion creator.
 </aside>
 
@@ -1597,12 +1395,12 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|Total results count|
+|» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
+|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -1689,12 +1487,12 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|Total results count|
+|» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Vote](#schemavote)]|false|none|List of results|
+|» results|[[Vote](#schemavote)]|true|none|List of results|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -1787,7 +1585,7 @@ This Endpoint toggle vote for this discussion.
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 
@@ -1881,6 +1679,6 @@ This Endpoint toggle follow of the discussion for the user
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Follow](#schemafollow)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>

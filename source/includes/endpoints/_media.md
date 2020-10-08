@@ -89,7 +89,7 @@ offset: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ChunkMedia](#schemachunkmedia)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -213,7 +213,7 @@ md5: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Media](#schemamedia)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -335,7 +335,7 @@ url: http://example.com
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Media](#schemamedia)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -445,7 +445,7 @@ image: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Media](#schemamedia)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
 
@@ -494,6 +494,6 @@ This Endpoint delete a Media.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
