@@ -14,6 +14,7 @@ includes:
   - endpoints/locality
   - endpoints/media
   - endpoints/discussion
+  - endpoints/tag
   - schemas
   - errors
 
