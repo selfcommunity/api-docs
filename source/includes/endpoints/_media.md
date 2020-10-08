@@ -449,7 +449,7 @@ image: http://example.com
 This operation require authentication. The logged user must be the media creator.
 </aside>
 
-## Destroy a Media
+## Delete a Media
 
 <a id="opIddestroyMedia"></a>
 

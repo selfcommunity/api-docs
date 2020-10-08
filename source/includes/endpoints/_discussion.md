@@ -1,6 +1,6 @@
-<h1 id="selfcommunity-api-discussion">discussion</h1>
+<h1 id="selfcommunity-api-discussion">Discussion</h1>
 
-## listDiscussions
+## Get All Discussions
 
 <a id="opIdlistDiscussions"></a>
 
@@ -33,9 +33,11 @@ fetch('/api/v2/discussion/',
 
 ```
 
-`GET /api/v2/discussion/`
+This endpoint retrieves all discussions.
 
-List the posts for homepage
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/`
 
 <h3 id="listdiscussions-parameters">Parameters</h3>
 
@@ -43,7 +45,7 @@ List the posts for homepage
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|search|query|string|false|A search term.|
+|ordering|query|string|false|Which field to use when ordering the results.|
 
 > Example responses
 
@@ -126,12 +128,7 @@ List the posts for homepage
       "addressing": [
         0
       ],
-      "followers": "string",
-      "seen_by_id": [
-        null
-      ],
-      "has_boost": true,
-      "actions": "string"
+      "followers": "string"
     }
   ]
 }
@@ -149,94 +146,16 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|none|
-|» next|string¦null|false|none|none|
-|» previous|string¦null|false|none|none|
-|» results|[[ListDiscussion](#schemalistdiscussion)]|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» title|string¦null|false|none|none|
-|»» slug|string|false|read-only|none|
-|»» text|string|true|write-only|none|
-|»» tags|[integer]|true|none|none|
-|»» media_type|string|false|read-only|none|
-|»» medias|[integer]|false|none|none|
-|»» location|object¦null|false|none|none|
-|»»» location|string¦null|true|none|none|
-|»»» lat|number¦null|true|none|none|
-|»»» lng|number¦null|true|none|none|
-|»» poll|object¦null|false|none|none|
-|»»» id|integer|false|read-only|none|
-|»»» title|string|true|none|none|
-|»»» multiple_choices|boolean|false|none|none|
-|»»» added_at|string(date-time)|false|read-only|none|
-|»»» modified_at|string(date-time)|false|read-only|none|
-|»»» closed|boolean|false|none|none|
-|»»» expiration_at|string(date-time)|true|none|none|
-|»»» hidden|string|false|read-only|none|
-|»»» choices|[object]|true|none|none|
-|»»»» id|integer|false|read-only|none|
-|»»»» choice|string|true|none|none|
-|»»»» order|integer|false|read-only|none|
-|»»»» added_at|string(date-time)|false|read-only|none|
-|»»»» deleted|string|false|read-only|none|
-|»»»» count_votes|string|false|read-only|none|
-|»»» votes|[object]¦null|false|none|none|
-|»»»» id|integer|false|read-only|none|
-|»»»» choice|string|false|read-only|none|
-|»»»» user|string|false|read-only|none|
-|»» last_activity_at|string(date-time)|false|read-only|none|
-|»» view_count|integer|false|read-only|none|
-|»» author|object|false|read-only|none|
-|»»» id|integer|false|read-only|none|
-|»»» username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»»» real_name|string|false|none|none|
-|»»» email|string(email)|false|read-only|none|
-|»»» email_isvalid|boolean|false|read-only|none|
-|»»» date_joined|string(date-time)|false|read-only|none|
-|»»» bio|string|false|none|none|
-|»»» location|string|false|none|none|
-|»»» birthday|string|false|none|none|
-|»»» description|string|false|none|none|
-|»»» gender|string|false|none|none|
-|»»» status|string|false|read-only|none|
-|»»» website|string(uri)|false|none|none|
-|»»» avatar_url|string|false|read-only|none|
-|»»» cover|string|false|read-only|none|
-|»» added_at|string(date-time)|false|read-only|none|
-|»» html|string|false|read-only|none|
-|»» summary|string|false|read-only|none|
-|»» deleted|boolean|false|read-only|none|
-|»» collapsed|string|false|read-only|none|
-|»» score|string|false|read-only|none|
-|»» captcha|object|false|write-only|none|
-|»»» hashkey|string|true|none|none|
-|»»» response|string|true|none|none|
-|»» addressing|[integer]|false|none|none|
-|»» followers|string|false|read-only|none|
-|»» seen_by_id|[any]|false|none|none|
-|»» has_boost|boolean|false|none|none|
-|»» actions|string|false|read-only|none|
+|» count|integer|false|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
 
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|media_type|images|
-|media_type|video|
-|media_type|documents|
-|media_type|link|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|
-
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## createDiscussion
+## Create a Discussion
 
 <a id="opIdcreateDiscussion"></a>
 
@@ -255,11 +174,57 @@ const inputBody = '{
   "title": "string",
   "text": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -283,9 +248,7 @@ const inputBody = '{
     "hashkey": "string",
     "response": "string"
   },
-  "addressing": [
-    0
-  ]
+  "addressing": []
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -306,9 +269,11 @@ fetch('/api/v2/discussion/',
 
 ```
 
-`POST /api/v2/discussion/`
+The endpoint creates a discussion.
 
-A viewset that provides CRUD actions for the discussion
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/`
 
 > Body parameter
 
@@ -317,11 +282,57 @@ A viewset that provides CRUD actions for the discussion
   "title": "string",
   "text": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -345,9 +356,7 @@ A viewset that provides CRUD actions for the discussion
     "hashkey": "string",
     "response": "string"
   },
-  "addressing": [
-    0
-  ]
+  "addressing": []
 }
 ```
 
@@ -383,82 +392,25 @@ addressing:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Discussion](#schemadiscussion)|false|none|
-|» id|body|integer|false|none|
-|» title|body|string¦null|false|none|
-|» slug|body|string|false|none|
-|» text|body|string|true|none|
-|» tags|body|[integer]|true|none|
-|» media_type|body|string|false|none|
+|» title|body|string¦null|true|The title of the discussion|
+|» text|body|string|false|The content of the discussion in html format|
+|» tags|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|none|
+|» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|none|
+|» poll|body|object¦null|false|The poll object to associate at the discussion|
 |»» id|body|integer|false|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» added_at|body|string(date-time)|false|none|
-|»» modified_at|body|string(date-time)|false|none|
-|»» closed|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» hidden|body|string|false|none|
 |»» choices|body|[object]|true|none|
-|»»» id|body|integer|false|none|
 |»»» choice|body|string|true|none|
-|»»» order|body|integer|false|none|
-|»»» added_at|body|string(date-time)|false|none|
-|»»» deleted|body|string|false|none|
-|»»» count_votes|body|string|false|none|
-|»» votes|body|[object]¦null|false|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|false|none|
-|»»» user|body|string|false|none|
-|» last_activity_at|body|string(date-time)|false|none|
-|» view_count|body|integer|false|none|
-|» author|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» email_isvalid|body|boolean|false|none|
-|»» date_joined|body|string(date-time)|false|none|
-|»» bio|body|string|false|none|
-|»» location|body|string|false|none|
-|»» birthday|body|string|false|none|
-|»» description|body|string|false|none|
-|»» gender|body|string|false|none|
-|»» status|body|string|false|none|
-|»» website|body|string(uri)|false|none|
-|»» avatar_url|body|string|false|none|
-|»» cover|body|string|false|none|
-|» added_at|body|string(date-time)|false|none|
-|» html|body|string|false|none|
-|» summary|body|string|false|none|
-|» deleted|body|boolean|false|none|
-|» collapsed|body|string|false|none|
-|» score|body|string|false|none|
-|» captcha|body|object|false|none|
+|» captcha|body|object|false|Required only when daily discussion limit is passed|
 |»» hashkey|body|string|true|none|
 |»» response|body|string|true|none|
-|» addressing|body|[integer]|false|none|
-|» followers|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» media_type|images|
-|» media_type|video|
-|» media_type|documents|
-|» media_type|link|
-|»» gender|Male|
-|»» gender|Female|
-|»» gender|Unspecified|
-|»» status|a|
-|»» status|b|
-|»» status|u|
+|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -470,12 +422,58 @@ addressing:
   "title": "string",
   "slug": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "media_type": "images",
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -533,9 +531,7 @@ addressing:
   "deleted": true,
   "collapsed": "string",
   "score": "string",
-  "addressing": [
-    0
-  ],
+  "addressing": [],
   "followers": "string"
 }
 ```
@@ -547,10 +543,218 @@ addressing:
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Discussion](#schemadiscussion)|
 
 <aside class="success">
-This operation does not require authentication
+This operation does require authentication
 </aside>
 
-## retrieveDiscussion
+## Search a Discussion
+
+<a id="opIdsearchDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/search/ \
+  -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/discussion/search/', headers = headers)
+
+print(r.json())
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/discussion/search/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint perform search operation to discussions.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/search/`
+
+<h3 id="searchdiscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|search|query|string|false|A search term.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
+      {
+        "id": 0,
+        "title": "string",
+        "slug": "string",
+        "tags": [
+                {
+                    "id": 0,
+                    "order": 1,
+                    "name": "name",
+                    "name_synonyms": "synonyms",
+                    "slug": "name",
+                    "slogan": "Slogan",
+                    "html_info": null,
+                    "seo_title": null,
+                    "seo_description": null,
+                    "auto_follow": "None",
+                    "active": true,
+                    "deleted": false,
+                    "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+                    "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+                    "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+                    "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+                    "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+                    "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+                    "emotional_image_position": 50,
+                    "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+                    "stream_order_by": "recent"
+                }
+            ],
+        "media_type": "images",
+        "medias": [
+                {
+                    "id": 0,
+                    "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+                    "added_at": "2020-10-08T16:15:59.122041+02:00",
+                    "type": "url",
+                    "title": "Title",
+                    "description": "Description",
+                    "url": "https://www.example.com",
+                    "keywords": "[]",
+                    "entities": "[]",
+                    "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+                    "image_width": 1500,
+                    "image_height": 1500,
+                    "oembed_type": null,
+                    "oembed_url": null,
+                    "oembed_width": null,
+                    "oembed_height": null,
+                    "oembed_duration": null,
+                    "oembed_html": null,
+                    "oembed_preview_ready": true,
+                    "oembed_available": true,
+                    "order": 0,
+                    "embed_type": null,
+                    "embed_id": null
+                }
+            ],
+        "location": {
+            "location": "string",
+            "lat": 0,
+            "lng": 0
+        },
+        "poll": {
+            "id": 0,
+            "title": "string",
+            "multiple_choices": true,
+            "added_at": "2019-08-24T14:15:22Z",
+            "modified_at": "2019-08-24T14:15:22Z",
+            "closed": true,
+            "expiration_at": "2019-08-24T14:15:22Z",
+            "hidden": "string",
+            "choices": [
+            {
+                "id": 0,
+                "choice": "string",
+                "order": 0,
+                "added_at": "2019-08-24T14:15:22Z",
+                "deleted": "string",
+                "count_votes": "string"
+            }
+            ],
+            "votes": [
+            {
+                "id": 0,
+                "choice": "string",
+                "user": "string"
+            }
+            ]
+        },
+        "last_activity_at": "2019-08-24T14:15:22Z",
+        "view_count": 0,
+        "author": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "birthday": "string",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "http://example.com",
+            "avatar_url": "string",
+            "cover": "string"
+        },
+        "added_at": "2019-08-24T14:15:22Z",
+        "html": "string",
+        "summary": "string",
+        "deleted": true,
+        "collapsed": "string",
+        "score": "string",
+        "addressing": [],
+        "followers": "string",
+        "seen_by_id": [
+            null
+        ],
+        "has_boost": true,
+        "actions": "string"
+        }
+    ]
+}
+```
+
+<h3 id="searchdiscussion-responses">Responses</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[ListDiscussion](#schemalistdiscussion)]|false|none|List of results|
+
+<aside class="warning">
+This operation require authentication only if `content_availability` community option is false
+</aside>
+
+## Get a specific Discussion
 
 <a id="opIdretrieveDiscussion"></a>
 
@@ -560,6 +764,18 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/ \
   -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/discussion/{id}/', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -583,16 +799,17 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-`GET /api/v2/discussion/{id}/`
+This endpoint retrieves a specific discussion using ID.
 
-A viewset that provides CRUD actions for the discussion
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/{id}/`
 
 <h3 id="retrievediscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|search|query|string|false|A search term.|
+|id|path|string|true|A unique integer value identifying this discussion.|
 
 > Example responses
 
@@ -604,12 +821,58 @@ A viewset that provides CRUD actions for the discussion
   "title": "string",
   "slug": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "media_type": "images",
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -667,9 +930,7 @@ A viewset that provides CRUD actions for the discussion
   "deleted": true,
   "collapsed": "string",
   "score": "string",
-  "addressing": [
-    0
-  ],
+  "addressing": [],
   "followers": "string"
 }
 ```
@@ -680,11 +941,11 @@ A viewset that provides CRUD actions for the discussion
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Discussion](#schemadiscussion)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## updateDiscussion
+## Update a specific Discussion
 
 <a id="opIdupdateDiscussion"></a>
 
@@ -698,16 +959,75 @@ curl -X PUT /api/v2/discussion/{id}/ \
 
 ```
 
+```python
+import requests
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json'
+}
+
+r = requests.put('/api/v2/discussion/{id}/', headers = headers)
+
+print(r.json())
+
+```
+
 ```javascript
 const inputBody = '{
   "title": "string",
   "text": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -727,9 +1047,7 @@ const inputBody = '{
       {}
     ]
   },
-  "addressing": [
-    0
-  ]
+  "addressing": []
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -750,9 +1068,12 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-`PUT /api/v2/discussion/{id}/`
+This endpoint update a specific discussion.
 
-A viewset that provides CRUD actions for the discussion
+<h3 id="http-request">HTTP Request</h3>
+
+
+`PUT /api/v2/discussion/{id}/`
 
 > Body parameter
 
@@ -761,11 +1082,57 @@ A viewset that provides CRUD actions for the discussion
   "title": "string",
   "text": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -785,9 +1152,7 @@ A viewset that provides CRUD actions for the discussion
       {}
     ]
   },
-  "addressing": [
-    0
-  ]
+  "addressing": []
 }
 ```
 
@@ -820,80 +1185,25 @@ addressing:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|search|query|string|false|A search term.|
-|body|body|[UpdateDiscussion](#schemaupdatediscussion)|false|none|
-|» id|body|integer|false|none|
-|» title|body|string¦null|false|none|
-|» slug|body|string|false|none|
-|» text|body|string|true|none|
-|» tags|body|[integer]|true|none|
-|» media_type|body|string|false|none|
+|» title|body|string¦null|true|The title of the discussion|
+|» text|body|string|false|The content of the discussion in html format|
+|» tags|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|none|
+|» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|none|
+|» poll|body|object¦null|false|The poll object to associate at the discussion|
 |»» id|body|integer|false|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» added_at|body|string(date-time)|false|none|
-|»» modified_at|body|string(date-time)|false|none|
-|»» closed|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» hidden|body|string|false|none|
 |»» choices|body|[object]|true|none|
-|»»» id|body|integer|false|none|
 |»»» choice|body|string|true|none|
-|»»» order|body|integer|false|none|
-|»»» added_at|body|string(date-time)|false|none|
-|»»» deleted|body|string|false|none|
-|»»» count_votes|body|string|false|none|
-|»» votes|body|[object]¦null|false|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|false|none|
-|»»» user|body|string|false|none|
-|» last_activity_at|body|string(date-time)|false|none|
-|» view_count|body|integer|false|none|
-|» author|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» email_isvalid|body|boolean|false|none|
-|»» date_joined|body|string(date-time)|false|none|
-|»» bio|body|string|false|none|
-|»» location|body|string|false|none|
-|»» birthday|body|string|false|none|
-|»» description|body|string|false|none|
-|»» gender|body|string|false|none|
-|»» status|body|string|false|none|
-|»» website|body|string(uri)|false|none|
-|»» avatar_url|body|string|false|none|
-|»» cover|body|string|false|none|
-|» added_at|body|string(date-time)|false|none|
-|» html|body|string|false|none|
-|» summary|body|string|false|none|
-|» deleted|body|boolean|false|none|
-|» collapsed|body|string|false|none|
-|» score|body|string|false|none|
-|» addressing|body|[integer]|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» media_type|images|
-|» media_type|video|
-|» media_type|documents|
-|» media_type|link|
-|»» gender|Male|
-|»» gender|Female|
-|»» gender|Unspecified|
-|»» status|a|
-|»» status|b|
-|»» status|u|
+|» captcha|body|object|false|Required only when daily discussion limit is passed|
+|»» hashkey|body|string|true|none|
+|»» response|body|string|true|none|
+|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -905,12 +1215,58 @@ addressing:
   "title": "string",
   "slug": "string",
   "tags": [
-    0
-  ],
+        {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+        }
+    ],
   "media_type": "images",
   "medias": [
-    0
-  ],
+        {
+            "id": 0,
+            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+            "added_at": "2020-10-08T16:15:59.122041+02:00",
+            "type": "url",
+            "title": "Title",
+            "description": "Description",
+            "url": "https://www.example.com",
+            "keywords": "[]",
+            "entities": "[]",
+            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image_width": 1500,
+            "image_height": 1500,
+            "oembed_type": null,
+            "oembed_url": null,
+            "oembed_width": null,
+            "oembed_height": null,
+            "oembed_duration": null,
+            "oembed_html": null,
+            "oembed_preview_ready": true,
+            "oembed_available": true,
+            "order": 0,
+            "embed_type": null,
+            "embed_id": null
+        }
+    ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -968,9 +1324,7 @@ addressing:
   "deleted": true,
   "collapsed": "string",
   "score": "string",
-  "addressing": [
-    0
-  ]
+  "addressing": []
 }
 ```
 
@@ -981,310 +1335,10 @@ addressing:
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateDiscussion](#schemaupdatediscussion)|
 
 <aside class="success">
-This operation does not require authentication
+This operation require authentication. The logged user must be the discussion creator.
 </aside>
 
-## partialUpdateDiscussion
-
-<a id="opIdpartialUpdateDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X PATCH /api/v2/discussion/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-const inputBody = '{
-  "title": "string",
-  "text": "string",
-  "tags": [
-    0
-  ],
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ],
-    "votes": [
-      {}
-    ]
-  },
-  "addressing": [
-    0
-  ]
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/discussion/{id}/',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`PATCH /api/v2/discussion/{id}/`
-
-A viewset that provides CRUD actions for the discussion
-
-> Body parameter
-
-```json
-{
-  "title": "string",
-  "text": "string",
-  "tags": [
-    0
-  ],
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ],
-    "votes": [
-      {}
-    ]
-  },
-  "addressing": [
-    0
-  ]
-}
-```
-
-```yaml
-title: string
-text: string
-tags:
-  - 0
-medias:
-  - 0
-location:
-  location: string
-  lat: 0
-  lng: 0
-poll:
-  title: string
-  multiple_choices: true
-  closed: true
-  expiration_at: 2019-08-24T14:15:22Z
-  choices:
-    - choice: string
-  votes:
-    - {}
-addressing:
-  - 0
-
-```
-
-<h3 id="partialupdatediscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|search|query|string|false|A search term.|
-|body|body|[UpdateDiscussion](#schemaupdatediscussion)|false|none|
-|» id|body|integer|false|none|
-|» title|body|string¦null|false|none|
-|» slug|body|string|false|none|
-|» text|body|string|true|none|
-|» tags|body|[integer]|true|none|
-|» media_type|body|string|false|none|
-|» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|none|
-|»» location|body|string¦null|true|none|
-|»» lat|body|number¦null|true|none|
-|»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|none|
-|»» id|body|integer|false|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» added_at|body|string(date-time)|false|none|
-|»» modified_at|body|string(date-time)|false|none|
-|»» closed|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
-|»» hidden|body|string|false|none|
-|»» choices|body|[object]|true|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|true|none|
-|»»» order|body|integer|false|none|
-|»»» added_at|body|string(date-time)|false|none|
-|»»» deleted|body|string|false|none|
-|»»» count_votes|body|string|false|none|
-|»» votes|body|[object]¦null|false|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|false|none|
-|»»» user|body|string|false|none|
-|» last_activity_at|body|string(date-time)|false|none|
-|» view_count|body|integer|false|none|
-|» author|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» email_isvalid|body|boolean|false|none|
-|»» date_joined|body|string(date-time)|false|none|
-|»» bio|body|string|false|none|
-|»» location|body|string|false|none|
-|»» birthday|body|string|false|none|
-|»» description|body|string|false|none|
-|»» gender|body|string|false|none|
-|»» status|body|string|false|none|
-|»» website|body|string(uri)|false|none|
-|»» avatar_url|body|string|false|none|
-|»» cover|body|string|false|none|
-|» added_at|body|string(date-time)|false|none|
-|» html|body|string|false|none|
-|» summary|body|string|false|none|
-|» deleted|body|boolean|false|none|
-|» collapsed|body|string|false|none|
-|» score|body|string|false|none|
-|» addressing|body|[integer]|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» media_type|images|
-|» media_type|video|
-|» media_type|documents|
-|» media_type|link|
-|»» gender|Male|
-|»» gender|Female|
-|»» gender|Unspecified|
-|»» status|a|
-|»» status|b|
-|»» status|u|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "title": "string",
-  "slug": "string",
-  "tags": [
-    0
-  ],
-  "media_type": "images",
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": "string"
-      }
-    ]
-  },
-  "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
-  "author": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "added_at": "2019-08-24T14:15:22Z",
-  "html": "string",
-  "summary": "string",
-  "deleted": true,
-  "collapsed": "string",
-  "score": "string",
-  "addressing": [
-    0
-  ]
-}
-```
-
-<h3 id="partialupdatediscussion-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateDiscussion](#schemaupdatediscussion)|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## destroyDiscussion
+## Delete a Discussion
 
 <a id="opIddestroyDiscussion"></a>
 
@@ -1293,6 +1347,15 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X DELETE /api/v2/discussion/{id}/
+
+```
+
+```python
+import requests
+
+r = requests.delete('/api/v2/discussion/{id}/')
+
+print(r.json())
 
 ```
 
@@ -1311,16 +1374,17 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-`DELETE /api/v2/discussion/{id}/`
+This Endpoint delete a Discussion.
 
-A viewset that provides CRUD actions for the discussion
+<h3 id="http-request">HTTP Request</h3>
+
+`DELETE /api/v2/discussion/{id}/`
 
 <h3 id="destroydiscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|search|query|string|false|A search term.|
+|id|path|string|true|A unique integer value identifying this discussion.|
 
 <h3 id="destroydiscussion-responses">Responses</h3>
 
@@ -1329,10 +1393,10 @@ A viewset that provides CRUD actions for the discussion
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="success">
-This operation does not require authentication
+This operation require authentication. The logged user must be the discussion creator.
 </aside>
 
-## relatedDiscussion
+## Get list of related Discussions
 
 <a id="opIdrelatedDiscussion"></a>
 
@@ -1342,6 +1406,18 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/related/ \
   -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/discussion/{id}/related/', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -1365,15 +1441,19 @@ fetch('/api/v2/discussion/{id}/related/',
 
 ```
 
-`GET /api/v2/discussion/{id}/related/`
+This Endpoint retrieve related discussions
 
-This Endpoint retrieve related post/discussions
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/{id}/related/`
 
 <h3 id="relateddiscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
+|id|path|string|true|A unique integer value identifying this discussion.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -1381,96 +1461,152 @@ This Endpoint retrieve related post/discussions
 
 ```json
 {
-  "id": 0,
-  "title": "string",
-  "slug": "string",
-  "tags": [
-    0
-  ],
-  "media_type": "images",
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
       {
         "id": 0,
-        "choice": "string",
-        "order": 0,
+        "title": "string",
+        "slug": "string",
+        "tags": [
+                {
+                    "id": 0,
+                    "order": 1,
+                    "name": "name",
+                    "name_synonyms": "synonyms",
+                    "slug": "name",
+                    "slogan": "Slogan",
+                    "html_info": null,
+                    "seo_title": null,
+                    "seo_description": null,
+                    "auto_follow": "None",
+                    "active": true,
+                    "deleted": false,
+                    "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
+                    "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
+                    "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
+                    "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
+                    "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
+                    "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+                    "emotional_image_position": 50,
+                    "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+                    "stream_order_by": "recent"
+                }
+            ],
+        "media_type": "images",
+        "medias": [
+                {
+                    "id": 0,
+                    "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
+                    "added_at": "2020-10-08T16:15:59.122041+02:00",
+                    "type": "url",
+                    "title": "Title",
+                    "description": "Description",
+                    "url": "https://www.example.com",
+                    "keywords": "[]",
+                    "entities": "[]",
+                    "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+                    "image_width": 1500,
+                    "image_height": 1500,
+                    "oembed_type": null,
+                    "oembed_url": null,
+                    "oembed_width": null,
+                    "oembed_height": null,
+                    "oembed_duration": null,
+                    "oembed_html": null,
+                    "oembed_preview_ready": true,
+                    "oembed_available": true,
+                    "order": 0,
+                    "embed_type": null,
+                    "embed_id": null
+                }
+            ],
+        "location": {
+            "location": "string",
+            "lat": 0,
+            "lng": 0
+        },
+        "poll": {
+            "id": 0,
+            "title": "string",
+            "multiple_choices": true,
+            "added_at": "2019-08-24T14:15:22Z",
+            "modified_at": "2019-08-24T14:15:22Z",
+            "closed": true,
+            "expiration_at": "2019-08-24T14:15:22Z",
+            "hidden": "string",
+            "choices": [
+            {
+                "id": 0,
+                "choice": "string",
+                "order": 0,
+                "added_at": "2019-08-24T14:15:22Z",
+                "deleted": "string",
+                "count_votes": "string"
+            }
+            ],
+            "votes": [
+            {
+                "id": 0,
+                "choice": "string",
+                "user": "string"
+            }
+            ]
+        },
+        "last_activity_at": "2019-08-24T14:15:22Z",
+        "view_count": 0,
+        "author": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "birthday": "string",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "http://example.com",
+            "avatar_url": "string",
+            "cover": "string"
+        },
         "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": "string"
-      }
+        "html": "string",
+        "summary": "string",
+        "deleted": true,
+        "collapsed": "string",
+        "score": "string",
+        "addressing": [],
+        "followers": "string",
+        "seen_by_id": [
+            null
+        ],
+        "has_boost": true,
+        "actions": "string"
+        }
     ]
-  },
-  "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
-  "author": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "added_at": "2019-08-24T14:15:22Z",
-  "html": "string",
-  "summary": "string",
-  "deleted": true,
-  "collapsed": "string",
-  "score": "string",
-  "addressing": [
-    0
-  ],
-  "followers": "string",
-  "seen_by_id": [
-    null
-  ],
-  "has_boost": true,
-  "actions": "string"
 }
 ```
 
 <h3 id="relateddiscussion-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ListDiscussion](#schemalistdiscussion)|
+Status Code **200**
 
-<aside class="success">
-This operation does not require authentication
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
+
+<aside class="warning">
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## voteDiscussion
+## Get List of Votes for a Specific Discussion
 
 <a id="opIdvoteDiscussion"></a>
 
@@ -1480,6 +1616,18 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/vote/ \
   -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('/api/v2/discussion/{id}/vote/', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -1502,16 +1650,19 @@ fetch('/api/v2/discussion/{id}/vote/',
 });
 
 ```
+This endpoint retrieves all votes for a specific discussion.
+
+<h3 id="http-request">HTTP Request</h3>
 
 `GET /api/v2/discussion/{id}/vote/`
-
-List votes for this contribute
 
 <h3 id="votediscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
+|id|path|string|true|A unique integer value identifying this discussion.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -1519,23 +1670,35 @@ List votes for this contribute
 
 ```json
 {
-  "user": "string",
-  "voted_post": "string",
-  "voted_at": "2019-08-24T14:15:22Z"
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
+      {
+        "user": "string",
+        "voted_post": "string",
+        "voted_at": "2019-08-24T14:15:22Z"
+        }
+  ]
 }
 ```
 
-<h3 id="votediscussion-responses">Responses</h3>
+<h3 id="votediscussion-responseschema">Response Schema</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Vote](#schemavote)|
+Status Code **200**
 
-<aside class="success">
-This operation does not require authentication
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Vote](#schemavote)]|false|none|List of results|
+
+<aside class="warning">
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## voteCreateDiscussion
+## Toggle Vote for a Specific Discussion
 
 <a id="opIdvoteCreateDiscussion"></a>
 
@@ -1546,6 +1709,19 @@ This operation does not require authentication
 curl -X POST /api/v2/discussion/{id}/vote/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/discussion/{id}/vote/', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -1570,9 +1746,11 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-`POST /api/v2/discussion/{id}/vote/`
+This Endpoint toggle vote for this discussion.
 
-Execute vote for this contribute
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/vote/`
 
 > Body parameter
 
@@ -1589,11 +1767,7 @@ Execute vote for this contribute
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|body|body|[Vote](#schemavote)|false|none|
-|» user|body|string|false|none|
-|» voted_post|body|string|false|none|
-|» voted_at|body|string(date-time)|false|none|
+|id|path|string|true|A unique integer value identifying this discussion.|
 
 > Example responses
 
@@ -1614,325 +1788,11 @@ Execute vote for this contribute
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
 
 <aside class="success">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
-## flagDiscussion
 
-<a id="opIdflagDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/discussion/{id}/flag/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-const inputBody = '{
-  "title": "string",
-  "text": "string",
-  "tags": [
-    0
-  ],
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ],
-    "votes": [
-      {}
-    ]
-  },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
-  },
-  "addressing": [
-    0
-  ]
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/discussion/{id}/flag/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/discussion/{id}/flag/`
-
-Execute flag for this post
-
-> Body parameter
-
-```json
-{
-  "title": "string",
-  "text": "string",
-  "tags": [
-    0
-  ],
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ],
-    "votes": [
-      {}
-    ]
-  },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
-  },
-  "addressing": [
-    0
-  ]
-}
-```
-
-```yaml
-title: string
-text: string
-tags:
-  - 0
-medias:
-  - 0
-location:
-  location: string
-  lat: 0
-  lng: 0
-poll:
-  title: string
-  multiple_choices: true
-  closed: true
-  expiration_at: 2019-08-24T14:15:22Z
-  choices:
-    - choice: string
-  votes:
-    - {}
-captcha:
-  hashkey: string
-  response: string
-addressing:
-  - 0
-
-```
-
-<h3 id="flagdiscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|body|body|[Discussion](#schemadiscussion)|false|none|
-|» id|body|integer|false|none|
-|» title|body|string¦null|false|none|
-|» slug|body|string|false|none|
-|» text|body|string|true|none|
-|» tags|body|[integer]|true|none|
-|» media_type|body|string|false|none|
-|» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|none|
-|»» location|body|string¦null|true|none|
-|»» lat|body|number¦null|true|none|
-|»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|none|
-|»» id|body|integer|false|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» added_at|body|string(date-time)|false|none|
-|»» modified_at|body|string(date-time)|false|none|
-|»» closed|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
-|»» hidden|body|string|false|none|
-|»» choices|body|[object]|true|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|true|none|
-|»»» order|body|integer|false|none|
-|»»» added_at|body|string(date-time)|false|none|
-|»»» deleted|body|string|false|none|
-|»»» count_votes|body|string|false|none|
-|»» votes|body|[object]¦null|false|none|
-|»»» id|body|integer|false|none|
-|»»» choice|body|string|false|none|
-|»»» user|body|string|false|none|
-|» last_activity_at|body|string(date-time)|false|none|
-|» view_count|body|integer|false|none|
-|» author|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» email_isvalid|body|boolean|false|none|
-|»» date_joined|body|string(date-time)|false|none|
-|»» bio|body|string|false|none|
-|»» location|body|string|false|none|
-|»» birthday|body|string|false|none|
-|»» description|body|string|false|none|
-|»» gender|body|string|false|none|
-|»» status|body|string|false|none|
-|»» website|body|string(uri)|false|none|
-|»» avatar_url|body|string|false|none|
-|»» cover|body|string|false|none|
-|» added_at|body|string(date-time)|false|none|
-|» html|body|string|false|none|
-|» summary|body|string|false|none|
-|» deleted|body|boolean|false|none|
-|» collapsed|body|string|false|none|
-|» score|body|string|false|none|
-|» captcha|body|object|false|none|
-|»» hashkey|body|string|true|none|
-|»» response|body|string|true|none|
-|» addressing|body|[integer]|false|none|
-|» followers|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» media_type|images|
-|» media_type|video|
-|» media_type|documents|
-|» media_type|link|
-|»» gender|Male|
-|»» gender|Female|
-|»» gender|Unspecified|
-|»» status|a|
-|»» status|b|
-|»» status|u|
-
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "title": "string",
-  "slug": "string",
-  "tags": [
-    0
-  ],
-  "media_type": "images",
-  "medias": [
-    0
-  ],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": "string"
-      }
-    ]
-  },
-  "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
-  "author": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "added_at": "2019-08-24T14:15:22Z",
-  "html": "string",
-  "summary": "string",
-  "deleted": true,
-  "collapsed": "string",
-  "score": "string",
-  "addressing": [
-    0
-  ],
-  "followers": "string"
-}
-```
-
-<h3 id="flagdiscussion-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Discussion](#schemadiscussion)|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## followDiscussion
+## Toggle Follow for a Specific Discussion
 
 <a id="opIdfollowDiscussion"></a>
 
@@ -1943,6 +1803,19 @@ This operation does not require authentication
 curl -X POST /api/v2/discussion/{id}/follow/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json'
+}
+
+r = requests.post('/api/v2/discussion/{id}/follow/', headers = headers)
+
+print(r.json())
 
 ```
 
@@ -1967,9 +1840,11 @@ fetch('/api/v2/discussion/{id}/follow/',
 
 ```
 
-`POST /api/v2/discussion/{id}/follow/`
+This Endpoint toggle follow of the discussion for the user
 
-This endpoint toggle follow of the discussion from the user
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/follow/`
 
 > Body parameter
 
@@ -1986,11 +1861,7 @@ This endpoint toggle follow of the discussion from the user
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this thread.|
-|body|body|[Follow](#schemafollow)|false|none|
-|» user|body|string|false|none|
-|» thread|body|string|false|none|
-|» added_at|body|string(date-time)|false|none|
+|id|path|string|true|A unique integer value identifying this discussion.|
 
 > Example responses
 
@@ -2011,5 +1882,5 @@ This endpoint toggle follow of the discussion from the user
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Follow](#schemafollow)|
 
 <aside class="success">
-This operation does not require authentication
+This operation require authentication
 </aside>
