@@ -491,7 +491,7 @@ curl <span class="nt">-X</span> GET /api/v2/captcha/ <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 <h1 id="selfcommunity-api-locality">Locality</h1>
@@ -711,7 +711,7 @@ curl <span class="nt">-X</span> GET /api/v2/locality/ <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 <h1 id="selfcommunity-api-media">Media</h1>
@@ -844,7 +844,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='chunk-upload-media-complete'>Chunk Upload Media Complete</h2>
@@ -1011,7 +1011,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='create-a-media'>Create a Media</h2>
@@ -1178,7 +1178,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='update-a-media'>Update a Media</h2>
@@ -1309,7 +1309,7 @@ curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span 
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
 <h2 id='delete-a-media'>Delete a Media</h2>
@@ -1378,7 +1378,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/media/<span class="o">{</span><sp
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
 <h1 id="selfcommunity-api-discussion">Discussion</h1>
@@ -1570,7 +1570,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span
 <tr>
 <td>» count</td>
 <td>integer</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Total results count</td>
 </tr>
@@ -1591,13 +1591,13 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span
 <tr>
 <td>» results</td>
 <td>[<a href="#schemadiscussion">Discussion</a>]</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>List of results</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='create-a-discussion'>Create a Discussion</h2>
@@ -1614,58 +1614,8 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -1721,58 +1671,8 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name_synonyms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"synonyms"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"slogan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slogan"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"html_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seo_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"hash_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af335630-a8db-4fe4-a49a-dd81ce5c2a80"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-08T16:15:59.122041+02:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_duration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_preview_ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"embed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"embed_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1897,13 +1797,6 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 <td>object¦null</td>
 <td>false</td>
 <td>The poll object to associate at the discussion</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>body</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
 </tr>
 <tr>
 <td>»» title</td>
@@ -2111,8 +2004,8 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does require authentication
+<aside class="notice">
+This operation require authentication
 </aside>
 <h2 id='search-a-discussion'>Search a Discussion</h2>
 <p><a id="opIdsearchDiscussion"></a></p>
@@ -2328,7 +2221,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
 <tr>
 <td>» count</td>
 <td>integer</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Total results count</td>
 </tr>
@@ -2349,13 +2242,13 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
 <tr>
 <td>» results</td>
 <td>[<a href="#schemalistdiscussion">ListDiscussion</a>]</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>List of results</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='get-a-specific-discussion'>Get a specific Discussion</h2>
@@ -2562,7 +2455,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='update-a-specific-discussion'>Update a specific Discussion</h2>
@@ -2589,58 +2482,8 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "title": "string",
   "text": "string",
-  "tags": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
-  "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+  "tags": [0],
+  "medias": [0],
   "location": {
     "location": "string",
     "lat": 0,
@@ -2692,58 +2535,8 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name_synonyms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"synonyms"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"slogan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slogan"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"html_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seo_title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"hash_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af335630-a8db-4fe4-a49a-dd81ce5c2a80"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-08T16:15:59.122041+02:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_duration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_preview_ready"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oembed_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"embed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"embed_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2861,13 +2654,6 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 <td>object¦null</td>
 <td>false</td>
 <td>The poll object to associate at the discussion</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>body</td>
-<td>integer</td>
-<td>false</td>
-<td>none</td>
 </tr>
 <tr>
 <td>»» title</td>
@@ -3074,7 +2860,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the discussion creator.
 </aside>
 <h2 id='delete-a-discussion'>Delete a Discussion</h2>
@@ -3149,7 +2935,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/discussion/<span class="o">{</spa
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the discussion creator.
 </aside>
 <h2 id='get-list-of-related-discussions'>Get list of related Discussions</h2>
@@ -3380,7 +3166,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <tr>
 <td>» count</td>
 <td>integer</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Total results count</td>
 </tr>
@@ -3401,13 +3187,13 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <tr>
 <td>» results</td>
 <td>[<a href="#schemadiscussion">Discussion</a>]</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>List of results</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='get-list-of-votes-for-a-specific-discussion'>Get List of Votes for a Specific Discussion</h2>
@@ -3521,7 +3307,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <tr>
 <td>» count</td>
 <td>integer</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Total results count</td>
 </tr>
@@ -3542,13 +3328,13 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <tr>
 <td>» results</td>
 <td>[<a href="#schemavote">Vote</a>]</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>List of results</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 <h2 id='toggle-vote-for-a-specific-discussion'>Toggle Vote for a Specific Discussion</h2>
@@ -3653,7 +3439,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 <h2 id='toggle-follow-for-a-specific-discussion'>Toggle Follow for a Specific Discussion</h2>
@@ -3758,7 +3544,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 </tr>
 </tbody></table>
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 <h1 id='schemas'>Schemas</h1><h2 id="tocS_Captcha">Captcha</h2>
@@ -5409,11 +5195,7 @@ This operation require authentication
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The SelfCommunity API uses the following error codes:</p>
 
 <table><thead>
 <tr>
