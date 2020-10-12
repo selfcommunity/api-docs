@@ -724,8 +724,9 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: multipart/form-data'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Transfer-Encoding: chunked"</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Transfer-Encoding: chunked"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {access_token}"</span>
   <span class="nt">--data-binary</span> <span class="s1">$'------WebKitFormBoundaryT4U3VeMJUOwfER55</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="cors"</span><span class="se">\r\n\r\n</span><span class="s1">1</span><span class="se">\r\n</span><span class="s1">------WebKitFormBoundaryT4U3VeMJUOwfER55</span><span class="se">\r\n</span><span class="s1">Content-Disposition: form-data; name="image"; filename="p.gif"</span><span class="se">\r\n</span><span class="s1">Content-Type: image/gif</span><span class="se">\r\n\r\n\r\n</span><span class="s1">------WebKitFormBoundaryT4U3VeMJUOwfER55--</span><span class="se">\r\n</span><span class="s1">'</span> <span class="se">\</span>
   <span class="nt">--compressed</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
@@ -734,7 +735,8 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/media/upload/chunk/</span><span class="dl">'</span><span class="p">,</span>
@@ -763,10 +765,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
   </span><span class="nl">"upload_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">upload_id</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">offset</span><span class="pi">:</span> <span class="s">string</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="createmediachunk-parameters">Parameters</h3>
 
 <table><thead>
@@ -845,7 +844,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation require authentication
 </aside>
 <h2 id='chunk-upload-media-complete'>Chunk Upload Media Complete</h2>
 <p><a id="opIdcreateMediaChunkComplete"></a></p>
@@ -856,7 +855,8 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
   <span class="nt">--data-raw</span> <span class="s1">'upload_id=UPLOAD_ID&amp;md5=FILE_MD5'</span> <span class="se">\</span>
   <span class="nt">--compressed</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
@@ -866,7 +866,8 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/media/upload/complete/</span><span class="dl">'</span><span class="p">,</span>
@@ -896,11 +897,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
   </span><span class="nl">"upload_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">type</span><span class="pi">:</span> <span class="s">image</span>
-<span class="na">upload_id</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">md5</span><span class="pi">:</span> <span class="s">string</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="createmediachunkcomplete-parameters">Parameters</h3>
 
 <table><thead>
@@ -1012,7 +1009,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation require authentication
 </aside>
 <h2 id='create-a-media'>Create a Media</h2>
 <p><a id="opIdcreateMedia"></a></p>
@@ -1023,7 +1020,8 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
   <span class="nt">--data-raw</span> <span class="s1">'url=http%3A%2F%2Fwww.example.com&amp;type=url'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
@@ -1032,7 +1030,8 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/media/</span><span class="dl">'</span><span class="p">,</span>
@@ -1061,10 +1060,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">type</span><span class="pi">:</span> <span class="s">url</span>
-<span class="na">url</span><span class="pi">:</span> <span class="s">http://example.com</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="createmedia-parameters">Parameters</h3>
 
 <table><thead>
@@ -1179,7 +1175,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation require authentication
 </aside>
 <h2 id='update-a-media'>Update a Media</h2>
 <p><a id="opIdupdateMedia"></a></p>
@@ -1190,14 +1186,16 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "image": "http://example.com"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/media/{id}/</span><span class="dl">'</span><span class="p">,</span>
@@ -1227,9 +1225,7 @@ curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">image</span><span class="pi">:</span> <span class="s">http://example.com</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="updatemedia-parameters">Parameters</h3>
 
 <table><thead>
@@ -1310,7 +1306,7 @@ curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span 
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication. The logged user must be the media creator.
+This operation require authentication. The logged user must be the media creator
 </aside>
 <h2 id='delete-a-media'>Delete a Media</h2>
 <p><a id="opIddestroyMedia"></a></p>
@@ -1319,13 +1315,13 @@ This operation require authentication. The logged user must be the media creator
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> DELETE /api/v2/media/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/
-
+curl <span class="nt">-X</span> DELETE /api/v2/media/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/media/{id}/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span>
-
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span><span class="p">}</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
@@ -1390,11 +1386,12 @@ This operation require authentication. The logged user must be the media creator
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/</span><span class="dl">'</span><span class="p">,</span>
@@ -1464,7 +1461,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"media_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
@@ -1609,12 +1606,13 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+  <span class="nt">--DATA</span> <span class="s1">'{body}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -1630,9 +1628,6 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "captcha": {
@@ -1643,7 +1638,8 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/</span><span class="dl">'</span><span class="p">,</span>
@@ -1671,7 +1667,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1687,9 +1683,6 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"captcha"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1698,32 +1691,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">text</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">tags</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-<span class="na">medias</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-<span class="na">location</span><span class="pi">:</span>
-  <span class="na">location</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">lat</span><span class="pi">:</span> <span class="m">0</span>
-  <span class="na">lng</span><span class="pi">:</span> <span class="m">0</span>
-<span class="na">poll</span><span class="pi">:</span>
-  <span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">multiple_choices</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">closed</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">expiration_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
-  <span class="na">choices</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">choice</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">votes</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="pi">{}</span>
-<span class="na">captcha</span><span class="pi">:</span>
-  <span class="na">hashkey</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">response</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">addressing</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="creatediscussion-parameters">Parameters</h3>
 
 <table><thead>
@@ -1750,7 +1718,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
 <td>The content of the discussion in html format</td>
 </tr>
 <tr>
-<td>» tags</td>
+<td>» categories</td>
 <td>body</td>
 <td>[integer]</td>
 <td>true</td>
@@ -1872,7 +1840,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -1886,12 +1854,12 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
             </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
@@ -1909,7 +1877,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
             </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2015,20 +1983,12 @@ This operation require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/v2/discussion/search/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/search/</span><span class="dl">'</span><span class="p">,</span>
@@ -2084,7 +2044,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -2098,12 +2058,12 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
                     </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
@@ -2121,7 +2081,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
                     </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2259,20 +2219,12 @@ This operation require authentication only if `content_availability` community o
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/</span><span class="dl">'</span><span class="p">,</span>
@@ -2323,7 +2275,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -2337,12 +2289,12 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
             </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
@@ -2360,7 +2312,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
             </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2467,22 +2419,13 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/x-www-form-urlencoded'</span><span class="p">,</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+  <span class="nt">--DATA</span> <span class="s1">'{body}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -2498,16 +2441,14 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "addressing": []
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/</span><span class="dl">'</span><span class="p">,</span>
@@ -2535,7 +2476,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
   </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2551,36 +2492,11 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">text</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">tags</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-<span class="na">medias</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-<span class="na">location</span><span class="pi">:</span>
-  <span class="na">location</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">lat</span><span class="pi">:</span> <span class="m">0</span>
-  <span class="na">lng</span><span class="pi">:</span> <span class="m">0</span>
-<span class="na">poll</span><span class="pi">:</span>
-  <span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">multiple_choices</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">closed</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">expiration_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
-  <span class="na">choices</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">choice</span><span class="pi">:</span> <span class="s">string</span>
-  <span class="na">votes</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="pi">{}</span>
-<span class="na">addressing</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
-
-</code></pre></div>
+</span></code></pre></div>
 <h3 id="updatediscussion-parameters">Parameters</h3>
 
 <table><thead>
@@ -2607,7 +2523,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 <td>The content of the discussion in html format</td>
 </tr>
 <tr>
-<td>» tags</td>
+<td>» categories</td>
 <td>body</td>
 <td>[integer]</td>
 <td>true</td>
@@ -2729,7 +2645,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -2743,12 +2659,12 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
             </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
             </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
@@ -2766,7 +2682,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
             </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
             </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2861,7 +2777,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator.
+This operation require authentication. The logged user must be the discussion creator
 </aside>
 <h2 id='delete-a-discussion'>Delete a Discussion</h2>
 <p><a id="opIddestroyDiscussion"></a></p>
@@ -2871,17 +2787,15 @@ This operation require authentication. The logged user must be the discussion cr
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> DELETE /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/'</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+  <span class="p">}</span>
 
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -2936,7 +2850,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/discussion/<span class="o">{</spa
 </tbody></table>
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator.
+This operation require authentication. The logged user must be the discussion creator
 </aside>
 <h2 id='get-list-of-related-discussions'>Get list of related Discussions</h2>
 <p><a id="opIdrelatedDiscussion"></a></p>
@@ -2946,20 +2860,12 @@ This operation require authentication. The logged user must be the discussion cr
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/related/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/related/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/related/</span><span class="dl">'</span><span class="p">,</span>
@@ -3029,7 +2935,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -3043,12 +2949,12 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
                     </span><span class="nl">"auto_follow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/original/abbigliamento-e-accessori_3735.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/big/abbigliamento-e-accessori_4437.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/medium/abbigliamento-e-accessori_1406.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/small/abbigliamento-e-accessori_1706.png"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_bigger"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_big"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image_small"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"emotional_image_original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"emotional_image_position"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"lastmod_datetime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30T15:22:07.123058+02:00"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"stream_order_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recent"</span><span class="w">
@@ -3066,7 +2972,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
                     </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"entities"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[]"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"oembed_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3204,20 +3110,12 @@ This operation require authentication only if `content_availability` community o
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/vote/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/vote/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/vote/</span><span class="dl">'</span><span class="p">,</span>
@@ -3346,28 +3244,18 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/vote/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/x-www-form-urlencoded'</span><span class="p">,</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/vote/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{}</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/vote/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3383,13 +3271,6 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 
 <p><code>POST /api/v2/discussion/{id}/vote/</code></p>
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="pi">{}</span>
-
-</code></pre></div>
 <h3 id="votecreatediscussion-parameters">Parameters</h3>
 
 <table><thead>
@@ -3451,28 +3332,17 @@ This operation require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/follow/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/x-www-form-urlencoded'</span><span class="p">,</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'/api/v2/discussion/{id}/follow/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{}</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/follow/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -3488,13 +3358,6 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 
 <p><code>POST /api/v2/discussion/{id}/follow/</code></p>
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="pi">{}</span>
-
-</code></pre></div>
 <h3 id="followdiscussion-parameters">Parameters</h3>
 
 <table><thead>
