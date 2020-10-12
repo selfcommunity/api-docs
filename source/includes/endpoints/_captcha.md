@@ -57,6 +57,6 @@ This Endpoint retrieve a new captcha if it is necessary. The captcha and the inp
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Captcha](#schemacaptcha)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>

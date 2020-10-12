@@ -10,8 +10,9 @@
 # You can also use wget
 curl -X POST /api/v2/media/upload/chunk/ \
   -H 'Content-Type: multipart/form-data' \
-  -H 'Accept: application/json'
-  -H "Transfer-Encoding: chunked"
+  -H 'Accept: application/json' \
+  -H "Transfer-Encoding: chunked" \
+  -H "Authorization: Bearer {access_token}"
   --data-binary $'------WebKitFormBoundaryT4U3VeMJUOwfER55\r\nContent-Disposition: form-data; name="cors"\r\n\r\n1\r\n------WebKitFormBoundaryT4U3VeMJUOwfER55\r\nContent-Disposition: form-data; name="image"; filename="p.gif"\r\nContent-Type: image/gif\r\n\r\n\r\n------WebKitFormBoundaryT4U3VeMJUOwfER55--\r\n' \
   --compressed
 ```
@@ -23,7 +24,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/media/upload/chunk/',
@@ -55,12 +57,6 @@ This Endpoint perform the chunk upload of a media with type image or document. T
 }
 ```
 
-```yaml
-upload_id: string
-offset: string
-
-```
-
 <h3 id="createmediachunk-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -89,8 +85,8 @@ offset: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ChunkMedia](#schemachunkmedia)|
 
-<aside class="warning">
-This operation require authentication only if `content_availability` community option is false
+<aside class="notice">
+This operation require authentication
 </aside>
 
 ## Chunk Upload Media Complete
@@ -103,7 +99,8 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X POST /api/v2/media/upload/complete/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
   --data-raw 'upload_id=UPLOAD_ID&md5=FILE_MD5' \
   --compressed
 ```
@@ -116,7 +113,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/media/upload/complete/',
@@ -147,13 +145,6 @@ This Endpoint complete the chunk upload and create the Media.
   "upload_id": "string",
   "md5": "string"
 }
-```
-
-```yaml
-type: image
-upload_id: string
-md5: string
-
 ```
 
 <h3 id="createmediachunkcomplete-parameters">Parameters</h3>
@@ -213,8 +204,8 @@ md5: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Media](#schemamedia)|
 
-<aside class="warning">
-This operation require authentication only if `content_availability` community option is false
+<aside class="notice">
+This operation require authentication
 </aside>
 
 ## Create a Media
@@ -227,7 +218,8 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X POST /api/v2/media/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
   --data-raw 'url=http%3A%2F%2Fwww.example.com&type=url'
 
 ```
@@ -239,7 +231,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/media/',
@@ -269,12 +262,6 @@ This Endpoint create a Media.
   "type": "url",
   "url": "http://example.com"
 }
-```
-
-```yaml
-type: url
-url: http://example.com
-
 ```
 
 <h3 id="createmedia-parameters">Parameters</h3>
@@ -335,8 +322,8 @@ url: http://example.com
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Media](#schemamedia)|
 
-<aside class="warning">
-This operation require authentication only if `content_availability` community option is false
+<aside class="notice">
+This operation require authentication
 </aside>
 
 ## Update a Media
@@ -349,7 +336,8 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X PUT /api/v2/media/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
@@ -359,7 +347,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/media/{id}/',
@@ -390,11 +379,6 @@ Viewset for media objects
 {
   "image": "http://example.com"
 }
-```
-
-```yaml
-image: http://example.com
-
 ```
 
 <h3 id="updatemedia-parameters">Parameters</h3>
@@ -445,11 +429,11 @@ image: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Media](#schemamedia)|
 
-<aside class="success">
-This operation require authentication. The logged user must be the media creator.
+<aside class="notice">
+This operation require authentication. The logged user must be the media creator
 </aside>
 
-## Destroy a Media
+## Delete a Media
 
 <a id="opIddestroyMedia"></a>
 
@@ -457,8 +441,8 @@ This operation require authentication. The logged user must be the media creator
 
 ```shell
 # You can also use wget
-curl -X DELETE /api/v2/media/{id}/
-
+curl -X DELETE /api/v2/media/{id}/ \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
@@ -466,7 +450,7 @@ curl -X DELETE /api/v2/media/{id}/
 fetch('/api/v2/media/{id}/',
 {
   method: 'DELETE'
-
+  headers: {'Authorization': 'Bearer {access_token}'}
 })
 .then(function(res) {
     return res.json();
@@ -494,6 +478,6 @@ This Endpoint delete a Media.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
