@@ -219,7 +219,7 @@ fetch('/api/v2/discussion/',
 
 ```
 
-The endpoint creates a discussion.
+This endpoint creates a discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -853,7 +853,6 @@ fetch('/api/v2/discussion/{id}/',
 This endpoint update a specific discussion.
 
 <h3 id="http-request">HTTP Request</h3>
-
 
 `PUT /api/v2/discussion/{id}/`
 

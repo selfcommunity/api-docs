@@ -12,10 +12,9 @@ includes:
   - authentication
   - endpoints/captcha
   - endpoints/locality
+  - endpoints/category
   - endpoints/media
   - endpoints/discussion
-  - endpoints/tag
-  - schemas
   - schemas/captcha
   - schemas/locality
   - schemas/media
