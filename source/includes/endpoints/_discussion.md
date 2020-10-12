@@ -9,14 +9,15 @@
 ```shell
 # You can also use wget
 curl -X GET /api/v2/discussion/ \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/',
@@ -61,7 +62,7 @@ This endpoint retrieves all discussions.
       "id": 0,
       "title": "string",
       "slug": "string",
-      "tags": [
+      "categories": [
         0
       ],
       "media_type": "images",
@@ -165,15 +166,16 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X POST /api/v2/discussion/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
 const inputBody = '{
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -189,9 +191,6 @@ const inputBody = '{
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "captcha": {
@@ -202,7 +201,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/',
@@ -231,7 +231,7 @@ The endpoint creates a discussion.
 {
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -247,9 +247,6 @@ The endpoint creates a discussion.
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "captcha": {
@@ -260,41 +257,13 @@ The endpoint creates a discussion.
 }
 ```
 
-```yaml
-title: string
-text: string
-tags:
-  - 0
-medias:
-  - 0
-location:
-  location: string
-  lat: 0
-  lng: 0
-poll:
-  title: string
-  multiple_choices: true
-  closed: true
-  expiration_at: 2019-08-24T14:15:22Z
-  choices:
-    - choice: string
-  votes:
-    - {}
-captcha:
-  hashkey: string
-  response: string
-addressing:
-  - 0
-
-```
-
 <h3 id="creatediscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
-|» tags|body|[integer]|true|List of id of [Category](#schemacategory)|
+|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
@@ -320,7 +289,7 @@ addressing:
   "id": 0,
   "title": "string",
   "slug": "string",
-  "tags": [
+  "categories": [
         {
             "id": 0,
             "order": 1,
@@ -334,12 +303,12 @@ addressing:
             "auto_follow": "None",
             "active": true,
             "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
             "emotional_image_position": 50,
             "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
             "stream_order_by": "recent"
@@ -357,7 +326,7 @@ addressing:
             "url": "https://www.example.com",
             "keywords": "[]",
             "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image": "string",
             "image_width": 1500,
             "image_height": 1500,
             "oembed_type": null,
@@ -454,26 +423,15 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X GET /api/v2/discussion/search/ \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/discussion/search/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/search/',
@@ -516,7 +474,7 @@ This Endpoint perform search operation to discussions.
         "id": 0,
         "title": "string",
         "slug": "string",
-        "tags": [
+        "categories": [
                 {
                     "id": 0,
                     "order": 1,
@@ -530,12 +488,12 @@ This Endpoint perform search operation to discussions.
                     "auto_follow": "None",
                     "active": true,
                     "deleted": false,
-                    "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-                    "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-                    "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-                    "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-                    "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-                    "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+                    "image_original": "string",
+                    "image_bigger": "string",
+                    "image_big": "string",
+                    "image_medium": "string",
+                    "image_small": "string",
+                    "emotional_image_original": "string",
                     "emotional_image_position": 50,
                     "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
                     "stream_order_by": "recent"
@@ -553,7 +511,7 @@ This Endpoint perform search operation to discussions.
                     "url": "https://www.example.com",
                     "keywords": "[]",
                     "entities": "[]",
-                    "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+                    "image": "string",
                     "image_width": 1500,
                     "image_height": 1500,
                     "oembed_type": null,
@@ -662,26 +620,15 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/ \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/discussion/{id}/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/',
@@ -719,7 +666,7 @@ This endpoint retrieves a specific discussion using ID.
   "id": 0,
   "title": "string",
   "slug": "string",
-  "tags": [
+  "categories": [
         {
             "id": 0,
             "order": 1,
@@ -733,12 +680,12 @@ This endpoint retrieves a specific discussion using ID.
             "auto_follow": "None",
             "active": true,
             "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
             "emotional_image_position": 50,
             "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
             "stream_order_by": "recent"
@@ -756,7 +703,7 @@ This endpoint retrieves a specific discussion using ID.
             "url": "https://www.example.com",
             "keywords": "[]",
             "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image": "string",
             "image_width": 1500,
             "image_height": 1500,
             "oembed_type": null,
@@ -854,28 +801,16 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X PUT /api/v2/discussion/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Accept': 'application/json'
-}
-
-r = requests.put('/api/v2/discussion/{id}/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
 const inputBody = '{
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -891,16 +826,14 @@ const inputBody = '{
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "addressing": []
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/',
@@ -930,7 +863,7 @@ This endpoint update a specific discussion.
 {
   "title": "string",
   "text": "string",
-  "tags": [0],
+  "categories": [0],
   "medias": [0],
   "location": {
     "location": "string",
@@ -946,38 +879,10 @@ This endpoint update a specific discussion.
       {
         "choice": "string"
       }
-    ],
-    "votes": [
-      {}
     ]
   },
   "addressing": []
 }
-```
-
-```yaml
-title: string
-text: string
-tags:
-  - 0
-medias:
-  - 0
-location:
-  location: string
-  lat: 0
-  lng: 0
-poll:
-  title: string
-  multiple_choices: true
-  closed: true
-  expiration_at: 2019-08-24T14:15:22Z
-  choices:
-    - choice: string
-  votes:
-    - {}
-addressing:
-  - 0
-
 ```
 
 <h3 id="updatediscussion-parameters">Parameters</h3>
@@ -986,7 +891,7 @@ addressing:
 |---|---|---|---|---|
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
-|» tags|body|[integer]|true|List of id of [Category](#schemacategory)|
+|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
@@ -1012,7 +917,7 @@ addressing:
   "id": 0,
   "title": "string",
   "slug": "string",
-  "tags": [
+  "categories": [
         {
             "id": 0,
             "order": 1,
@@ -1026,12 +931,12 @@ addressing:
             "auto_follow": "None",
             "active": true,
             "deleted": false,
-            "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-            "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-            "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-            "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-            "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-            "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
             "emotional_image_position": 50,
             "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
             "stream_order_by": "recent"
@@ -1049,7 +954,7 @@ addressing:
             "url": "https://www.example.com",
             "keywords": "[]",
             "entities": "[]",
-            "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+            "image": "string",
             "image_width": 1500,
             "image_height": 1500,
             "oembed_type": null,
@@ -1133,7 +1038,7 @@ addressing:
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateDiscussion](#schemaupdatediscussion)|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator.
+This operation require authentication. The logged user must be the discussion creator
 </aside>
 
 ## Delete a Discussion
@@ -1145,15 +1050,7 @@ This operation require authentication. The logged user must be the discussion cr
 ```shell
 # You can also use wget
 curl -X DELETE /api/v2/discussion/{id}/
-
-```
-
-```python
-import requests
-
-r = requests.delete('/api/v2/discussion/{id}/')
-
-print(r.json())
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
@@ -1161,7 +1058,10 @@ print(r.json())
 
 fetch('/api/v2/discussion/{id}/',
 {
-  method: 'DELETE'
+  method: 'DELETE',
+  headers: {
+    'Authorization': 'Bearer {access_token}'
+  }
 
 })
 .then(function(res) {
@@ -1191,7 +1091,7 @@ This Endpoint delete a Discussion.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator.
+This operation require authentication. The logged user must be the discussion creator
 </aside>
 
 ## Get list of related Discussions
@@ -1203,26 +1103,15 @@ This operation require authentication. The logged user must be the discussion cr
 ```shell
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/related/ \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/discussion/{id}/related/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/related/',
@@ -1267,7 +1156,7 @@ This Endpoint retrieve related discussions
         "id": 0,
         "title": "string",
         "slug": "string",
-        "tags": [
+        "categories": [
                 {
                     "id": 0,
                     "order": 1,
@@ -1281,12 +1170,12 @@ This Endpoint retrieve related discussions
                     "auto_follow": "None",
                     "active": true,
                     "deleted": false,
-                    "image_original": "/upfiles/categories/original/abbigliamento-e-accessori_3735.png",
-                    "image_bigger": "/upfiles/categories/bigger/abbigliamento-e-accessori_2359.png",
-                    "image_big": "/upfiles/categories/big/abbigliamento-e-accessori_4437.png",
-                    "image_medium": "/upfiles/categories/medium/abbigliamento-e-accessori_1406.png",
-                    "image_small": "/upfiles/categories/small/abbigliamento-e-accessori_1706.png",
-                    "emotional_image_original": "/upfiles/categories/e_original/abbigliamento-e-accessori_3811.jpg",
+                    "image_original": "string",
+                    "image_bigger": "string",
+                    "image_big": "string",
+                    "image_medium": "string",
+                    "image_small": "string",
+                    "emotional_image_original": "string",
                     "emotional_image_position": 50,
                     "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
                     "stream_order_by": "recent"
@@ -1304,7 +1193,7 @@ This Endpoint retrieve related discussions
                     "url": "https://www.example.com",
                     "keywords": "[]",
                     "entities": "[]",
-                    "image": "/upfiles/images/1602111600/orig/d40bdb59-6ead-4aa7-a3ce-736c471580d4.jpg",
+                    "image": "string",
                     "image_width": 1500,
                     "image_height": 1500,
                     "oembed_type": null,
@@ -1413,26 +1302,15 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X GET /api/v2/discussion/{id}/vote/ \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/discussion/{id}/vote/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/vote/',
@@ -1506,34 +1384,21 @@ This operation require authentication only if `content_availability` community o
 # You can also use wget
 curl -X POST /api/v2/discussion/{id}/vote/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Accept': 'application/json'
-}
-
-r = requests.post('/api/v2/discussion/{id}/vote/', headers = headers)
-
-print(r.json())
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
-const inputBody = '{}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/vote/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1549,17 +1414,6 @@ This Endpoint toggle vote for this discussion.
 <h3 id="http-request">HTTP Request</h3>
 
 `POST /api/v2/discussion/{id}/vote/`
-
-> Body parameter
-
-```json
-{}
-```
-
-```yaml
-{}
-
-```
 
 <h3 id="votecreatediscussion-parameters">Parameters</h3>
 
@@ -1589,7 +1443,6 @@ This Endpoint toggle vote for this discussion.
 This operation require authentication
 </aside>
 
-
 ## Toggle Follow for a Specific Discussion
 
 <a id="opIdfollowDiscussion"></a>
@@ -1600,34 +1453,20 @@ This operation require authentication
 # You can also use wget
 curl -X POST /api/v2/discussion/{id}/follow/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Accept': 'application/json'
-}
-
-r = requests.post('/api/v2/discussion/{id}/follow/', headers = headers)
-
-print(r.json())
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
-const inputBody = '{}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/discussion/{id}/follow/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1643,17 +1482,6 @@ This Endpoint toggle follow of the discussion for the user
 <h3 id="http-request">HTTP Request</h3>
 
 `POST /api/v2/discussion/{id}/follow/`
-
-> Body parameter
-
-```json
-{}
-```
-
-```yaml
-{}
-
-```
 
 <h3 id="followdiscussion-parameters">Parameters</h3>
 
