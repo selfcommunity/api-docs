@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-7ea31c95.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-08467af1.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-0aa2d298.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -4838,105 +4838,105 @@ This operation require authentication
 <td>integer</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>The ID of the user.</td>
 </tr>
 <tr>
 <td>username</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Required. 255 characters or fewer. Letters, numbers and -/_ characters</td>
+<td>The username of the user. Max 255 characters. Letters, numbers and -/_ characters Letters, numbers and -/_ characters.</td>
 </tr>
 <tr>
 <td>real_name</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Real name. Max 255 characters.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>string(email)</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>Email of the user.</td>
 </tr>
 <tr>
 <td>email_isvalid</td>
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>Email is valid. Default: False. Format: YYYY-MM-ddTHH:mm:ss.ss±hh:mm (ISO 8601).</td>
 </tr>
 <tr>
 <td>date_joined</td>
 <td>string(date-time)</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>Date joined to the community.</td>
 </tr>
 <tr>
 <td>bio</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>User biography.</td>
 </tr>
 <tr>
 <td>location</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>User location. Max 100 characters.</td>
 </tr>
 <tr>
 <td>birthday</td>
-<td>string</td>
+<td>string(date)</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Date of birth. Format: YYYY-MM-DD (ISO 8601).</td>
 </tr>
 <tr>
 <td>description</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>User description. Max 50 characters.</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>User gender. Values: Male, Female, Unspecified. Default: Unspecified.</td>
 </tr>
 <tr>
 <td>status</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>User status. Values: a (approved), b (blocked), u (unregistered, deleted). Default: a.</td>
 </tr>
 <tr>
 <td>website</td>
 <td>string(uri)</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>User website. Max 200 characters.</td>
 </tr>
 <tr>
 <td>avatar_url</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>Avatar url of the user.</td>
 </tr>
 <tr>
 <td>cover</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>none</td>
+<td>Cover url of the user.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -4944,31 +4944,38 @@ This operation require authentication
 <tr>
 <th>Property</th>
 <th>Value</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>gender</td>
 <td>Male</td>
+<td>Male</td>
 </tr>
 <tr>
 <td>gender</td>
+<td>Female</td>
 <td>Female</td>
 </tr>
 <tr>
 <td>gender</td>
 <td>Unspecified</td>
+<td>Unspecified</td>
 </tr>
 <tr>
 <td>status</td>
 <td>a</td>
+<td>Approved</td>
 </tr>
 <tr>
 <td>status</td>
 <td>b</td>
+<td>Blocked</td>
 </tr>
 <tr>
 <td>status</td>
 <td>u</td>
+<td>Unregistered</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_Captcha">Captcha</h2>
