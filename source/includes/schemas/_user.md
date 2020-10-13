@@ -30,29 +30,29 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer|false|read-only|none|
-|username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|real_name|string|false|none|none|
-|email|string(email)|false|read-only|none|
-|email_isvalid|boolean|false|read-only|none|
-|date_joined|string(date-time)|false|read-only|none|
-|bio|string|false|none|none|
-|location|string|false|none|none|
-|birthday|string|false|none|none|
-|description|string|false|none|none|
-|gender|string|false|none|none|
-|status|string|false|read-only|none|
-|website|string(uri)|false|none|none|
-|avatar_url|string|false|read-only|none|
-|cover|string|false|read-only|none|
+|id|integer|false|read-only|The ID of the user.|
+|username|string|false|read-only|The username of the user. Max 255 characters. Letters, numbers and -/_ characters Letters, numbers and -/_ characters.|
+|real_name|string|false|none|Real name. Max 255 characters.|
+|email|string(email)|false|read-only|Email of the user.|
+|email_isvalid|boolean|false|read-only|Email is valid. Default: False. Format: YYYY-MM-ddTHH:mm:ss.ss±hh:mm (ISO 8601).|
+|date_joined|string(date-time)|false|read-only|Date joined to the community.|
+|bio|string|false|none|User biography.|
+|location|string|false|none|User location. Max 100 characters.|
+|birthday|string(date)|false|none|Date of birth. Format: YYYY-MM-DD (ISO 8601).|
+|description|string|false|none|User description. Max 50 characters.|
+|gender|string|false|none|User gender. Values: Male, Female, Unspecified. Default: Unspecified.|
+|status|string|false|read-only|User status. Values: a (approved), b (blocked), u (unregistered, deleted). Default: a.|
+|website|string(uri)|false|none|User website. Max 200 characters.|
+|avatar_url|string|false|read-only|Avatar url of the user.|
+|cover|string|false|read-only|Cover url of the user.|
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|
+|Property|Value|Description|
+|---|---|---|
+|gender|Male|Male|
+|gender|Female|Female|
+|gender|Unspecified|Unspecified|
+|status|a|Approved|
+|status|b|Blocked|
+|status|u|Unregistered|
