@@ -11,7 +11,7 @@
   "title": "string",
   "slug": "string",
   "text": "string",
-  "tags": [
+  "categories": [
     0
   ],
   "media_type": "images",
@@ -74,7 +74,9 @@
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "score": "string",
+  "comment_count": "string",
+  "vote_count": "string",
+  "flag_count": "string",
   "captcha": {
     "hashkey": "string",
     "response": "string"
@@ -82,7 +84,7 @@
   "addressing": [
     0
   ],
-  "followers": "string"
+  "follower_count": "string"
 }
 
 ```
@@ -95,7 +97,7 @@
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
 |text|string|true|write-only|none|
-|tags|[integer]|true|none|none|
+|categories|[integer]|true|none|none|
 |media_type|string|false|read-only|none|
 |medias|[integer]|false|none|none|
 |location|object¦null|false|none|none|
@@ -145,12 +147,14 @@
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
-|score|string|false|read-only|none|
+|comment_count|string|false|read-only|none|
+|vote_count|string|false|read-only|none|
+|flag_count|string|false|read-only|none|
 |captcha|object|false|write-only|none|
 |» hashkey|string|true|none|none|
 |» response|string|true|none|none|
 |addressing|[integer]|false|none|none|
-|followers|string|false|read-only|none|
+|follower_count|string|false|read-only|none|
 
 #### Enumerated Values
 
@@ -180,7 +184,7 @@
   "title": "string",
   "slug": "string",
   "text": "string",
-  "tags": [
+  "categories": [
     0
   ],
   "media_type": "images",
@@ -243,7 +247,9 @@
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "score": "string",
+  "comment_count": "string",
+  "vote_count": "string",
+  "flag_count": "string",
   "captcha": {
     "hashkey": "string",
     "response": "string"
@@ -251,7 +257,7 @@
   "addressing": [
     0
   ],
-  "followers": "string",
+  "follower_count": "string",
   "seen_by_id": [
     null
   ],
@@ -269,7 +275,7 @@
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
 |text|string|true|write-only|none|
-|tags|[integer]|true|none|none|
+|categories|[integer]|true|none|none|
 |media_type|string|false|read-only|none|
 |medias|[integer]|false|none|none|
 |location|object¦null|false|none|none|
@@ -319,12 +325,14 @@
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
-|score|string|false|read-only|none|
+|comment_count|string|false|read-only|none|
+|vote_count|string|false|read-only|none|
+|flag_count|string|false|read-only|none|
 |captcha|object|false|write-only|none|
 |» hashkey|string|true|none|none|
 |» response|string|true|none|none|
 |addressing|[integer]|false|none|none|
-|followers|string|false|read-only|none|
+|follower_count|string|false|read-only|none|
 |seen_by_id|[any]|false|none|none|
 |has_boost|boolean|false|none|none|
 |actions|string|false|read-only|none|
@@ -337,9 +345,3 @@
 |media_type|video|
 |media_type|documents|
 |media_type|link|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|

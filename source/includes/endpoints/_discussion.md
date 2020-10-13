@@ -125,11 +125,13 @@ This endpoint retrieves all discussions.
       "summary": "string",
       "deleted": true,
       "collapsed": "string",
-      "score": "string",
+      "comment_count": "string",
+      "vote_count": "string",
+      "flag_count": "string",
       "addressing": [
         0
       ],
-      "followers": "string"
+      "follower_count": "string"
     }
   ]
 }
@@ -398,9 +400,11 @@ This endpoint creates a discussion.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "score": "string",
+  "comment_count": "string",
+  "vote_count": "string",
+  "flag_count": "string",
   "addressing": [],
-  "followers": "string"
+  "follower_count": "string"
 }
 ```
 
@@ -583,9 +587,11 @@ This Endpoint perform search operation to discussions.
         "summary": "string",
         "deleted": true,
         "collapsed": "string",
-        "score": "string",
+        "comment_count": "string",
+        "vote_count": "string",
+        "flag_count": "string",
         "addressing": [],
-        "followers": "string",
+        "follower_count": "string",
         "seen_by_id": [
             null
         ],
@@ -775,9 +781,11 @@ This endpoint retrieves a specific discussion using ID.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "score": "string",
+  "comment_count": "string",
+  "vote_count": "string",
+  "flag_count": "string",
   "addressing": [],
-  "followers": "string"
+  "follower_count": "string"
 }
 ```
 
@@ -1025,8 +1033,11 @@ This endpoint update a specific discussion.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "score": "string",
-  "addressing": []
+  "comment_count": "string",
+  "vote_count": "string",
+  "flag_count": "string",
+  "addressing": [],
+  "follower_count": "string"
 }
 ```
 
@@ -1264,9 +1275,11 @@ This Endpoint retrieve related discussions
         "summary": "string",
         "deleted": true,
         "collapsed": "string",
-        "score": "string",
+        "comment_count": "string",
+        "vote_count": "string",
+        "flag_count": "string",
         "addressing": [],
-        "followers": "string",
+        "follower_count": "string",
         "seen_by_id": [
             null
         ],
