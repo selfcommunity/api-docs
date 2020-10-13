@@ -2911,11 +2911,13 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span
       </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3336,9 +3338,11 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="creatediscussion-responses">Responses</h3>
@@ -3540,9 +3544,11 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
         </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"seen_by_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="kc">null</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -3771,9 +3777,11 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="retrievediscussion-responses">Responses</h3>
@@ -4141,8 +4149,11 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="updatediscussion-responses">Responses</h3>
@@ -4431,9 +4442,11 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
         </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"seen_by_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="kc">null</span><span class="w">
         </span><span class="p">],</span><span class="w">
@@ -5657,7 +5670,7 @@ This operation require authentication
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"media_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
@@ -5720,7 +5733,9 @@ This operation require authentication
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"captcha"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"hashkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -5728,7 +5743,7 @@ This operation require authentication
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties'>Properties</h3>
@@ -5770,7 +5785,7 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>tags</td>
+<td>categories</td>
 <td>[integer]</td>
 <td>true</td>
 <td>none</td>
@@ -6120,7 +6135,21 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>score</td>
+<td>comment_count</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>vote_count</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>flag_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -6155,7 +6184,7 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>followers</td>
+<td>follower_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -6224,7 +6253,7 @@ This operation require authentication
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"media_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w">
@@ -6287,7 +6316,9 @@ This operation require authentication
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"captcha"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"hashkey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -6295,7 +6326,7 @@ This operation require authentication
   </span><span class="nl">"addressing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"followers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"seen_by_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="kc">null</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -6342,7 +6373,7 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>tags</td>
+<td>categories</td>
 <td>[integer]</td>
 <td>true</td>
 <td>none</td>
@@ -6692,7 +6723,21 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>score</td>
+<td>comment_count</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>vote_count</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>flag_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -6727,7 +6772,7 @@ This operation require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>followers</td>
+<td>follower_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -6777,30 +6822,6 @@ This operation require authentication
 <tr>
 <td>media_type</td>
 <td>link</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>Male</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>Female</td>
-</tr>
-<tr>
-<td>gender</td>
-<td>Unspecified</td>
-</tr>
-<tr>
-<td>status</td>
-<td>a</td>
-</tr>
-<tr>
-<td>status</td>
-<td>b</td>
-</tr>
-<tr>
-<td>status</td>
-<td>u</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_Vote">Vote</h2>
