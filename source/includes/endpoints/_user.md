@@ -97,7 +97,7 @@ Status Code **200**
 This operation requires authentication
 </aside>
 
-## Get User's Connection Request
+## Get User's Connection Requests
 
 <a id="opIdconnectionRequestsUser"></a>
 
@@ -196,7 +196,7 @@ This operation requires authentication
 This operation requires the community to be set to friendship mode 
 </aside>
 
-## Get User's Connection Request sent
+## Get User's Connection Requests sent
 
 <a id="opIdconnectionRequestsSentUser"></a>
 
@@ -368,7 +368,7 @@ This operation requires authentication
 </aside>
 
 
-## Get List User Notifications
+## Get User Notifications
 
 <a id="opIdnotificationsUser"></a>
 
