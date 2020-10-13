@@ -105,10 +105,6 @@ The output is three Base64-URL strings separated by dots that can be easily pass
 <header>.<payload>.<signature>
 `
 
-Whenever the user wants to access a protected route or resource, the user agent should send the JWT, 
-typically in the Authorization header using the Bearer schema. 
-
-
 ```shell
 To authorize, use this code:
 
@@ -141,6 +137,9 @@ fetch('<api_endpoint_here>',
 
 Make sure to replace <token> with your JWT access token.
 ```
+
+Whenever the user wants to access a protected route or resource, the user agent should send the JWT, 
+typically in the Authorization header using the Bearer schema. 
 
 The content of the header should look like the following:
 
@@ -202,7 +201,7 @@ This Endpoint test the validity of the token.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Token is valid|none|
-|401|[KO](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Token is not valid|none|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Token is not valid|none|
 
 <aside class="notice">
 This operation does not require authentication
