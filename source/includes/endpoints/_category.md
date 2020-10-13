@@ -53,12 +53,12 @@ This endpoint retrieves all categories.
 ```json
 {
   "count": 123,
-  "next": "string",
-  "previous": "string",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
-      "order": -2147483648,
+      "order": 123,
       "name": "string",
       "name_synonyms": "string",
       "slug": "string",
@@ -75,7 +75,7 @@ This endpoint retrieves all categories.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": -2147483648,
+      "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
       "stream_order_by": "recent"
     }
@@ -101,7 +101,7 @@ Status Code **200**
 |» results|[[Category](#schemacategory)]|false|none|List of results|
 
 <aside class="notice">
-This operation requires authentication
+This operation require authentication only if `content_availability` community option is false.
 </aside>
 
 ## Create a Category
@@ -121,7 +121,7 @@ curl -X POST /api/v2/category/ \
 
 ```javascript
 const inputBody = '{
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -134,7 +134,7 @@ const inputBody = '{
   "deleted": true,
   "image_original": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }';
@@ -167,7 +167,7 @@ This endpoint creates a category.
 
 ```json
 {
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -180,7 +180,7 @@ This endpoint creates a category.
   "deleted": true,
   "image_original": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }
@@ -199,7 +199,7 @@ This endpoint creates a category.
 ```json
 {
   "id": 0,
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -216,7 +216,7 @@ This endpoint creates a category.
   "image_medium": "string",
   "image_small": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }
@@ -228,7 +228,7 @@ This endpoint creates a category.
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Category](#schemacategory)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication and admin role.
 </aside>
 
@@ -283,7 +283,7 @@ This endpoint retrieves a specific category.
 ```json
 {
   "id": 0,
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -300,7 +300,7 @@ This endpoint retrieves a specific category.
   "image_medium": "string",
   "image_small": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }
@@ -312,7 +312,7 @@ This endpoint retrieves a specific category.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Category](#schemacategory)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false.
 </aside>
 
@@ -333,7 +333,7 @@ curl -X PUT /api/v2/category/{id}/ \
 
 ```javascript
 const inputBody = '{
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -346,7 +346,7 @@ const inputBody = '{
   "deleted": true,
   "image_original": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }';
@@ -379,7 +379,7 @@ This endpoint updates a specific category.
 
 ```json
 {
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -392,7 +392,7 @@ This endpoint updates a specific category.
   "deleted": true,
   "image_original": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }
@@ -442,7 +442,7 @@ This endpoint updates a specific category.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Category](#schemacategory)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication and admin role.
 </aside>
 
@@ -507,8 +507,8 @@ This endpoint returns the audience of a specific category.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Category](#schemacategory)|
 
-<aside class="success">
-This operation requires authentication
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false.
 </aside>
 
 ## Get All Category's Followers
@@ -562,8 +562,8 @@ This endpoint returns all followers of a specific category.
 ```json
 {
   "count": 123,
-  "next": "string",
-  "previous": "string",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "username": "string",
@@ -583,7 +583,6 @@ This endpoint returns all followers of a specific category.
     }
   ]
 }
-
 ```
 
 <h3 id="followerscategory-responses">Responses</h3>
@@ -592,19 +591,19 @@ This endpoint returns all followers of a specific category.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
-## Get All Category's Posts
+## Get the Category Feed
 
-<a id="opIdlistPostCategory"></a>
+<a id="opIdFeedCategory"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/category/{id}/post/ \
+curl -X GET /api/v2/category/{id}/feed/ \
   -H 'Accept: application/json'
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -615,7 +614,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/category/{id}/post/',
+fetch('/api/v2/category/{id}/feed/',
 {
   method: 'GET',
 
@@ -628,13 +627,13 @@ fetch('/api/v2/category/{id}/post/',
 });
 ```
 
-This endpoint retrieves all category's posts.
+This endpoint retrieves the category feed.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/category/{id}/post/`
+`GET /api/v2/category/{id}/feed/`
 
-<h3 id="listpostcategory-parameters">Parameters</h3>
+<h3 id="feedcategory-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -649,8 +648,8 @@ This endpoint retrieves all category's posts.
 ```json
 {
   "count": 123,
-  "next": "?offset=400&limit=100",
-  "previous": "?offset=200&limit=100",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
@@ -728,13 +727,13 @@ This endpoint retrieves all category's posts.
 }
 ```
 
-<h3 id="listpostcategory-responses">Responses</h3>
+<h3 id="feedcategory-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listpostcategory-responseschema">Response Schema</h3>
+<h3 id="feedcategory-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -745,19 +744,19 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|Previous page url|
 |» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false.
 </aside>
 
-## Get All Category's Trending Posts
+## Get the Category Trending Feed
 
-<a id="opIdlistTrendingPostCategory"></a>
+<a id="opIdTrendingPostCategory"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/category/{id}/post/trending/ \
+curl -X GET /api/v2/category/{id}/feed/trending/ \
   -H 'Accept: application/json'
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -768,7 +767,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/category/{id}/post/trending/',
+fetch('/api/v2/category/{id}/feed/trending/',
 {
   method: 'GET',
 
@@ -781,13 +780,13 @@ fetch('/api/v2/category/{id}/post/trending/',
 });
 ```
 
-This endpoint retrieves all category's trending posts.
+This endpoint retrieves the category trending feed.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/category/{id}/post/trending/`
+`GET /api/v2/category/{id}/feed/trending/`
 
-<h3 id="listtrendingpostcategory-parameters">Parameters</h3>
+<h3 id="trendingpostcategory-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -802,8 +801,8 @@ This endpoint retrieves all category's trending posts.
 ```json
 {
   "count": 123,
-  "next": "?offset=400&limit=100",
-  "previous": "?offset=200&limit=100",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
@@ -881,13 +880,13 @@ This endpoint retrieves all category's trending posts.
 }
 ```
 
-<h3 id="listtrendingpostcategory-responses">Responses</h3>
+<h3 id="trendingpostcategory-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listtrendingpostcategory-responseschema">Response Schema</h3>
+<h3 id="trendingpostcategory-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -898,8 +897,8 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|Previous page url|
 |» results|[[Discussion](#schemadiscussion)]|false|none|List of results|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false.
 </aside>
 
 ## Follow a Category
@@ -937,17 +936,7 @@ fetch('/api/v2/category/{id}/follow/',
 });
 ```
 
-This endpoint follow a specific category.
-
-<h3 id="http-request">HTTP Request</h3>
-
-`POST /api/v2/category/{id}/follow/`
-
-## Unfollow a Category
-
-<a id="opIdunfollowCategory"></a>
-
-This endpoint unfollow a specific category.
+This endpoint follow a category.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -963,10 +952,65 @@ This endpoint unfollow a specific category.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<h3 id="followcategory-responseschema">Response Schema</h3>
+<aside class="notice">
+This operation requires authentication
+</aside>
 
-<aside class="success">
+## Unfollow a Category
+
+<a id="opIdunfollowCategory"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/category/{id}/follow/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const inputBody = 'null';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/category/{id}/follow/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+This endpoint unfollow a category.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/category/{id}/follow/`
+
+<h3 id="unfollowcategory-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this Category.|
+
+<h3 id="unfollowcategory-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
 This operation requires authentication
 </aside>
