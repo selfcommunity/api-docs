@@ -94,7 +94,7 @@ Status Code **200**
 |» results|[[User](#schemauser)]|false|none|List of results|
 
 <aside class="success">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 ## Get User's Connection Request
@@ -189,7 +189,7 @@ This endpoint retrieve the list of connection requests received.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
 
 <aside class="success">
-This operation require authentication 
+This operation requires authentication 
 </aside>
 
 <aside class="success">
@@ -206,13 +206,14 @@ This operation requires the community to be set to friendship mode
 # You can also use wget
 curl -X GET /api/v2/user/me/connection_requests_sent/ \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection_requests_sent/',
@@ -287,7 +288,7 @@ This endpoint retrieve the list of connection requests sent for user.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
 
 <aside class="success">
-This operation require authentication 
+This operation requires authentication 
 </aside>
 
 <aside class="success">
@@ -304,19 +305,20 @@ This operation requires the community to be set to friendship mode
 # You can also use wget
 curl -X GET /api/v2/user/me/ \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -362,11 +364,11 @@ Return profile fields of the user identified by the Bearer token
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="success">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 
-## Get User Notifications
+## Get List User Notifications
 
 <a id="opIdnotificationsUser"></a>
 
@@ -376,19 +378,20 @@ This operation require authentication
 # You can also use wget
 curl -X GET /api/v2/user/me/notifications/ \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/notifications/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -401,7 +404,7 @@ fetch('/api/v2/user/me/notifications/',
 
 `GET /api/v2/user/me/notifications/`
 
-List of user notifications
+This endpoint retrive the list of user notifications
 
 > Example responses
 
@@ -422,7 +425,11 @@ List of user notifications
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
 
-## Unseen User notification
+<aside class="success">
+This operation requires authentication 
+</aside>
+
+## Get Unseen User Notifications
 
 <a id="opIdunseenUser"></a>
 
@@ -432,6 +439,7 @@ List of user notifications
 # You can also use wget
 curl -X GET /api/v2/user/me/unseen/ \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
@@ -439,6 +447,7 @@ curl -X GET /api/v2/user/me/unseen/ \
 
 const headers = {
   'Accept':'application/json'
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/unseen/',
@@ -457,7 +466,7 @@ fetch('/api/v2/user/me/unseen/',
 
 `GET /api/v2/user/me/notifications/unseen/`
 
-List unseen notification counter for the user
+This endpoint retrive the list unseen notifications for the user
 
 > Example responses
 
@@ -466,7 +475,9 @@ List unseen notification counter for the user
 ```json
 {
   "unseen": [
-    null
+     {
+        "id": int
+     }
   ],
   "total": 0
 }
@@ -478,7 +489,11 @@ List unseen notification counter for the user
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
 
-## User profile
+<aside class="success">
+This operation requires authentication 
+</aside>
+
+## Get a Specific User
 
 <a id="opIdretrieveUser"></a>
 
@@ -488,7 +503,6 @@ List unseen notification counter for the user
 # You can also use wget
 curl -X GET /api/v2/user/{id}/ \
   -H 'Accept: application/json'
-
 ```
 
 ```javascript
@@ -513,7 +527,7 @@ fetch('/api/v2/user/{id}/',
 
 `GET /api/v2/user/{id}/`
 
-This endpoint retrieve the profile of a user
+This endpoint retrieve the a specific user's profile.
 
 <h3 id="retrieveuser-parameters">Parameters</h3>
 
@@ -555,7 +569,7 @@ This endpoint retrieve the profile of a user
 This operation does not require authentication
 </aside>
 
-## Update user profile
+## Update a Specific User
 
 <a id="opIdupdateUser"></a>
 
@@ -566,7 +580,7 @@ This operation does not require authentication
 curl -X PUT /api/v2/user/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
@@ -581,7 +595,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/',
@@ -600,7 +615,7 @@ fetch('/api/v2/user/{id}/',
 
 `PUT /api/v2/user/{id}/`
 
-This endpoint update the profile of a user.
+This endpoint update the profile of a user. A user can only update their personal data.   
 
 > Body parameter
 
@@ -694,7 +709,7 @@ website: http://example.com
 This operation does not require authentication
 </aside>
 
-## Partial update user profile  
+## Partial Update of a Specific User  
 
 <a id="opIdpartialUpdateUser"></a>
 
@@ -705,7 +720,7 @@ This operation does not require authentication
 curl -X PATCH /api/v2/user/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
@@ -720,7 +735,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/',
@@ -739,7 +755,7 @@ fetch('/api/v2/user/{id}/',
 
 `PATCH /api/v2/user/{id}/`
 
-A viewset that provides CRUD actions for the pod.
+This endpoint update partially a specific user. A user can only update their personal data.
 
 > Body parameter
 
@@ -829,7 +845,7 @@ website: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-## Get User connections
+## Get User Connections
 
 <a id="opIdconnectionsUser"></a>
 
@@ -864,7 +880,7 @@ fetch('/api/v2/user/{id}/connections/',
 
 `GET /api/v2/user/{id}/connections/`
 
-List of connections for user
+This endpoint retrive the list of connections for user.
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -910,7 +926,7 @@ This operation does not require authentication
 This operation requires the community to be set to friendship mode 
 </aside>
 
-## User followers
+## Get User's Followers
 
 <a id="opIdfollowersUser"></a>
 
@@ -945,7 +961,7 @@ fetch('/api/v2/user/{id}/followers/',
 
 `GET /api/v2/user/{id}/followers/`
 
-List of followers for user
+This endpoint retrieves a specific user's followers using ID.
 
 <h3 id="followersuser-parameters">Parameters</h3>
 
@@ -987,7 +1003,7 @@ List of followers for user
 This operation does not require authentication
 </aside>
 
-## User followings
+## Get User's Following
 
 <a id="opIdfollowingsUser"></a>
 
@@ -1022,7 +1038,7 @@ fetch('/api/v2/user/{id}/followings/',
 
 `GET /api/v2/user/{id}/followings/`
 
-List of user followings
+This endpoint retrieves a specific user's followings using ID.
 
 <h3 id="followingsuser-parameters">Parameters</h3>
 
@@ -1064,7 +1080,7 @@ List of user followings
 This operation does not require authentication
 </aside>
 
-## User Feed
+## Get User's Feed
 
 <a id="opIdlistFeedUser"></a>
 
@@ -1074,13 +1090,14 @@ This operation does not require authentication
 # You can also use wget
 curl -X GET /api/v2/user/{id}/feed/ \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/feed/',
@@ -1099,7 +1116,7 @@ fetch('/api/v2/user/{id}/feed/',
 
 `GET /api/v2/user/{id}/feed/`
 
-List of user's post
+This endpoint retrive the list of user's post
 
 <h3 id="listfeeduser-parameters">Parameters</h3>
 
@@ -1212,87 +1229,12 @@ Status Code **200**
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[Discussion](#schemadiscussion)]|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» title|string¦null|false|none|none|
-|»» slug|string|false|read-only|none|
-|»» text|string|true|write-only|none|
-|»» categories|[integer]|true|none|none|
-|»» media_type|string|false|read-only|none|
-|»» medias|[integer]|false|none|none|
-|»» location|object¦null|false|none|none|
-|»»» location|string¦null|true|none|none|
-|»»» lat|number¦null|true|none|none|
-|»»» lng|number¦null|true|none|none|
-|»» poll|object¦null|false|none|none|
-|»»» id|integer|false|read-only|none|
-|»»» title|string|true|none|none|
-|»»» multiple_choices|boolean|false|none|none|
-|»»» added_at|string(date-time)|false|read-only|none|
-|»»» modified_at|string(date-time)|false|read-only|none|
-|»»» closed|boolean|false|none|none|
-|»»» expiration_at|string(date-time)|true|none|none|
-|»»» hidden|string|false|read-only|none|
-|»»» choices|[object]|true|none|none|
-|»»»» id|integer|false|read-only|none|
-|»»»» choice|string|true|none|none|
-|»»»» order|integer|false|read-only|none|
-|»»»» added_at|string(date-time)|false|read-only|none|
-|»»»» deleted|string|false|read-only|none|
-|»»»» count_votes|string|false|read-only|none|
-|»»» votes|[object]¦null|false|none|none|
-|»»»» id|integer|false|read-only|none|
-|»»»» choice|string|false|read-only|none|
-|»»»» user|string|false|read-only|none|
-|»» last_activity_at|string(date-time)|false|read-only|none|
-|»» view_count|integer|false|read-only|none|
-|»» author|object|false|read-only|none|
-|»»» id|integer|false|read-only|none|
-|»»» username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»»» real_name|string|false|none|none|
-|»»» email|string(email)|false|read-only|none|
-|»»» email_isvalid|boolean|false|read-only|none|
-|»»» date_joined|string(date-time)|false|read-only|none|
-|»»» bio|string|false|none|none|
-|»»» location|string|false|none|none|
-|»»» birthday|string|false|none|none|
-|»»» description|string|false|none|none|
-|»»» gender|string|false|none|none|
-|»»» status|string|false|read-only|none|
-|»»» website|string(uri)|false|none|none|
-|»»» avatar_url|string|false|read-only|none|
-|»»» cover|string|false|read-only|none|
-|»» added_at|string(date-time)|false|read-only|none|
-|»» html|string|false|read-only|none|
-|»» summary|string|false|read-only|none|
-|»» deleted|boolean|false|read-only|none|
-|»» collapsed|string|false|read-only|none|
-|»» score|string|false|read-only|none|
-|»» captcha|object|false|write-only|none|
-|»»» hashkey|string|true|none|none|
-|»»» response|string|true|none|none|
-|»» addressing|[integer]|false|none|none|
-|»» followers|string|false|read-only|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|media_type|images|
-|media_type|video|
-|media_type|documents|
-|media_type|link|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## Connection Accept User
+## Accept a User Connection
 
 <a id="opIdconnectionAcceptUser"></a>
 
@@ -1303,16 +1245,18 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/connection/accept/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "username": "string"
-}';
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection/accept/',
@@ -1331,7 +1275,7 @@ fetch('/api/v2/user/me/connection/accept/',
 
 `POST /api/v2/user/me/connection/accept/`
 
-Accept connection to a user
+This endpoint accept a connection to a user
 
 > Body parameter
 
@@ -1370,14 +1314,14 @@ username: string
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
 <aside class="success">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
 <aside class="success">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-## Cancel Connection Reject
+## Cancel a Reject Connection
 
 <a id="opIdconnectionCancelRejectUser"></a>
 
@@ -1388,16 +1332,18 @@ This operation requires the community to be set to friendship mode
 curl -X POST /api/v2/user/me/connection/cancel_reject/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "username": "string"
-}';
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection/cancel_reject/',
@@ -1416,7 +1362,7 @@ fetch('/api/v2/user/me/connection/cancel_reject/',
 
 `POST /api/v2/user/me/connection/cancel_reject/`
 
-Cancel Reject connection to a user
+This endpoint cancel Reject connection to a user
 
 > Body parameter
 
@@ -1455,14 +1401,14 @@ username: string
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
 <aside class="success">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-## Cancel Connection Request
+## Cancel a Request Connection
 
 <a id="opIdconnectionCancelRequestUser"></a>
 
@@ -1473,14 +1419,15 @@ This operation requires the community to be set to friendship mode
 curl -X POST /api/v2/user/me/connection/cancel_request/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
-
 ```javascript
-const inputBody = '{
-  "username": "string"
-}';
+const inputBody = {
+  'username': 'string',
+  'Authorization: Bearer <token>'
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json'
@@ -1502,7 +1449,7 @@ fetch('/api/v2/user/me/connection/cancel_request/',
 
 `POST /api/v2/user/me/connection/cancel_request/`
 
-Cancel a request connection for a user
+This endpoint cancel a request connection for a user.
 
 > Body parameter
 
@@ -1545,11 +1492,11 @@ This operation requires the community to be set to friendship mode
 </aside>
 
 <aside class="success">
-This operation does not require authentication
+This operation does require authentication
 </aside>
 
 
-## Reject Connection
+## Reject a Connection
 
 <a id="opIdconnectionRejectUser"></a>
 
@@ -1560,17 +1507,19 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/connection/reject/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 
 ```javascript
-const inputBody = '{
-  "username": "string"
-}';
+const inputBody = {
+  'username': 'string'
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection/reject/',
@@ -1589,7 +1538,7 @@ fetch('/api/v2/user/me/connection/reject/',
 
 `POST /api/v2/user/me/connection/reject/`
 
-Reject connection to a user
+This endpoint reject connection to a user
 
 > Body parameter
 
@@ -1632,10 +1581,10 @@ This operation requires the community to be set to friendship mode
 </aside>
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Remove connection
+## Remove a Connection
 
 <a id="opIdconnectionRemoveUser"></a>
 
@@ -1646,14 +1595,16 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/connection/remove/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 
 ```javascript
-const inputBody = '{
-  "username": "string"
-}';
+const inputBody = {
+  'username': 'string',
+  'Authorization: Bearer <token>'
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json'
@@ -1675,7 +1626,7 @@ fetch('/api/v2/user/me/connection/remove/',
 
 `POST /api/v2/user/me/connection/remove/`
 
-Remove a connection for a user
+This endpoint remove a connection for a user
 
 > Body parameter
 
@@ -1718,10 +1669,10 @@ This operation requires the community to be set to friendship mode
 </aside>
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Request connection
+## Request Connection
 
 <a id="opIdconnectionRequestUser"></a>
 
@@ -1732,16 +1683,19 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/connection/request/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
-const inputBody = '{
-  "username": "string"
-}';
+const inputBody = {
+  'username': 'string'
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection/request/',
@@ -1760,7 +1714,7 @@ fetch('/api/v2/user/me/connection/request/',
 
 `POST /api/v2/user/me/connection/request/`
 
-Request connection to a user
+This endpoint request connection to a user
 
 > Body parameter
 
@@ -1806,7 +1760,7 @@ This operation requires the community to be set to friendship mode
 This operation does not require authentication
 </aside>
 
-## Mark seen connection request
+## Mark Seen a Connection Request
 
 <a id="opIdconnectionRequestsMarkSeenUser"></a>
 
@@ -1817,12 +1771,12 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/connection_requests/mark_seen/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -1830,10 +1784,12 @@ const inputBody = '{
   "description": "string",
   "gender": "Male",
   "website": "http://example.com"
-}';
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/connection_requests/mark_seen/',
@@ -1852,7 +1808,7 @@ fetch('/api/v2/user/me/connection_requests/mark_seen/',
 
 `POST /api/v2/user/me/connection_requests/mark_seen/`
 
-Mark seee connection request
+This endpoint mark seen a connection request.
 
 > Body parameter
 
@@ -1884,32 +1840,6 @@ website: http://example.com
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[User](#schemauser)|false|none|
-|» id|body|integer|false|none|
-|» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|body|string|false|none|
-|» email|body|string(email)|false|none|
-|» email_isvalid|body|boolean|false|none|
-|» date_joined|body|string(date-time)|false|none|
-|» bio|body|string|false|none|
-|» location|body|string|false|none|
-|» birthday|body|string|false|none|
-|» description|body|string|false|none|
-|» gender|body|string|false|none|
-|» status|body|string|false|none|
-|» website|body|string(uri)|false|none|
-|» avatar_url|body|string|false|none|
-|» cover|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» gender|Male|
-|» gender|Female|
-|» gender|Unspecified|
-|» status|a|
-|» status|b|
-|» status|u|
 
 > Example responses
 
@@ -1942,10 +1872,10 @@ website: http://example.com
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Mark seen user
+## Mark User Seen
 
 <a id="opIdmarkSeenUser"></a>
 
@@ -1956,11 +1886,11 @@ This operation does not require authentication
 curl -X POST /api/v2/user/me/markseen/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -1968,10 +1898,12 @@ const inputBody = '{
   "description": "string",
   "gender": "Male",
   "website": "http://example.com"
-}';
+};
+
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/me/markseen/',
@@ -1990,7 +1922,7 @@ fetch('/api/v2/user/me/markseen/',
 
 `POST /api/v2/user/me/markseen/`
 
-Mark as seen posts for user
+This endpoint mark as seen posts for user.
 
 > Body parameter
 
@@ -2022,32 +1954,6 @@ website: http://example.com
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[User](#schemauser)|false|none|
-|» id|body|integer|false|none|
-|» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|body|string|false|none|
-|» email|body|string(email)|false|none|
-|» email_isvalid|body|boolean|false|none|
-|» date_joined|body|string(date-time)|false|none|
-|» bio|body|string|false|none|
-|» location|body|string|false|none|
-|» birthday|body|string|false|none|
-|» description|body|string|false|none|
-|» gender|body|string|false|none|
-|» status|body|string|false|none|
-|» website|body|string(uri)|false|none|
-|» avatar_url|body|string|false|none|
-|» cover|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» gender|Male|
-|» gender|Female|
-|» gender|Unspecified|
-|» status|a|
-|» status|b|
-|» status|u|
 
 > Example responses
 
@@ -2080,10 +1986,10 @@ website: http://example.com
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Follow user
+## Follow User
 
 <a id="opIdfollowUser"></a>
 
@@ -2094,14 +2000,15 @@ This operation does not require authentication
 curl -X POST /api/v2/user/{id}/follow/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
 const inputBody = '{}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/follow/',
@@ -2120,7 +2027,7 @@ fetch('/api/v2/user/{id}/follow/',
 
 `POST /api/v2/user/{id}/follow/`
 
-Follow user
+Follow User
 
 > Body parameter
 
@@ -2159,10 +2066,10 @@ This operation requires the community to be set to follow mode
 </aside>
 
 <aside class="success">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Show/Hide user
+## Show/Hide User
 
 <a id="opIdhideUserUser"></a>
 
@@ -2173,7 +2080,7 @@ This operation does not require authentication
 curl -X POST /api/v2/user/{id}/hide/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 
@@ -2189,7 +2096,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/hide/',
@@ -2208,7 +2116,7 @@ fetch('/api/v2/user/{id}/hide/',
 
 `POST /api/v2/user/{id}/hide/`
 
-Show/Hide a user (post and user)
+This endpoint show/Hide a user (post and user)
 
 > Body parameter
 
@@ -2241,32 +2149,6 @@ website: http://example.com
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
 |body|body|[User](#schemauser)|false|none|
-|» id|body|integer|false|none|
-|» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|body|string|false|none|
-|» email|body|string(email)|false|none|
-|» email_isvalid|body|boolean|false|none|
-|» date_joined|body|string(date-time)|false|none|
-|» bio|body|string|false|none|
-|» location|body|string|false|none|
-|» birthday|body|string|false|none|
-|» description|body|string|false|none|
-|» gender|body|string|false|none|
-|» status|body|string|false|none|
-|» website|body|string(uri)|false|none|
-|» avatar_url|body|string|false|none|
-|» cover|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» gender|Male|
-|» gender|Female|
-|» gender|Unspecified|
-|» status|a|
-|» status|b|
-|» status|u|
 
 > Example responses
 
