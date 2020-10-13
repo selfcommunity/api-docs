@@ -1,6 +1,6 @@
 <h1 id="selfcommunity-api-user">User</h1>
 
-## List Users
+## Get All Users
 
 <a id="opIdlistUsers"></a>
 
@@ -10,19 +10,20 @@
 # You can also use wget
 curl -X GET /api/v2/user/ \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -35,7 +36,7 @@ fetch('/api/v2/user/',
 
 `GET /api/v2/user/`
 
-This Endpoint retrieve the list of users. 
+This endpoint retrieve the list of all users. 
 
 <h3 id="listusers-parameters">Parameters</h3>
 
@@ -92,7 +93,11 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|Previous page url|
 |» results|[[User](#schemauser)]|false|none|List of results|
 
-## List of connection requests
+<aside class="success">
+This operation require authentication
+</aside>
+
+## Get User's Connection Request
 
 <a id="opIdconnectionRequestsUser"></a>
 
@@ -102,6 +107,7 @@ Status Code **200**
 # You can also use wget
 curl -X GET /api/v2/user/me/connection_requests/ \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
@@ -109,7 +115,7 @@ curl -X GET /api/v2/user/me/connection_requests/ \
 
 const headers = {
   'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
+  'Authorization': 'Bearer {token}'
 };
 
 fetch('/api/v2/user/me/connection_requests/',
@@ -127,7 +133,7 @@ fetch('/api/v2/user/me/connection_requests/',
 
 `GET /api/v2/user/me/connection_requests/`
 
-List of connection requests received for user
+This endpoint retrieve the list of connection requests received.
 
 > Example responses
 
@@ -182,8 +188,15 @@ List of connection requests received for user
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
 
+<aside class="success">
+This operation require authentication 
+</aside>
 
-## List of connection requests sent
+<aside class="success">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+## Get User's Connection Request sent
 
 <a id="opIdconnectionRequestsSentUser"></a>
 
@@ -218,7 +231,7 @@ fetch('/api/v2/user/me/connection_requests_sent/',
 
 `GET /api/v2/user/me/connection_requests_sent/`
 
-List of connection requests sent for user
+This endpoint retrieve the list of connection requests sent for user.
 
 > Example responses
 
@@ -272,6 +285,14 @@ List of connection requests sent for user
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
+
+<aside class="success">
+This operation require authentication 
+</aside>
+
+<aside class="success">
+This operation requires the community to be set to friendship mode 
+</aside>
 
 ## Me
 
@@ -340,8 +361,12 @@ Return profile fields of the user identified by the Bearer token
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
+<aside class="success">
+This operation require authentication
+</aside>
 
-## User notifications
+
+## Get User Notifications
 
 <a id="opIdnotificationsUser"></a>
 
@@ -804,7 +829,7 @@ website: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-## User connections
+## Get User connections
 
 <a id="opIdconnectionsUser"></a>
 
@@ -879,6 +904,10 @@ List of connections for user
 
 <aside class="success">
 This operation does not require authentication
+</aside>
+
+<aside class="success">
+This operation requires the community to be set to friendship mode 
 </aside>
 
 ## User followers
