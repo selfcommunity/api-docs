@@ -9,18 +9,25 @@ toc_footers:
   - <a href='https://selfcommunity.com/free-trial/'>Sign Up for a new community</a>
 
 includes:
-  - authentication
+  - authentication/intro
+  - authentication/jwt
+  - endpoints/user
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category
   - endpoints/media
   - endpoints/discussion
+  - endpoints/tag
+  - schemas
+  - schemas/user
+  - schemas/connectionRequest
   - schemas/captcha
   - schemas/locality
   - schemas/media
   - schemas/discussion
   - schemas/vote
   - errors
+
 
 search: true
 
