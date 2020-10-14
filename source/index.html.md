@@ -12,6 +12,7 @@ includes:
   # - authentication/intro  
   # - authentication/jwt
   # - endpoints/user
+  - endpoints/sso
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category
@@ -19,6 +20,7 @@ includes:
   - endpoints/discussion
   # - endpoints/tag
   - schemas
+  - schemas/sso
   - schemas/user
   # - schemas/connectionRequest
   - schemas/captcha
