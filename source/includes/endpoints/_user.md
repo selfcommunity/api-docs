@@ -368,7 +368,7 @@ This operation requires authentication
 </aside>
 
 
-## Get User Notifications
+## Get User's Notifications
 
 <a id="opIdnotificationsUser"></a>
 
@@ -429,7 +429,7 @@ This endpoint retrive the list of user notifications
 This operation requires authentication 
 </aside>
 
-## Get Unseen User Notifications
+## Get Unseen User's Notifications
 
 <a id="opIdunseenUser"></a>
 
@@ -649,31 +649,21 @@ website: http://example.com
 |id|path|string|true|A unique integer value identifying this user.|
 |body|body|[User](#schemauser)|false|none|
 |» id|body|integer|false|none|
-|» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
 |» real_name|body|string|false|none|
-|» email|body|string(email)|false|none|
-|» email_isvalid|body|boolean|false|none|
-|» date_joined|body|string(date-time)|false|none|
 |» bio|body|string|false|none|
 |» location|body|string|false|none|
 |» birthday|body|string|false|none|
 |» description|body|string|false|none|
 |» gender|body|string|false|none|
-|» status|body|string|false|none|
 |» website|body|string(uri)|false|none|
-|» avatar_url|body|string|false|none|
-|» cover|body|string|false|none|
 
 #### Enumerated Values
 
-|Parameter|Value|
-|---|---|
-|» gender|Male|
-|» gender|Female|
-|» gender|Unspecified|
-|» status|a|
-|» status|b|
-|» status|u|
+|Parameter|Value|Description|
+|---|---|---|
+|» gender|Male|Male|
+|» gender|Female|Female|
+|» gender|Unspecified|Unspecified|
 
 > Example responses
 
@@ -709,7 +699,7 @@ website: http://example.com
 This operation does not require authentication
 </aside>
 
-## Get User Connections
+## Get User's Connections
 
 <a id="opIdconnectionsUser"></a>
 
