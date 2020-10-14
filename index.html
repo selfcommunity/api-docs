@@ -409,10 +409,16 @@
                     <a href="#get-list-of-votes-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Get List of Votes for a Specific Discussion">Get List of Votes for a Specific Discussion</a>
                   </li>
                   <li>
-                    <a href="#toggle-vote-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Toggle Vote for a Specific Discussion">Toggle Vote for a Specific Discussion</a>
+                    <a href="#upvote-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Upvote for a Specific Discussion">Upvote for a Specific Discussion</a>
                   </li>
                   <li>
-                    <a href="#toggle-follow-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Toggle Follow for a Specific Discussion">Toggle Follow for a Specific Discussion</a>
+                    <a href="#remove-an-upvote-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Remove an Upvote for a Specific Discussion">Remove an Upvote for a Specific Discussion</a>
+                  </li>
+                  <li>
+                    <a href="#follow-a-discussion" class="toc-h2 toc-link" data-title="Follow a Discussion">Follow a Discussion</a>
+                  </li>
+                  <li>
+                    <a href="#unfollow-a-discussion" class="toc-h2 toc-link" data-title="Unfollow a Discussion">Unfollow a Discussion</a>
                   </li>
               </ul>
           </li>
@@ -4635,7 +4641,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
-<h2 id='toggle-vote-for-a-specific-discussion'>Toggle Vote for a Specific Discussion</h2>
+<h2 id='upvote-for-a-specific-discussion'>Upvote for a Specific Discussion</h2>
 <p><a id="opIdvoteCreateDiscussion"></a></p>
 
 <blockquote>
@@ -4665,7 +4671,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint toggle vote for this discussion.</p>
+<p>This Endpoint upvotes a specific discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4723,7 +4729,95 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <aside class="notice">
 This operation require authentication
 </aside>
-<h2 id='toggle-follow-for-a-specific-discussion'>Toggle Follow for a Specific Discussion</h2>
+<h2 id='remove-an-upvote-for-a-specific-discussion'>Remove an Upvote for a Specific Discussion</h2>
+<p><a id="opIdvoteCreateDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This Endpoint removes an upvote for a specific discussion.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/discussion/{id}/vote/</code></p>
+
+<h3 id="votecreatediscussion-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>201 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"voted_post"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"voted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="votecreatediscussion-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>none</td>
+<td><a href="#schemavote">Vote</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='follow-a-discussion'>Follow a Discussion</h2>
 <p><a id="opIdfollowDiscussion"></a></p>
 
 <blockquote>
@@ -4752,7 +4846,94 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint toggle follow of the discussion for the user</p>
+<p>This endpoint follows a discussion.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/discussion/{id}/follow/</code></p>
+
+<h3 id="followdiscussion-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>201 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"thread"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="followdiscussion-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>none</td>
+<td><a href="#schemafollow">Follow</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='unfollow-a-discussion'>Unfollow a Discussion</h2>
+<p><a id="opIdfollowDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/follow/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/follow/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint unfollows a discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
