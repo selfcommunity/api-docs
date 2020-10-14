@@ -1386,7 +1386,7 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Toggle Vote for a Specific Discussion
+## Upvote for a Specific Discussion
 
 <a id="opIdvoteCreateDiscussion"></a>
 
@@ -1421,7 +1421,7 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-This Endpoint toggle vote for this discussion.
+This Endpoint upvotes a specific discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1455,7 +1455,76 @@ This Endpoint toggle vote for this discussion.
 This operation require authentication
 </aside>
 
-## Toggle Follow for a Specific Discussion
+## Remove an Upvote for a Specific Discussion
+
+<a id="opIdvoteCreateDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/discussion/{id}/vote/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/vote/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint removes an upvote for a specific discussion.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/vote/`
+
+<h3 id="votecreatediscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+  "user": "string",
+  "voted_post": "string",
+  "voted_at": "2019-08-24T14:15:22Z"
+}
+```
+
+<h3 id="votecreatediscussion-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Follow a Discussion
 
 <a id="opIdfollowDiscussion"></a>
 
@@ -1489,7 +1558,75 @@ fetch('/api/v2/discussion/{id}/follow/',
 
 ```
 
-This Endpoint toggle follow of the discussion for the user
+This endpoint follows a discussion.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/follow/`
+
+<h3 id="followdiscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+  "user": "string",
+  "thread": "string",
+  "added_at": "2019-08-24T14:15:22Z"
+}
+```
+
+<h3 id="followdiscussion-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Follow](#schemafollow)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Unfollow a Discussion
+
+<a id="opIdfollowDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/discussion/{id}/follow/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/follow/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint unfollows a discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
