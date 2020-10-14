@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-08467af1.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-4a5a905b.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-0aa2d298.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -297,7 +297,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-8bb133bf.png" class="logo" alt="" />
+      <img src="images/logo-7b822bd6.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -336,22 +336,22 @@
                     <a href="#create-a-category" class="toc-h2 toc-link" data-title="Create a Category">Create a Category</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-category" class="toc-h2 toc-link" data-title="Get a specific Category">Get a specific Category</a>
+                    <a href="#get-a-specific-category" class="toc-h2 toc-link" data-title="Get a Specific Category">Get a Specific Category</a>
                   </li>
                   <li>
-                    <a href="#update-a-specific-category" class="toc-h2 toc-link" data-title="Update a specific Category">Update a specific Category</a>
+                    <a href="#update-a-specific-category" class="toc-h2 toc-link" data-title="Update a Specific Category">Update a Specific Category</a>
                   </li>
                   <li>
                     <a href="#get-category-39-s-audience" class="toc-h2 toc-link" data-title="Get Category's Audience">Get Category's Audience</a>
                   </li>
                   <li>
-                    <a href="#get-all-category-39-s-followers" class="toc-h2 toc-link" data-title="Get All Category's Followers">Get All Category's Followers</a>
+                    <a href="#get-category-39-s-followers" class="toc-h2 toc-link" data-title="Get Category's Followers">Get Category's Followers</a>
                   </li>
                   <li>
-                    <a href="#get-the-category-feed" class="toc-h2 toc-link" data-title="Get the Category Feed">Get the Category Feed</a>
+                    <a href="#get-category-39-s-feed" class="toc-h2 toc-link" data-title="Get Category's Feed">Get Category's Feed</a>
                   </li>
                   <li>
-                    <a href="#get-the-category-trending-feed" class="toc-h2 toc-link" data-title="Get the Category Trending Feed">Get the Category Trending Feed</a>
+                    <a href="#get-category-39-s-trending-feed" class="toc-h2 toc-link" data-title="Get Category's Trending Feed">Get Category's Trending Feed</a>
                   </li>
                   <li>
                     <a href="#follow-a-category" class="toc-h2 toc-link" data-title="Follow a Category">Follow a Category</a>
@@ -1071,7 +1071,7 @@ curl <span class="nt">-X</span> POST /api/v2/category/ <span class="se">\</span>
 <aside class="notice">
 This operation require authentication and admin role.
 </aside>
-<h2 id='get-a-specific-category'>Get a specific Category</h2>
+<h2 id='get-a-specific-category'>Get a Specific Category</h2>
 <p><a id="opIdretrieveCategory"></a></p>
 
 <blockquote>
@@ -1174,7 +1174,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false.
 </aside>
-<h2 id='update-a-specific-category'>Update a specific Category</h2>
+<h2 id='update-a-specific-category'>Update a Specific Category</h2>
 <p><a id="opIdupdateCategory"></a></p>
 
 <blockquote>
@@ -1267,13 +1267,6 @@ curl <span class="nt">-X</span> PUT /api/v2/category/<span class="o">{</span><sp
 <td>string</td>
 <td>true</td>
 <td>A unique integer value identifying this Interest.</td>
-</tr>
-<tr>
-<td>search</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>A search term.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -1418,7 +1411,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false.
 </aside>
-<h2 id='get-all-category-39-s-followers'>Get All Category&#39;s Followers</h2>
+<h2 id='get-category-39-s-followers'>Get Category&#39;s Followers</h2>
 <p><a id="opIdfollowersCategory"></a></p>
 
 <blockquote>
@@ -1521,7 +1514,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
 <aside class="notice">
 This operation requires authentication
 </aside>
-<h2 id='get-the-category-feed'>Get the Category Feed</h2>
+<h2 id='get-category-39-s-feed'>Get Category&#39;s Feed</h2>
 <p><a id="opIdFeedCategory"></a></p>
 
 <blockquote>
@@ -1737,7 +1730,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false.
 </aside>
-<h2 id='get-the-category-trending-feed'>Get the Category Trending Feed</h2>
+<h2 id='get-category-39-s-trending-feed'>Get Category&#39;s Trending Feed</h2>
 <p><a id="opIdTrendingPostCategory"></a></p>
 
 <blockquote>
@@ -5380,14 +5373,14 @@ This operation require authentication
 <td>string¦null</td>
 <td>false</td>
 <td>none</td>
-<td>Newline sepated list of synonyms</td>
+<td>Newline (<code>\n</code>) sepated list of synonyms/aliases</td>
 </tr>
 <tr>
 <td>slug</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Unique slug identifying this category in a URL</td>
+<td>Unique slug identifying this category in a URL (pass <code>_GENERATE_</code> to auto generate slug)</td>
 </tr>
 <tr>
 <td>slogan</td>
@@ -5436,49 +5429,49 @@ This operation require authentication
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>Is this category deleted?</td>
+<td>Is this category deleted? (Note: if deleted is true also active must be true)</td>
 </tr>
 <tr>
 <td>image_original</td>
 <td>string(binary)¦null</td>
 <td>false</td>
 <td>none</td>
-<td>Squared image - original size</td>
+<td>Squared image with min size (600x600) - original size</td>
 </tr>
 <tr>
 <td>image_bigger</td>
 <td>string(binary)</td>
 <td>false</td>
 <td>read-only</td>
-<td>Squared image - bigger size</td>
+<td>Squared image - auto generated bigger size</td>
 </tr>
 <tr>
 <td>image_big</td>
 <td>string(binary)</td>
 <td>false</td>
 <td>read-only</td>
-<td>Squared image - big size</td>
+<td>Squared image - auto generated big size</td>
 </tr>
 <tr>
 <td>image_medium</td>
 <td>string(binary)</td>
 <td>false</td>
 <td>read-only</td>
-<td>Squared image - medium size</td>
+<td>Squared image - auto generated medium size</td>
 </tr>
 <tr>
 <td>image_small</td>
 <td>string(binary)</td>
 <td>false</td>
 <td>read-only</td>
-<td>Squared image - small size</td>
+<td>Squared image - auto generated small size</td>
 </tr>
 <tr>
 <td>emotional_image_original</td>
 <td>string(binary)¦null</td>
 <td>false</td>
 <td>none</td>
-<td>Landscape image for category hub</td>
+<td>Landscape format image for category hub (1920x1080)</td>
 </tr>
 <tr>
 <td>emotional_image_position</td>
