@@ -1,4 +1,4 @@
-## JWT Access Token
+## JWT Token
 
 <a id="selfcommunity-api-authentication-jwt"></a>
 
@@ -21,12 +21,15 @@ For example, a JWT typically looks like the following:
 
 `aaaaa.bbbbb.ccccc`
 
-The SelfCommunity API recommends and supports libraries provided on [jwt.io](https://jwt.io/). While other libraries can create JWT, these recommended libraries are the most robust.
+The SelfCommunity API recommends and supports libraries provided on [jwt.io](https://jwt.io/). 
+While other libraries can create JWT, these recommended libraries are the most robust.
 
 
 Below we see how to generate the three components of a jwt.
 
 **Header**
+
+> Header of a JWT Token
 
 ```json
 {
@@ -52,10 +55,13 @@ Note: The SelfCommunity API uses HS256 to sign the token. Use of other algorithm
 The payload of a token contains the claims or the pieces of information being passed about the user and any metadata required. 
 While there are three types of claims, registered, public, and private, we highly recommend using registered claims for interoperability.
 
+> Payload of a JWT Token
+
 ```json
 {
   "user_id": "id community user",
   "ext_id": "id application user",
+  "token_type": "access",
   "jti": "random unique identifier of the token",
   "iat": 1496091964000,
   "exp": 1496091964200
@@ -69,14 +75,15 @@ In particular:
 
 * *user_id* notes the user unique id (in the community) identified by the token. *Required.*
 * *ext_id* notes the user unique id (in the external service). *Optional.*
+* *token_type* notes the type of the token. Its value MUST be "access". *Required.*
 * *exp* (expiration time) notes the the expiration time on or after which the JWT MUST NOT be accepted for processing. Its value MUST be a number containing a NumericDate value in seconds since Epoch (unix epoch time). The processing of the "exp" claim requires that the current date/time MUST be before the expiration date/time listed in the "exp" claim.  *Required.*
 * *iat* (issued at) notes the time at which the JWT was issued. This claim can be used to determine the age of the JWT. Its value MUST be a number containing a NumericDate value in seconds since Epoch (unix epoch time). *Required.*
-* *jti* (JWT Id) notes a unique identifier for the JWT. It is a random string and the value MUST be assigned in a manner that ensures that there is a negligible probability that the same value will be accidentally assigned to a different data object. The "jti" claim can be used to prevent the JWT from being replayed. The "jti" value is a case-sensitive string. *Required.*
-
-> Note: The expiration time (exp), the issued at time (iat) must be defined in as number containing a NumericDate value in seconds since Epoch (unix epoch time).
+* *jti* (JWT Id) notes a unique key identifier for the JWT. It is a (semi-)random string and the value MUST be assigned in a manner that ensures that there is a negligible probability that the same value will be accidentally assigned to a different data object. The "jti" claim can be used to prevent the JWT from being replayed (allows a token to be used only once). The "jti" value is a case-sensitive string. *Required.*
 
 It is **highly recommended to set the exp timestamp for a short period**, i.e. a few minutes, a few hours. 
 This way, if a token is intercepted or shared, the token will only be valid for a short period of time.
+
+<aside class="notice">The expiration time (exp), the issued at time (iat) must be defined in as number containing a NumericDate value in seconds since Epoch (unix epoch time).</aside>
 
 <aside class="notice">
 Note: Though protected against tampering, the information contained in the Header and Payload is readable by anyone. 
@@ -86,11 +93,13 @@ For this reason no confidential information in either of these elements will be 
 
 **Signature**
 
+> Signature of a JWT Token
+
 ```
 HMACSHA256(
     base64UrlEncode(header) + "." +
     base64UrlEncode(payload),
-    API_SECRET)
+    SECRET_KEY)
 ```
 
 The Signature of the token base64 encodes the header and payload, then includes the API Secret within the HMACSHA256 
@@ -101,11 +110,37 @@ The signature is used to verify the message wasn't changed along the way and it 
 
 **Putting all together**
 
+> Code samples
+
+```javascript
+// Example of how to create a JWT token using jsonwebtoken library.
+// If jsonwebtoken is not installed, instal with: npm install --save jsonwebtoken  
+// To generate the token, use this code:
+
+var jwt = require("jsonwebtoken");
+var SECRET_KEY = "f848a99779fe4b7bd2df67adcffde35ab6f4741eba8e3123"; // Your SECRET_KEY
+
+function createToken(user) {
+  var userData = {
+    "user_id": 1, // or an other regisered user_id
+    "token_type": "access",
+    "jti": new Date().getTime() // or use another method
+  };
+  return jwt.sign(userData, SECRET_KEY, {
+    algorithm: "HS256",
+    expiresIn: "1h", // or choose another expiration time
+    header: { typ: "JWT" }
+  });
+}
+```
+
 The output is three Base64-URL strings separated by dots that can be easily passed in the Authorization header.  
 
 `
 <header>.<payload>.<signature>
 `
+
+> Code samples
 
 ```shell
 To authorize, use this code:
@@ -118,12 +153,11 @@ Make sure to replace <token> with your JWT access token.
 ```
 
 ```javascript
-To authorize, use this code:
+// To authorize the request, use this code:
 
-# With shell, you can just pass the correct header with each request
 const headers = {
   'Accept':'application/json',
-  'Authorization': 'Bearer {token}'
+  'Authorization': 'Bearer '.concat(token)
 };
 
 fetch('<api_endpoint_here>',
@@ -137,7 +171,6 @@ fetch('<api_endpoint_here>',
     console.log(body);
 });
 
-Make sure to replace <token> with your JWT access token.
 ```
 
 Whenever the user wants to access a protected route or resource, the user agent should send the JWT, 
@@ -156,7 +189,7 @@ If the JWT contains the necessary data, the need to query the database for certa
 though this may not always be the case.
 
 
-### Verify JWTs
+## Verify JWTs
 
 > Code samples
 
@@ -192,7 +225,9 @@ fetch('/api/v2/jwt/verify_token/',
 
 ```
 
-This Endpoint test the validity of the token.
+This Endpoint test the validity of the token. It verifies the JWS (Signature) of the token. 
+
+**It does not verify the user_id and the token_type of the payload.**
 
 <h3 id="http-request">HTTP Request</h3>
 

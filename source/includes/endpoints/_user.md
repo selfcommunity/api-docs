@@ -93,7 +93,7 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|Previous page url|
 |» results|[[User](#schemauser)]|false|none|List of results|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -188,11 +188,11 @@ This endpoint retrieve the list of connection requests received.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
@@ -287,11 +287,11 @@ This endpoint retrieve the list of connection requests sent for user.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
@@ -363,7 +363,7 @@ Return profile fields of the user identified by the Bearer token
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -425,7 +425,7 @@ This endpoint retrive the list of user notifications
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication 
 </aside>
 
@@ -489,7 +489,7 @@ This endpoint retrive the list unseen notifications for the user
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication 
 </aside>
 
@@ -565,7 +565,7 @@ This endpoint retrieve the a specific user's profile.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -695,7 +695,7 @@ website: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -772,11 +772,11 @@ This endpoint retrive the list of connections for user.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
@@ -853,7 +853,7 @@ This endpoint retrieves a specific user's followers using ID.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -930,7 +930,7 @@ This endpoint retrieves a specific user's followings using ID.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -1084,7 +1084,7 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[Discussion](#schemadiscussion)]|false|none|none|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -1167,11 +1167,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
@@ -1254,11 +1254,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
@@ -1341,11 +1341,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation does require authentication
 </aside>
 
@@ -1430,11 +1430,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -1518,11 +1518,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -1606,11 +1606,11 @@ username: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -1725,7 +1725,7 @@ website: http://example.com
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -1839,7 +1839,7 @@ website: http://example.com
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
@@ -1915,11 +1915,11 @@ Follow User
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageFollow](#schemamanagefollow)|
 
-<aside class="success">
+<aside class="notice">
 This operation requires the community to be set to follow mode 
 </aside>
 
-<aside class="success">
+<aside class="notice">
 This operation requires authentication
 </aside>
 
