@@ -20,7 +20,7 @@ includes:
   # - endpoints/tag
   - schemas
   - schemas/user
-  - schemas/connectionRequest
+  # - schemas/connectionRequest
   - schemas/captcha
   - schemas/locality
   - schemas/category
