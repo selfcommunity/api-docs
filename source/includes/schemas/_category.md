@@ -39,21 +39,21 @@
 |id|integer|false|read-only|Unique integer value identifying this category|
 |order|integer|false|none|Manual ordering number|
 |name|string|true|none|Unique name of the category|
-|name_synonyms|string¦null|false|none|Newline sepated list of synonyms|
-|slug|string|true|none|Unique slug identifying this category in a URL|
+|name_synonyms|string¦null|false|none|Newline (`\n`) sepated list of synonyms/aliases|
+|slug|string|true|none|Unique slug identifying this category in a URL (pass `_GENERATE_` to auto generate slug)|
 |slogan|string¦null|false|none|Short slogan to describe the category|
 |html_info|string¦null|false|none|HTML text containing some category informations|
 |seo_title|string¦null|false|none|Title for HTML meta tag|
 |seo_description|string¦null|false|none|Description for HTML meta tag|
 |auto_follow|string|false|none|Enum to define auto follow behaviour|
 |active|boolean|false|none|Is this category active?|
-|deleted|boolean|false|none|Is this category deleted?|
-|image_original|string(binary)¦null|false|none|Squared image - original size|
-|image_bigger|string(binary)|false|read-only|Squared image - bigger size|
-|image_big|string(binary)|false|read-only|Squared image - big size|
-|image_medium|string(binary)|false|read-only|Squared image - medium size|
-|image_small|string(binary)|false|read-only|Squared image - small size|
-|emotional_image_original|string(binary)¦null|false|none|Landscape image for category hub|
+|deleted|boolean|false|none|Is this category deleted? (Note: if deleted is true also active must be true)|
+|image_original|string(binary)¦null|false|none|Squared image with min size (600x600) - original size|
+|image_bigger|string(binary)|false|read-only|Squared image - auto generated bigger size|
+|image_big|string(binary)|false|read-only|Squared image - auto generated big size|
+|image_medium|string(binary)|false|read-only|Squared image - auto generated medium size|
+|image_small|string(binary)|false|read-only|Squared image - auto generated small size|
+|emotional_image_original|string(binary)¦null|false|none|Landscape format image for category hub (1920x1080)|
 |emotional_image_position|integer|false|none|Css background-position|
 |lastmod_datetime|string(date-time)|false|none|Last modify date time|
 |stream_order_by|string|false|none|Order of the category feed|

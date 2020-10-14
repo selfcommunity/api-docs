@@ -232,7 +232,7 @@ This endpoint creates a category.
 This operation require authentication and admin role.
 </aside>
 
-## Get a specific Category
+## Get a Specific Category
 
 <a id="opIdretrieveCategory"></a>
 
@@ -316,7 +316,7 @@ This endpoint retrieves a specific category.
 This operation require authentication only if `content_availability` community option is false.
 </aside>
 
-## Update a specific Category
+## Update a Specific Category
 
 <a id="opIdupdateCategory"></a>
 
@@ -403,7 +403,6 @@ This endpoint updates a specific category.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this Interest.|
-|search|query|string|false|A search term.|
 |body|body|[Category](#schemacategory)|false|none|
 
 > Example responses
@@ -511,7 +510,7 @@ This endpoint returns the audience of a specific category.
 This operation require authentication only if `content_availability` community option is false.
 </aside>
 
-## Get All Category's Followers
+## Get Category's Followers
 
 <a id="opIdfollowersCategory"></a>
 
@@ -595,7 +594,7 @@ This endpoint returns all followers of a specific category.
 This operation requires authentication
 </aside>
 
-## Get the Category Feed
+## Get Category's Feed
 
 <a id="opIdFeedCategory"></a>
 
@@ -748,7 +747,7 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false.
 </aside>
 
-## Get the Category Trending Feed
+## Get Category's Trending Feed
 
 <a id="opIdTrendingPostCategory"></a>
 
