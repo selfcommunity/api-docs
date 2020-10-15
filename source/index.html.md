@@ -20,7 +20,6 @@ includes:
   - endpoints/discussion
   # - endpoints/tag
   - schemas
-  - schemas/sso
   - schemas/user
   # - schemas/connectionRequest
   - schemas/captcha

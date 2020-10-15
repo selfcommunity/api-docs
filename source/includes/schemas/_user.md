@@ -31,7 +31,7 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|The ID of the user.|
-|username|string|false|read-only|The username of the user. Max 255 characters. Letters, numbers and -/_ characters Letters, numbers and -/_ characters.|
+|username|string|false|read-only|The username of the user. Max 255 characters. Letters, numbers and -/_ characters.|
 |real_name|string|false|none|Real name. Max 255 characters.|
 |email|string(email)|false|read-only|Email of the user.|
 |email_isvalid|boolean|false|read-only|Email is valid. Default: False. Format: YYYY-MM-ddTHH:mm:ss.ss±hh:mm (ISO 8601).|

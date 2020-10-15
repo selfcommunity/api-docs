@@ -9,16 +9,14 @@
 ```shell
 # You can also use wget
 curl -X POST /api/v2/sso/signin/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Accept': 'application/json'
+  'Authorization': 'Bearer {access_token}'
 }
 
 r = requests.post('/api/v2/sso/signin/', headers = headers)
@@ -30,8 +28,7 @@ print(r.json())
 ```javascript
 const inputBody = '{}';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/sso/signin/',
@@ -50,44 +47,47 @@ fetch('/api/v2/sso/signin/',
 
 `POST /api/v2/sso/signin/`
 
-Signin the user
-
-> Body parameter
-
-```json
-{}
-```
-
-```yaml
-{}
-
-```
-
-<h3 id="createsignin-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[Empty](#schemaempty)|false|none|
+Signin the user authenticated with the access token.
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
-{}
+{
+  "id": 0,
+  "ext_id": 0,
+  "username": "string",
+  "role": "string",
+  "tags": [
+    0
+  ]
+}
 ```
 
 <h3 id="createsignin-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Empty](#schemaempty)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<aside class="success">
-This operation does not require authentication
+<h3 id="listusers-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» id|integer|true|none|A unique internal id identifying the authenticated user|
+|» ext_id|integer¦null|true|none|A unique external id identifying the authenticated user|
+|» username|string|true|none|Username of the authenticated user|
+|» role|string¦null|false|none|Role of the user; it can be: admin, moderator, editor|
+|» tags|[integer]¦null|false|none|List of tags id|
+
+<aside class="warning">
+This operation requires authentication.
 </aside>
 
-## signup
+## Signup
 
 <a id="opIdcreatesignup"></a>
 
@@ -96,19 +96,25 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/sso/signup/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Authorization: Bearer {access_token}'
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
-
+  -d '{
+    "username": "string",
+    "ext_id": 0
+ }'
 ```
 
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
+  'Authorization': 'Bearer {access_token}',
+  'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
+payload = '{"username": "string","ext_id": 0}'
 
-r = requests.post('/api/v2/sso/signup/', headers = headers)
+r = requests.post('/api/v2/sso/signup/', headers = headers, data = payload)
 
 print(r.json())
 
@@ -117,14 +123,11 @@ print(r.json())
 ```javascript
 const inputBody = '{
   "username": "string",
-  "ext_id": 0,
-  "role": "string",
-  "tags": [
-    0
-  ]
+  "ext_id": 0
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Authorization':'Bearer {access_token}',
+  'Content-Type':'application/json',
   'Accept':'application/json'
 };
 
@@ -144,14 +147,14 @@ fetch('/api/v2/sso/signup/',
 
 `POST /api/v2/sso/signup/`
 
-Create a new account
+Create a new account.
 
 > Body parameter
 
 ```json
 {
-  "username": "string",
   "ext_id": 0,
+  "username": "string",
   "role": "string",
   "tags": [
     0
@@ -160,8 +163,8 @@ Create a new account
 ```
 
 ```yaml
-username: string
 ext_id: 0
+username: string
 role: string
 tags:
   - 0
@@ -172,7 +175,10 @@ tags:
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Signup](#schemasignup)|false|none|
+|ext_id|body|integer|true|A unique external id identifying the user|
+|username|body|string|true|The username of the user. Max 255 characters. Letters, numbers and -/_ characters|
+|role|body|string¦null|false|Role of the user; it can be: admin, moderator, editor|
+|tags|body|[integer]¦null|false|List of tags id|
 
 > Example responses
 
@@ -180,8 +186,9 @@ tags:
 
 ```json
 {
-  "username": "string",
+  "id": 0,
   "ext_id": 0,
+  "username": "string",
   "role": "string",
   "tags": [
     0
@@ -193,8 +200,20 @@ tags:
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Signup](#schemasignup)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Inline|
 
-<aside class="success">
-This operation does not require authentication
+<h3 id="listusers-responseschema">Response Schema</h3>
+
+Status Code **201**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» id|integer|true|none|The unique internal id associated to the created user|
+|» ext_id|integer¦null|true|none|A unique external id identifying the user|
+|» username|string|true|none|Username of the registered user|
+|» role|string¦null|false|none|Role of the user; it can be: admin, moderator, editor|
+|» tags|[integer]¦null|false|none|List of tags id|
+
+<aside class="warning">
+This operation requires authentication and admin role.
 </aside>
