@@ -2,7 +2,7 @@
 
 ## Get All Categories
 
-<a id="opIdlistCategorys"></a>
+<a id="opIdlistCategories"></a>
 
 > Code samples
 
@@ -14,6 +14,7 @@ curl -X GET /api/v2/category/ \
 ```
 
 ```javascript
+
 const headers = {
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
@@ -30,6 +31,7 @@ fetch('/api/v2/category/',
 }).then(function(body) {
     console.log(body);
 });
+
 ```
 
 This endpoint retrieves all categories.
@@ -38,13 +40,15 @@ This endpoint retrieves all categories.
 
 `GET /api/v2/category/`
 
-<h3 id="listcategorys-parameters">Parameters</h3>
+<h3 id="listcategories-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
+|active|query|string|false|Filter using field active.|
+|deleted|query|string|false|Filter using field deleted.|
 
 > Example responses
 
@@ -83,13 +87,13 @@ This endpoint retrieves all categories.
 }
 ```
 
-<h3 id="listcategorys-responses">Responses</h3>
+<h3 id="listcategories-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listcategorys-responseschema">Response Schema</h3>
+<h3 id="listcategories-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -402,7 +406,7 @@ This endpoint updates a specific category.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Interest.|
+|id|path|string|true|A unique integer value identifying this Category.|
 |body|body|[Category](#schemacategory)|false|none|
 
 > Example responses
@@ -412,7 +416,7 @@ This endpoint updates a specific category.
 ```json
 {
   "id": 0,
-  "order": -2147483648,
+  "order": 123,
   "name": "string",
   "name_synonyms": "string",
   "slug": "string",
@@ -429,7 +433,7 @@ This endpoint updates a specific category.
   "image_medium": "string",
   "image_small": "string",
   "emotional_image_original": "string",
-  "emotional_image_position": -2147483648,
+  "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
   "stream_order_by": "recent"
 }
@@ -444,6 +448,142 @@ This endpoint updates a specific category.
 <aside class="notice">
 This operation requires authentication and admin role.
 </aside>
+
+
+## Patch a Specific Category
+
+<a id="opIdpatchCategory"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/category/{id}/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
+```
+
+```javascript
+const inputBody = '{
+  "order": 123,
+  "name": "string",
+  "name_synonyms": "string",
+  "slug": "string",
+  "slogan": "string",
+  "html_info": "string",
+  "seo_title": "string",
+  "seo_description": "string",
+  "auto_follow": "none",
+  "active": true,
+  "deleted": true,
+  "image_original": "string",
+  "emotional_image_original": "string",
+  "emotional_image_position": 123,
+  "lastmod_datetime": "2019-08-24T14:15:22Z",
+  "stream_order_by": "recent"
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/category/{id}/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+This endpoint patch a specific category.
+ 
+**NOTE:**
+You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+
+For example to change `active` or `deleted` flags in an admin list/table interface.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/category/{id}/`
+
+> Body parameter
+
+```json
+{
+  "order": 123,
+  "name": "string",
+  "name_synonyms": "string",
+  "slug": "string",
+  "slogan": "string",
+  "html_info": "string",
+  "seo_title": "string",
+  "seo_description": "string",
+  "auto_follow": "none",
+  "active": true,
+  "deleted": true,
+  "image_original": "string",
+  "emotional_image_original": "string",
+  "emotional_image_position": 123,
+  "lastmod_datetime": "2019-08-24T14:15:22Z",
+  "stream_order_by": "recent"
+}
+```
+
+<h3 id="patchcategory-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this Category.|
+|body|body|[Category](#schemacategory)|false|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "order": 123,
+  "name": "string",
+  "name_synonyms": "string",
+  "slug": "string",
+  "slogan": "string",
+  "html_info": "string",
+  "seo_title": "string",
+  "seo_description": "string",
+  "auto_follow": "none",
+  "active": true,
+  "deleted": true,
+  "image_original": "string",
+  "image_bigger": "string",
+  "image_big": "string",
+  "image_medium": "string",
+  "image_small": "string",
+  "emotional_image_original": "string",
+  "emotional_image_position": 123,
+  "lastmod_datetime": "2019-08-24T14:15:22Z",
+  "stream_order_by": "recent"
+}
+```
+
+<h3 id="patchcategory-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Category](#schemacategory)|
+
+<aside class="notice">
+This operation requires authentication and admin role.
+</aside>
+
 
 ## Get Category's Audience
 
@@ -1012,4 +1152,110 @@ This endpoint unfollow a category.
 
 <aside class="notice">
 This operation requires authentication
+</aside>
+
+## Get Followed Categories
+
+<a id="opIdfollowedCategories"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/category/followed/ \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/category/followed/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+This endpoint retrieves all followed categories by the user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/category/followed/`
+
+<h3 id="listfollowedcategories-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|search|query|string|false|A search term.|
+|active|query|string|false|Filter using field active.|
+|deleted|query|string|false|Filter using field deleted.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "none",
+      "active": true,
+      "deleted": true,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "recent"
+    }
+  ]
+}
+```
+
+<h3 id="listfollowedcategories-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="listfollowedcategories-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|[[Category](#schemacategory)]|false|none|List of results|
+
+<aside class="notice">
+This operation require authentication
 </aside>

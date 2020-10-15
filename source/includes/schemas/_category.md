@@ -48,12 +48,12 @@
 |auto_follow|string|false|none|Enum to define auto follow behaviour|
 |active|boolean|false|none|Is this category active?|
 |deleted|boolean|false|none|Is this category deleted? (Note: if deleted is true also active must be true)|
-|image_original|string(binary)¦null|false|none|Squared image with min size (600x600) - original size|
+|image_original|string(binary)¦null|false|none|Squared image with min size (600x600) if passed empty a default image will be used - original size|
 |image_bigger|string(binary)|false|read-only|Squared image - auto generated bigger size|
 |image_big|string(binary)|false|read-only|Squared image - auto generated big size|
 |image_medium|string(binary)|false|read-only|Squared image - auto generated medium size|
 |image_small|string(binary)|false|read-only|Squared image - auto generated small size|
-|emotional_image_original|string(binary)¦null|false|none|Landscape format image for category hub (1920x1080)|
+|emotional_image_original|string(binary)¦null|false|none|Landscape format image for category hub (1920x1080) if passed empty a default image will be used|
 |emotional_image_position|integer|false|none|Css background-position|
 |lastmod_datetime|string(date-time)|false|none|Last modify date time|
 |stream_order_by|string|false|none|Order of the category feed|
