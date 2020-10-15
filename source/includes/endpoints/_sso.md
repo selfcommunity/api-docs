@@ -83,7 +83,7 @@ Status Code **200**
 |» role|string¦null|false|none|Role of the user; it can be: admin, moderator, editor|
 |» tags|[integer]¦null|false|none|List of tags id|
 
-<aside class="warning">
+<aside class="notice">
 This operation requires authentication.
 </aside>
 
@@ -214,6 +214,6 @@ Status Code **201**
 |» role|string¦null|false|none|Role of the user; it can be: admin, moderator, editor|
 |» tags|[integer]¦null|false|none|List of tags id|
 
-<aside class="warning">
+<aside class="notice">
 This operation requires authentication and admin role.
 </aside>

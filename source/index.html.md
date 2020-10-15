@@ -12,7 +12,7 @@ includes:
   # - authentication/intro  
   # - authentication/jwt
   # - endpoints/user
-  - endpoints/sso
+  # - endpoints/sso
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category

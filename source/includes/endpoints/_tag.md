@@ -84,7 +84,7 @@ Status Code **200**
 |» results|[[Tag](#schematag)]|false|none|Array of tags|
 
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication and admin role
 </aside>
 
@@ -186,7 +186,7 @@ active: true
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Tag](#schematag)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication and admin role
 </aside>
 
@@ -266,7 +266,7 @@ fetch('/api/v2/tag/{id}/',
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication and admin role
 </aside>
 
@@ -368,6 +368,6 @@ active: true
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
-<aside class="warning">
+<aside class="notice">
 This operation require authentication and admin role
 </aside>
