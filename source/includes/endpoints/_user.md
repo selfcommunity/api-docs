@@ -128,7 +128,6 @@ const headers = {
 fetch('/api/v2/user/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -141,7 +140,7 @@ fetch('/api/v2/user/{id}/',
 
 `GET /api/v2/user/{id}/`
 
-This endpoint retrieve the a specific user's profile.
+This endpoint retrieve a specific user's profile identified by {id}.
 
 <h3 id="retrieveuser-parameters">Parameters</h3>
 
@@ -229,7 +228,7 @@ fetch('/api/v2/user/{id}/',
 
 `PUT /api/v2/user/{id}/`
 
-This endpoint update the profile of a user. A user can only update their personal data.   
+This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   
 
 > Body parameter
 
@@ -262,14 +261,6 @@ website: http://example.com
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
 |body|body|[User](#schemauser)|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|Description|
-|---|---|---|
-|» gender|Male|Male|
-|» gender|Female|Female|
-|» gender|Unspecified|Unspecified|
 
 > Example responses
 
@@ -350,9 +341,9 @@ fetch('/api/v2/user/{id}/',
 
 `PATCH /api/v2/user/{id}/`
 
-This endpoint patch a specific user.
+This endpoint patch a specific user identified by {id}.. A user can only update their personal data.
 
-NOTE: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+**NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
 
 > Body parameter
 
@@ -385,32 +376,6 @@ website: http://example.com
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
 |body|body|[User](#schemauser)|false|none|
-|» id|body|integer|false|none|
-|» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|body|string|false|none|
-|» email|body|string(email)|false|none|
-|» email_isvalid|body|boolean|false|none|
-|» date_joined|body|string(date-time)|false|none|
-|» bio|body|string|false|none|
-|» location|body|string|false|none|
-|» birthday|body|string|false|none|
-|» description|body|string|false|none|
-|» gender|body|string|false|none|
-|» status|body|string|false|none|
-|» website|body|string(uri)|false|none|
-|» avatar|body|string|false|none|
-|» cover|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» gender|Male|
-|» gender|Female|
-|» gender|Unspecified|
-|» status|a|
-|» status|b|
-|» status|u|
 
 > Example responses
 
@@ -534,7 +499,7 @@ fetch('/api/v2/user/me/',
 
 `GET /api/v2/user/me/`
 
-Return profile fields of the user identified by the Bearer token
+Return the user identified by the authentication token.
 
 > Example responses
 
@@ -607,7 +572,7 @@ fetch('/api/v2/user/{id}/feed/',
 
 `GET /api/v2/user/{id}/feed/`
 
-This endpoint retrive the list of user's post
+This endpoint retrive the list of user's post of the user identified by {id}.
 
 <h3 id="listfeeduser-parameters">Parameters</h3>
 
@@ -624,8 +589,8 @@ This endpoint retrive the list of user's post
 ```json
 {
   "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
@@ -888,13 +853,15 @@ fetch('/api/v2/user/{id}/followers/',
 
 `GET /api/v2/user/{id}/followers/`
 
-This endpoint retrieve the list of followers of a specific user identified by id.
+This endpoint retrieve the list of followers of a specific user identified by {id}.
 
 <h3 id="followersuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -902,21 +869,28 @@ This endpoint retrieve the list of followers of a specific user identified by id
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
 }
 ```
 
@@ -925,6 +899,17 @@ This endpoint retrieve the list of followers of a specific user identified by id
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
@@ -964,13 +949,15 @@ fetch('/api/v2/user/{id}/followings/',
 
 `GET /api/v2/user/{id}/followings/`
 
-This endpoint retrieve the list of following of a specific user identified by id.
+This endpoint retrieve the list of following of a specific user identified by {id}.
 
 <h3 id="followingsuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -978,21 +965,28 @@ This endpoint retrieve the list of following of a specific user identified by id
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
 }
 ```
 
@@ -1001,6 +995,17 @@ This endpoint retrieve the list of following of a specific user identified by id
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
@@ -1044,39 +1049,25 @@ fetch('/api/v2/user/{id}/follow/',
 
 `POST /api/v2/user/{id}/follow/`
 
-Follow User
+This endpoint allows a user to follow another user identified by {id}. 
 
-> Body parameter
-
-```json
-{}
-```
-
-```yaml
-{}
-
-```
+**Note:** If a user already follows the user, it will be unfollowed.
 
 <h3 id="followuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[ManageFollow](#schemamanagefollow)|false|none|
 
 > Example responses
 
-> 201 Response
-
-```json
-{}
-```
+> 204 Response
 
 <h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageFollow](#schemamanagefollow)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to follow mode 
@@ -1128,6 +1119,8 @@ This endpoint retrieve the list of connections of a specific user identified by 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -1135,21 +1128,28 @@ This endpoint retrieve the list of connections of a specific user identified by 
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
 }
 ```
 
@@ -1158,6 +1158,17 @@ This endpoint retrieve the list of connections of a specific user identified by 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
@@ -1205,50 +1216,65 @@ fetch('/api/v2/user/{id}/connection_requests/',
 
 This endpoint retrieve the list of connection requests received of a specific user identified by id.
 
+<h3 id="connectionsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
 > Example responses
 
 > 200 Response
 
 ```json
 {
-  "id": 0,
-  "from_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar": "string",
-    "cover": "string"
-  },
-  "to_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar": "string",
-    "cover": "string"
-  },
-  "created": "2019-08-24T14:15:22Z",
-  "rejected": "2019-08-24T14:15:22Z",
-  "viewed": "2019-08-24T14:15:22Z"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "from_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "to_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "created": "2019-08-24T14:15:22Z",
+      "rejected": "2019-08-24T14:15:22Z",
+      "viewed": "2019-08-24T14:15:22Z"
+    }
+  ]
 }
 ```
 
@@ -1257,6 +1283,17 @@ This endpoint retrieve the list of connection requests received of a specific us
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[ConnectionRequest](#schemaconnectionrequest)]|false|none|none|
 
 <aside class="notice">
 This operation requires authentication 
@@ -1303,50 +1340,65 @@ fetch('/api/v2/user/{id}/connection/requests_sent/',
 
 This endpoint retrieve a specific user's list of connection requests sent by user.
 
+<h3 id="connectionsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
 > Example responses
 
 > 200 Response
 
 ```json
 {
-  "id": 0,
-  "from_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar": "string",
-    "cover": "string"
-  },
-  "to_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar": "string",
-    "cover": "string"
-  },
-  "created": "2019-08-24T14:15:22Z",
-  "rejected": "2019-08-24T14:15:22Z",
-  "viewed": "2019-08-24T14:15:22Z"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "from_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "to_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "created": "2019-08-24T14:15:22Z",
+      "rejected": "2019-08-24T14:15:22Z",
+      "viewed": "2019-08-24T14:15:22Z"
+    }
+  ]
 }
 ```
 
@@ -1355,6 +1407,17 @@ This endpoint retrieve a specific user's list of connection requests sent by use
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[ConnectionRequest](#schemaconnectionrequest)]|false|none|none|
 
 <aside class="notice">
 This operation requires authentication 
@@ -1379,10 +1442,6 @@ curl -X POST /api/v2/user/{id}/connection/accept/ \
 ```
 
 ```javascript
-const inputBody = {
-  "username": "string"
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1392,7 +1451,6 @@ const headers = {
 fetch('/api/v2/user/{id}/connection/accept/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1407,41 +1465,21 @@ fetch('/api/v2/user/{id}/connection/accept/',
 
 This endpoint accept a request connection of the user identified by {id}.
 
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
 <h3 id="connectionacceptuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectionacceptuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication
@@ -1468,10 +1506,6 @@ curl -X POST /api/v2/user/{id}/connection/request/ \
 ```
 
 ```javascript
-const inputBody = {
-  'username': 'string'
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1481,7 +1515,6 @@ const headers = {
 fetch('/api/v2/user/{id}/connection/request/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1494,50 +1527,30 @@ fetch('/api/v2/user/{id}/connection/request/',
 
 `POST /api/v2/user/{id}/connection/request/`
 
-This endpoint request connection to a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
+This endpoint request connection to the user identified by {id}.
 
 <h3 id="connectionrequestuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectionrequestuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to friendship mode 
 </aside>
 
 <aside class="notice">
-This operation does not require authentication
+This operation does require authentication
 </aside>
 
 ## Remove a Connection
@@ -1556,20 +1569,15 @@ curl -X POST /api/v2/user/{id}/connection/remove/ \
 
 
 ```javascript
-const inputBody = {
-  'username': 'string',
-  'Authorization: Bearer <token>'
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/connection/remove/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1582,43 +1590,24 @@ fetch('/api/v2/user/{id}/connection/remove/',
 
 `POST /api/v2/user/{id}/connection/remove/`
 
-This endpoint remove a connection for a user
+This endpoint remove connection with the user identified by {id}.
 
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
 
 <h3 id="connectionremoveuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectionremoveuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to friendship mode 
@@ -1643,10 +1632,6 @@ curl -X POST /api/v2/user/{id}/connection/cancel_reject/ \
 ```
 
 ```javascript
-const inputBody = {
-  "username": "string"
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1656,7 +1641,6 @@ const headers = {
 fetch('/api/v2/user/{id}/connection/cancel_reject/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1669,43 +1653,24 @@ fetch('/api/v2/user/{id}/connection/cancel_reject/',
 
 `POST /api/v2/user/{id}/connection/cancel_reject/`
 
-This endpoint cancel Reject connection to a user identified by {id}.
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
+This endpoint cancel reject connection to a user identified by {id}.
 
 <h3 id="connectioncancelrejectuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
+
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectioncancelrejectuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires authentication
@@ -1730,20 +1695,15 @@ curl -X POST /api/v2/user/{id}/connection/cancel_request/ \
 ```
 
 ```javascript
-const inputBody = {
-  'username': 'string',
-  'Authorization: Bearer <token>'
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/user/{id}/connection/cancel_request/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1758,41 +1718,22 @@ fetch('/api/v2/user/{id}/connection/cancel_request/',
 
 This endpoint cancel a request connection for a user.
 
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
 <h3 id="connectioncancelrequestuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
+
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectioncancelrequestuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to friendship mode 
@@ -1819,10 +1760,6 @@ curl -X POST /api/v2/user/{id}/connection/reject/ \
 
 
 ```javascript
-const inputBody = {
-  'username': 'string'
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1832,7 +1769,6 @@ const headers = {
 fetch('/api/v2/user/{id}/connection/reject/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1847,41 +1783,21 @@ fetch('/api/v2/user/{id}/connection/reject/',
 
 This endpoint reject a connection request sent from user identified by {id}.
 
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
 <h3 id="connectionrejectuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectionrejectuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to friendship mode 
@@ -1907,16 +1823,6 @@ curl -X POST /api/v2/user/{id}/connection_requests/mark_seen/ \
 
 
 ```javascript
-const inputBody = {
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1926,7 +1832,6 @@ const headers = {
 fetch('/api/v2/user/{id}/connection_requests/mark_seen/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1939,68 +1844,24 @@ fetch('/api/v2/user/{id}/connection_requests/mark_seen/',
 
 `POST /api/v2/user/{id}/connection_requests/mark_seen/`
 
-This endpoint mark seen a connection request.
-
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
+This endpoint mark seen a connection request of user identified by {id} for teh user authenticated.
 
 <h3 id="connectionrequestsmarkseenuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[User](#schemauser)|false|none|
+|id|path|string|true|A unique integer value identifying this user.|
+
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
-}
-```
+> 204 Response
 
 <h3 id="connectionrequestsmarkseenuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires authentication
@@ -2021,16 +1882,6 @@ curl -X POST /api/v2/user/{id}/markseen/ \
 ```
 
 ```javascript
-const inputBody = {
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-};
-
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -2040,7 +1891,6 @@ const headers = {
 fetch('/api/v2/user/{id}/markseen/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -2053,32 +1903,8 @@ fetch('/api/v2/user/{id}/markseen/',
 
 `POST /api/v2/user/{id}/markseen/`
 
-This endpoint mark as seen posts for user.
+This endpoint mark as seen posts for user identified by {id} for the user authenticated.
 
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
 
 <h3 id="markseenuser-parameters">Parameters</h3>
 
@@ -2088,33 +1914,13 @@ website: http://example.com
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
-}
-```
+> 204 Response
 
 <h3 id="markseenuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires authentication
@@ -2136,15 +1942,6 @@ curl -X POST /api/v2/user/{id}/hide/ \
 
 
 ```javascript
-const inputBody = '{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -2154,7 +1951,6 @@ const headers = {
 fetch('/api/v2/user/{id}/hide/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -2167,66 +1963,20 @@ fetch('/api/v2/user/{id}/hide/',
 
 `POST /api/v2/user/{id}/hide/`
 
-This endpoint show/Hide a user (post and user)
-
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
+This endpoint show/Hide a user (user and user's post) identified by {id} for the authenticated user. 
 
 <h3 id="hideuseruser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[User](#schemauser)|false|none|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar": "string",
-  "cover": "string"
-}
-```
+> 204 Response
 
 <h3 id="hideuseruser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|

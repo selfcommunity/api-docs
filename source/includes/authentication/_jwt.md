@@ -228,7 +228,7 @@ fetch('/api/v2/jwt/verify_token/',
 
 This Endpoint test the validity of the token. It verifies the JWS (Signature) of the token. 
 
-**It does not verify the user_id, ext_id and the token_type of the payload.**
+**Note:** It does not verify the user_id, ext_id and the token_type of the payload.
 
 <h3 id="http-request">HTTP Request</h3>
 
