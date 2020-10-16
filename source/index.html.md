@@ -9,10 +9,10 @@ toc_footers:
   - <a href='https://selfcommunity.com/free-trial/'>Sign Up for a new community</a>
 
 includes:
-  # - authentication/intro  
-  # - authentication/jwt
-  # - endpoints/user
-  # - endpoints/sso
+  - authentication/intro  
+  - authentication/jwt
+  - endpoints/user
+  - endpoints/sso
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category
@@ -21,7 +21,7 @@ includes:
   # - endpoints/tag
   - schemas
   - schemas/user
-  # - schemas/connectionRequest
+  - schemas/connectionRequest
   - schemas/captcha
   - schemas/locality
   - schemas/category
@@ -40,4 +40,4 @@ code_clipboard: true
 
 Welcome to the SelfCommunity API! You can use our API to access SelfCommunity API endpoints!!
 
-We have language bindings in Shell, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.

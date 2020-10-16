@@ -717,7 +717,7 @@ This endpoint returns all followers of a specific category.
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
-      "avatar_url": "string",
+      "avatar": "string",
       "cover": "string"
     }
   ]
@@ -848,7 +848,7 @@ This endpoint retrieves the category feed.
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
-        "avatar_url": "string",
+        "avatar": "string",
         "cover": "string"
       },
       "added_at": "2019-08-24T14:15:22Z",
@@ -1001,7 +1001,7 @@ This endpoint retrieves the category trending feed.
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
-        "avatar_url": "string",
+        "avatar": "string",
         "cover": "string"
       },
       "added_at": "2019-08-24T14:15:22Z",

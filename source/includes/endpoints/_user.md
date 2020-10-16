@@ -44,6 +44,16 @@ This endpoint retrieve the list of all users.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|search|query|string|false|A search term.|
+|username|query|string|false|Filter using field username.|
+|gender|query|string|false|Filter using field gender type.|
+|real_name|query|string|false|Filter using field real_name.|
+|bio|query|string|false|Filter using field bio.|
+|location|query|string|false|Filter using field location.|
+|description|query|string|false|Filter using field description.|
+|website|query|string|false|Filter using field website.|
+|ordering|query|string|false|Which field to use when ordering the results.|
+
 
 > Example responses
 
@@ -69,7 +79,7 @@ This endpoint retrieve the list of all users.
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
-      "avatar_url": "string",
+      "avatar": "string",
       "cover": "string"
     }
   ]
@@ -97,402 +107,6 @@ Status Code **200**
 This operation requires authentication
 </aside>
 
-## Get User's Connection Requests
-
-<a id="opIdconnectionRequestsUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/me/connection_requests/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization': 'Bearer {token}'
-};
-
-fetch('/api/v2/user/me/connection_requests/',
-{
-  method: 'GET',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/me/connection_requests/`
-
-This endpoint retrieve the list of connection requests received.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "from_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "to_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "created": "2019-08-24T14:15:22Z",
-  "rejected": "2019-08-24T14:15:22Z",
-  "viewed": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="connectionrequestsuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
-
-## Get User's Connection Requests sent
-
-<a id="opIdconnectionRequestsSentUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/me/connection_requests_sent/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/connection_requests_sent/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/me/connection_requests_sent/`
-
-This endpoint retrieve the list of connection requests sent for user.
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "from_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "to_user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
-    "date_joined": "2019-08-24T14:15:22Z",
-    "bio": "string",
-    "location": "string",
-    "birthday": "string",
-    "description": "string",
-    "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
-    "avatar_url": "string",
-    "cover": "string"
-  },
-  "created": "2019-08-24T14:15:22Z",
-  "rejected": "2019-08-24T14:15:22Z",
-  "viewed": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="connectionrequestssentuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
-
-## Me
-
-<a id="opIdmeUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/me/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/',
-{
-  method: 'GET',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/me/`
-
-Return profile fields of the user identified by the Bearer token
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar_url": "string",
-  "cover": "string"
-}
-```
-
-<h3 id="meuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
-
-<aside class="notice">
-This operation requires authentication
-</aside>
-
-
-## Get User's Notifications
-
-<a id="opIdnotificationsUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/me/notifications/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/notifications/',
-{
-  method: 'GET',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/me/notifications/`
-
-This endpoint retrive the list of user notifications
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "next_id": 0,
-  "prev_id": 0,
-  "is_new": true,
-  "collapsed": "string"
-}
-```
-
-<h3 id="notificationsuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
-## Get Unseen User's Notifications
-
-<a id="opIdunseenUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/me/unseen/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/unseen/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/me/notifications/unseen/`
-
-This endpoint retrive the list unseen notifications for the user
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "unseen": [
-     {
-        "id": int
-     }
-  ],
-  "total": 0
-}
-```
-
-<h3 id="unseenuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
 ## Get a Specific User
 
 <a id="opIdretrieveUser"></a>
@@ -514,7 +128,6 @@ const headers = {
 fetch('/api/v2/user/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -527,7 +140,7 @@ fetch('/api/v2/user/{id}/',
 
 `GET /api/v2/user/{id}/`
 
-This endpoint retrieve the a specific user's profile.
+This endpoint retrieve a specific user's profile identified by {id}.
 
 <h3 id="retrieveuser-parameters">Parameters</h3>
 
@@ -554,7 +167,7 @@ This endpoint retrieve the a specific user's profile.
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
-  "avatar_url": "string",
+  "avatar": "string",
   "cover": "string"
 }
 ```
@@ -615,7 +228,7 @@ fetch('/api/v2/user/{id}/',
 
 `PUT /api/v2/user/{id}/`
 
-This endpoint update the profile of a user. A user can only update their personal data.   
+This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   
 
 > Body parameter
 
@@ -648,22 +261,6 @@ website: http://example.com
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
 |body|body|[User](#schemauser)|false|none|
-|» id|body|integer|false|none|
-|» real_name|body|string|false|none|
-|» bio|body|string|false|none|
-|» location|body|string|false|none|
-|» birthday|body|string|false|none|
-|» description|body|string|false|none|
-|» gender|body|string|false|none|
-|» website|body|string(uri)|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|Description|
-|---|---|---|
-|» gender|Male|Male|
-|» gender|Female|Female|
-|» gender|Unspecified|Unspecified|
 
 > Example responses
 
@@ -684,7 +281,7 @@ website: http://example.com
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
-  "avatar_url": "string",
+  "avatar": "string",
   "cover": "string"
 }
 ```
@@ -699,29 +296,39 @@ website: http://example.com
 This operation does not require authentication
 </aside>
 
-## Get User's Connections
+## Patch a Specific User
 
-<a id="opIdconnectionsUser"></a>
+<a id="opIdpartialUpdateUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/{id}/connections/ \
+curl -X PATCH /api/v2/user/{id}/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
-
-const headers = {
-  'Accept':'application/json'
+const inputBody = {
+  "real_name": "string",
+  "bio": "string",
+  "location": "string",
+  "birthday": "string",
+  "description": "string",
+  "gender": "Male",
+  "website": "http://example.com"
 };
-
-fetch('/api/v2/user/{id}/connections/',
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+fetch('/api/v2/user/{id}/',
 {
-  method: 'GET',
-
+  method: 'PATCH',
+  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -732,15 +339,43 @@ fetch('/api/v2/user/{id}/connections/',
 
 ```
 
-`GET /api/v2/user/{id}/connections/`
+`PATCH /api/v2/user/{id}/`
 
-This endpoint retrive the list of connections for user.
+This endpoint patch a specific user identified by {id}.. A user can only update their personal data.
 
-<h3 id="connectionsuser-parameters">Parameters</h3>
+**NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+
+> Body parameter
+
+```json
+{
+  "real_name": "string",
+  "bio": "string",
+  "location": "string",
+  "birthday": "string",
+  "description": "string",
+  "gender": "Male",
+  "website": "http://example.com"
+}
+```
+
+```yaml
+real_name: string
+bio: string
+location: string
+birthday: string
+description: string
+gender: Male
+website: http://example.com
+
+```
+
+<h3 id="partialupdateuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+|body|body|[User](#schemauser)|false|none|
 
 > Example responses
 
@@ -761,48 +396,42 @@ This endpoint retrive the list of connections for user.
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
-  "avatar_url": "string",
+  "avatar": "string",
   "cover": "string"
 }
 ```
 
-<h3 id="connectionsuser-responses">Responses</h3>
+<h3 id="partialupdateuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="notice">
+<aside class="success">
 This operation does not require authentication
 </aside>
 
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
+## Delete User
 
-## Get User's Followers
-
-<a id="opIdfollowersUser"></a>
+<a id="opIddestroyUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/{id}/followers/ \
-  -H 'Accept: application/json'
+curl -X DELETE /api/v2/user/{id}/
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
-
 const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json'
 };
-
-fetch('/api/v2/user/{id}/followers/',
+fetch('/api/v2/user/{id}/',
 {
-  method: 'GET',
-
+  method: 'DELETE',
   headers: headers
 })
 .then(function(res) {
@@ -813,15 +442,64 @@ fetch('/api/v2/user/{id}/followers/',
 
 ```
 
-`GET /api/v2/user/{id}/followers/`
+`DELETE /api/v2/user/{id}/`
 
-This endpoint retrieves a specific user's followers using ID.
+Delete a specific user identified by {id}. Only the user identified by the id and the administrators can delete the user. 
 
-<h3 id="followersuser-parameters">Parameters</h3>
+<h3 id="destroyuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+
+<h3 id="destroyuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+
+## Me
+
+<a id="opIdmeUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/me/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/me/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/me/`
+
+Return the user identified by the authentication token.
 
 > Example responses
 
@@ -842,97 +520,21 @@ This endpoint retrieves a specific user's followers using ID.
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
-  "avatar_url": "string",
+  "avatar": "string",
   "cover": "string"
 }
 ```
 
-<h3 id="followersuser-responses">Responses</h3>
+<h3 id="meuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
-This operation does not require authentication
+This operation requires authentication
 </aside>
 
-## Get User's Following
-
-<a id="opIdfollowingsUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/{id}/followings/ \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/user/{id}/followings/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/{id}/followings/`
-
-This endpoint retrieves a specific user's followings using ID.
-
-<h3 id="followingsuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this user.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar_url": "string",
-  "cover": "string"
-}
-```
-
-<h3 id="followingsuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
-
-<aside class="notice">
-This operation does not require authentication
-</aside>
 
 ## Get User's Feed
 
@@ -970,7 +572,7 @@ fetch('/api/v2/user/{id}/feed/',
 
 `GET /api/v2/user/{id}/feed/`
 
-This endpoint retrive the list of user's post
+This endpoint retrive the list of user's post of the user identified by {id}.
 
 <h3 id="listfeeduser-parameters">Parameters</h3>
 
@@ -987,8 +589,8 @@ This endpoint retrive the list of user's post
 ```json
 {
   "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
@@ -1049,7 +651,7 @@ This endpoint retrive the list of user's post
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
-        "avatar_url": "string",
+        "avatar": "string",
         "cover": "string"
       },
       "added_at": "2019-08-24T14:15:22Z",
@@ -1088,35 +690,32 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-## Accept a User Connection
+<!-- 
 
-<a id="opIdconnectionAcceptUser"></a>
+## Get User's Notifications
+
+<a id="opIdnotificationsUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/accept/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+curl -X GET /api/v2/user/{id}/notifications/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
+
 ```
 
 ```javascript
-const inputBody = {
-  "username": "string"
-};
 
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/accept/',
+fetch('/api/v2/user/{id}/notifications/',
 {
-  method: 'POST',
-  body: inputBody,
+  method: 'GET',
   headers: headers
 })
 .then(function(res) {
@@ -1127,83 +726,58 @@ fetch('/api/v2/user/me/connection/accept/',
 
 ```
 
-`POST /api/v2/user/me/connection/accept/`
+`GET /api/v2/user/{id}/notifications/`
 
-This endpoint accept a connection to a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectionacceptuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+This endpoint retrive the list of user notifications
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
 {
-  "username": "string"
+  "next_id": 0,
+  "prev_id": 0,
+  "is_new": true,
+  "collapsed": "string"
 }
 ```
 
-<h3 id="connectionacceptuser-responses">Responses</h3>
+<h3 id="notificationsuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication 
 </aside>
 
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
+## Get Unseen User's Notifications
 
-## Cancel a Reject Connection
-
-<a id="opIdconnectionCancelRejectUser"></a>
+<a id="opIdunseenUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/cancel_reject/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+curl -X GET /api/v2/user/{id}/unseen/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
+
 ```
 
 ```javascript
-const inputBody = {
-  "username": "string"
-};
 
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
+  'Accept':'application/json'
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/cancel_reject/',
+fetch('/api/v2/user/{id}/unseen/',
 {
-  method: 'POST',
-  body: inputBody,
+  method: 'GET',
+
   headers: headers
 })
 .then(function(res) {
@@ -1214,83 +788,59 @@ fetch('/api/v2/user/me/connection/cancel_reject/',
 
 ```
 
-`POST /api/v2/user/me/connection/cancel_reject/`
+`GET /api/v2/user/{id}/notifications/unseen/`
 
-This endpoint cancel Reject connection to a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectioncancelrejectuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+This endpoint retrive the list unseen notifications for the user
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
 {
-  "username": "string"
+  "unseen": [
+     {
+        "id": int
+     }
+  ],
+  "total": 0
 }
 ```
 
-<h3 id="connectioncancelrejectuser-responses">Responses</h3>
+<h3 id="unseenuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
 
 <aside class="notice">
-This operation requires authentication
+This operation requires authentication 
 </aside>
 
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
+-->
 
-## Cancel a Request Connection
+## Get User's Followers
 
-<a id="opIdconnectionCancelRequestUser"></a>
+<a id="opIdfollowersUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/cancel_request/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+curl -X GET /api/v2/user/{id}/followers/ \
   -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
+
 ```
 
 ```javascript
-const inputBody = {
-  'username': 'string',
-  'Authorization: Bearer <token>'
-};
 
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json'
 };
 
-fetch('/api/v2/user/me/connection/cancel_request/',
+fetch('/api/v2/user/{id}/followers/',
 {
-  method: 'POST',
-  body: inputBody,
+  method: 'GET',
   headers: headers
 })
 .then(function(res) {
@@ -1301,355 +851,92 @@ fetch('/api/v2/user/me/connection/cancel_request/',
 
 ```
 
-`POST /api/v2/user/me/connection/cancel_request/`
+`GET /api/v2/user/{id}/followers/`
 
-This endpoint cancel a request connection for a user.
+This endpoint retrieve the list of followers of a specific user identified by {id}.
 
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectioncancelrequestuser-parameters">Parameters</h3>
+<h3 id="followersuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
 {
-  "username": "string"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
 }
 ```
 
-<h3 id="connectioncancelrequestuser-responses">Responses</h3>
+<h3 id="followersuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
 
-<aside class="notice">
-This operation does require authentication
-</aside>
+Status Code **200**
 
-
-## Reject a Connection
-
-<a id="opIdconnectionRejectUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/user/me/connection/reject/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-```
-
-
-```javascript
-const inputBody = {
-  'username': 'string'
-};
-
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/connection/reject/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/user/me/connection/reject/`
-
-This endpoint reject connection to a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectionrejectuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
+|Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
-
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
-
-<h3 id="connectionrejectuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
-
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
-
-<aside class="notice">
-This operation requires authentication
-</aside>
-
-## Remove a Connection
-
-<a id="opIdconnectionRemoveUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/user/me/connection/remove/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-```
-
-
-```javascript
-const inputBody = {
-  'username': 'string',
-  'Authorization: Bearer <token>'
-};
-
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/user/me/connection/remove/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/user/me/connection/remove/`
-
-This endpoint remove a connection for a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectionremoveuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
-
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
-
-<h3 id="connectionremoveuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
-
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
-
-<aside class="notice">
-This operation requires authentication
-</aside>
-
-## Request Connection
-
-<a id="opIdconnectionRequestUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/user/me/connection/request/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-const inputBody = {
-  'username': 'string'
-};
-
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/connection/request/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/user/me/connection/request/`
-
-This endpoint request connection to a user
-
-> Body parameter
-
-```json
-{
-  "username": "string"
-}
-```
-
-```yaml
-username: string
-
-```
-
-<h3 id="connectionrequestuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[ManageConnection](#schemamanageconnection)|false|none|
-|» username|body|string|true|none|
-
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "username": "string"
-}
-```
-
-<h3 id="connectionrequestuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageConnection](#schemamanageconnection)|
-
-<aside class="notice">
-This operation requires the community to be set to friendship mode 
-</aside>
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
 </aside>
 
-## Mark Seen a Connection Request
+## Get User's Following
 
-<a id="opIdconnectionRequestsMarkSeenUser"></a>
+<a id="opIdfollowingsUser"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection_requests/mark_seen/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+curl -X GET /api/v2/user/{id}/followings/ \
   -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
+
 ```
 
-
 ```javascript
-const inputBody = {
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-};
 
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
+  'Accept':'application/json'
 };
 
-fetch('/api/v2/user/me/connection_requests/mark_seen/',
+fetch('/api/v2/user/{id}/followings/',
 {
-  method: 'POST',
-  body: inputBody,
+  method: 'GET',
   headers: headers
 })
 .then(function(res) {
@@ -1660,187 +947,68 @@ fetch('/api/v2/user/me/connection_requests/mark_seen/',
 
 ```
 
-`POST /api/v2/user/me/connection_requests/mark_seen/`
+`GET /api/v2/user/{id}/followings/`
 
-This endpoint mark seen a connection request.
+This endpoint retrieve the list of following of a specific user identified by {id}.
 
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
-
-<h3 id="connectionrequestsmarkseenuser-parameters">Parameters</h3>
+<h3 id="followingsuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[User](#schemauser)|false|none|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar_url": "string",
-  "cover": "string"
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
 }
 ```
 
-<h3 id="connectionrequestsmarkseenuser-responses">Responses</h3>
+<h3 id="followingsuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="notice">
-This operation requires authentication
-</aside>
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
 
-## Mark User Seen
+Status Code **200**
 
-<a id="opIdmarkSeenUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/user/me/markseen/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-```
-
-```javascript
-const inputBody = {
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-};
-
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/me/markseen/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/user/me/markseen/`
-
-This endpoint mark as seen posts for user.
-
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
-
-<h3 id="markseenuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
+|Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|body|body|[User](#schemauser)|false|none|
-
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar_url": "string",
-  "cover": "string"
-}
-```
-
-<h3 id="markseenuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
 
 <aside class="notice">
-This operation requires authentication
+This operation does not require authentication
 </aside>
 
 ## Follow User
@@ -1881,43 +1049,878 @@ fetch('/api/v2/user/{id}/follow/',
 
 `POST /api/v2/user/{id}/follow/`
 
-Follow User
+This endpoint allows a user to follow another user identified by {id}. 
 
-> Body parameter
-
-```json
-{}
-```
-
-```yaml
-{}
-
-```
+**Note:** If a user already follows the user, it will be unfollowed.
 
 <h3 id="followuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[ManageFollow](#schemamanagefollow)|false|none|
 
 > Example responses
 
-> 201 Response
-
-```json
-{}
-```
+> 204 Response
 
 <h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageFollow](#schemamanagefollow)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires the community to be set to follow mode 
 </aside>
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+
+## Get User's Connections
+
+<a id="opIdconnectionsUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/connections/ \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+};
+
+fetch('/api/v2/user/{id}/connections/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/connections/`
+
+This endpoint retrieve the list of connections of a specific user identified by id.
+
+<h3 id="connectionsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
+}
+```
+
+<h3 id="connectionsuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[User](#schemauser)]|false|none|none|
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+## Get User's Connection Requests
+
+<a id="opIdconnectionRequestsUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/connection_requests/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {token}'
+};
+
+fetch('/api/v2/user/{id}/connection_requests/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/connection/requests/`
+
+This endpoint retrieve the list of connection requests received of a specific user identified by id.
+
+<h3 id="connectionsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "from_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "to_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "created": "2019-08-24T14:15:22Z",
+      "rejected": "2019-08-24T14:15:22Z",
+      "viewed": "2019-08-24T14:15:22Z"
+    }
+  ]
+}
+```
+
+<h3 id="connectionrequestsuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[ConnectionRequest](#schemaconnectionrequest)]|false|none|none|
+
+<aside class="notice">
+This operation requires authentication 
+</aside>
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+## Get User's Connection Requests sent
+
+<a id="opIdconnectionRequestsSentUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/connection/requests_sent/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/requests_sent/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/connection/requests_sent/`
+
+This endpoint retrieve a specific user's list of connection requests sent by user.
+
+<h3 id="connectionsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "from_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "to_user": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "created": "2019-08-24T14:15:22Z",
+      "rejected": "2019-08-24T14:15:22Z",
+      "viewed": "2019-08-24T14:15:22Z"
+    }
+  ]
+}
+```
+
+<h3 id="connectionrequestssentuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ConnectionRequest](#schemaconnectionrequest)|
+
+<h3 id="listfeeduser-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[ConnectionRequest](#schemaconnectionrequest)]|false|none|none|
+
+<aside class="notice">
+This operation requires authentication 
+</aside>
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+## Accept a User Connection
+
+<a id="opIdconnectionAcceptUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/accept/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/accept/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/accept/`
+
+This endpoint accept a request connection of the user identified by {id}.
+
+<h3 id="connectionacceptuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectionacceptuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+
+## Request Connection
+
+<a id="opIdconnectionRequestUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/request/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/request/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/request/`
+
+This endpoint request connection to the user identified by {id}.
+
+<h3 id="connectionrequestuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectionrequestuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+<aside class="notice">
+This operation does require authentication
+</aside>
+
+## Remove a Connection
+
+<a id="opIdconnectionRemoveUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/remove/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/remove/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/remove/`
+
+This endpoint remove connection with the user identified by {id}.
+
+
+<h3 id="connectionremoveuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectionremoveuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+## Cancel a Rejected Connection
+
+<a id="opIdconnectionCancelRejectUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/cancel_reject/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/cancel_reject/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/cancel_reject/`
+
+This endpoint cancel reject connection to a user identified by {id}.
+
+<h3 id="connectioncancelrejectuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectioncancelrejectuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+## Cancel a Request Connection
+
+<a id="opIdconnectionCancelRequestUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/cancel_request/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/cancel_request/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/cancel_request/`
+
+This endpoint cancel a request connection for a user.
+
+<h3 id="connectioncancelrequestuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectioncancelrequestuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+<aside class="notice">
+This operation does require authentication
+</aside>
+
+
+## Reject a Connection Request
+
+<a id="opIdconnectionRejectUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection/reject/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection/reject/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection/reject/`
+
+This endpoint reject a connection request sent from user identified by {id}.
+
+<h3 id="connectionrejectuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectionrejectuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires the community to be set to friendship mode 
+</aside>
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+## Mark Seen a Connection Request
+
+<a id="opIdconnectionRequestsMarkSeenUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/connection_requests/mark_seen/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/connection_requests/mark_seen/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/connection_requests/mark_seen/`
+
+This endpoint mark seen a connection request of user identified by {id} for teh user authenticated.
+
+<h3 id="connectionrequestsmarkseenuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+
+> Example responses
+
+> 204 Response
+
+<h3 id="connectionrequestsmarkseenuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+## Mark User Seen
+
+<a id="opIdmarkSeenUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/markseen/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/markseen/',
+{
+  method: 'POST',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`POST /api/v2/user/{id}/markseen/`
+
+This endpoint mark as seen posts for user identified by {id} for the user authenticated.
+
+
+<h3 id="markseenuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[User](#schemauser)|false|none|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="markseenuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires authentication
@@ -1939,15 +1942,6 @@ curl -X POST /api/v2/user/{id}/hide/ \
 
 
 ```javascript
-const inputBody = '{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1957,7 +1951,6 @@ const headers = {
 fetch('/api/v2/user/{id}/hide/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1970,66 +1963,20 @@ fetch('/api/v2/user/{id}/hide/',
 
 `POST /api/v2/user/{id}/hide/`
 
-This endpoint show/Hide a user (post and user)
-
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
+This endpoint show/Hide a user (user and user's post) identified by {id} for the authenticated user. 
 
 <h3 id="hideuseruser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[User](#schemauser)|false|none|
 
 > Example responses
 
-> 201 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "real_name": "string",
-  "email": "user@example.com",
-  "email_isvalid": true,
-  "date_joined": "2019-08-24T14:15:22Z",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "status": "a",
-  "website": "http://example.com",
-  "avatar_url": "string",
-  "cover": "string"
-}
-```
+> 204 Response
 
 <h3 id="hideuseruser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[User](#schemauser)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|

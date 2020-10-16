@@ -111,8 +111,6 @@ The signature is used to verify the message wasn't changed along the way and it 
 
 **Putting all together**
 
-> Code samples
-
 ```javascript
 // Example of how to create a JWT token using jsonwebtoken library.
 // If jsonwebtoken is not installed, instal with: npm install --save jsonwebtoken  
@@ -140,6 +138,8 @@ The output is three Base64-URL strings separated by dots that can be easily pass
 `
 <header>.<payload>.<signature>
 `
+
+Take a look at the example in the javascript code tab.
 
 > Code samples
 
@@ -228,7 +228,7 @@ fetch('/api/v2/jwt/verify_token/',
 
 This Endpoint test the validity of the token. It verifies the JWS (Signature) of the token. 
 
-**It does not verify the user_id, ext_id and the token_type of the payload.**
+**Note:** It does not verify the user_id, ext_id and the token_type of the payload.
 
 <h3 id="http-request">HTTP Request</h3>
 
