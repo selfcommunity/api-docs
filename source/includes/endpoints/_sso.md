@@ -149,6 +149,8 @@ fetch('/api/v2/sso/signup/',
 
 Create a new account.
 
+**Note:** only users with the admin role can register new users.
+
 > Body parameter
 
 ```json
