@@ -105,7 +105,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/me/connection_requests/ \
+curl -X GET /api/v2/user/{id}/connection_requests/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
 
@@ -118,7 +118,7 @@ const headers = {
   'Authorization': 'Bearer {token}'
 };
 
-fetch('/api/v2/user/me/connection_requests/',
+fetch('/api/v2/user/{id}/connection_requests/',
 {
   method: 'GET',
   headers: headers
@@ -131,9 +131,9 @@ fetch('/api/v2/user/me/connection_requests/',
 
 ```
 
-`GET /api/v2/user/me/connection_requests/`
+`GET /api/v2/user/{id}/connection/requests/`
 
-This endpoint retrieve the list of connection requests received.
+This endpoint retrieve the list of connection requests received of a specific user identified by id.
 
 > Example responses
 
@@ -204,7 +204,7 @@ This operation requires the community to be set to friendship mode
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/me/connection_requests_sent/ \
+curl -X GET /api/v2/user/{id}/connection/requests_sent/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
 ```
@@ -216,10 +216,9 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection_requests_sent/',
+fetch('/api/v2/user/{id}/connection/requests_sent/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -230,9 +229,9 @@ fetch('/api/v2/user/me/connection_requests_sent/',
 
 ```
 
-`GET /api/v2/user/me/connection_requests_sent/`
+`GET /api/v2/user/{id}/connection/requests_sent/`
 
-This endpoint retrieve the list of connection requests sent for user.
+This endpoint retrieve a specific user's list of connection requests sent by user.
 
 > Example responses
 
@@ -376,7 +375,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/me/notifications/ \
+curl -X GET /api/v2/user/{id}/notifications/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
 
@@ -389,7 +388,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/notifications/',
+fetch('/api/v2/user/{id}/notifications/',
 {
   method: 'GET',
   headers: headers
@@ -402,7 +401,7 @@ fetch('/api/v2/user/me/notifications/',
 
 ```
 
-`GET /api/v2/user/me/notifications/`
+`GET /api/v2/user/{id}/notifications/`
 
 This endpoint retrive the list of user notifications
 
@@ -437,7 +436,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/user/me/unseen/ \
+curl -X GET /api/v2/user/{id}/unseen/ \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
 
@@ -450,7 +449,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/unseen/',
+fetch('/api/v2/user/{id}/unseen/',
 {
   method: 'GET',
 
@@ -464,7 +463,7 @@ fetch('/api/v2/user/me/unseen/',
 
 ```
 
-`GET /api/v2/user/me/notifications/unseen/`
+`GET /api/v2/user/{id}/notifications/unseen/`
 
 This endpoint retrive the list unseen notifications for the user
 
@@ -715,13 +714,12 @@ curl -X GET /api/v2/user/{id}/connections/ \
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
 };
 
 fetch('/api/v2/user/{id}/connections/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -734,7 +732,7 @@ fetch('/api/v2/user/{id}/connections/',
 
 `GET /api/v2/user/{id}/connections/`
 
-This endpoint retrive the list of connections for user.
+This endpoint retrieve the list of connections of a specific user identified by id.
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -802,7 +800,6 @@ const headers = {
 fetch('/api/v2/user/{id}/followers/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -815,7 +812,7 @@ fetch('/api/v2/user/{id}/followers/',
 
 `GET /api/v2/user/{id}/followers/`
 
-This endpoint retrieves a specific user's followers using ID.
+This endpoint retrieve the list of followers of a specific user identified by id.
 
 <h3 id="followersuser-parameters">Parameters</h3>
 
@@ -879,7 +876,6 @@ const headers = {
 fetch('/api/v2/user/{id}/followings/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -892,7 +888,7 @@ fetch('/api/v2/user/{id}/followings/',
 
 `GET /api/v2/user/{id}/followings/`
 
-This endpoint retrieves a specific user's followings using ID.
+This endpoint retrieve the list of following of a specific user identified by id.
 
 <h3 id="followingsuser-parameters">Parameters</h3>
 
@@ -1096,7 +1092,7 @@ This operation does not require authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/accept/ \
+curl -X POST /api/v2/user/{id}/connection/accept/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1113,7 +1109,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/accept/',
+fetch('/api/v2/user/{id}/connection/accept/',
 {
   method: 'POST',
   body: inputBody,
@@ -1127,9 +1123,9 @@ fetch('/api/v2/user/me/connection/accept/',
 
 ```
 
-`POST /api/v2/user/me/connection/accept/`
+`POST /api/v2/user/{id}/connection/accept/`
 
-This endpoint accept a connection to a user
+This endpoint accept a request connection of the user identified by {id}.
 
 > Body parameter
 
@@ -1175,7 +1171,7 @@ This operation require authentication
 This operation requires the community to be set to friendship mode 
 </aside>
 
-## Cancel a Reject Connection
+## Cancel a Rejected Connection
 
 <a id="opIdconnectionCancelRejectUser"></a>
 
@@ -1183,7 +1179,7 @@ This operation requires the community to be set to friendship mode
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/cancel_reject/ \
+curl -X POST /api/v2/user/{id}/connection/cancel_reject/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1200,7 +1196,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/cancel_reject/',
+fetch('/api/v2/user/{id}/connection/cancel_reject/',
 {
   method: 'POST',
   body: inputBody,
@@ -1214,9 +1210,9 @@ fetch('/api/v2/user/me/connection/cancel_reject/',
 
 ```
 
-`POST /api/v2/user/me/connection/cancel_reject/`
+`POST /api/v2/user/{id}/connection/cancel_reject/`
 
-This endpoint cancel Reject connection to a user
+This endpoint cancel Reject connection to a user identified by {id}.
 
 > Body parameter
 
@@ -1270,7 +1266,7 @@ This operation requires the community to be set to friendship mode
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/cancel_request/ \
+curl -X POST /api/v2/user/{id}/connection/cancel_request/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1287,7 +1283,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/api/v2/user/me/connection/cancel_request/',
+fetch('/api/v2/user/{id}/connection/cancel_request/',
 {
   method: 'POST',
   body: inputBody,
@@ -1301,7 +1297,7 @@ fetch('/api/v2/user/me/connection/cancel_request/',
 
 ```
 
-`POST /api/v2/user/me/connection/cancel_request/`
+`POST /api/v2/user/{id}/connection/cancel_request/`
 
 This endpoint cancel a request connection for a user.
 
@@ -1350,7 +1346,7 @@ This operation does require authentication
 </aside>
 
 
-## Reject a Connection
+## Reject a Connection Request
 
 <a id="opIdconnectionRejectUser"></a>
 
@@ -1358,7 +1354,7 @@ This operation does require authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/reject/ \
+curl -X POST /api/v2/user/{id}/connection/reject/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1376,7 +1372,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/reject/',
+fetch('/api/v2/user/{id}/connection/reject/',
 {
   method: 'POST',
   body: inputBody,
@@ -1390,9 +1386,9 @@ fetch('/api/v2/user/me/connection/reject/',
 
 ```
 
-`POST /api/v2/user/me/connection/reject/`
+`POST /api/v2/user/{id}/connection/reject/`
 
-This endpoint reject connection to a user
+This endpoint reject a connection request sent from user identified by {id}.
 
 > Body parameter
 
@@ -1446,7 +1442,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/remove/ \
+curl -X POST /api/v2/user/{id}/connection/remove/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1464,7 +1460,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/api/v2/user/me/connection/remove/',
+fetch('/api/v2/user/{id}/connection/remove/',
 {
   method: 'POST',
   body: inputBody,
@@ -1478,7 +1474,7 @@ fetch('/api/v2/user/me/connection/remove/',
 
 ```
 
-`POST /api/v2/user/me/connection/remove/`
+`POST /api/v2/user/{id}/connection/remove/`
 
 This endpoint remove a connection for a user
 
@@ -1534,7 +1530,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection/request/ \
+curl -X POST /api/v2/user/{id}/connection/request/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1552,7 +1548,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection/request/',
+fetch('/api/v2/user/{id}/connection/request/',
 {
   method: 'POST',
   body: inputBody,
@@ -1566,7 +1562,7 @@ fetch('/api/v2/user/me/connection/request/',
 
 ```
 
-`POST /api/v2/user/me/connection/request/`
+`POST /api/v2/user/{id}/connection/request/`
 
 This endpoint request connection to a user
 
@@ -1622,7 +1618,7 @@ This operation does not require authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/connection_requests/mark_seen/ \
+curl -X POST /api/v2/user/{id}/connection_requests/mark_seen/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1646,7 +1642,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/connection_requests/mark_seen/',
+fetch('/api/v2/user/{id}/connection_requests/mark_seen/',
 {
   method: 'POST',
   body: inputBody,
@@ -1660,7 +1656,7 @@ fetch('/api/v2/user/me/connection_requests/mark_seen/',
 
 ```
 
-`POST /api/v2/user/me/connection_requests/mark_seen/`
+`POST /api/v2/user/{id}/connection_requests/mark_seen/`
 
 This endpoint mark seen a connection request.
 
@@ -1737,7 +1733,7 @@ This operation requires authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/me/markseen/ \
+curl -X POST /api/v2/user/{id}/markseen/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -1760,7 +1756,7 @@ const headers = {
   'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/user/me/markseen/',
+fetch('/api/v2/user/{id}/markseen/',
 {
   method: 'POST',
   body: inputBody,
@@ -1774,7 +1770,7 @@ fetch('/api/v2/user/me/markseen/',
 
 ```
 
-`POST /api/v2/user/me/markseen/`
+`POST /api/v2/user/{id}/markseen/`
 
 This endpoint mark as seen posts for user.
 
