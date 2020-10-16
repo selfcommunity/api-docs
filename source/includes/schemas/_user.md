@@ -20,7 +20,7 @@
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
-  "avatar_url": "string",
+  "avatar": "string",
   "cover": "string"
 }
 
@@ -43,8 +43,8 @@
 |gender|string|false|none|User gender. Values: Male, Female, Unspecified. Default: Unspecified.|
 |status|string|false|read-only|User status. Values: a (approved), b (blocked), u (unregistered, deleted). Default: a.|
 |website|string(uri)|false|none|User website. Max 200 characters.|
-|avatar_url|string|false|read-only|Avatar url of the user.|
-|cover|string|false|read-only|Cover url of the user.|
+|avatar|string(binary)¦null|false|none|Avatar of the user.|
+|cover|string(binary)¦null|false|none|Cover of the user.|
 
 #### Enumerated Values
 

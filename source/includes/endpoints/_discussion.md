@@ -117,7 +117,7 @@ This endpoint retrieves all discussions.
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
-        "avatar_url": "string",
+        "avatar": "string",
         "cover": "string"
       },
       "added_at": "2019-08-24T14:15:22Z",
@@ -392,7 +392,7 @@ This endpoint creates a discussion.
     "gender": "Male",
     "status": "a",
     "website": "http://example.com",
-    "avatar_url": "string",
+    "avatar": "string",
     "cover": "string"
   },
   "added_at": "2019-08-24T14:15:22Z",
@@ -579,7 +579,7 @@ This Endpoint perform search operation to discussions.
             "gender": "Male",
             "status": "a",
             "website": "http://example.com",
-            "avatar_url": "string",
+            "avatar": "string",
             "cover": "string"
         },
         "added_at": "2019-08-24T14:15:22Z",
@@ -773,7 +773,7 @@ This endpoint retrieves a specific discussion using ID.
     "gender": "Male",
     "status": "a",
     "website": "http://example.com",
-    "avatar_url": "string",
+    "avatar": "string",
     "cover": "string"
   },
   "added_at": "2019-08-24T14:15:22Z",
@@ -1025,7 +1025,7 @@ This endpoint update a specific discussion.
     "gender": "Male",
     "status": "a",
     "website": "http://example.com",
-    "avatar_url": "string",
+    "avatar": "string",
     "cover": "string"
   },
   "added_at": "2019-08-24T14:15:22Z",
@@ -1267,7 +1267,7 @@ This Endpoint retrieve related discussions
             "gender": "Male",
             "status": "a",
             "website": "http://example.com",
-            "avatar_url": "string",
+            "avatar": "string",
             "cover": "string"
         },
         "added_at": "2019-08-24T14:15:22Z",

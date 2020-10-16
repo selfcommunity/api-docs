@@ -22,7 +22,7 @@
     "gender": "Male",
     "status": "a",
     "website": "http://example.com",
-    "avatar_url": "string",
+    "avatar": "string",
     "cover": "string"
   },
   "to_user": {
@@ -39,7 +39,7 @@
     "gender": "Male",
     "status": "a",
     "website": "http://example.com",
-    "avatar_url": "string",
+    "avatar": "string",
     "cover": "string"
   },
   "created": "2019-08-24T14:15:22Z",
@@ -68,7 +68,7 @@
 |» gender|string|false|none|none|
 |» status|string|false|read-only|none|
 |» website|string(uri)|false|none|none|
-|» avatar_url|string|false|read-only|none|
+|» avatar|string|false|read-only|none|
 |» cover|string|false|read-only|none|
 |to_user|object|false|read-only|none|
 |» id|integer|false|read-only|none|
@@ -84,7 +84,7 @@
 |» gender|string|false|none|none|
 |» status|string|false|read-only|none|
 |» website|string(uri)|false|none|none|
-|» avatar_url|string|false|read-only|none|
+|» avatar|string|false|read-only|none|
 |» cover|string|false|read-only|none|
 |created|string(date-time)|false|read-only|none|
 |rejected|string(date-time)|false|read-only|none|
