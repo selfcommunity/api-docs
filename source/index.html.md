@@ -11,8 +11,8 @@ toc_footers:
 includes:
   - authentication/intro  
   - authentication/jwt
-  - endpoints/user
   - endpoints/sso
+  - endpoints/user
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category

@@ -345,31 +345,6 @@ This endpoint patch a specific user identified by {id}.. A user can only update 
 
 **NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
 
-> Body parameter
-
-```json
-{
-  "real_name": "string",
-  "bio": "string",
-  "location": "string",
-  "birthday": "string",
-  "description": "string",
-  "gender": "Male",
-  "website": "http://example.com"
-}
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-birthday: string
-description: string
-gender: Male
-website: http://example.com
-
-```
-
 <h3 id="partialupdateuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -407,7 +382,7 @@ website: http://example.com
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
@@ -458,7 +433,7 @@ Delete a specific user identified by {id}. Only the user identified by the id an
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation does not require authentication
 </aside>
 
