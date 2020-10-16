@@ -59,14 +59,3 @@
 |created|string(date-time)|false|read-only|none|
 |rejected|string(date-time)|false|read-only|none|
 |viewed|string(date-time)|false|read-only|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|
