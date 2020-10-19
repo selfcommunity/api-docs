@@ -123,7 +123,7 @@ This endpoint retrieves all posts.
       "deleted": true,
       "collapsed": "string",
       "comment_count": "string",
-      "vote_count": "string",
+      "vote_count": 0,
       "flag_count": "string",
       "addressing": [
         0
@@ -380,7 +380,7 @@ This endpoint creates a post.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": []
 }
@@ -563,7 +563,7 @@ This Endpoint perform search operation to posts.
         "deleted": true,
         "collapsed": "string",
         "comment_count": "string",
-        "vote_count": "string",
+        "vote_count": 0,
         "flag_count": "string",
         "addressing": [],
         "seen_by_id": [
@@ -755,7 +755,7 @@ This endpoint retrieves a specific post using ID.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": []
 }
@@ -997,7 +997,7 @@ This endpoint update a specific post.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": []
 }
@@ -1125,7 +1125,6 @@ This endpoint retrieves all votes for a specific post.
   "results": [
       {
         "user": "string",
-        "voted_post": "string",
         "voted_at": "2019-08-24T14:15:22Z"
         }
   ]
@@ -1194,23 +1193,11 @@ This Endpoint upvotes a specific post.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this post.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "voted_post": "string",
-  "voted_at": "2019-08-24T14:15:22Z"
-}
-```
-
 <h3 id="votecreatepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication
@@ -1263,23 +1250,11 @@ This Endpoint removes an upvote for a specific post.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this post.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "voted_post": "string",
-  "voted_at": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="votecreatepost-responses">Responses</h3>
+<h3 id="voteremovepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication

@@ -126,7 +126,7 @@ This endpoint retrieves all discussions.
       "deleted": true,
       "collapsed": "string",
       "comment_count": "string",
-      "vote_count": "string",
+      "vote_count": 0,
       "flag_count": "string",
       "addressing": [
         0
@@ -401,7 +401,7 @@ This endpoint creates a discussion.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": [],
   "follower_count": "string"
@@ -588,7 +588,7 @@ This Endpoint perform search operation to discussions.
         "deleted": true,
         "collapsed": "string",
         "comment_count": "string",
-        "vote_count": "string",
+        "vote_count": 0,
         "flag_count": "string",
         "addressing": [],
         "follower_count": "string",
@@ -782,7 +782,7 @@ This endpoint retrieves a specific discussion using ID.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": [],
   "follower_count": "string"
@@ -1034,7 +1034,7 @@ This endpoint update a specific discussion.
   "deleted": true,
   "collapsed": "string",
   "comment_count": "string",
-  "vote_count": "string",
+  "vote_count": 0,
   "flag_count": "string",
   "addressing": [],
   "follower_count": "string"
@@ -1276,7 +1276,7 @@ This Endpoint retrieve related discussions
         "deleted": true,
         "collapsed": "string",
         "comment_count": "string",
-        "vote_count": "string",
+        "vote_count": 0,
         "flag_count": "string",
         "addressing": [],
         "follower_count": "string",
@@ -1364,7 +1364,6 @@ This endpoint retrieves all votes for a specific discussion.
   "results": [
       {
         "user": "string",
-        "voted_post": "string",
         "voted_at": "2019-08-24T14:15:22Z"
         }
   ]
@@ -1433,23 +1432,11 @@ This Endpoint upvotes a specific discussion.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this discussion.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "voted_post": "string",
-  "voted_at": "2019-08-24T14:15:22Z"
-}
-```
-
 <h3 id="votecreatediscussion-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication
@@ -1457,7 +1444,7 @@ This operation require authentication
 
 ## Remove an Upvote for a Specific Discussion
 
-<a id="opIdvoteCreateDiscussion"></a>
+<a id="opIdvoteRemoveDiscussion"></a>
 
 > Code samples
 
@@ -1496,29 +1483,17 @@ This Endpoint removes an upvote for a specific discussion.
 
 `POST /api/v2/discussion/{id}/vote/`
 
-<h3 id="votecreatediscussion-parameters">Parameters</h3>
+<h3 id="voteremovediscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this discussion.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "voted_post": "string",
-  "voted_at": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="votecreatediscussion-responses">Responses</h3>
+<h3 id="voteremovediscussion-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Vote](#schemavote)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication
@@ -1570,23 +1545,11 @@ This endpoint follows a discussion.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this discussion.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "thread": "string",
-  "added_at": "2019-08-24T14:15:22Z"
-}
-```
-
 <h3 id="followdiscussion-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Follow](#schemafollow)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication
@@ -1594,7 +1557,7 @@ This operation require authentication
 
 ## Unfollow a Discussion
 
-<a id="opIdfollowDiscussion"></a>
+<a id="opIdunfollowDiscussion"></a>
 
 > Code samples
 
@@ -1632,29 +1595,17 @@ This endpoint unfollows a discussion.
 
 `POST /api/v2/discussion/{id}/follow/`
 
-<h3 id="followdiscussion-parameters">Parameters</h3>
+<h3 id="unfollowdiscussion-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this discussion.|
 
-> Example responses
-
-> 201 Response
-
-```json
-{
-  "user": "string",
-  "thread": "string",
-  "added_at": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="followdiscussion-responses">Responses</h3>
+<h3 id="unfollowdiscussion-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Follow](#schemafollow)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation require authentication

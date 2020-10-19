@@ -18,6 +18,8 @@ includes:
   - endpoints/category
   - endpoints/media
   - endpoints/discussion
+  - endpoints/post
+  - endpoints/comment
   # - endpoints/tag
   - schemas
   - schemas/user
@@ -27,6 +29,8 @@ includes:
   - schemas/category
   - schemas/media
   - schemas/discussion
+  - schemas/post
+  - schemas/comment
   - schemas/vote
   - errors
 

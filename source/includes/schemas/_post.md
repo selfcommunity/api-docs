@@ -113,30 +113,15 @@
 |»» choice|string|false|read-only|none|
 |»» user|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
-|author|object|false|read-only|none|
-|» id|integer|false|read-only|none|
-|» username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|string|false|none|none|
-|» email|string(email)|false|read-only|none|
-|» email_isvalid|boolean|false|read-only|none|
-|» date_joined|string(date-time)|false|read-only|none|
-|» bio|string|false|none|none|
-|» location|string|false|none|none|
-|» birthday|string|false|none|none|
-|» description|string|false|none|none|
-|» gender|string|false|none|none|
-|» status|string|false|read-only|none|
-|» website|string(uri)|false|none|none|
-|» avatar|string|false|read-only|none|
-|» cover|string|false|read-only|none|
+|author|object|false|read-only|[User](#schemauser)|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
 |comment_count|string|false|read-only|none|
-|vote_count|string|false|read-only|none|
-|flag_count|string|false|read-only|none|
+|vote_count|integer|false|read-only|none|
+|flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 
 <h2 id="tocS_ListPost">ListPost</h2>
@@ -263,30 +248,15 @@
 |»» choice|string|false|read-only|none|
 |»» user|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
-|author|object|false|read-only|none|
-|» id|integer|false|read-only|none|
-|» username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|» real_name|string|false|none|none|
-|» email|string(email)|false|read-only|none|
-|» email_isvalid|boolean|false|read-only|none|
-|» date_joined|string(date-time)|false|read-only|none|
-|» bio|string|false|none|none|
-|» location|string|false|none|none|
-|» birthday|string|false|none|none|
-|» description|string|false|none|none|
-|» gender|string|false|none|none|
-|» status|string|false|read-only|none|
-|» website|string(uri)|false|none|none|
-|» avatar|string|false|read-only|none|
-|» cover|string|false|read-only|none|
+|author|object|false|read-only|[User](#schemauser)|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
 |comment_count|string|false|read-only|none|
-|vote_count|string|false|read-only|none|
-|flag_count|string|false|read-only|none|
+|vote_count|integer|false|read-only|none|
+|flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 |seen_by_id|[any]|false|none|none|
 |has_boost|boolean|false|none|none|
