@@ -1,14 +1,14 @@
-<h1 id="selfcommunity-api-discussion">Discussion</h1>
+<h1 id="selfcommunity-api-post">Post</h1>
 
-## Get All Discussions
+## Get All Posts
 
-<a id="opIdlistDiscussions"></a>
+<a id="opIdlistPosts"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/ \
+curl -X GET /api/v2/post/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -20,7 +20,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/',
+fetch('/api/v2/post/',
 {
   method: 'GET',
 
@@ -34,13 +34,13 @@ fetch('/api/v2/discussion/',
 
 ```
 
-This endpoint retrieves all discussions.
+This endpoint retrieves all posts.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/discussion/`
+`GET /api/v2/post/`
 
-<h3 id="listdiscussions-parameters">Parameters</h3>
+<h3 id="listposts-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -60,8 +60,6 @@ This endpoint retrieves all discussions.
   "results": [
     {
       "id": 0,
-      "title": "string",
-      "slug": "string",
       "categories": [
         0
       ],
@@ -102,7 +100,6 @@ This endpoint retrieves all discussions.
         ]
       },
       "last_activity_at": "2019-08-24T14:15:22Z",
-      "view_count": 0,
       "author": {
         "id": 0,
         "username": "string",
@@ -130,20 +127,19 @@ This endpoint retrieves all discussions.
       "flag_count": "string",
       "addressing": [
         0
-      ],
-      "follower_count": "string"
+      ]
     }
   ]
 }
 ```
 
-<h3 id="listdiscussions-responses">Responses</h3>
+<h3 id="listposts-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listdiscussions-responseschema">Response Schema</h3>
+<h3 id="listposts-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -152,21 +148,21 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
+|» results|[[Post](#schemapost)]|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Create a Discussion
+## Create a Post
 
-<a id="opIdcreateDiscussion"></a>
+<a id="opIdcreatePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/discussion/ \
+curl -X POST /api/v2/post/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -175,7 +171,6 @@ curl -X POST /api/v2/discussion/ \
 
 ```javascript
 const inputBody = '{
-  "title": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -195,10 +190,6 @@ const inputBody = '{
       }
     ]
   },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
-  },
   "addressing": []
 }';
 const headers = {
@@ -207,7 +198,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/',
+fetch('/api/v2/post/',
 {
   method: 'POST',
   body: inputBody,
@@ -221,17 +212,16 @@ fetch('/api/v2/discussion/',
 
 ```
 
-This endpoint creates a discussion.
+This endpoint creates a post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`POST /api/v2/discussion/`
+`POST /api/v2/post/`
 
 > Body parameter
 
 ```json
 {
-  "title": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -251,35 +241,27 @@ This endpoint creates a discussion.
       }
     ]
   },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
-  },
   "addressing": []
 }
 ```
 
-<h3 id="creatediscussion-parameters">Parameters</h3>
+<h3 id="createpost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» title|body|string¦null|true|The title of the discussion|
-|» text|body|string|false|The content of the discussion in html format|
+|» text|body|string|false|The content of the post in html format|
 |» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|The Location object to associate at the discussion|
+|» location|body|object¦null|false|The Location object to associate at the post|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|The poll object to associate at the discussion|
+|» poll|body|object¦null|false|The poll object to associate at the post|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
 |»» choices|body|[object]|true|none|
 |»»» choice|body|string|true|none|
-|» captcha|body|object|false|Required only when daily discussion limit is passed|
-|»» hashkey|body|string|true|none|
-|»» response|body|string|true|none|
 |» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
 
 > Example responses
@@ -289,8 +271,6 @@ This endpoint creates a discussion.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
         {
             "id": 0,
@@ -377,7 +357,6 @@ This endpoint creates a discussion.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -403,30 +382,29 @@ This endpoint creates a discussion.
   "comment_count": "string",
   "vote_count": 0,
   "flag_count": "string",
-  "addressing": [],
-  "follower_count": "string"
+  "addressing": []
 }
 ```
 
-<h3 id="creatediscussion-responses">Responses</h3>
+<h3 id="createpost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Discussion](#schemadiscussion)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Post](#schemapost)|
 
 <aside class="notice">
 This operation require authentication
 </aside>
 
-## Search a Discussion
+## Search a Post
 
-<a id="opIdsearchDiscussion"></a>
+<a id="opIdsearchPost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/search/ \
+curl -X GET /api/v2/post/search/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -438,7 +416,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/search/',
+fetch('/api/v2/post/search/',
 {
   method: 'GET',
 
@@ -452,13 +430,13 @@ fetch('/api/v2/discussion/search/',
 
 ```
 
-This Endpoint perform search operation to discussions.
+This Endpoint perform search operation to posts.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/discussion/search/`
+`GET /api/v2/post/search/`
 
-<h3 id="searchdiscussion-parameters">Parameters</h3>
+<h3 id="searchpost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -476,8 +454,6 @@ This Endpoint perform search operation to discussions.
   "results": [
       {
         "id": 0,
-        "title": "string",
-        "slug": "string",
         "categories": [
                 {
                     "id": 0,
@@ -564,7 +540,6 @@ This Endpoint perform search operation to discussions.
             ]
         },
         "last_activity_at": "2019-08-24T14:15:22Z",
-        "view_count": 0,
         "author": {
             "id": 0,
             "username": "string",
@@ -591,18 +566,19 @@ This Endpoint perform search operation to discussions.
         "vote_count": 0,
         "flag_count": "string",
         "addressing": [],
-        "follower_count": "string",
         "seen_by_id": [
             null
         ],
         "has_boost": true,
-        "actions": "string"
+        "actions": [
+          null
+        ]
         }
     ]
 }
 ```
 
-<h3 id="searchdiscussion-responses">Responses</h3>
+<h3 id="searchpost-responses">Responses</h3>
 
 Status Code **200**
 
@@ -611,21 +587,21 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[ListDiscussion](#schemalistdiscussion)]|true|none|List of results|
+|» results|[[ListPost](#schemalistpost)]|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Get a specific Discussion
+## Get a specific Post
 
-<a id="opIdretrieveDiscussion"></a>
+<a id="opIdretrievePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/{id}/ \
+curl -X GET /api/v2/post/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -637,7 +613,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/{id}/',
+fetch('/api/v2/post/{id}/',
 {
   method: 'GET',
 
@@ -651,17 +627,17 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-This endpoint retrieves a specific discussion using ID.
+This endpoint retrieves a specific post using ID.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/discussion/{id}/`
+`GET /api/v2/post/{id}/`
 
-<h3 id="retrievediscussion-parameters">Parameters</h3>
+<h3 id="retrievepost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
+|id|path|string|true|A unique integer value identifying this post.|
 
 > Example responses
 
@@ -670,8 +646,6 @@ This endpoint retrieves a specific discussion using ID.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
         {
             "id": 0,
@@ -758,7 +732,6 @@ This endpoint retrieves a specific discussion using ID.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -784,30 +757,29 @@ This endpoint retrieves a specific discussion using ID.
   "comment_count": "string",
   "vote_count": 0,
   "flag_count": "string",
-  "addressing": [],
-  "follower_count": "string"
+  "addressing": []
 }
 ```
 
-<h3 id="retrievediscussion-responses">Responses</h3>
+<h3 id="retrievepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Discussion](#schemadiscussion)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Post](#schemapost)|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Update a specific Discussion
+## Update a specific Post
 
-<a id="opIdupdateDiscussion"></a>
+<a id="opIdupdatePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X PUT /api/v2/discussion/{id}/ \
+curl -X PUT /api/v2/post/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -816,7 +788,6 @@ curl -X PUT /api/v2/discussion/{id}/ \
 
 ```javascript
 const inputBody = '{
-  "title": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -844,7 +815,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/{id}/',
+fetch('/api/v2/post/{id}/',
 {
   method: 'PUT',
   body: inputBody,
@@ -858,17 +829,16 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-This endpoint update a specific discussion.
+This endpoint update a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`PUT /api/v2/discussion/{id}/`
+`PUT /api/v2/post/{id}/`
 
 > Body parameter
 
 ```json
 {
-  "title": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -892,27 +862,23 @@ This endpoint update a specific discussion.
 }
 ```
 
-<h3 id="updatediscussion-parameters">Parameters</h3>
+<h3 id="updatepost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» title|body|string¦null|true|The title of the discussion|
-|» text|body|string|false|The content of the discussion in html format|
+|» text|body|string|false|The content of the post in html format|
 |» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
 |» medias|body|[integer]|false|none|
-|» location|body|object¦null|false|The Location object to associate at the discussion|
+|» location|body|object¦null|false|The Location object to associate at the post|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|The poll object to associate at the discussion|
+|» poll|body|object¦null|false|The poll object to associate at the post|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
 |»» choices|body|[object]|true|none|
 |»»» choice|body|string|true|none|
-|» captcha|body|object|false|Required only when daily discussion limit is passed|
-|»» hashkey|body|string|true|none|
-|»» response|body|string|true|none|
 |» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
 
 > Example responses
@@ -922,8 +888,6 @@ This endpoint update a specific discussion.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
         {
             "id": 0,
@@ -1010,7 +974,6 @@ This endpoint update a specific discussion.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -1036,37 +999,36 @@ This endpoint update a specific discussion.
   "comment_count": "string",
   "vote_count": 0,
   "flag_count": "string",
-  "addressing": [],
-  "follower_count": "string"
+  "addressing": []
 }
 ```
 
-<h3 id="updatediscussion-responses">Responses</h3>
+<h3 id="updatepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateDiscussion](#schemaupdatediscussion)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdatePost](#schemaupdatepost)|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator
+This operation require authentication. The logged user must be the post creator
 </aside>
 
-## Delete a Discussion
+## Delete a Post
 
-<a id="opIddestroyDiscussion"></a>
+<a id="opIddestroyPost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X DELETE /api/v2/discussion/{id}/
+curl -X DELETE /api/v2/post/{id}/
   -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
-fetch('/api/v2/discussion/{id}/',
+fetch('/api/v2/post/{id}/',
 {
   method: 'DELETE',
   headers: {
@@ -1082,37 +1044,37 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-This Endpoint delete a Discussion.
+This Endpoint delete a Post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`DELETE /api/v2/discussion/{id}/`
+`DELETE /api/v2/post/{id}/`
 
-<h3 id="destroydiscussion-parameters">Parameters</h3>
+<h3 id="destroypost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
+|id|path|string|true|A unique integer value identifying this post.|
 
-<h3 id="destroydiscussion-responses">Responses</h3>
+<h3 id="destroypost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the discussion creator
+This operation require authentication. The logged user must be the post creator
 </aside>
 
-## Get list of related Discussions
+## Get List of Votes for a Specific Post
 
-<a id="opIdrelatedDiscussion"></a>
+<a id="opIdvotePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/{id}/related/ \
+curl -X GET /api/v2/post/{id}/vote/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -1124,7 +1086,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/{id}/related/',
+fetch('/api/v2/post/{id}/vote/',
 {
   method: 'GET',
 
@@ -1137,218 +1099,17 @@ fetch('/api/v2/discussion/{id}/related/',
 });
 
 ```
-
-This Endpoint retrieve related discussions
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/discussion/{id}/related/`
-
-<h3 id="relateddiscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
-|limit|query|integer|false|Number of results to return per page.|
-|offset|query|integer|false|The initial index from which to return the results.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "count": 123,
-  "next": "string",
-  "previous": "string",
-  "results": [
-      {
-        "id": 0,
-        "title": "string",
-        "slug": "string",
-        "categories": [
-                {
-                    "id": 0,
-                    "order": 1,
-                    "name": "name",
-                    "name_synonyms": "synonyms",
-                    "slug": "name",
-                    "slogan": "Slogan",
-                    "html_info": null,
-                    "seo_title": null,
-                    "seo_description": null,
-                    "auto_follow": "None",
-                    "active": true,
-                    "deleted": false,
-                    "image_original": "string",
-                    "image_bigger": "string",
-                    "image_big": "string",
-                    "image_medium": "string",
-                    "image_small": "string",
-                    "emotional_image_original": "string",
-                    "emotional_image_position": 50,
-                    "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                    "stream_order_by": "recent"
-                }
-            ],
-        "media_type": "images",
-        "medias": [
-                {
-                    "id": 0,
-                    "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-                    "added_at": "2020-10-08T16:15:59.122041+02:00",
-                    "type": "url",
-                    "title": "Title",
-                    "description": "Description",
-                    "url": "https://www.example.com",
-                    "keywords": "[]",
-                    "entities": "[]",
-                    "image": "string",
-                    "image_width": 1500,
-                    "image_height": 1500,
-                    "oembed_type": null,
-                    "oembed_url": null,
-                    "oembed_width": null,
-                    "oembed_height": null,
-                    "oembed_duration": null,
-                    "oembed_html": null,
-                    "oembed_preview_ready": true,
-                    "oembed_available": true,
-                    "order": 0,
-                    "embed_type": null,
-                    "embed_id": null
-                }
-            ],
-        "location": {
-            "location": "string",
-            "lat": 0,
-            "lng": 0
-        },
-        "poll": {
-            "id": 0,
-            "title": "string",
-            "multiple_choices": true,
-            "added_at": "2019-08-24T14:15:22Z",
-            "modified_at": "2019-08-24T14:15:22Z",
-            "closed": true,
-            "expiration_at": "2019-08-24T14:15:22Z",
-            "hidden": "string",
-            "choices": [
-            {
-                "id": 0,
-                "choice": "string",
-                "order": 0,
-                "added_at": "2019-08-24T14:15:22Z",
-                "deleted": "string",
-                "count_votes": "string"
-            }
-            ],
-            "votes": [
-            {
-                "id": 0,
-                "choice": "string",
-                "user": "string"
-            }
-            ]
-        },
-        "last_activity_at": "2019-08-24T14:15:22Z",
-        "view_count": 0,
-        "author": {
-            "id": 0,
-            "username": "string",
-            "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
-            "date_joined": "2019-08-24T14:15:22Z",
-            "bio": "string",
-            "location": "string",
-            "birthday": "string",
-            "description": "string",
-            "gender": "Male",
-            "status": "a",
-            "website": "http://example.com",
-            "avatar": "string",
-            "cover": "string"
-        },
-        "added_at": "2019-08-24T14:15:22Z",
-        "html": "string",
-        "summary": "string",
-        "deleted": true,
-        "collapsed": "string",
-        "comment_count": "string",
-        "vote_count": 0,
-        "flag_count": "string",
-        "addressing": [],
-        "follower_count": "string",
-        "seen_by_id": [
-            null
-        ],
-        "has_boost": true,
-        "actions": "string"
-        }
-    ]
-}
-```
-
-<h3 id="relateddiscussion-responses">Responses</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
-
-<aside class="notice">
-This operation require authentication only if `content_availability` community option is false
-</aside>
-
-## Get List of Votes for a Specific Discussion
-
-<a id="opIdvoteDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/discussion/{id}/vote/ \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/discussion/{id}/vote/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-This endpoint retrieves all votes for a specific discussion.
+This endpoint retrieves all votes for a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/discussion/{id}/vote/`
+`GET /api/v2/post/{id}/vote/`
 
-<h3 id="votediscussion-parameters">Parameters</h3>
+<h3 id="votepost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
+|id|path|string|true|A unique integer value identifying this post.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 
@@ -1370,7 +1131,7 @@ This endpoint retrieves all votes for a specific discussion.
 }
 ```
 
-<h3 id="votediscussion-responseschema">Response Schema</h3>
+<h3 id="votepost-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -1385,15 +1146,15 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Upvote for a Specific Discussion
+## Upvote for a Specific Post
 
-<a id="opIdvoteCreateDiscussion"></a>
+<a id="opIdvoteCreatePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/discussion/{id}/vote/ \
+curl -X POST /api/v2/post/{id}/vote/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
@@ -1407,7 +1168,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/{id}/vote/',
+fetch('/api/v2/post/{id}/vote/',
 {
   method: 'POST',
   headers: headers
@@ -1420,19 +1181,19 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-This Endpoint upvotes a specific discussion.
+This Endpoint upvotes a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`POST /api/v2/discussion/{id}/vote/`
+`POST /api/v2/post/{id}/vote/`
 
-<h3 id="votecreatediscussion-parameters">Parameters</h3>
+<h3 id="votecreatepost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
+|id|path|string|true|A unique integer value identifying this post.|
 
-<h3 id="votecreatediscussion-responses">Responses</h3>
+<h3 id="votecreatepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1442,15 +1203,15 @@ This Endpoint upvotes a specific discussion.
 This operation require authentication
 </aside>
 
-## Remove an Upvote for a Specific Discussion
+## Remove an Upvote for a Specific Post
 
-<a id="opIdvoteRemoveDiscussion"></a>
+<a id="opIdvoteCreatePost"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/discussion/{id}/vote/ \
+curl -X POST /api/v2/post/{id}/vote/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
@@ -1464,7 +1225,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/discussion/{id}/vote/',
+fetch('/api/v2/post/{id}/vote/',
 {
   method: 'POST',
   headers: headers
@@ -1477,131 +1238,19 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-This Endpoint removes an upvote for a specific discussion.
+This Endpoint removes an upvote for a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`POST /api/v2/discussion/{id}/vote/`
+`POST /api/v2/post/{id}/vote/`
 
-<h3 id="voteremovediscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
-
-<h3 id="voteremovediscussion-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require authentication
-</aside>
-
-## Follow a Discussion
-
-<a id="opIdfollowDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/discussion/{id}/follow/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/discussion/{id}/follow/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-This endpoint follows a discussion.
-
-<h3 id="http-request">HTTP Request</h3>
-
-`POST /api/v2/discussion/{id}/follow/`
-
-<h3 id="followdiscussion-parameters">Parameters</h3>
+<h3 id="votecreatepost-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
+|id|path|string|true|A unique integer value identifying this post.|
 
-<h3 id="followdiscussion-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require authentication
-</aside>
-
-## Unfollow a Discussion
-
-<a id="opIdunfollowDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/discussion/{id}/follow/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/discussion/{id}/follow/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-This endpoint unfollows a discussion.
-
-<h3 id="http-request">HTTP Request</h3>
-
-`POST /api/v2/discussion/{id}/follow/`
-
-<h3 id="unfollowdiscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this discussion.|
-
-<h3 id="unfollowdiscussion-responses">Responses</h3>
+<h3 id="voteremovepost-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

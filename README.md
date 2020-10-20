@@ -40,6 +40,17 @@ To stop the slate container, run:
 docker stop api-docs
 ```
 
+### Convert from openapi to slate
+Install widdershins globally with
+
+```
+sudo npm i -g widdershins
+```
+
+```
+widdershins --search false --language_tabs 'shell:cURL' 'javascript:Javascript' -x --expandBody --summary openapi -o openapi.md
+```
+
 Other ways to getting started with Slate
 ------------------------------
 
