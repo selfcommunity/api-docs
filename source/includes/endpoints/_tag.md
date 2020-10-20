@@ -9,14 +9,16 @@
 ```shell
 # You can also use wget
 curl -X GET /api/v2/tag/ \
-  -H "Authorization: Bearer {access_token}"
   -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/tag/',
@@ -33,6 +35,10 @@ fetch('/api/v2/tag/',
 
 ```
 
+This endpoint retrieves all tags.
+
+<h3 id="http-request">HTTP Request</h3>
+
 `GET /api/v2/tag/`
 
 <h3 id="listtags-parameters">Parameters</h3>
@@ -42,6 +48,8 @@ fetch('/api/v2/tag/',
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
+|active|query|string|false|active|
+|visible|query|string|false|visible|
 
 > Example responses
 
@@ -50,16 +58,16 @@ fetch('/api/v2/tag/',
 ```json
 {
   "count": 123,
-  "next": "http://api.example.org/tag/?offset=400&limit=100",
-  "previous": "http://api.example.org/tag/?offset=200&limit=100",
+  "next": "string(uri)",
+  "previous": "string(uri)",
   "results": [
     {
       "id": 0,
+      "active": true,
       "name": "string",
       "description": "string",
       "color": "string",
       "visible": true,
-      "active": true,
       "created_at": "2019-08-24T14:15:22Z"
     }
   ]
@@ -78,14 +86,13 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|Count of tags|
-|» next|string(uri)¦null|false|none|Next url for pagination|
-|» previous|string(uri)¦null|false|none|Previous url for pagination|
-|» results|[[Tag](#schematag)]|false|none|Array of tags|
-
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|[[Tag](#schematag)]|false|none|List of results|
 
 <aside class="notice">
-This operation require authentication and admin role
+This operation require authentication and admin role.
 </aside>
 
 ## Create a Tag
@@ -97,24 +104,24 @@ This operation require authentication and admin role
 ```shell
 # You can also use wget
 curl -X POST /api/v2/tag/ \
-  -H "Authorization: Bearer {access_token}"
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-  -d '{"name": "string"}'
-
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
 ```
 
 ```javascript
 const inputBody = '{
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true,
-  "active": true
+  "visible": true
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/tag/',
@@ -131,38 +138,30 @@ fetch('/api/v2/tag/',
 
 ```
 
+This endpoint creates a tag.
+
+<h3 id="http-request">HTTP Request</h3>
+
 `POST /api/v2/tag/`
+
 
 > Body parameter
 
 ```json
 {
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true,
-  "active": true
+  "visible": true
 }
-```
-
-```yaml
-name: string
-description: string
-color: string
-visible: true
-active: true
-
 ```
 
 <h3 id="createtag-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|name|body|string|true|Name of the tag|
-|description|body|string¦null|false|Human readable description of the tag|
-|color|body|string|false|Hexadecimal color|
-|visible|body|boolean|false|Is the tag publicly visible in the frontend?|
-|active|body|boolean|false|Is the tag active?|
+|body|body|[Tag](#schematag)|false|none|
 
 > Example responses
 
@@ -171,11 +170,11 @@ active: true
 ```json
 {
   "id": 0,
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
   "visible": true,
-  "active": true,
   "created_at": "2019-08-24T14:15:22Z"
 }
 ```
@@ -187,39 +186,27 @@ active: true
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Tag](#schematag)|
 
 <aside class="notice">
-This operation require authentication and admin role
+This operation require authentication and admin role.
 </aside>
 
-<a id="opIdretrieveTag"></a>
-
 ## Get a Specific Tag
+
+<a id="opIdretrieveTag"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
 curl -X GET /api/v2/tag/{id}/ \
-  -H "Authorization: Bearer {access_token}"
   -H 'Accept: application/json'
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('/api/v2/tag/{id}/', headers = headers)
-
-print(r.json())
-
+  -H 'Authorization: Bearer {access_token}'
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/tag/{id}/',
@@ -236,6 +223,10 @@ fetch('/api/v2/tag/{id}/',
 
 ```
 
+This endpoint retrieves a specific tag.
+
+<h3 id="http-request">HTTP Request</h3>
+
 `GET /api/v2/tag/{id}/`
 
 <h3 id="retrievetag-parameters">Parameters</h3>
@@ -251,11 +242,11 @@ fetch('/api/v2/tag/{id}/',
 ```json
 {
   "id": 0,
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
   "visible": true,
-  "active": true,
   "created_at": "2019-08-24T14:15:22Z"
 }
 ```
@@ -266,8 +257,8 @@ fetch('/api/v2/tag/{id}/',
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
-<aside class="notice">
-This operation require authentication and admin role
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 ## Update a Specific Tag
@@ -279,23 +270,24 @@ This operation require authentication and admin role
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/tag/{id}/ \
-  -H "Authorization: Bearer {access_token}"
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-  -d '{"name": "string"}'
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
 ```
 
 ```javascript
 const inputBody = '{
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true,
-  "active": true
+  "visible": true
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/tag/{id}/',
@@ -312,39 +304,30 @@ fetch('/api/v2/tag/{id}/',
 
 ```
 
+This endpoint updates a specific tag.
+
+<h3 id="http-request">HTTP Request</h3>
+
 `PUT /api/v2/tag/{id}/`
 
 > Body parameter
 
 ```json
 {
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true,
-  "active": true
+  "visible": true
 }
-```
-
-```yaml
-name: string
-description: string
-color: string
-visible: true
-active: true
-
 ```
 
 <h3 id="updatetag-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this tag.|
-|name|body|string|true|Name of the tag|
-|description|body|string¦null|false|Human readable description of the tag|
-|color|body|string|false|Hexadecimal color|
-|visible|body|boolean|false|Is the tag publicly visible in the frontend?|
-|active|body|boolean|false|Is the tag active?|
+|id|path|string|true|A unique integer value identifying this user tag.|
+|body|body|[Tag](#schematag)|false|none|
 
 > Example responses
 
@@ -353,11 +336,11 @@ active: true
 ```json
 {
   "id": 0,
+  "active": true,
   "name": "string",
   "description": "string",
   "color": "string",
   "visible": true,
-  "active": true,
   "created_at": "2019-08-24T14:15:22Z"
 }
 ```
@@ -369,5 +352,174 @@ active: true
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
 <aside class="notice">
-This operation require authentication and admin role
+This operation requires authentication and admin role.
+</aside>
+
+## Patch a Specific Tag
+
+<a id="opIdpartialUpdateTag"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/tag/{id}/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
+```
+
+```javascript
+const inputBody = '{
+  "active": true,
+  "name": "string",
+  "description": "string",
+  "color": "string",
+  "visible": true
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/tag/{id}/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint patch a specific tag.
+ 
+**NOTE:**
+You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+
+For example to change `active` or `visible` flags in an admin list/table interface.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/tag/{id}/`
+
+> Body parameter
+
+```json
+{
+  "active": true,
+  "name": "string",
+  "description": "string",
+  "color": "string",
+  "visible": true
+}
+```
+
+<h3 id="partialupdatetag-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this tag.|
+|body|body|[Tag](#schematag)|false|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "active": true,
+  "name": "string",
+  "description": "string",
+  "color": "string",
+  "visible": true,
+  "created_at": "2019-08-24T14:15:22Z"
+}
+```
+
+<h3 id="partialupdatetag-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
+
+<aside class="notice">
+This operation requires authentication and admin role.
+</aside>
+
+## Assign a Tag to a User
+
+<a id="opIdassignTag"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/tag/{id}/assign/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
+```
+
+```javascript
+const inputBody = '{
+  "user_id": 123
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/tag/{id}/assign/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Assign a tag to a user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/tag/{id}/assign/`
+
+> Body parameter
+
+```json
+{
+  "user_id": 123
+}
+```
+
+<h3 id="assigntag-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this tag.|
+|user_id|body|integer|true|none|
+
+<h3 id="assigntag-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|none|
+
+<aside class="notice">
+This operation requires authentication and admin role.
 </aside>
