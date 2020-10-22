@@ -48,8 +48,9 @@ This endpoint retrieves all tags.
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
-|active|query|string|false|active|
-|visible|query|string|false|visible|
+|active|query|string|false|Is the tag active?|
+|visible|query|string|false|Is this tag publicly visible?|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=name,created_at`), default is `-created_at` (minus char is used for descending ordering)|
 
 > Example responses
 
@@ -471,7 +472,7 @@ curl -X POST /api/v2/tag/{id}/assign/ \
 
 ```javascript
 const inputBody = '{
-  "user_id": 123
+  "user": 123
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -503,7 +504,7 @@ Assign a tag to a user.
 
 ```json
 {
-  "user_id": 123
+  "user": 123
 }
 ```
 
@@ -512,9 +513,79 @@ Assign a tag to a user.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this tag.|
-|user_id|body|integer|true|none|
+|user|body|integer|true|A unique integer value identifying the user.|
 
 <h3 id="assigntag-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|none|
+
+<aside class="notice">
+This operation requires authentication and admin role.
+</aside>
+
+## Unassign a Tag to a User
+
+<a id="opIdunassignTag"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/tag/{id}/assign/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+  --DATA '{body}'
+```
+
+```javascript
+const inputBody = '{
+  "user": 123
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/tag/{id}/assign/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Unassign a tag to a user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/tag/{id}/assign/`
+
+> Body parameter
+
+```json
+{
+  "user": 123
+}
+```
+
+<h3 id="unassigntag-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this tag.|
+|user|body|integer|true|A unique integer value identifying the user.|
+
+<h3 id="unassigntag-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
