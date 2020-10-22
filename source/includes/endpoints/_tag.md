@@ -48,8 +48,9 @@ This endpoint retrieves all tags.
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
-|active|query|string|false|active|
-|visible|query|string|false|visible|
+|active|query|string|false|Is the tag active?|
+|visible|query|string|false|Is this tag publicly visible?|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=name,created_at`), default is `-created_at` (minus char is used for descending ordering)|
 
 > Example responses
 
