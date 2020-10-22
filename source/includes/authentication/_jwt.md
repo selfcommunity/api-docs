@@ -59,7 +59,7 @@ While there are three types of claims, registered, public, and private, we highl
 
 ```json
 {
-  "user_id": "id community user",
+  "user_id": 1,
   "token_type": "access",
   "jti": "random unique identifier of the token",
   "iat": 1496091964000,
@@ -74,7 +74,7 @@ It will not be verified in the authorization phase.
 
 In particular:
 
-* *user_id* notes the user unique id (in the community) identified by the token. *Required.*
+* *user_id* notes the user unique id (in the community) identified by the token. Its value MUST be an integer number. *Required.*
 * *ext_id* notes the user unique id (in the external service). *Optional.*
 * *token_type* notes the type of the token. Its value MUST be "access". *Required.*
 * *exp* (expiration time) notes the the expiration time on or after which the JWT MUST NOT be accepted for processing. Its value MUST be a number containing a NumericDate value in seconds since Epoch (unix epoch time). The processing of the "exp" claim requires that the current date/time MUST be before the expiration date/time listed in the "exp" claim.  *Required.*
