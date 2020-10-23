@@ -111,7 +111,7 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[Comment](#schemacomment)]|false|none|none|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -226,7 +226,7 @@ This endpoint creates a comment.
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Comment](#schemacomment)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 
@@ -319,7 +319,7 @@ This endpoint retrieves a specific comment using ID.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Comment](#schemacomment)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -435,7 +435,7 @@ This endpoint update a specific comment.
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Comment](#schemacomment)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the comment creator
 </aside>
 
@@ -487,7 +487,7 @@ This Endpoint delete a Comment.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication. The logged user must be the comment creator
 </aside>
 
@@ -566,7 +566,7 @@ List votes for this comment
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Vote](#schemavote)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
@@ -625,7 +625,7 @@ This Endpoint upvotes a specific comment.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 
@@ -684,6 +684,6 @@ This Endpoint removes an upvote for a specific comment.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
