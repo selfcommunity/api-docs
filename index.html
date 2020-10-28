@@ -1817,7 +1817,7 @@ curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span
 </tbody></table>
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 <h2 id='delete-user'>Delete User</h2>
 <p><a id="opIddestroyUser"></a></p>
@@ -1847,7 +1847,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 </code></pre></div>
 <p><code>DELETE /api/v2/user/{id}/</code></p>
 
-<p>Delete a specific user identified by {id}. Only the user identified by the id and the administrators can delete the user. </p>
+<p>Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. </p>
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
@@ -1866,6 +1866,13 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 <td>string</td>
 <td>true</td>
 <td>A unique integer value identifying this user.</td>
+</tr>
+<tr>
+<td>hard</td>
+<td>query</td>
+<td>bool</td>
+<td>false</td>
+<td>If the value is set to 1, all user&#39;s content (profile, post, votes, etc...) will be removed as well. If the value is set to 0, it will be a soft delete (the user is marked as deleted, it will not appear in the user lists, the user&#39;s posts will remain and it will not be possible to create a user with the same username and ext_id).</td>
 </tr>
 </tbody></table>
 
@@ -1888,7 +1895,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 </tbody></table>
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 <h2 id='me'>Me</h2>
 <p><a id="opIdmeUser"></a></p>
