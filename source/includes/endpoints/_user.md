@@ -383,7 +383,7 @@ This endpoint patch a specific user identified by {id}.. A user can only update 
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
 ## Delete User
@@ -419,14 +419,14 @@ fetch('/api/v2/user/{id}/',
 
 `DELETE /api/v2/user/{id}/`
 
-Delete a specific user identified by {id}. Only the user identified by the id and the administrators can delete the user. 
+Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|hard|query|bool|false|If the value is set to 1, all user's content (profile, post, votes, etc...) will be removed as well. If the value is set to 0, it will be a soft delete (the user is deleted, he will not appear in the user lists, his posts remain and a user with the same username cannot be created).|
+|hard|query|bool|false|If the value is set to 1, all user's content (profile, post, votes, etc...) will be removed as well. If the value is set to 0, it will be a soft delete (the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id).|
 
 <h3 id="destroyuser-responses">Responses</h3>
 
