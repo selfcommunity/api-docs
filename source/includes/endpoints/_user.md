@@ -386,7 +386,7 @@ This endpoint patch a specific user identified by {id}.. A user can only update 
 This operation require authentication
 </aside>
 
-## Delete User
+## Delete a Specific User
 
 <a id="opIddestroyUser"></a>
 
