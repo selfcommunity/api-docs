@@ -49,6 +49,7 @@ This endpoint retrieves all tags.
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
 |active|query|string|false|Is the tag active?|
+|deleted|query|string|false|Is the tag deleted?|
 |visible|query|string|false|Is this tag publicly visible?|
 |ordering|query|string|false|Ordering fields (eg: `?ordering=name,created_at`), default is `-created_at` (minus char is used for descending ordering)|
 
@@ -64,12 +65,14 @@ This endpoint retrieves all tags.
   "results": [
     {
       "id": 0,
-      "active": true,
-      "name": "string",
+      "type": "string",      
+      "name": "string",      
       "description": "string",
       "color": "string",
       "visible": true,
-      "created_at": "2019-08-24T14:15:22Z"
+      "created_at": "2019-08-24T14:15:22Z",
+      "active": true,
+      "deleted": false
     }
   ]
 }
@@ -114,10 +117,12 @@ curl -X POST /api/v2/tag/ \
 ```javascript
 const inputBody = '{
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -151,10 +156,12 @@ This endpoint creates a tag.
 ```json
 {
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }
 ```
 
@@ -171,12 +178,14 @@ This endpoint creates a tag.
 ```json
 {
   "id": 0,
-  "active": true,
-  "name": "string",
+  "type": "string",      
+  "name": "string",      
   "description": "string",
   "color": "string",
   "visible": true,
-  "created_at": "2019-08-24T14:15:22Z"
+  "created_at": "2019-08-24T14:15:22Z",
+  "active": true,
+  "deleted": false
 }
 ```
 
@@ -243,12 +252,14 @@ This endpoint retrieves a specific tag.
 ```json
 {
   "id": 0,
-  "active": true,
-  "name": "string",
+  "type": "string",      
+  "name": "string",      
   "description": "string",
   "color": "string",
   "visible": true,
-  "created_at": "2019-08-24T14:15:22Z"
+  "created_at": "2019-08-24T14:15:22Z",
+  "active": true,
+  "deleted": false
 }
 ```
 
@@ -259,7 +270,7 @@ This endpoint retrieves a specific tag.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
 <aside class="notice">
-This operation does not require authentication
+This operation does not require <authenticat></authenticat>ion
 </aside>
 
 ## Update a Specific Tag
@@ -280,10 +291,12 @@ curl -X PUT /api/v2/tag/{id}/ \
 ```javascript
 const inputBody = '{
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -316,10 +329,12 @@ This endpoint updates a specific tag.
 ```json
 {
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }
 ```
 
@@ -337,12 +352,14 @@ This endpoint updates a specific tag.
 ```json
 {
   "id": 0,
-  "active": true,
-  "name": "string",
+  "type": "string",      
+  "name": "string",      
   "description": "string",
   "color": "string",
   "visible": true,
-  "created_at": "2019-08-24T14:15:22Z"
+  "created_at": "2019-08-24T14:15:22Z",
+  "active": true,
+  "deleted": false
 }
 ```
 
@@ -374,10 +391,12 @@ curl -X PATCH /api/v2/tag/{id}/ \
 ```javascript
 const inputBody = '{
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -415,10 +434,12 @@ For example to change `active` or `visible` flags in an admin list/table interfa
 ```json
 {
   "active": true,
+  "type": "string",
   "name": "string",
   "description": "string",
   "color": "string",
-  "visible": true
+  "visible": true,
+  "deleted": false
 }
 ```
 
@@ -436,12 +457,14 @@ For example to change `active` or `visible` flags in an admin list/table interfa
 ```json
 {
   "id": 0,
-  "active": true,
-  "name": "string",
+  "type": "string",      
+  "name": "string",      
   "description": "string",
   "color": "string",
   "visible": true,
-  "created_at": "2019-08-24T14:15:22Z"
+  "created_at": "2019-08-24T14:15:22Z",
+  "active": true,
+  "deleted": false
 }
 ```
 
