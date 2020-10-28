@@ -426,6 +426,7 @@ Delete a specific user identified by {id}. Only the user identified by the id an
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
+|hard|query|bool|false|If the value is set to 1, all user's content (profile, post, votes, etc...) will be removed as well. If the value is set to 0, it will be a soft delete (the user is deleted, he will not appear in the user lists, his posts remain and a user with the same username cannot be created).|
 
 <h3 id="destroyuser-responses">Responses</h3>
 
@@ -434,7 +435,7 @@ Delete a specific user identified by {id}. Only the user identified by the id an
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
 
