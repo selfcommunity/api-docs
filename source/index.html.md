@@ -20,7 +20,7 @@ includes:
   - endpoints/discussion
   - endpoints/post
   - endpoints/comment
-  # - endpoints/tag
+  - endpoints/tag
   - schemas
   - schemas/user
   - schemas/connectionRequest
@@ -32,6 +32,7 @@ includes:
   - schemas/post
   - schemas/comment
   - schemas/vote
+  - schemas/tag
   - errors
 
 
