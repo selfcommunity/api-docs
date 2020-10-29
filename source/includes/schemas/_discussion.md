@@ -92,9 +92,9 @@
 |id|integer|false|read-only|none|
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
-|categories|[[Category](#schemacategory)]|true|none|none|
+|categories|[object]|true|none|[Category](#schemacategory)|
 |media_type|string|false|read-only|none|
-|medias|[[Media](#schemamedia)]|false|none|none|
+|medias|[object]|false|none|[Media](#schemamedia)|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -258,9 +258,9 @@
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
 |text|string|true|write-only|none|
-|categories|[[Category](#schemacategory)]|true|none|none|
+|categories|[object]|true|none|[Category](#schemacategory)|
 |media_type|string|false|read-only|none|
-|medias|[[Media](#schemamedia)]|false|none|none|
+|medias|[object]|false|none|[Media](#schemamedia)|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
