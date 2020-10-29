@@ -596,7 +596,33 @@ This Endpoint perform search operation to discussions.
             null
         ],
         "has_boost": true,
-        "actions": "string"
+        "matches": [
+    {
+      "object": {
+          "id": 238,
+          "type": "search",
+          "added_at": "2020-10-19T16:05:34.974676+00:00",
+          "html": "string"
+      },
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      }
+    }
+  ]
         }
     ]
 }
@@ -611,7 +637,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[ListDiscussion](#schemalistdiscussion)]|true|none|List of results|
+|» results|[[SearchDiscussion](#schemasearchdiscussion)]|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -1284,8 +1310,34 @@ This Endpoint retrieve related discussions
             null
         ],
         "has_boost": true,
-        "actions": "string"
-        }
+        "matches": [
+          {
+            "object": {
+                "id": 238,
+                "type": "search",
+                "added_at": "2020-10-19T16:05:34.974676+00:00",
+                "html": "string"
+            },
+            "author": {
+              "id": 0,
+              "username": "string",
+              "real_name": "string",
+              "email": "user@example.com",
+              "email_isvalid": true,
+              "date_joined": "2019-08-24T14:15:22Z",
+              "bio": "string",
+              "location": "string",
+              "birthday": "string",
+              "description": "string",
+              "gender": "Male",
+              "status": "a",
+              "website": "http://example.com",
+              "avatar": "string",
+              "cover": "string"
+            }
+          }
+        ]
+      }
     ]
 }
 ```

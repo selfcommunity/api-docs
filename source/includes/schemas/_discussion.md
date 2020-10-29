@@ -92,9 +92,9 @@
 |id|integer|false|read-only|none|
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
-|categories|[integer]|true|none|none|
+|categories|[[Category](#schemacategory)]|true|none|none|
 |media_type|string|false|read-only|none|
-|medias|[integer]|false|none|none|
+|medias|[[Media](#schemamedia)]|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -133,27 +133,12 @@
 |addressing|[integer]|false|none|none|
 |follower_count|string|false|read-only|none|
 
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|media_type|images|
-|media_type|video|
-|media_type|documents|
-|media_type|link|
-|gender|Male|
-|gender|Female|
-|gender|Unspecified|
-|status|a|
-|status|b|
-|status|u|
-
-<h2 id="tocS_ListDiscussion">ListDiscussion</h2>
+<h2 id="tocS_SearchDiscussion">SearchDiscussion</h2>
 <!-- backwards compatibility -->
-<a id="schemalistdiscussion"></a>
-<a id="schema_ListDiscussion"></a>
-<a id="tocSlistdiscussion"></a>
-<a id="tocslistdiscussion"></a>
+<a id="schemasearchdiscussion"></a>
+<a id="schema_SearchDiscussion"></a>
+<a id="tocSsearchdiscussion"></a>
+<a id="tocssearchdiscussion"></a>
 
 ```json
 {
@@ -234,8 +219,32 @@
     null
   ],
   "has_boost": true,
-  "actions": [
-    null
+  "matches": [
+    {
+      "object": {
+          "id": 238,
+          "type": "search",
+          "added_at": "2020-10-19T16:05:34.974676+00:00",
+          "html": "string"
+      },
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      }
+    }
   ]
 }
 
@@ -249,9 +258,9 @@
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
 |text|string|true|write-only|none|
-|categories|[integer]|true|none|none|
+|categories|[[Category](#schemacategory)]|true|none|none|
 |media_type|string|false|read-only|none|
-|medias|[integer]|false|none|none|
+|medias|[[Media](#schemamedia)]|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -291,13 +300,4 @@
 |follower_count|string|false|read-only|none|
 |seen_by_id|[any]|false|none|none|
 |has_boost|boolean|false|none|none|
-|actions|[any]|false|read-only|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|media_type|images|
-|media_type|video|
-|media_type|documents|
-|media_type|link|
+|matches|[any]|false|read-only|none|
