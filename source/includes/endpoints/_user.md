@@ -418,13 +418,20 @@ fetch('/api/v2/user/{id}/',
 `DELETE /api/v2/user/{id}/`
 
 Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
+There are two ways of deleting a user: <b>soft</b> and <b>hard</b>.
+Soft: the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id.
+Hard: all user's content (profile, post, votes, etc...) will be removed.
+If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)
+If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)
+If the delete is hard and the user is already soft deleted perform hard delete
+If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|hard|query|bool|false|If the value is set to 1, all user's content (profile, post, votes, etc...) will be removed as well. If the value is set to 0, it will be a soft delete (the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id).|
+|hard|query|bool|false|If the value is set to 1, perform hard delete else execute a soft delete.|
 
 <h3 id="destroyuser-responses">Responses</h3>
 
