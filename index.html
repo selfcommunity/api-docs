@@ -1840,13 +1840,14 @@ There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</s
 
 <p>Hard: all user&#39;s content (profile, post, votes, etc...) will be removed.</p>
 
-<p>If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)</p>
+<p>In particular:</p>
 
-<p>If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)</p>
-
-<p>If the delete is hard and the user is already soft deleted perform hard delete</p>
-
-<p>If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)</p>
+<ul>
+<li>If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)</li>
+<li>If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)</li>
+<li>If the delete is hard and the user is already soft deleted perform hard delete</li>
+<li>If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)</li>
+</ul>
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
