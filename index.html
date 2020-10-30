@@ -453,7 +453,7 @@
                     <a href="#get-category-39-s-trending-feed" class="toc-h2 toc-link" data-title="Get Category's Trending Feed">Get Category's Trending Feed</a>
                   </li>
                   <li>
-                    <a href="#get-category-trending-followers" class="toc-h2 toc-link" data-title="Get Category Trending Followers">Get Category Trending Followers</a>
+                    <a href="#get-category-39-s-trending-followers" class="toc-h2 toc-link" data-title="Get Category's Trending Followers">Get Category's Trending Followers</a>
                   </li>
                   <li>
                     <a href="#follow-a-category" class="toc-h2 toc-link" data-title="Follow a Category">Follow a Category</a>
@@ -5659,7 +5659,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false.
 </aside>
-<h2 id='get-category-trending-followers'>Get Category Trending Followers</h2>
+<h2 id='get-category-39-s-trending-followers'>Get Category&#39;s Trending Followers</h2>
 <p><a id="opIdtrendingfollowersCategory"></a></p>
 
 <blockquote>
@@ -5686,7 +5686,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>This endpoint returns all trending followers of a specific category.</p>
+<p>This endpoint returns all trending followers of a specific category during last n days (default 90) .</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
