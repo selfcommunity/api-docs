@@ -50,7 +50,7 @@ This endpoint retrieve the list of all users.
 |real_name|query|string|false|Filter using field real_name.|
 |location|query|string|false|Filter using field location.|
 |description|query|string|false|Filter using field description.|
-|ordering|query|string|false|Ordering fields (eg: `?ordering=username`), default is `-username` (minus char is used for descending ordering)|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=username`). Minus char is used for descending ordering, eg. `-username`|
 
 
 > Example responses
