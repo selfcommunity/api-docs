@@ -47,7 +47,7 @@
 |seo_description|string¦null|false|none|Description for HTML meta tag|
 |auto_follow|string|false|none|Enum to define auto follow behaviour|
 |active|boolean|false|none|Is this category active?|
-|deleted|boolean|false|none|Is this category deleted? (Note: if deleted is true also active must be true)|
+|deleted|boolean|false|none|Is this category deleted? (Note: if deleted is true active must be false)|
 |image_original|string(binary)¦null|false|none|Squared image with min size (600x600) if passed empty a default image will be used - original size|
 |image_bigger|string(binary)|false|read-only|Squared image - auto generated bigger size|
 |image_big|string(binary)|false|read-only|Squared image - auto generated big size|
