@@ -1345,13 +1345,6 @@ curl <span class="nt">-X</span> GET /api/v2/user/ <span class="se">\</span>
 <td>Filter using field real_name.</td>
 </tr>
 <tr>
-<td>bio</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>Filter using field bio.</td>
-</tr>
-<tr>
 <td>location</td>
 <td>query</td>
 <td>string</td>
@@ -1366,18 +1359,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/ <span class="se">\</span>
 <td>Filter using field description.</td>
 </tr>
 <tr>
-<td>website</td>
-<td>query</td>
-<td>string</td>
-<td>false</td>
-<td>Filter using field website.</td>
-</tr>
-<tr>
 <td>ordering</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
-<td>Which field to use when ordering the results.</td>
+<td>Ordering fields (eg: <code>?ordering=username</code>), default is <code>-username</code> (minus char is used for descending ordering)</td>
 </tr>
 </tbody></table>
 
@@ -13465,10 +13451,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>categories</td>
-<td>[<a href="#schemacategory">Category</a>]</td>
+<td>[object]</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemacategory">Category</a></td>
 </tr>
 <tr>
 <td>media_type</td>
@@ -13479,10 +13465,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>medias</td>
-<td>[<a href="#schemamedia">Media</a>]</td>
+<td>[object]</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemamedia">Media</a></td>
 </tr>
 <tr>
 <td>location</td>
@@ -13900,10 +13886,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>categories</td>
-<td>[<a href="#schemacategory">Category</a>]</td>
+<td>[object]</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemacategory">Category</a></td>
 </tr>
 <tr>
 <td>media_type</td>
@@ -13914,10 +13900,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>medias</td>
-<td>[<a href="#schemamedia">Media</a>]</td>
+<td>[object]</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemamedia">Media</a></td>
 </tr>
 <tr>
 <td>location</td>
@@ -14299,10 +14285,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>categories</td>
-<td>[<a href="#schemacategory">Category</a>]</td>
+<td>[object]</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemacategory">Category</a></td>
 </tr>
 <tr>
 <td>media_type</td>
@@ -14313,10 +14299,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>medias</td>
-<td>[<a href="#schemamedia">Media</a>]</td>
+<td>[object]</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemamedia">Media</a></td>
 </tr>
 <tr>
 <td>location</td>
@@ -14697,10 +14683,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>categories</td>
-<td>[<a href="#schemacategory">Category</a>]</td>
+<td>[object]</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemacategory">Category</a></td>
 </tr>
 <tr>
 <td>media_type</td>
@@ -14711,10 +14697,10 @@ This operation requires authentication and admin role.
 </tr>
 <tr>
 <td>medias</td>
-<td>[<a href="#schemamedia">Media</a>]</td>
+<td>[object]</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td><a href="#schemamedia">Media</a></td>
 </tr>
 <tr>
 <td>location</td>
