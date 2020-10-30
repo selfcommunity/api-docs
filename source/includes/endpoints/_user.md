@@ -424,13 +424,12 @@ Soft: the user is marked as deleted, it will not appear in the user lists, the u
 
 Hard: all user's content (profile, post, votes, etc...) will be removed.
 
-If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)
+In particular:
 
-If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)
-
-If the delete is hard and the user is already soft deleted perform hard delete
-
-If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)
+* If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)
+* If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)
+* If the delete is hard and the user is already soft deleted perform hard delete
+* If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
