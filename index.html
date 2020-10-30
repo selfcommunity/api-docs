@@ -1836,13 +1836,17 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 <p>Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</strong>.</p>
 
-<p>Soft: the user is marked as deleted, it will not appear in the user lists, the user&#39;s posts will remain and it will not be possible to create a user with the same username and ext_id.
-Hard: all user&#39;s content (profile, post, votes, etc...) will be removed.</p>
+<p>Soft: the user is marked as deleted, it will not appear in the user lists, the user&#39;s posts will remain and it will not be possible to create a user with the same username and ext_id.</p>
 
-<p>If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)
-If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)
-If the delete is hard and the user is already soft deleted perform hard delete
-If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)</p>
+<p>Hard: all user&#39;s content (profile, post, votes, etc...) will be removed.</p>
+
+<p>If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)</p>
+
+<p>If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)</p>
+
+<p>If the delete is hard and the user is already soft deleted perform hard delete</p>
+
+<p>If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)</p>
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
