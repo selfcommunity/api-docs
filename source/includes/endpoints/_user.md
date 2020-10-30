@@ -48,11 +48,9 @@ This endpoint retrieve the list of all users.
 |username|query|string|false|Filter using field username.|
 |gender|query|string|false|Filter using field gender type.|
 |real_name|query|string|false|Filter using field real_name.|
-|bio|query|string|false|Filter using field bio.|
 |location|query|string|false|Filter using field location.|
 |description|query|string|false|Filter using field description.|
-|website|query|string|false|Filter using field website.|
-|ordering|query|string|false|Which field to use when ordering the results.|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=username`), default is `-username` (minus char is used for descending ordering)|
 
 
 > Example responses
