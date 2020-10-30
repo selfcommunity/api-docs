@@ -55,7 +55,7 @@
 |image_small|string(binary)|false|read-only|Squared image - auto generated small size|
 |emotional_image_original|string(binary)¦null|false|none|Landscape format image for category hub (1920x1080) if passed empty a default image will be used|
 |emotional_image_position|integer|false|none|Css background-position|
-|lastmod_datetime|string(date-time)|false|none|Last modify date time|
+|lastmod_datetime|string(date-time)|false|read-only|Last modify date time|
 |stream_order_by|string|false|none|Order of the category feed|
 
 #### Enumerated Values
