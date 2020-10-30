@@ -339,7 +339,7 @@ fetch('/api/v2/user/{id}/',
 
 `PATCH /api/v2/user/{id}/`
 
-This endpoint patch a specific user identified by {id}.. A user can only update their personal data.
+This endpoint patch a specific user identified by {id}. A user can only update their personal data.
 
 **NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
 
@@ -418,9 +418,11 @@ fetch('/api/v2/user/{id}/',
 `DELETE /api/v2/user/{id}/`
 
 Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
-There are two ways of deleting a user: <b>soft</b> and <b>hard</b>.
+There are two ways of deleting a user: **soft** and **hard**.
+
 Soft: the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id.
 Hard: all user's content (profile, post, votes, etc...) will be removed.
+
 If the delete is soft and the user is already soft deleted you will get a 400 response (The user has already been soft deleted)
 If the delete is soft and the user is already hard deleted you will get a 404 response (User not found)
 If the delete is hard and the user is already soft deleted perform hard delete
