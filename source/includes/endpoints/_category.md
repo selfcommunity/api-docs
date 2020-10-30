@@ -1040,6 +1040,95 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false.
 </aside>
 
+
+## Get Category Trending Followers
+
+<a id="opIdtrendingfollowersCategory"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/category/{id}/followers/trending/ \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/category/{id}/followers/trending/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+This endpoint returns all trending followers of a specific category.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/category/{id}/followers/trending/`
+
+<h3 id="trendingfollowerscategory-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this Category.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|days|query|integer|false|Number of days (default 90 days).|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "birthday": "string",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string"
+    }
+  ]
+}
+```
+
+<h3 id="trendingfollowerscategory-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false.
+</aside>
+
+
 ## Follow a Category
 
 <a id="opIdfollowCategory"></a>
