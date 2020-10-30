@@ -1041,7 +1041,7 @@ This operation require authentication only if `content_availability` community o
 </aside>
 
 
-## Get Category Trending Followers
+## Get Category's Trending Followers
 
 <a id="opIdtrendingfollowersCategory"></a>
 
@@ -1073,7 +1073,7 @@ fetch('/api/v2/category/{id}/followers/trending/',
 });
 ```
 
-This endpoint returns all trending followers of a specific category.
+This endpoint returns all trending followers of a specific category during last n days (default 90) .
 
 <h3 id="http-request">HTTP Request</h3>
 
