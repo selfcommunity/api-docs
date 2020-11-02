@@ -270,7 +270,7 @@ This endpoint retrieves a specific tag.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
 <aside class="notice">
-This operation does not require <authenticat></authenticat>ion
+This operation requires authentication and admin role.
 </aside>
 
 ## Update a Specific Tag
