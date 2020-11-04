@@ -16,6 +16,7 @@ includes:
   - endpoints/captcha
   - endpoints/locality
   - endpoints/category
+  - endpoints/embed
   - endpoints/media
   - endpoints/discussion
   - endpoints/post
@@ -27,6 +28,7 @@ includes:
   - schemas/captcha
   - schemas/locality
   - schemas/category
+  - schemas/embed
   - schemas/media
   - schemas/discussion
   - schemas/post

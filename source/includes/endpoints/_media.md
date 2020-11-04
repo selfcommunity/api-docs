@@ -157,11 +157,11 @@ This Endpoint complete the chunk upload and create the Media.
 
 #### Enumerated Values
 
-|Parameter|Value|Description|
-|---|---|---|
-|» type|image|Media of type image|
-|» type|eimage|Media of type inline image, used in [Discussion](#selfcommunity-api-discussion) or [Post](#selfcommunity-api-post)  text editor|
-|» type|document|Media of type document|
+|Parameter|Value|
+|---|---|
+|» type|vimeo|
+|» type|url|
+|» type|embed|
 
 > Example responses
 
@@ -170,31 +170,16 @@ This Endpoint complete the chunk upload and create the Media.
 ```json
 {
   "id": 0,
-  "hash_code": "5dfe2ef5-1b28-417e-b650-0e7ec1ed126c",
   "added_at": "2019-08-24T14:15:22Z",
   "type": "vimeo",
   "title": "string",
   "description": "string",
   "url": "http://example.com",
-  "keywords": "string",
-  "entities": "string",
   "image": "string",
   "image_width": 0,
   "image_height": 0,
-  "oembed_type": "link",
-  "oembed_url": "http://example.com",
-  "oembed_width": 0,
-  "oembed_height": 0,
-  "oembed_duration": 0,
-  "oembed_html": "string",
-  "oembed_preview_ready": true,
-  "oembed_available": true,
   "order": 0,
-  "choice_images": [
-    null
-  ],
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": null
 }
 ```
 
@@ -227,7 +212,10 @@ curl -X POST /api/v2/media/ \
 ```javascript
 const inputBody = '{
   "type": "url",
-  "url": "http://example.com"
+  "url": "http://example.com",
+  "embed": 0,
+  "embed_type": "string",
+  "embed_id": "string"
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -249,7 +237,8 @@ fetch('/api/v2/media/',
 
 ```
 
-This Endpoint create a Media.
+This Endpoint create a Media. 
+If embed_type and embed_id parameters are set this endpoint create also an [Embed](#schemaembed) object.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -260,7 +249,10 @@ This Endpoint create a Media.
 ```json
 {
   "type": "url",
-  "url": "http://example.com"
+  "url": "http://example.com",
+  "embed": 0,
+  "embed_type": "string",
+  "embed_id": "string"
 }
 ```
 
@@ -270,8 +262,9 @@ This Endpoint create a Media.
 |---|---|---|---|---|
 |» type|body|string|true|none|
 |» url|body|string(uri)|false|Required for type url|
-|» embed_type|body|string¦null|false|Required for type embed|
-|» embed_id|body|string¦null|false|Required for type embed|
+|» embed|body|integer|null|false|Id of embed object. Required for type embed embed_type and embed_id parameters are not set|
+|» embed_type|body|string¦null|false|Required for type embed if embed parameter is not set|
+|» embed_id|body|string¦null|false|Required for type embed if embed parameter is not set|
 
 #### Enumerated Values
 
@@ -288,31 +281,22 @@ This Endpoint create a Media.
 ```json
 {
   "id": 0,
-  "hash_code": "5dfe2ef5-1b28-417e-b650-0e7ec1ed126c",
   "added_at": "2019-08-24T14:15:22Z",
   "type": "vimeo",
   "title": "string",
   "description": "string",
   "url": "http://example.com",
-  "keywords": "string",
-  "entities": "string",
   "image": "string",
   "image_width": 0,
   "image_height": 0,
-  "oembed_type": "link",
-  "oembed_url": "http://example.com",
-  "oembed_width": 0,
-  "oembed_height": 0,
-  "oembed_duration": 0,
-  "oembed_html": "string",
-  "oembed_preview_ready": true,
-  "oembed_available": true,
   "order": 0,
-  "choice_images": [
-    null
-  ],
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": {
+    "id": 0,
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "string",
+    "metadata": {}
+  }
 }
 ```
 
@@ -371,8 +355,6 @@ This Endpoint update a Media. It must be used for media of type url for set the 
 
 `PUT /api/v2/media/{id}/`
 
-Viewset for media objects
-
 > Body parameter
 
 ```json
@@ -395,31 +377,22 @@ Viewset for media objects
 ```json
 {
   "id": 0,
-  "hash_code": "5dfe2ef5-1b28-417e-b650-0e7ec1ed126c",
   "added_at": "2019-08-24T14:15:22Z",
   "type": "vimeo",
   "title": "string",
   "description": "string",
   "url": "http://example.com",
-  "keywords": "string",
-  "entities": "string",
-  "image": "http://example.com",
+  "image": "string",
   "image_width": 0,
   "image_height": 0,
-  "oembed_type": "link",
-  "oembed_url": "http://example.com",
-  "oembed_width": 0,
-  "oembed_height": 0,
-  "oembed_duration": 0,
-  "oembed_html": "string",
-  "oembed_preview_ready": true,
-  "oembed_available": true,
   "order": 0,
-  "choice_images": [
-    null
-  ],
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": {
+    "id": 0,
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "string",
+    "metadata": {}
+  }
 }
 ```
 

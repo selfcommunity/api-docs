@@ -12,11 +12,51 @@
   "slug": "string",
   "text": "string",
   "categories": [
-    0
+    {
+      "id": 0,
+      "order": 1,
+      "name": "name",
+      "name_synonyms": "synonyms",
+      "slug": "name",
+      "slogan": "Slogan",
+      "html_info": null,
+      "seo_title": null,
+      "seo_description": null,
+      "auto_follow": "None",
+      "active": true,
+      "deleted": false,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 50,
+      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+      "stream_order_by": "recent"
+    }
   ],
   "media_type": "images",
   "medias": [
-    0
+    {
+      "id": 0,
+      "added_at": "2019-08-24T14:15:22Z",
+      "type": "url",
+      "title": "string",
+      "description": "string",
+      "url": "http://example.com",
+      "image": "string",
+      "image_width": 0,
+      "image_height": 0,
+      "order": 0,
+      "embed": {
+        "id": 0,
+        "embed_type": "string",
+        "embed_id": "string",
+        "url": "string",
+        "metadata": {}
+      }
+    }
   ],
   "location": {
     "location": "string",
@@ -92,9 +132,9 @@
 |id|integer|false|read-only|none|
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
-|categories|[object]|true|none|[Category](#schemacategory)|
+|categories|[object]|true|none|List of [Category](#schemacategory)|
 |media_type|string|false|read-only|none|
-|medias|[object]|false|none|[Media](#schemamedia)|
+|medias|[object]|false|none|List of [Media](#schemamedia)|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -146,11 +186,51 @@
   "title": "string",
   "slug": "string",
   "categories": [
-    0
+    {
+      "id": 0,
+      "order": 1,
+      "name": "name",
+      "name_synonyms": "synonyms",
+      "slug": "name",
+      "slogan": "Slogan",
+      "html_info": null,
+      "seo_title": null,
+      "seo_description": null,
+      "auto_follow": "None",
+      "active": true,
+      "deleted": false,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 50,
+      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+      "stream_order_by": "recent"
+    }
   ],
   "media_type": "images",
   "medias": [
-    0
+    {
+      "id": 0,
+      "added_at": "2019-08-24T14:15:22Z",
+      "type": "url",
+      "title": "string",
+      "description": "string",
+      "url": "http://example.com",
+      "image": "string",
+      "image_width": 0,
+      "image_height": 0,
+      "order": 0,
+      "embed": {
+        "id": 0,
+        "embed_type": "string",
+        "embed_id": "string",
+        "url": "string",
+        "metadata": {}
+      }
+    }
   ],
   "location": {
     "location": "string",
@@ -258,9 +338,9 @@
 |title|string¦null|false|none|none|
 |slug|string|false|read-only|none|
 |text|string|true|write-only|none|
-|categories|[object]|true|none|[Category](#schemacategory)|
+|categories|[object]|true|none|List of [Category](#schemacategory)|
 |media_type|string|false|read-only|none|
-|medias|[object]|false|none|[Media](#schemamedia)|
+|medias|[object]|false|none|List of [Media](#schemamedia)|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|

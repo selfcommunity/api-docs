@@ -63,11 +63,51 @@ This endpoint retrieves all discussions.
       "title": "string",
       "slug": "string",
       "categories": [
-        0
+        {
+          "id": 0,
+          "order": 1,
+          "name": "name",
+          "name_synonyms": "synonyms",
+          "slug": "name",
+          "slogan": "Slogan",
+          "html_info": null,
+          "seo_title": null,
+          "seo_description": null,
+          "auto_follow": "None",
+          "active": true,
+          "deleted": false,
+          "image_original": "string",
+          "image_bigger": "string",
+          "image_big": "string",
+          "image_medium": "string",
+          "image_small": "string",
+          "emotional_image_original": "string",
+          "emotional_image_position": 50,
+          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+          "stream_order_by": "recent"
+        }
       ],
       "media_type": "images",
       "medias": [
-        0
+        {
+          "id": 0,
+          "added_at": "2019-08-24T14:15:22Z",
+          "type": "url",
+          "title": "string",
+          "description": "string",
+          "url": "http://example.com",
+          "image": "string",
+          "image_width": 0,
+          "image_height": 0,
+          "order": 0,
+          "embed": {
+            "id": 0,
+            "embed_type": "string",
+            "embed_id": "string",
+            "url": "string",
+            "metadata": {}
+          }
+        }
       ],
       "location": {
         "location": "string",
@@ -266,7 +306,7 @@ This endpoint creates a discussion.
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
 |» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|none|
+|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -292,58 +332,52 @@ This endpoint creates a discussion.
   "title": "string",
   "slug": "string",
   "categories": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "string",
-            "image_bigger": "string",
-            "image_big": "string",
-            "image_medium": "string",
-            "image_small": "string",
-            "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
+    {
+      "id": 0,
+      "order": 1,
+      "name": "name",
+      "name_synonyms": "synonyms",
+      "slug": "name",
+      "slogan": "Slogan",
+      "html_info": null,
+      "seo_title": null,
+      "seo_description": null,
+      "auto_follow": "None",
+      "active": true,
+      "deleted": false,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 50,
+      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+      "stream_order_by": "recent"
+    }
+  ],
   "media_type": "images",
   "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "string",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+    {
+      "id": 0,
+      "added_at": "2019-08-24T14:15:22Z",
+      "type": "url",
+      "title": "string",
+      "description": "string",
+      "url": "http://example.com",
+      "image": "string",
+      "image_width": 0,
+      "image_height": 0,
+      "order": 0,
+      "embed": {
+        "id": 0,
+        "embed_type": "string",
+        "embed_id": "string",
+        "url": "string",
+        "metadata": {}
+      }
+    }
+  ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -479,58 +513,52 @@ This Endpoint perform search operation to discussions.
         "title": "string",
         "slug": "string",
         "categories": [
-                {
-                    "id": 0,
-                    "order": 1,
-                    "name": "name",
-                    "name_synonyms": "synonyms",
-                    "slug": "name",
-                    "slogan": "Slogan",
-                    "html_info": null,
-                    "seo_title": null,
-                    "seo_description": null,
-                    "auto_follow": "None",
-                    "active": true,
-                    "deleted": false,
-                    "image_original": "string",
-                    "image_bigger": "string",
-                    "image_big": "string",
-                    "image_medium": "string",
-                    "image_small": "string",
-                    "emotional_image_original": "string",
-                    "emotional_image_position": 50,
-                    "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                    "stream_order_by": "recent"
-                }
-            ],
+          {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+          }
+        ],
         "media_type": "images",
         "medias": [
-                {
-                    "id": 0,
-                    "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-                    "added_at": "2020-10-08T16:15:59.122041+02:00",
-                    "type": "url",
-                    "title": "Title",
-                    "description": "Description",
-                    "url": "https://www.example.com",
-                    "keywords": "[]",
-                    "entities": "[]",
-                    "image": "string",
-                    "image_width": 1500,
-                    "image_height": 1500,
-                    "oembed_type": null,
-                    "oembed_url": null,
-                    "oembed_width": null,
-                    "oembed_height": null,
-                    "oembed_duration": null,
-                    "oembed_html": null,
-                    "oembed_preview_ready": true,
-                    "oembed_available": true,
-                    "order": 0,
-                    "embed_type": null,
-                    "embed_id": null
-                }
-            ],
+          {
+            "id": 0,
+            "added_at": "2019-08-24T14:15:22Z",
+            "type": "url",
+            "title": "string",
+            "description": "string",
+            "url": "http://example.com",
+            "image": "string",
+            "image_width": 0,
+            "image_height": 0,
+            "order": 0,
+            "embed": {
+              "id": 0,
+              "embed_type": "string",
+              "embed_id": "string",
+              "url": "string",
+              "metadata": {}
+            }
+          }
+        ],
         "location": {
             "location": "string",
             "lat": 0,
@@ -699,58 +727,52 @@ This endpoint retrieves a specific discussion using ID.
   "title": "string",
   "slug": "string",
   "categories": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "string",
-            "image_bigger": "string",
-            "image_big": "string",
-            "image_medium": "string",
-            "image_small": "string",
-            "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
+      {
+      "id": 0,
+      "order": 1,
+      "name": "name",
+      "name_synonyms": "synonyms",
+      "slug": "name",
+      "slogan": "Slogan",
+      "html_info": null,
+      "seo_title": null,
+      "seo_description": null,
+      "auto_follow": "None",
+      "active": true,
+      "deleted": false,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 50,
+      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+      "stream_order_by": "recent"
+    }
+  ],
   "media_type": "images",
   "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "string",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+    {
+      "id": 0,
+      "added_at": "2019-08-24T14:15:22Z",
+      "type": "url",
+      "title": "string",
+      "description": "string",
+      "url": "http://example.com",
+      "image": "string",
+      "image_width": 0,
+      "image_height": 0,
+      "order": 0,
+      "embed": {
+        "id": 0,
+        "embed_type": "string",
+        "embed_id": "string",
+        "url": "string",
+        "metadata": {}
+      }
+    }
+  ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -925,7 +947,7 @@ This endpoint update a specific discussion.
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
 |» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|none|
+|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -951,58 +973,52 @@ This endpoint update a specific discussion.
   "title": "string",
   "slug": "string",
   "categories": [
-        {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "string",
-            "image_bigger": "string",
-            "image_big": "string",
-            "image_medium": "string",
-            "image_small": "string",
-            "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-        }
-    ],
+    {
+      "id": 0,
+      "order": 1,
+      "name": "name",
+      "name_synonyms": "synonyms",
+      "slug": "name",
+      "slogan": "Slogan",
+      "html_info": null,
+      "seo_title": null,
+      "seo_description": null,
+      "auto_follow": "None",
+      "active": true,
+      "deleted": false,
+      "image_original": "string",
+      "image_bigger": "string",
+      "image_big": "string",
+      "image_medium": "string",
+      "image_small": "string",
+      "emotional_image_original": "string",
+      "emotional_image_position": 50,
+      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+      "stream_order_by": "recent"
+    }
+  ],
   "media_type": "images",
   "medias": [
-        {
-            "id": 0,
-            "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-            "added_at": "2020-10-08T16:15:59.122041+02:00",
-            "type": "url",
-            "title": "Title",
-            "description": "Description",
-            "url": "https://www.example.com",
-            "keywords": "[]",
-            "entities": "[]",
-            "image": "string",
-            "image_width": 1500,
-            "image_height": 1500,
-            "oembed_type": null,
-            "oembed_url": null,
-            "oembed_width": null,
-            "oembed_height": null,
-            "oembed_duration": null,
-            "oembed_html": null,
-            "oembed_preview_ready": true,
-            "oembed_available": true,
-            "order": 0,
-            "embed_type": null,
-            "embed_id": null
-        }
-    ],
+    {
+      "id": 0,
+      "added_at": "2019-08-24T14:15:22Z",
+      "type": "url",
+      "title": "string",
+      "description": "string",
+      "url": "http://example.com",
+      "image": "string",
+      "image_width": 0,
+      "image_height": 0,
+      "order": 0,
+      "embed": {
+        "id": 0,
+        "embed_type": "string",
+        "embed_id": "string",
+        "url": "string",
+        "metadata": {}
+      }
+    }
+  ],
   "location": {
     "location": "string",
     "lat": 0,
@@ -1193,58 +1209,52 @@ This Endpoint retrieve related discussions
         "title": "string",
         "slug": "string",
         "categories": [
-                {
-                    "id": 0,
-                    "order": 1,
-                    "name": "name",
-                    "name_synonyms": "synonyms",
-                    "slug": "name",
-                    "slogan": "Slogan",
-                    "html_info": null,
-                    "seo_title": null,
-                    "seo_description": null,
-                    "auto_follow": "None",
-                    "active": true,
-                    "deleted": false,
-                    "image_original": "string",
-                    "image_bigger": "string",
-                    "image_big": "string",
-                    "image_medium": "string",
-                    "image_small": "string",
-                    "emotional_image_original": "string",
-                    "emotional_image_position": 50,
-                    "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                    "stream_order_by": "recent"
-                }
-            ],
+            {
+              "id": 0,
+              "order": 1,
+              "name": "name",
+              "name_synonyms": "synonyms",
+              "slug": "name",
+              "slogan": "Slogan",
+              "html_info": null,
+              "seo_title": null,
+              "seo_description": null,
+              "auto_follow": "None",
+              "active": true,
+              "deleted": false,
+              "image_original": "string",
+              "image_bigger": "string",
+              "image_big": "string",
+              "image_medium": "string",
+              "image_small": "string",
+              "emotional_image_original": "string",
+              "emotional_image_position": 50,
+              "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+              "stream_order_by": "recent"
+          }
+        ],
         "media_type": "images",
         "medias": [
-                {
-                    "id": 0,
-                    "hash_code": "af335630-a8db-4fe4-a49a-dd81ce5c2a80",
-                    "added_at": "2020-10-08T16:15:59.122041+02:00",
-                    "type": "url",
-                    "title": "Title",
-                    "description": "Description",
-                    "url": "https://www.example.com",
-                    "keywords": "[]",
-                    "entities": "[]",
-                    "image": "string",
-                    "image_width": 1500,
-                    "image_height": 1500,
-                    "oembed_type": null,
-                    "oembed_url": null,
-                    "oembed_width": null,
-                    "oembed_height": null,
-                    "oembed_duration": null,
-                    "oembed_html": null,
-                    "oembed_preview_ready": true,
-                    "oembed_available": true,
-                    "order": 0,
-                    "embed_type": null,
-                    "embed_id": null
-                }
-            ],
+          {
+            "id": 0,
+            "added_at": "2019-08-24T14:15:22Z",
+            "type": "url",
+            "title": "string",
+            "description": "string",
+            "url": "http://example.com",
+            "image": "string",
+            "image_width": 0,
+            "image_height": 0,
+            "order": 0,
+            "embed": {
+              "id": 0,
+              "embed_type": "string",
+              "embed_id": "string",
+              "url": "string",
+              "metadata": {}
+            }
+          }
+        ],
         "location": {
             "location": "string",
             "lat": 0,
