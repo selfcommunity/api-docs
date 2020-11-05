@@ -21,6 +21,7 @@ includes:
   - endpoints/discussion
   - endpoints/post
   - endpoints/comment
+  - endpoints/feed
   - endpoints/tag
   - endpoints/suggestion
   - schemas
@@ -34,6 +35,7 @@ includes:
   - schemas/discussion
   - schemas/post
   - schemas/comment
+  - schemas/feed
   - schemas/vote
   - schemas/tag
   - errors
