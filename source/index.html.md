@@ -22,6 +22,7 @@ includes:
   - endpoints/post
   - endpoints/comment
   - endpoints/tag
+  - endpoints/suggestion
   - schemas
   - schemas/user
   - schemas/connectionRequest

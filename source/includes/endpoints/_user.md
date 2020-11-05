@@ -72,13 +72,130 @@ This endpoint retrieve the list of all users.
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "2019-09-23",
       "description": "string",
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": 3,
+      "tags": []
+    }
+  ]
+}
+```
+
+<h3 id="listusers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="listusers-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|[[User](#schemauser)]|false|none|List of results|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+## Search Users
+
+<a id="opIdSearchUsers"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/search/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/search/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/search/`
+
+This endpoint perform search users. 
+
+<h3 id="searchusers-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|username|query|string|false|Filter using field username.|
+|gender|query|string|false|Filter using field gender type. Possible values: Male, Female, Unspecified.|
+|real_name|query|string|false|Filter using field real_name.|
+|location|query|string|false|Filter using field location.|
+|age|query|string|false|Filter using age ranges. Possible values: -30, 30-45, 45+. The value 45+ must be encoded in the request url: 45%2B.|
+|lat_lng|query|string|false|Filter using coordinates lat,lng.|
+|user_position|query|boolean|false|Use the coordinates (position_lat_lng or location_lat_lng) of the authenticated user.|
+|description|query|string|false|Filter using field description.|
+|is_staff|query|boolean|false|Filter the users that belong to the staff.|
+|tag|query|integer|false|Filter using tag ID.|
+|category|query|integer|false|Filter using category ID.|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=username`). Minus char is used for descending ordering, eg. `-username`. Possible values: username, location, real_name, distance.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "email": "user@example.com",
+      "email_isvalid": true,
+      "date_joined": "2019-08-24T14:15:22Z",
+      "bio": "string",
+      "location": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "2019-09-23",
+      "description": "string",
+      "gender": "Male",
+      "status": "a",
+      "website": "http://example.com",
+      "avatar": "string",
+      "cover": "string",
+      "ext_id": 3,
+      "tags": []
     }
   ]
 }
@@ -160,13 +277,17 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "date_joined": "2019-08-24T14:15:22Z",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "2019-09-23",
   "description": "string",
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
   "avatar": "string",
-  "cover": "string"
+  "cover": "string",
+  "ext_id": 3,
+  "tags": []
 }
 ```
 
@@ -199,7 +320,9 @@ const inputBody = '{
   "real_name": "string",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "website": "http://example.com"
@@ -235,7 +358,9 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "real_name": "string",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "website": "http://example.com"
@@ -246,11 +371,12 @@ This endpoint update the profile of a user identified by {id}. A user can only u
 real_name: string
 bio: string
 location: string
-birthday: string
+location_lat_lng: string,
+position_lat_lng: string,
+date_of_birth: string
 description: string
 gender: Male
 website: http://example.com
-
 ```
 
 <h3 id="updateuser-parameters">Parameters</h3>
@@ -274,13 +400,17 @@ website: http://example.com
   "date_joined": "2019-08-24T14:15:22Z",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
   "avatar": "string",
-  "cover": "string"
+  "cover": "string",
+  "ext_id": 3,
+  "tags": []
 }
 ```
 
@@ -291,7 +421,7 @@ website: http://example.com
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
 ## Patch a Specific User
@@ -313,7 +443,9 @@ const inputBody = {
   "real_name": "string",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "website": "http://example.com"
@@ -364,13 +496,17 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "date_joined": "2019-08-24T14:15:22Z",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
   "avatar": "string",
-  "cover": "string"
+  "cover": "string",
+  "ext_id": 3,
+  "tags": []
 }
 ```
 
@@ -501,13 +637,17 @@ Return the user identified by the authentication token.
   "date_joined": "2019-08-24T14:15:22Z",
   "bio": "string",
   "location": "string",
-  "birthday": "string",
+  "location_lat_lng": "string",
+  "position_lat_lng": "string",
+  "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
   "status": "a",
   "website": "http://example.com",
   "avatar": "string",
-  "cover": "string"
+  "cover": "string",
+  "ext_id": 3,
+  "tags": []
 }
 ```
 
@@ -632,13 +772,17 @@ This endpoint retrive the list of user's post of the user identified by {id}.
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": 3,
+        "tags": []
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -868,13 +1012,17 @@ This endpoint retrieve the list of followers of a specific user identified by {i
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": 3,
+      "tags": []
     }
   ]
 }
@@ -964,13 +1112,17 @@ This endpoint retrieve the list of following of a specific user identified by {i
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": 3,
+      "tags": []
     }
   ]
 }
@@ -1012,7 +1164,6 @@ curl -X POST /api/v2/user/{id}/follow/ \
 ```
 
 ```javascript
-const inputBody = '{}';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
@@ -1022,7 +1173,6 @@ const headers = {
 fetch('/api/v2/user/{id}/follow/',
 {
   method: 'POST',
-  body: inputBody,
   headers: headers
 })
 .then(function(res) {
@@ -1063,6 +1213,140 @@ This operation requires the community to be set to follow mode
 This operation requires authentication
 </aside>
 
+## Check User Followed
+
+<a id="opIdisFollowedUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/is_followed/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/is_followed/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/is_followed/`
+
+Return is_followed=true if the user (identified in path) is followed by me.
+
+<h3 id="isfolloweduser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "is_followed": true
+}
+```
+
+<h3 id="isfolloweduser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation requires the community to be set to follow mode 
+</aside>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Check User Follower
+
+<a id="opIdisFollowerUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/is_follower/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/is_follower/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/is_follower/`
+
+Return is_follower=true if the user (identified in path) follow me.
+
+<h3 id="isfolloweruser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "is_follower": false
+}
+```
+
+<h3 id="isfolloweruser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation requires the community to be set to follow mode 
+</aside>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
 
 ## Get User's Connections
 
@@ -1074,7 +1358,6 @@ This operation requires authentication
 # You can also use wget
 curl -X GET /api/v2/user/{id}/connections/ \
   -H 'Accept: application/json'
-
 ```
 
 ```javascript
@@ -1127,13 +1410,17 @@ This endpoint retrieve the list of connections of a specific user identified by 
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
       "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": 3,
+      "tags": []
     }
   ]
 }
@@ -1162,6 +1449,69 @@ This operation does not require authentication
 
 <aside class="notice">
 This operation requires the community to be set to friendship mode 
+</aside>
+
+## Check User Connection
+
+<a id="opIdisConnectionUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/is_connection/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/is_connection/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /api/v2/user/{id}/is_connection/`
+
+Return is_connection=true if the user (identified in path) is connected with me.
+
+<h3 id="isconnectionuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "is_connection": false
+}
+```
+
+<h3 id="isconnectionuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
 </aside>
 
 ## Get User's Connection Requests
@@ -1231,16 +1581,20 @@ This endpoint retrieve the list of connection requests received of a specific us
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": 1,
+        "tags": []
       },
       "to_user": {
-        "id": 0,
+        "id": 3,
         "username": "string",
         "real_name": "string",
         "email": "user@example.com",
@@ -1248,13 +1602,17 @@ This endpoint retrieve the list of connection requests received of a specific us
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": 3,
+        "tags": []
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",
@@ -1355,13 +1713,17 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": 1,
+        "tags": []
       },
       "to_user": {
         "id": 0,
@@ -1372,13 +1734,17 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": 3,
+        "tags": []
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",
@@ -1536,7 +1902,7 @@ This operation requires the community to be set to friendship mode
 </aside>
 
 <aside class="notice">
-This operation does require authentication
+This operation require authentication
 </aside>
 
 ## Remove a Connection
@@ -1726,7 +2092,7 @@ This operation requires the community to be set to friendship mode
 </aside>
 
 <aside class="notice">
-This operation does require authentication
+This operation require authentication
 </aside>
 
 
