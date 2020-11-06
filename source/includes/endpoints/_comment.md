@@ -687,3 +687,265 @@ This Endpoint removes an upvote for a specific comment.
 <aside class="notice">
 This operation require authentication
 </aside>
+
+## Get List of Flags for a Specific Comment
+
+<a id="opIdflagComment"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/comment/{id}/flag/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/comment/{id}/flag/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint retrieves a List of Flags for a Specific Comment.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/comment/{id}/flag/`
+
+<h3 id="flagcomment-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this comment.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+          "user": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-08-24",
+            "description": "string",
+            "gender": "Male",
+            "website": "http://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [
+              {
+                "id": 0,
+                "active": true,
+                "type": "user",
+                "name": "string",
+                "description": "string",
+                "color": "string",
+                "visible": true,
+                "deleted": true,
+                "created_at": "2019-08-24T14:15:22Z"
+              }
+            ]
+          },
+          "added_at": "2019-08-24T14:15:22Z",
+          "flag_type": 0,
+          "flag_type_description": "string"
+        }
+    ]
+}
+```
+
+<h3 id="flagcomment-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+
+<aside class="notice">
+This operation require authentication and admin role.
+</aside>
+
+## Flag a Specific Comment
+
+<a id="opIdflagCreateComment"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/comment/{id}/flag/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const inputBody = '{
+  "flag_type": 0
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/comment/{id}/flag/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint flag a specific comment.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/comment/{id}/flag/`
+
+> Body parameter
+
+```json
+{
+  "flag_type": 0
+}
+```
+
+<h3 id="flagcreatecomment-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this post.|
+flag_type|body|integer|true|A integer from 0 to 4|
+
+#### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|flag_type|0|spam|
+|flag_type|1|aggressive|
+|flag_type|2|vulgar|
+|flag_type|3|poor|
+|flag_type|4|offtopic|
+
+<h3 id="flagcreatecomment-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Unflag a Specific Comment
+
+<a id="opIdunflagCreateComment"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/comment/{id}/flag/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+const inputBody = '{
+  "flag_type": 0
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/comment/{id}/flag/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint removes a flag for a specific comment.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/comment/{id}/flag/`
+
+> Body parameter
+
+```json
+{
+  "flag_type": 0
+}
+```
+
+<h3 id="unflagcreatecomment-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this post.|
+flag_type|body|integer|true|A integer from 0 to 4|
+
+#### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|flag_type|0|spam|
+|flag_type|1|aggressive|
+|flag_type|2|vulgar|
+|flag_type|3|poor|
+|flag_type|4|offtopic|
+
+<h3 id="unflagcreatecomment-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
