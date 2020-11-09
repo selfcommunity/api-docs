@@ -7516,7 +7516,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the <a href="#opIdcreateMediaChunkComplete">Chunk Upload Complete</a> endpoint.</p>
+<p>This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the <a href="#opIdcreateMediaChunkComplete">Chunk Upload Complete</a> endpoint with the given <code>upload_id</code> parameter to finalize the upload and retrieve the <a href="#schemamedia">Media</a>.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7622,7 +7622,6 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
   <span class="nt">--data-raw</span> <span class="s1">'upload_id=UPLOAD_ID&amp;md5=FILE_MD5'</span> <span class="se">\</span>
-  <span class="nt">--compressed</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "type": "image",
   "upload_id": "string",
@@ -7647,7 +7646,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint complete the chunk upload and create the Media.</p>
+<p>This Endpoint complete the chunk upload and create the <a href="#schemamedia">Media</a>.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7692,7 +7691,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>MD5 hash of the original file</td>
+<td>MD5 hash of the original file for checksum proposal</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -7700,19 +7699,23 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <tr>
 <th>Parameter</th>
 <th>Value</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>» type</td>
-<td>vimeo</td>
+<td>image</td>
+<td>Image media type</td>
 </tr>
 <tr>
 <td>» type</td>
-<td>url</td>
+<td>doc</td>
+<td>Document media type (only pdf documents are supported)</td>
 </tr>
 <tr>
 <td>» type</td>
-<td>embed</td>
+<td>eimage</td>
+<td>Other images related to contributes. eg. Images uploaded and inserted as <code>&lt;img&gt;</code> into the contribute text</td>
 </tr>
 </tbody></table>
 
@@ -7724,10 +7727,10 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vimeo"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"image_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"image_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -7772,9 +7775,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "type": "url",
   "url": "http://example.com",
-  "embed": 0,
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": null
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
@@ -7795,8 +7796,15 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint create a Media. 
-If embed_type and embed_id parameters are set this endpoint create also an <a href="#schemaembed">Embed</a> object.</p>
+<p>This Endpoint create a Media. The allowed types for this endpoint are:</p>
+
+<ul>
+<li><p><em>vimeo</em> for video upload. The endpoint must receive the url of the video after the video is fully uploaded to vimeo servers by the client</p></li>
+<li><p><em>url</em> for url fetch. The endpoint retrieve metadata associated with the given url and create a preview</p></li>
+<li><p><em>embed</em> for external objects. The endpoint create an association with an external object using <a href="#schemaembed">Embed</a> format</p></li>
+</ul>
+
+<p>If <em>embed</em> parameter are set and no <a href="#schemaembed">Embed</a> with <code>embed_type</code> - <code>embed_id</code> are in the community database this endpoint create an <a href="#schemaembed">Embed</a> object with the metadata passed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7808,9 +7816,13 @@ If embed_type and embed_id parameters are set this endpoint create also an <a hr
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"url"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"embed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"embed_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"embed_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"embed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"embed_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"embed_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="createmedia-parameters">Parameters</h3>
@@ -7835,29 +7847,15 @@ If embed_type and embed_id parameters are set this endpoint create also an <a hr
 <td>» url</td>
 <td>body</td>
 <td>string(uri)</td>
-<td>false</td>
+<td>if <code>type</code> is <em>url</em></td>
 <td>Required for type url</td>
 </tr>
 <tr>
 <td>» embed</td>
 <td>body</td>
-<td>integer</td>
-<td>null</td>
+<td>object</td>
+<td>if <code>type</code> is <em>embed</em></td>
 <td>false</td>
-</tr>
-<tr>
-<td>» embed_type</td>
-<td>body</td>
-<td>string¦null</td>
-<td>false</td>
-<td>Required for type embed if embed parameter is not set</td>
-</tr>
-<tr>
-<td>» embed_id</td>
-<td>body</td>
-<td>string¦null</td>
-<td>false</td>
-<td>Required for type embed if embed parameter is not set</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-2'>Enumerated Values</h4>
@@ -7865,19 +7863,23 @@ If embed_type and embed_id parameters are set this endpoint create also an <a hr
 <tr>
 <th>Parameter</th>
 <th>Value</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>» type</td>
 <td>vimeo</td>
+<td>Vimeo video media type</td>
 </tr>
 <tr>
 <td>» type</td>
 <td>url</td>
+<td>Url media type (used for any webpages, youtube or vimeo public videos)</td>
 </tr>
 <tr>
 <td>» type</td>
 <td>embed</td>
+<td>External resource</td>
 </tr>
 </tbody></table>
 
@@ -7961,7 +7963,7 @@ curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint update a Media. It must be used for media of type url for set the preview image that can be choosed between the images returned by the create call or other images that can be retrieved by an url.</p>
+<p>This Endpoint update a Media. It must be used for media of <code>type</code> <em>url</em> for set the preview image that can be choosed between the images returned by the <a href="#opIdcreateMedia">create</a> endpoint or other images that can be retrieved by an url.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
