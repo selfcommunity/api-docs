@@ -42,7 +42,7 @@ fetch('/api/v2/media/upload/chunk/',
 
 ```
 
-This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint.
+This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint with the given `upload_id` parameter to finalize the upload and retrieve the [Media](#schemamedia).
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -102,7 +102,6 @@ curl -X POST /api/v2/media/upload/complete/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw 'upload_id=UPLOAD_ID&md5=FILE_MD5' \
-  --compressed
 ```
 
 ```javascript
@@ -131,7 +130,7 @@ fetch('/api/v2/media/upload/complete/',
 
 ```
 
-This Endpoint complete the chunk upload and create the Media.
+This Endpoint complete the chunk upload and create the [Media](#schemamedia).
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -153,15 +152,15 @@ This Endpoint complete the chunk upload and create the Media.
 |---|---|---|---|---|
 |» type|body|string|false|Default to image or document based on file extension|
 |» upload_id|body|string|true|Id of the chunk uploaded file|
-|» md5|body|string|true|MD5 hash of the original file|
+|» md5|body|string|true|MD5 hash of the original file for checksum proposal|
 
 #### Enumerated Values
 
-|Parameter|Value|
-|---|---|
-|» type|vimeo|
-|» type|url|
-|» type|embed|
+|Parameter|Value|Description|
+|---|---|---|
+|» type|image|Image media type|
+|» type|doc|Document media type (only pdf documents are supported)|
+|» type|eimage|Other images related to contributes. eg. Images uploaded and inserted as `<img>` into the contribute text|
 
 > Example responses
 
@@ -171,10 +170,10 @@ This Endpoint complete the chunk upload and create the Media.
 {
   "id": 0,
   "added_at": "2019-08-24T14:15:22Z",
-  "type": "vimeo",
-  "title": "string",
-  "description": "string",
-  "url": "http://example.com",
+  "type": "image",
+  "title": null,
+  "description": null,
+  "url": null,
   "image": "string",
   "image_width": 0,
   "image_height": 0,
@@ -213,9 +212,7 @@ curl -X POST /api/v2/media/ \
 const inputBody = '{
   "type": "url",
   "url": "http://example.com",
-  "embed": 0,
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": null
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -237,8 +234,16 @@ fetch('/api/v2/media/',
 
 ```
 
-This Endpoint create a Media. 
-If embed_type and embed_id parameters are set this endpoint create also an [Embed](#schemaembed) object.
+This Endpoint create a Media. The allowed types for this endpoint are:
+
+ - *vimeo* for video upload. The endpoint must receive the url of the video after the video is fully uploaded to vimeo servers by the client
+
+ - *url* for url fetch. The endpoint retrieve metadata associated with the given url and create a preview
+
+ - *embed* for external objects. The endpoint create an association with an external object using [Embed](#schemaembed) format
+
+
+If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `embed_id` are in the community database this endpoint create an [Embed](#schemaembed) object with the metadata passed.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -250,9 +255,13 @@ If embed_type and embed_id parameters are set this endpoint create also an [Embe
 {
   "type": "url",
   "url": "http://example.com",
-  "embed": 0,
-  "embed_type": "string",
-  "embed_id": "string"
+  "embed": {
+    "id": 0,
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "http://example.com",
+    "metadata": {}
+  }
 }
 ```
 
@@ -261,18 +270,16 @@ If embed_type and embed_id parameters are set this endpoint create also an [Embe
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» type|body|string|true|none|
-|» url|body|string(uri)|false|Required for type url|
-|» embed|body|integer|null|false|Id of embed object. Required for type embed embed_type and embed_id parameters are not set|
-|» embed_type|body|string¦null|false|Required for type embed if embed parameter is not set|
-|» embed_id|body|string¦null|false|Required for type embed if embed parameter is not set|
+|» url|body|string(uri)|if `type` is *url*|Required for type url|
+|» embed|body|object|if `type` is *embed*|false|[Embed](#schemaembed) object|
 
 #### Enumerated Values
 
-|Parameter|Value|
-|---|---|
-|» type|vimeo|
-|» type|url|
-|» type|embed|
+|Parameter|Value|Description|
+|---|---|---|
+|» type|vimeo|Vimeo video media type|
+|» type|url|Url media type (used for any webpages, youtube or vimeo public videos)|
+|» type|embed|External resource|
 
 > Example responses
 
@@ -349,7 +356,7 @@ fetch('/api/v2/media/{id}/',
 
 ```
 
-This Endpoint update a Media. It must be used for media of type url for set the preview image that can be choosed between the images returned by the create call or other images that can be retrieved by an url.
+This Endpoint update a Media. It must be used for media of `type` *url* for set the preview image that can be choosed between the images returned by the [create](#opIdcreateMedia) endpoint or other images that can be retrieved by an url.
 
 <h3 id="http-request">HTTP Request</h3>
 
