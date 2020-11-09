@@ -44,6 +44,12 @@ fetch('/api/v2/media/upload/chunk/',
 
 This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint with the given `upload_id` parameter to finalize the upload and retrieve the [Media](#schemamedia).
 
+Max file size for image file is 5M.
+
+Max file size for document file is 50M.
+
+Max chunk size is 204800 bytes.
+
 <h3 id="http-request">HTTP Request</h3>
 
 `POST /api/v2/media/upload/chunk/`
@@ -271,7 +277,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 |---|---|---|---|---|
 |» type|body|string|true|none|
 |» url|body|string(uri)|if `type` is *url*|Required for type url|
-|» embed|body|object|if `type` is *embed*|false|[Embed](#schemaembed) object|
+|» embed|body|object|if `type` is *embed*|[Embed](#schemaembed) object|
 
 #### Enumerated Values
 

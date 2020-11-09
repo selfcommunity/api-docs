@@ -230,6 +230,8 @@ This Endpoint perform search to Embeds
 |---|---|---|---|---|
 |embed_type|query|string|false|embed_type|
 |embed_id|query|string|false|embed_id|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 
 > Example responses
 
@@ -237,11 +239,18 @@ This Endpoint perform search to Embeds
 
 ```json
 {
-  "id": 0,
-  "embed_type": "string",
-  "embed_id": "string",
-  "url": "http://example.com",
-  "metadata": {}
+  "count": 123,
+  "next": "http://api.example.org/accounts/?offset=400&limit=100",
+  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+  "results": [
+    {
+      "id": 0,
+      "embed_type": "string",
+      "embed_id": "string",
+      "url": "http://example.com",
+      "metadata": {}
+    }
+  ]
 }
 ```
 
@@ -249,7 +258,18 @@ This Endpoint perform search to Embeds
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Embed](#schemaembed)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="searchembed-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|[[Embed](#schemaembed)]|false|none|none|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
