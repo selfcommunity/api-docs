@@ -4691,7 +4691,7 @@ curl <span class="nt">-X</span> GET /api/v2/captcha/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieve a new captcha if it is necessary. The captcha and the inputted text value must be attached to <a href="#opIdcreateDiscussion">Discussion</a> and/or <a href="#opIdcreatePost">Post</a> creation for checking that the user is not a robot.</p>
+<p>This endpoint retrieve a new captcha if it is necessary. The captcha and the inputted text value must be attached to <a href="#opIdcreateDiscussion">Discussion</a> and/or <a href="#opIdcreatePost">Post</a> creation for checking that the user is not a robot.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -4758,7 +4758,7 @@ curl <span class="nt">-X</span> GET /api/v2/locality/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieve the list of available localities for <a href="#selfcommunity-api-discussion">Discussion</a> and/or <a href="#selfcommunity-api-post">Post</a> geolocalization.</p>
+<p>This endpoint retrieve the list of available localities for <a href="#selfcommunity-api-discussion">Discussion</a> and/or <a href="#selfcommunity-api-post">Post</a> geolocalization.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -6957,7 +6957,7 @@ curl <span class="nt">-X</span> POST /api/v2/embed/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint create an Embed.</p>
+<p>This endpoint create an Embed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7085,7 +7085,7 @@ curl <span class="nt">-X</span> GET /api/v2/embed/search/ <span class="se">\</sp
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint perform search to Embeds</p>
+<p>This endpoint perform search to Embeds</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7341,7 +7341,7 @@ curl <span class="nt">-X</span> PUT /api/v2/embed/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint update a specific Embed.</p>
+<p>This endpoint update a specific Embed.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7580,7 +7580,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the <a href="#opIdcreateMediaChunkComplete">Chunk Upload Complete</a> endpoint with the given <code>upload_id</code> parameter to finalize the upload and retrieve the <a href="#schemamedia">Media</a>.</p>
+<p>This endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the <a href="#opIdcreateMediaChunkComplete">Chunk Upload Complete</a> endpoint with the given <code>upload_id</code> parameter to finalize the upload and retrieve the <a href="#schemamedia">Media</a>.</p>
 
 <p>Max file size for image file is 5M.</p>
 
@@ -7716,7 +7716,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint complete the chunk upload and create the <a href="#schemamedia">Media</a>.</p>
+<p>This endpoint complete the chunk upload and create the <a href="#schemamedia">Media</a>.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7866,7 +7866,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint create a Media. The allowed types for this endpoint are:</p>
+<p>This endpoint create a Media. The allowed types for this endpoint are:</p>
 
 <ul>
 <li><p><em>vimeo</em> for video upload. The endpoint must receive the url of the video after the video is fully uploaded to vimeo servers by the client</p></li>
@@ -8033,7 +8033,7 @@ curl <span class="nt">-X</span> PUT /api/v2/media/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint update a Media. It must be used for media of <code>type</code> <em>url</em> for set the preview image that can be choosed between the images returned by the <a href="#opIdcreateMedia">create</a> endpoint or other images that can be retrieved by an url.</p>
+<p>This endpoint update a Media. It must be used for media of <code>type</code> <em>url</em> for set the preview image that can be choosed between the images returned by the <a href="#opIdcreateMedia">create</a> endpoint or other images that can be retrieved by an url.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -8141,7 +8141,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/media/<span class="o">{</span><sp
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint delete a Media.</p>
+<p>This endpoint delete a Media.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -8853,7 +8853,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint perform search operation to discussions.</p>
+<p>This endpoint perform search operation to discussions.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -9669,7 +9669,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/discussion/<span class="o">{</spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint delete a Discussion.</p>
+<p>This endpoint delete a Discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -9745,7 +9745,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieve related discussions</p>
+<p>This endpoint retrieve related discussions</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -10150,7 +10150,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint upvotes a specific discussion.</p>
+<p>This endpoint upvotes a specific discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -10227,7 +10227,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint removes an upvote for a specific discussion.</p>
+<p>This endpoint removes an upvote for a specific discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -10454,7 +10454,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieves a List of Flags for a Specific Discussion.</p>
+<p>This endpoint retrieves a List of Flags for a Specific Discussion.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -11424,7 +11424,7 @@ curl <span class="nt">-X</span> GET /api/v2/post/search/ <span class="se">\</spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint perform search operation to posts.</p>
+<p>This endpoint perform search operation to posts.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -12198,7 +12198,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/post/<span class="o">{</span><spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint delete a Post.</p>
+<p>This endpoint delete a Post.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -12407,7 +12407,7 @@ curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint upvotes a specific post.</p>
+<p>This endpoint upvotes a specific post.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -12484,7 +12484,7 @@ curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint removes an upvote for a specific post.</p>
+<p>This endpoint removes an upvote for a specific post.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -12559,7 +12559,7 @@ curl <span class="nt">-X</span> GET /api/v2/post/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieves a List of Flags for a Specific Post.</p>
+<p>This endpoint retrieves a List of Flags for a Specific Post.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13561,7 +13561,7 @@ curl <span class="nt">-X</span> DELETE /api/v2/comment/<span class="o">{</span><
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint delete a Comment.</p>
+<p>This endpoint delete a Comment.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13750,7 +13750,7 @@ curl <span class="nt">-X</span> POST /api/v2/comment/<span class="o">{</span><sp
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint upvotes a specific comment.</p>
+<p>This endpoint upvotes a specific comment.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13829,7 +13829,7 @@ curl <span class="nt">-X</span> POST /api/v2/comment/<span class="o">{</span><sp
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint removes an upvote for a specific comment.</p>
+<p>This endpoint removes an upvote for a specific comment.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13904,7 +13904,7 @@ curl <span class="nt">-X</span> GET /api/v2/comment/<span class="o">{</span><spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieves a List of Flags for a Specific Comment.</p>
+<p>This endpoint retrieves a List of Flags for a Specific Comment.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -14996,7 +14996,7 @@ curl <span class="nt">-X</span> POST /api/v2/feed/likethis/ <span class="se">\</
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint retrieve a list of <a href="#schemafeed">Feed</a> objects similar to the id of passed objects</p>
+<p>This endpoint retrieve a list of <a href="#schemafeed">Feed</a> objects similar to the id of passed objects</p>
 
 <p><code>POST /api/v2/feed/likethis/</code></p>
 
