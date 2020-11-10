@@ -469,7 +469,7 @@ fetch('/api/v2/comment/{id}/',
 });
 
 ```
-This Endpoint delete a Comment.
+This endpoint delete a Comment.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -607,7 +607,7 @@ fetch('/api/v2/comment/{id}/vote/',
 
 ```
 
-This Endpoint upvotes a specific comment.
+This endpoint upvotes a specific comment.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -666,7 +666,7 @@ fetch('/api/v2/comment/{id}/vote/',
 
 ```
 
-This Endpoint removes an upvote for a specific comment.
+This endpoint removes an upvote for a specific comment.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -721,7 +721,7 @@ fetch('/api/v2/comment/{id}/flag/',
 
 ```
 
-This Endpoint retrieves a List of Flags for a Specific Comment.
+This endpoint retrieves a List of Flags for a Specific Comment.
 
 <h3 id="http-request">HTTP Request</h3>
 

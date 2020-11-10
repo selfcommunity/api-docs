@@ -607,7 +607,7 @@ fetch('/api/v2/feed/likethis/',
 });
 
 ```
-This Endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id of passed objects
+This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id of passed objects
 
 `POST /api/v2/feed/likethis/`
 

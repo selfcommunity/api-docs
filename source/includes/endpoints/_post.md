@@ -464,7 +464,7 @@ fetch('/api/v2/post/search/',
 
 ```
 
-This Endpoint perform search operation to posts.
+This endpoint perform search operation to posts.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1084,7 +1084,7 @@ fetch('/api/v2/post/{id}/',
 
 ```
 
-This Endpoint delete a Post.
+This endpoint delete a Post.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1221,7 +1221,7 @@ fetch('/api/v2/post/{id}/vote/',
 
 ```
 
-This Endpoint upvotes a specific post.
+This endpoint upvotes a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1278,7 +1278,7 @@ fetch('/api/v2/post/{id}/vote/',
 
 ```
 
-This Endpoint removes an upvote for a specific post.
+This endpoint removes an upvote for a specific post.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1333,7 +1333,7 @@ fetch('/api/v2/post/{id}/flag/',
 
 ```
 
-This Endpoint retrieves a List of Flags for a Specific Post.
+This endpoint retrieves a List of Flags for a Specific Post.
 
 <h3 id="http-request">HTTP Request</h3>
 

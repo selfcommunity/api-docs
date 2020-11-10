@@ -486,7 +486,7 @@ fetch('/api/v2/discussion/search/',
 
 ```
 
-This Endpoint perform search operation to discussions.
+This endpoint perform search operation to discussions.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1124,7 +1124,7 @@ fetch('/api/v2/discussion/{id}/',
 
 ```
 
-This Endpoint delete a Discussion.
+This endpoint delete a Discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1180,7 +1180,7 @@ fetch('/api/v2/discussion/{id}/related/',
 
 ```
 
-This Endpoint retrieve related discussions
+This endpoint retrieve related discussions
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1482,7 +1482,7 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-This Endpoint upvotes a specific discussion.
+This endpoint upvotes a specific discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1539,7 +1539,7 @@ fetch('/api/v2/discussion/{id}/vote/',
 
 ```
 
-This Endpoint removes an upvote for a specific discussion.
+This endpoint removes an upvote for a specific discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1707,7 +1707,7 @@ fetch('/api/v2/discussion/{id}/flag/',
 
 ```
 
-This Endpoint retrieves a List of Flags for a Specific Discussion.
+This endpoint retrieves a List of Flags for a Specific Discussion.
 
 <h3 id="http-request">HTTP Request</h3>
 

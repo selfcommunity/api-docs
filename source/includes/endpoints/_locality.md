@@ -33,7 +33,7 @@ fetch('/api/v2/locality/',
 
 ```
 
-This Endpoint retrieve the list of available localities for [Discussion](#selfcommunity-api-discussion) and/or [Post](#selfcommunity-api-post) geolocalization.
+This endpoint retrieve the list of available localities for [Discussion](#selfcommunity-api-discussion) and/or [Post](#selfcommunity-api-post) geolocalization.
 
 <h3 id="http-request">HTTP Request</h3>
 

@@ -132,7 +132,7 @@ fetch('/api/v2/embed/',
 
 ```
 
-This Endpoint create an Embed.
+This endpoint create an Embed.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -218,7 +218,7 @@ fetch('/api/v2/embed/search/',
 
 ```
 
-This Endpoint perform search to Embeds
+This endpoint perform search to Embeds
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -385,7 +385,7 @@ fetch('/api/v2/embed/{id}/',
 
 ```
 
-This Endpoint update a specific Embed.
+This endpoint update a specific Embed.
 
 <h3 id="http-request">HTTP Request</h3>
 

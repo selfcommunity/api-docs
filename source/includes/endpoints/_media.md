@@ -42,7 +42,7 @@ fetch('/api/v2/media/upload/chunk/',
 
 ```
 
-This Endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint with the given `upload_id` parameter to finalize the upload and retrieve the [Media](#schemamedia).
+This endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint with the given `upload_id` parameter to finalize the upload and retrieve the [Media](#schemamedia).
 
 Max file size for image file is 5M.
 
@@ -136,7 +136,7 @@ fetch('/api/v2/media/upload/complete/',
 
 ```
 
-This Endpoint complete the chunk upload and create the [Media](#schemamedia).
+This endpoint complete the chunk upload and create the [Media](#schemamedia).
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -240,7 +240,7 @@ fetch('/api/v2/media/',
 
 ```
 
-This Endpoint create a Media. The allowed types for this endpoint are:
+This endpoint create a Media. The allowed types for this endpoint are:
 
  - *vimeo* for video upload. The endpoint must receive the url of the video after the video is fully uploaded to vimeo servers by the client
 
@@ -362,7 +362,7 @@ fetch('/api/v2/media/{id}/',
 
 ```
 
-This Endpoint update a Media. It must be used for media of `type` *url* for set the preview image that can be choosed between the images returned by the [create](#opIdcreateMedia) endpoint or other images that can be retrieved by an url.
+This endpoint update a Media. It must be used for media of `type` *url* for set the preview image that can be choosed between the images returned by the [create](#opIdcreateMedia) endpoint or other images that can be retrieved by an url.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -446,7 +446,7 @@ fetch('/api/v2/media/{id}/',
 
 ```
 
-This Endpoint delete a Media.
+This endpoint delete a Media.
 
 <h3 id="http-request">HTTP Request</h3>
 

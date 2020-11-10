@@ -33,7 +33,7 @@ fetch('/api/v2/captcha/',
 
 ```
 
-This Endpoint retrieve a new captcha if it is necessary. The captcha and the inputted text value must be attached to [Discussion](#opIdcreateDiscussion) and/or [Post](#opIdcreatePost) creation for checking that the user is not a robot.
+This endpoint retrieve a new captcha if it is necessary. The captcha and the inputted text value must be attached to [Discussion](#opIdcreateDiscussion) and/or [Post](#opIdcreatePost) creation for checking that the user is not a robot.
 
 <h3 id="http-request">HTTP Request</h3>
 
