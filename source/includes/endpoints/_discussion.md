@@ -198,6 +198,423 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
+## Get All Uncommented Discussions
+
+<a id="opIdlistUncommentedDiscussions"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/uncommented/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/uncommented/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieves all uncommented discussions.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/uncommented/`
+
+<h3 id="listuncommenteddiscussions-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
+    {
+      "id": 0,
+      "title": "string",
+      "slug": "string",
+      "categories": [
+        {
+          "id": 0,
+          "order": 1,
+          "name": "name",
+          "name_synonyms": "synonyms",
+          "slug": "name",
+          "slogan": "Slogan",
+          "html_info": null,
+          "seo_title": null,
+          "seo_description": null,
+          "auto_follow": "None",
+          "active": true,
+          "deleted": false,
+          "image_original": "string",
+          "image_bigger": "string",
+          "image_big": "string",
+          "image_medium": "string",
+          "image_small": "string",
+          "emotional_image_original": "string",
+          "emotional_image_position": 50,
+          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+          "stream_order_by": "recent"
+        }
+      ],
+      "media_type": "images",
+      "medias": [
+        {
+          "id": 0,
+          "added_at": "2019-08-24T14:15:22Z",
+          "type": "url",
+          "title": "string",
+          "description": "string",
+          "url": "http://example.com",
+          "image": "string",
+          "image_width": 0,
+          "image_height": 0,
+          "order": 0,
+          "embed": {
+            "id": 0,
+            "embed_type": "string",
+            "embed_id": "string",
+            "url": "string",
+            "metadata": {}
+          }
+        }
+      ],
+      "location": {
+        "location": "string",
+        "lat": 0,
+        "lng": 0
+      },
+      "poll": {
+        "id": 0,
+        "title": "string",
+        "multiple_choices": true,
+        "added_at": "2019-08-24T14:15:22Z",
+        "modified_at": "2019-08-24T14:15:22Z",
+        "closed": true,
+        "expiration_at": "2019-08-24T14:15:22Z",
+        "hidden": "string",
+        "choices": [
+          {
+            "id": 0,
+            "choice": "string",
+            "order": 0,
+            "added_at": "2019-08-24T14:15:22Z",
+            "deleted": "string",
+            "count_votes": "string"
+          }
+        ],
+        "votes": [
+          {
+            "id": 0,
+            "choice": "string",
+            "user": "string"
+          }
+        ]
+      },
+      "last_activity_at": "2019-08-24T14:15:22Z",
+      "view_count": 0,
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "added_at": "2019-08-24T14:15:22Z",
+      "html": "string",
+      "summary": "string",
+      "deleted": true,
+      "collapsed": "string",
+      "comment_count": "string",
+      "vote_count": 0,
+      "flag_count": "string",
+      "addressing": [
+        0
+      ],
+      "follower_count": "string"
+    }
+  ]
+}
+```
+
+<h3 id="listuncommenteddiscussions-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="listuncommenteddiscussions-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|true|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Search a Discussion
+
+<a id="opIdsearchDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/search/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/search/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint perform search operation to discussions.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/search/`
+
+<h3 id="searchdiscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|search|query|string|false|A search term.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
+      {
+        "id": 0,
+        "title": "string",
+        "slug": "string",
+        "categories": [
+          {
+            "id": 0,
+            "order": 1,
+            "name": "name",
+            "name_synonyms": "synonyms",
+            "slug": "name",
+            "slogan": "Slogan",
+            "html_info": null,
+            "seo_title": null,
+            "seo_description": null,
+            "auto_follow": "None",
+            "active": true,
+            "deleted": false,
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
+            "emotional_image_position": 50,
+            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
+            "stream_order_by": "recent"
+          }
+        ],
+        "media_type": "images",
+        "medias": [
+          {
+            "id": 0,
+            "added_at": "2019-08-24T14:15:22Z",
+            "type": "url",
+            "title": "string",
+            "description": "string",
+            "url": "http://example.com",
+            "image": "string",
+            "image_width": 0,
+            "image_height": 0,
+            "order": 0,
+            "embed": {
+              "id": 0,
+              "embed_type": "string",
+              "embed_id": "string",
+              "url": "string",
+              "metadata": {}
+            }
+          }
+        ],
+        "location": {
+            "location": "string",
+            "lat": 0,
+            "lng": 0
+        },
+        "poll": {
+            "id": 0,
+            "title": "string",
+            "multiple_choices": true,
+            "added_at": "2019-08-24T14:15:22Z",
+            "modified_at": "2019-08-24T14:15:22Z",
+            "closed": true,
+            "expiration_at": "2019-08-24T14:15:22Z",
+            "hidden": "string",
+            "choices": [
+            {
+                "id": 0,
+                "choice": "string",
+                "order": 0,
+                "added_at": "2019-08-24T14:15:22Z",
+                "deleted": "string",
+                "count_votes": "string"
+            }
+            ],
+            "votes": [
+            {
+                "id": 0,
+                "choice": "string",
+                "user": "string"
+            }
+            ]
+        },
+        "last_activity_at": "2019-08-24T14:15:22Z",
+        "view_count": 0,
+        "author": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "birthday": "string",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "http://example.com",
+            "avatar": "string",
+            "cover": "string"
+        },
+        "added_at": "2019-08-24T14:15:22Z",
+        "html": "string",
+        "summary": "string",
+        "deleted": true,
+        "collapsed": "string",
+        "comment_count": "string",
+        "vote_count": 0,
+        "flag_count": "string",
+        "addressing": [],
+        "follower_count": "string",
+        "seen_by_id": [
+            null
+        ],
+        "has_boost": true,
+        "matches": [
+    {
+      "object": {
+          "id": 238,
+          "type": "search",
+          "added_at": "2020-10-19T16:05:34.974676+00:00",
+          "html": "string"
+      },
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      }
+    }
+  ]
+        }
+    ]
+}
+```
+
+<h3 id="searchdiscussion-responses">Responses</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|true|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[SearchDiscussion](#schemasearchdiscussion)]|true|none|List of results|
+
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false
+</aside>
+
+
 ## Create a Discussion
 
 <a id="opIdcreateDiscussion"></a>
@@ -450,225 +867,6 @@ This endpoint creates a discussion.
 
 <aside class="notice">
 This operation require authentication
-</aside>
-
-## Search a Discussion
-
-<a id="opIdsearchDiscussion"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/discussion/search/ \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/discussion/search/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-This endpoint perform search operation to discussions.
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/discussion/search/`
-
-<h3 id="searchdiscussion-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|search|query|string|false|A search term.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "count": 123,
-  "next": "string",
-  "previous": "string",
-  "results": [
-      {
-        "id": 0,
-        "title": "string",
-        "slug": "string",
-        "categories": [
-          {
-            "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
-            "active": true,
-            "deleted": false,
-            "image_original": "string",
-            "image_bigger": "string",
-            "image_big": "string",
-            "image_medium": "string",
-            "image_small": "string",
-            "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
-          }
-        ],
-        "media_type": "images",
-        "medias": [
-          {
-            "id": 0,
-            "added_at": "2019-08-24T14:15:22Z",
-            "type": "url",
-            "title": "string",
-            "description": "string",
-            "url": "http://example.com",
-            "image": "string",
-            "image_width": 0,
-            "image_height": 0,
-            "order": 0,
-            "embed": {
-              "id": 0,
-              "embed_type": "string",
-              "embed_id": "string",
-              "url": "string",
-              "metadata": {}
-            }
-          }
-        ],
-        "location": {
-            "location": "string",
-            "lat": 0,
-            "lng": 0
-        },
-        "poll": {
-            "id": 0,
-            "title": "string",
-            "multiple_choices": true,
-            "added_at": "2019-08-24T14:15:22Z",
-            "modified_at": "2019-08-24T14:15:22Z",
-            "closed": true,
-            "expiration_at": "2019-08-24T14:15:22Z",
-            "hidden": "string",
-            "choices": [
-            {
-                "id": 0,
-                "choice": "string",
-                "order": 0,
-                "added_at": "2019-08-24T14:15:22Z",
-                "deleted": "string",
-                "count_votes": "string"
-            }
-            ],
-            "votes": [
-            {
-                "id": 0,
-                "choice": "string",
-                "user": "string"
-            }
-            ]
-        },
-        "last_activity_at": "2019-08-24T14:15:22Z",
-        "view_count": 0,
-        "author": {
-            "id": 0,
-            "username": "string",
-            "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
-            "date_joined": "2019-08-24T14:15:22Z",
-            "bio": "string",
-            "location": "string",
-            "birthday": "string",
-            "description": "string",
-            "gender": "Male",
-            "status": "a",
-            "website": "http://example.com",
-            "avatar": "string",
-            "cover": "string"
-        },
-        "added_at": "2019-08-24T14:15:22Z",
-        "html": "string",
-        "summary": "string",
-        "deleted": true,
-        "collapsed": "string",
-        "comment_count": "string",
-        "vote_count": 0,
-        "flag_count": "string",
-        "addressing": [],
-        "follower_count": "string",
-        "seen_by_id": [
-            null
-        ],
-        "has_boost": true,
-        "matches": [
-    {
-      "object": {
-          "id": 238,
-          "type": "search",
-          "added_at": "2020-10-19T16:05:34.974676+00:00",
-          "html": "string"
-      },
-      "author": {
-        "id": 0,
-        "username": "string",
-        "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
-        "date_joined": "2019-08-24T14:15:22Z",
-        "bio": "string",
-        "location": "string",
-        "birthday": "string",
-        "description": "string",
-        "gender": "Male",
-        "status": "a",
-        "website": "http://example.com",
-        "avatar": "string",
-        "cover": "string"
-      }
-    }
-  ]
-        }
-    ]
-}
-```
-
-<h3 id="searchdiscussion-responses">Responses</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|[[SearchDiscussion](#schemasearchdiscussion)]|true|none|List of results|
-
-<aside class="notice">
-This operation require authentication only if `content_availability` community option is false
 </aside>
 
 ## Get a specific Discussion

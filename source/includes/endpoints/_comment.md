@@ -87,8 +87,38 @@ If the object and parent parameters are specified the endpoint retrieve all comm
       "in_reply_to": 0,
       "vote_count": 0,
       "flag_count": 0,
-      "comment_count": 0,
-      "latest_comments": []
+      "comment_count": 1,
+      "latest_comments": [
+        {
+          "id": 1,
+          "object": 1,
+          "author": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "birthday": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "http://example.com",
+            "avatar": "string",
+            "cover": "string"
+          },
+          "added_at": "2019-08-24T14:15:22Z",
+          "html": "string",
+          "summary": "string",
+          "deleted": true,
+          "collapsed": true,
+          "parent": 0,
+          "in_reply_to": 0,
+          "comments_count": 0,
+          "vote_count": 0,
+          "flag_count": 0,
+          "comment_count": 0
+        }
+      ]
     }
   ]
 }
@@ -178,11 +208,10 @@ This endpoint creates a comment.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» object|body|integer¦null|true|Id of the object (discussion or post)|
-|» author|body|integer|true|Id of the user that creates the comment|
+|» object|body|integer|true|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
 |» parent|body|integer¦null|false|Id of a comment, used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a comment, used for reply in nested comments|
-|» text|body|string|true|none|
+|» text|body|string|true|text for the comment, html format|
 
 > Example responses
 
@@ -215,8 +244,38 @@ This endpoint creates a comment.
   "in_reply_to": 0,
   "vote_count": 0,
   "flag_count": 0,
-  "comment_count": 0,
-  "latest_comments": []
+  "comment_count": 1,
+  "latest_comments": [
+    {
+      "id": 1,
+      "object": 1,
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "added_at": "2019-08-24T14:15:22Z",
+      "html": "string",
+      "summary": "string",
+      "deleted": true,
+      "collapsed": true,
+      "parent": 0,
+      "in_reply_to": 0,
+      "comments_count": 0,
+      "vote_count": 0,
+      "flag_count": 0,
+      "comment_count": 0
+    }
+  ]
 }
 ```
 
@@ -308,8 +367,38 @@ This endpoint retrieves a specific comment using ID.
   "in_reply_to": 0,
   "vote_count": 0,
   "flag_count": 0,
-  "comment_count": 0,
-  "latest_comments": []
+  "comment_count": 1,
+  "latest_comments": [
+    {
+      "id": 1,
+      "object": 1,
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "added_at": "2019-08-24T14:15:22Z",
+      "html": "string",
+      "summary": "string",
+      "deleted": true,
+      "collapsed": true,
+      "parent": 0,
+      "in_reply_to": 0,
+      "comments_count": 0,
+      "vote_count": 0,
+      "flag_count": 0,
+      "comment_count": 0
+    }
+  ]
 }
 ```
 
@@ -387,11 +476,10 @@ This endpoint update a specific comment.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this post.|
-|» object|body|integer¦null|true|Id of the object (discussion or post)|
-|» author|body|integer|true|Id of the user that creates the comment|
+|» object|body|integer|true|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
 |» parent|body|integer¦null|false|Id of a comment, used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a comment, used for reply in nested comments|
-|» text|body|string|true|none|
+|» text|body|string|true|text for the comment, html format|
 
 > Example responses
 
@@ -424,8 +512,38 @@ This endpoint update a specific comment.
   "in_reply_to": 0,
   "vote_count": 0,
   "flag_count": 0,
-  "comment_count": 0,
-  "latest_comments": []
+  "comment_count": 1,
+  "latest_comments": [
+    {
+      "id": 1,
+      "object": 1,
+      "author": {
+        "id": 0,
+        "username": "string",
+        "real_name": "string",
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "birthday": "string",
+        "description": "string",
+        "gender": "Male",
+        "website": "http://example.com",
+        "avatar": "string",
+        "cover": "string"
+      },
+      "added_at": "2019-08-24T14:15:22Z",
+      "html": "string",
+      "summary": "string",
+      "deleted": true,
+      "collapsed": true,
+      "parent": 0,
+      "in_reply_to": 0,
+      "comments_count": 0,
+      "vote_count": 0,
+      "flag_count": 0,
+      "comment_count": 0
+    }
+  ]
 }
 ```
 
