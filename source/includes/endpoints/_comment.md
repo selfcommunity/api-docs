@@ -47,8 +47,8 @@ If the object and parent parameters are specified the endpoint retrieve all comm
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|object|query|string|false|The discussion or post id|
-|parent|query|string|false|The parent id of the comments (used for retrieve nested comments)|
+|object|query|string|false|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
+|parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to added_at|
 
 > Example responses
@@ -188,6 +188,9 @@ fetch('/api/v2/comment/',
 ```
 
 This endpoint creates a comment.
+The `object` parameter is required in every request (first-level or nested comment creation).
+The `parent` parameter is required only for nested comments.
+The `in_reply_to` parameter is required only for create a reference in the nested comments (simulation of three levels of nesting).
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -209,9 +212,9 @@ This endpoint creates a comment.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» object|body|integer|true|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
-|» parent|body|integer¦null|false|Id of a comment, used for creating nested comments|
-|» in_reply_to|body|integer¦null|false|Id of a comment, used for reply in nested comments|
-|» text|body|string|true|text for the comment, html format|
+|» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
+|» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
+|» text|body|string|true|text for the [Comment](#schemacomment), html format|
 
 > Example responses
 
@@ -476,10 +479,7 @@ This endpoint update a specific comment.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this post.|
-|» object|body|integer|true|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
-|» parent|body|integer¦null|false|Id of a comment, used for creating nested comments|
-|» in_reply_to|body|integer¦null|false|Id of a comment, used for reply in nested comments|
-|» text|body|string|true|text for the comment, html format|
+|» text|body|string|true|text for the [Comment](#schemacomment), html format|
 
 > Example responses
 
