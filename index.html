@@ -13203,9 +13203,11 @@ fetch(</span><span class="dl">'</span><span class="o">/</span><span class="nx">a
 });
 
 </span></code></pre></div>
-<p>This endpoint retrieves all comments. 
-If the object parameter is specified the endpoint retrieve all comments of a specific object (discussion, post).
-If the object and parent parameters are specified the endpoint retrieve all comments of a specific object (discussion, post) that has the passed parent (nested comments).</p>
+<p>This endpoint retrieves all comments. </p>
+
+<p>If the <code>object</code> parameter is specified the endpoint retrieve all comments of a specific object (<a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a>).</p>
+
+<p>If the <code>object</code> and <code>parent</code> parameters are specified the endpoint retrieve all comments of a specific object (<a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a>) that has the passed parent (nested comments).</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13432,10 +13434,13 @@ fetch(</span><span class="dl">'</span><span class="o">/</span><span class="nx">a
 });
 
 </span></code></pre></div>
-<p>This endpoint creates a comment.
-The <code>object</code> parameter is required in every request (first-level or nested comment creation).
-The <code>parent</code> parameter is required only for nested comments.
-The <code>in_reply_to</code> parameter is required only for create a reference in the nested comments (simulation of three levels of nesting).</p>
+<p>This endpoint creates a comment.</p>
+
+<p>The <code>object</code> parameter is required in every request (first-level or nested comment creation).</p>
+
+<p>The <code>parent</code> parameter is required only for nested comments.</p>
+
+<p>The <code>in_reply_to</code> parameter is required only for create a reference in the nested comments (simulation of three levels of nesting).</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
