@@ -13241,14 +13241,14 @@ If the object and parent parameters are specified the endpoint retrieve all comm
 <td>query</td>
 <td>string</td>
 <td>false</td>
-<td>The discussion or post id</td>
+<td>Id of the object (<a href="#schemadiscussion">Discussion</a> or <a href="#schemapost">Post</a>)</td>
 </tr>
 <tr>
 <td>parent</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
-<td>The parent id of the comments (used for retrieve nested comments)</td>
+<td>Id of the parent <a href="#schemacomment">Comment</a>, used for retrieve nested comments</td>
 </tr>
 <tr>
 <td>ordering</td>
@@ -13432,7 +13432,10 @@ fetch(</span><span class="dl">'</span><span class="o">/</span><span class="nx">a
 });
 
 </span></code></pre></div>
-<p>This endpoint creates a comment.</p>
+<p>This endpoint creates a comment.
+The <code>object</code> parameter is required in every request (first-level or nested comment creation).
+The <code>parent</code> parameter is required only for nested comments.
+The <code>in_reply_to</code> parameter is required only for create a reference in the nested comments (simulation of three levels of nesting).</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -13471,21 +13474,21 @@ fetch(</span><span class="dl">'</span><span class="o">/</span><span class="nx">a
 <td>body</td>
 <td>integer¦null</td>
 <td>false</td>
-<td>Id of a comment, used for creating nested comments</td>
+<td>Id of a <a href="#schemacomment">Comment</a>, used for creating nested comments</td>
 </tr>
 <tr>
 <td>» in_reply_to</td>
 <td>body</td>
 <td>integer¦null</td>
 <td>false</td>
-<td>Id of a comment, used for reply in nested comments</td>
+<td>Id of a <a href="#schemacomment">Comment</a>, used for reply in nested comments</td>
 </tr>
 <tr>
 <td>» text</td>
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>text for the comment, html format</td>
+<td>text for the <a href="#schemacomment">Comment</a>, html format</td>
 </tr>
 </tbody></table>
 
@@ -13789,32 +13792,11 @@ curl <span class="nt">-X</span> PUT /api/v2/comment/<span class="o">{</span><spa
 <td>A unique integer value identifying this post.</td>
 </tr>
 <tr>
-<td>» object</td>
-<td>body</td>
-<td>integer</td>
-<td>true</td>
-<td>Id of the object (<a href="#schemadiscussion">Discussion</a> or <a href="#schemapost">Post</a>)</td>
-</tr>
-<tr>
-<td>» parent</td>
-<td>body</td>
-<td>integer¦null</td>
-<td>false</td>
-<td>Id of a comment, used for creating nested comments</td>
-</tr>
-<tr>
-<td>» in_reply_to</td>
-<td>body</td>
-<td>integer¦null</td>
-<td>false</td>
-<td>Id of a comment, used for reply in nested comments</td>
-</tr>
-<tr>
 <td>» text</td>
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>text for the comment, html format</td>
+<td>text for the <a href="#schemacomment">Comment</a>, html format</td>
 </tr>
 </tbody></table>
 
