@@ -46,7 +46,7 @@ This endpoint retrieves all posts.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|ordering|query|string|false|Which field to use when ordering the results.|
+|ordering|query|string|false|Which field to use when ordering the results. For sorting desc use - in front of the field name. Default to -added_at. Available values are added_at, last_activity_at|
 
 > Example responses
 
