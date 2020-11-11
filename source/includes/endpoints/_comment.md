@@ -34,8 +34,10 @@ fetch('/api/v2/comment/',
 
 ```
 This endpoint retrieves all comments. 
-If the object parameter is specified the endpoint retrieve all comments of a specific object (discussion, post).
-If the object and parent parameters are specified the endpoint retrieve all comments of a specific object (discussion, post) that has the passed parent (nested comments).
+
+If the `object` parameter is specified the endpoint retrieve all comments of a specific object ([Discussion](#schemadiscussion), [Post](#schemapost)).
+
+If the `object` and `parent` parameters are specified the endpoint retrieve all comments of a specific object ([Discussion](#schemadiscussion), [Post](#schemapost)) that has the passed parent (nested comments).
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -188,8 +190,11 @@ fetch('/api/v2/comment/',
 ```
 
 This endpoint creates a comment.
+
 The `object` parameter is required in every request (first-level or nested comment creation).
+
 The `parent` parameter is required only for nested comments.
+
 The `in_reply_to` parameter is required only for create a reference in the nested comments (simulation of three levels of nesting).
 
 <h3 id="http-request">HTTP Request</h3>
