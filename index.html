@@ -756,6 +756,9 @@
                     <a href="#tocS_FeedSummary" class="toc-h2 toc-link" data-title="FeedSummary">FeedSummary</a>
                   </li>
                   <li>
+                    <a href="#tocS_Flag" class="toc-h2 toc-link" data-title="Flag">Flag</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Vote" class="toc-h2 toc-link" data-title="Vote">Vote</a>
                   </li>
                   <li>
@@ -19650,6 +19653,94 @@ This operation requires authentication
 <td>true</td>
 <td>read-only</td>
 <td>Total count of unread feed objects</td>
+</tr>
+</tbody></table>
+<h2 id="tocS_Flag">Flag</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaflag"></a>
+<a id="schema_Flag"></a>
+<a id="tocSflag"></a>
+<a id="tocsflag"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user</td>
+<td>object</td>
+<td>false</td>
+<td>read-only</td>
+<td><a href="#schemauser">User</a></td>
+</tr>
+<tr>
+<td>added_at</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>flag_type_description</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>flag_type</td>
+<td>0</td>
+<td>spam</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>1</td>
+<td>aggressive</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>2</td>
+<td>vulgar</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>3</td>
+<td>poor</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>4</td>
+<td>offtopic</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_Vote">Vote</h2>
