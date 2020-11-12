@@ -599,6 +599,8 @@ This operation require authentication
 </aside>
 
 
+<!-- 
+
 ## Change User Password
 
 <a id="opIdchangeEmailUser"></a>
@@ -774,6 +776,7 @@ new_password: string
 This operation require authentication
 </aside>
 
+-->
 
 ## Me
 
