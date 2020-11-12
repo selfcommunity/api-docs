@@ -103,7 +103,7 @@ Status Code **200**
 |» count|integer|false|none|Total results count|
 |» next|string(uri)¦null|false|none|Next page url|
 |» previous|string(uri)¦null|false|none|Previous page url|
-|» results|[[User](#schemauser)]|false|none|List of results|
+|» results|list([User](#schemauser))|false|none|List of results|
 
 <aside class="notice">
 This operation requires authentication
@@ -216,7 +216,7 @@ Status Code **200**
 |» count|integer|false|none|Total results count|
 |» next|string(uri)¦null|false|none|Next page url|
 |» previous|string(uri)¦null|false|none|Previous page url|
-|» results|[[User](#schemauser)]|false|none|List of results|
+|» results|list([User](#schemauser))|false|none|List of results|
 
 <aside class="notice">
 This operation requires authentication
@@ -1043,7 +1043,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[User](#schemauser)]|false|none|none|
+|» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
@@ -1143,7 +1143,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[User](#schemauser)]|false|none|none|
+|» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
@@ -1441,7 +1441,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[User](#schemauser)]|false|none|none|
+|» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication
