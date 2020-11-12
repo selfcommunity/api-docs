@@ -568,33 +568,33 @@ This endpoint perform search operation to discussions.
         ],
         "has_boost": true,
         "matches": [
-    {
-      "object": {
-          "id": 238,
-          "type": "search",
-          "added_at": "2020-10-19T16:05:34.974676+00:00",
-          "html": "string"
-      },
-      "author": {
-        "id": 0,
-        "username": "string",
-        "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
-        "date_joined": "2019-08-24T14:15:22Z",
-        "bio": "string",
-        "location": "string",
-        "birthday": "string",
-        "description": "string",
-        "gender": "Male",
-        "status": "a",
-        "website": "http://example.com",
-        "avatar": "string",
-        "cover": "string"
+          {
+            "object": {
+                "id": 238,
+                "type": "comment",
+                "added_at": "2020-10-19T16:05:34.974676+00:00",
+                "html": "string"
+            },
+            "author": {
+              "id": 0,
+              "username": "string",
+              "real_name": "string",
+              "email": "user@example.com",
+              "email_isvalid": true,
+              "date_joined": "2019-08-24T14:15:22Z",
+              "bio": "string",
+              "location": "string",
+              "birthday": "string",
+              "description": "string",
+              "gender": "Male",
+              "status": "a",
+              "website": "http://example.com",
+              "avatar": "string",
+              "cover": "string"
+            }
+          }
+        ]
       }
-    }
-  ]
-        }
     ]
 }
 ```
@@ -1513,38 +1513,7 @@ This endpoint retrieve related discussions
         "vote_count": 0,
         "flag_count": "string",
         "addressing": [],
-        "follower_count": "string",
-        "seen_by_id": [
-            null
-        ],
-        "has_boost": true,
-        "matches": [
-          {
-            "object": {
-                "id": 238,
-                "type": "search",
-                "added_at": "2020-10-19T16:05:34.974676+00:00",
-                "html": "string"
-            },
-            "author": {
-              "id": 0,
-              "username": "string",
-              "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
-              "date_joined": "2019-08-24T14:15:22Z",
-              "bio": "string",
-              "location": "string",
-              "birthday": "string",
-              "description": "string",
-              "gender": "Male",
-              "status": "a",
-              "website": "http://example.com",
-              "avatar": "string",
-              "cover": "string"
-            }
-          }
-        ]
+        "follower_count": "string"
       }
     ]
 }

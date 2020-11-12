@@ -35,6 +35,7 @@ includes:
   - schemas/discussion
   - schemas/post
   - schemas/comment
+  - schemas/search
   - schemas/feed
   - schemas/flag
   - schemas/vote

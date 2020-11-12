@@ -602,7 +602,7 @@ This endpoint perform search operation to posts.
           {
             "object": {
                 "id": 238,
-                "type": "search",
+                "type": "comment",
                 "added_at": "2020-10-19T16:05:34.974676+00:00",
                 "html": "string"
             },
