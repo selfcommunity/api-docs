@@ -75,7 +75,7 @@
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
 |object|integer|false|none|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
-|author|object|true|read-only|[User](#schemauser)|
+|author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|
@@ -87,7 +87,7 @@
 |flag_count|integer|false|read-only|none|
 |comment_count|integer|false|read-only|none|
 |text|string|true|write-only|none|
-|latest_comments|list|false|read-only|[CommentSummary](#schemacommentsummary)|
+|latest_comments|list([CommentSummary](#schemacommentsummary))|false|read-only|none|
 
 
 <h2 id="tocS_CommentSummary">CommentSummary</h2>
@@ -136,7 +136,7 @@
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
 |object|integer|false|none|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
-|author|object|true|read-only|[User](#schemauser)|
+|author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|

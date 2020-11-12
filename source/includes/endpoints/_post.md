@@ -85,7 +85,6 @@ This endpoint retrieves all posts.
           "stream_order_by": "recent"
         }
       ],
-      "media_type": "images",
       "medias": [
         {
           "id": 0,
@@ -162,9 +161,9 @@ This endpoint retrieves all posts.
       "summary": "string",
       "deleted": true,
       "collapsed": "string",
-      "comment_count": "string",
+      "comment_count": 0,
       "vote_count": 0,
-      "flag_count": "string",
+      "flag_count": 0,
       "addressing": [
         0
       ]
@@ -188,7 +187,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Post](#schemapost)]|true|none|List of results|
+|» results|list([Post](#schemapost))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -290,8 +289,8 @@ This endpoint creates a post.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» text|body|string|false|The content of the post in html format|
-|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
+|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
+|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the post|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -300,9 +299,9 @@ This endpoint creates a post.
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» choices|body|[object]|true|none|
+|»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
-|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
+|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -336,7 +335,6 @@ This endpoint creates a post.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -413,9 +411,9 @@ This endpoint creates a post.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": []
 }
 ```
@@ -513,7 +511,6 @@ This endpoint perform search operation to posts.
             "stream_order_by": "recent"
           }
         ],
-        "media_type": "images",
         "medias": [
           {
             "id": 0,
@@ -590,14 +587,10 @@ This endpoint perform search operation to posts.
         "summary": "string",
         "deleted": true,
         "collapsed": "string",
-        "comment_count": "string",
+        "comment_count": 0,
         "vote_count": 0,
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [],
-        "seen_by_id": [
-            null
-        ],
-        "has_boost": true,
         "matches": [
           {
             "object": {
@@ -639,7 +632,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[SearchPost](#schemasearchpost)]|true|none|List of results|
+|» results|list([SearchPost](#schemasearchpost))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -723,7 +716,6 @@ This endpoint retrieves a specific post using ID.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -800,9 +792,9 @@ This endpoint retrieves a specific post using ID.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": []
 }
 ```
@@ -913,8 +905,8 @@ This endpoint update a specific post.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» text|body|string|false|The content of the post in html format|
-|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
+|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
+|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the post|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -923,9 +915,9 @@ This endpoint update a specific post.
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» choices|body|[object]|true|none|
+|»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
-|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
+|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -959,7 +951,6 @@ This endpoint update a specific post.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -1036,9 +1027,9 @@ This endpoint update a specific post.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": []
 }
 ```
@@ -1180,7 +1171,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Vote](#schemavote)]|true|none|List of results|
+|» results|list([Vote](#schemavote))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false

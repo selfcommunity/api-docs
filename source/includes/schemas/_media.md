@@ -66,7 +66,7 @@
 |image_width|integer|false|read-only|none|
 |image_height|integer|false|read-only|none|
 |order|integer|false|read-only|none|
-|embed|object¦null|false|none|[Embed](#schemaembed)|
+|embed|[Embed](#schemaembed)¦null|false|none|none|
 
 #### Enumerated Values
 

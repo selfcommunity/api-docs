@@ -70,8 +70,8 @@ Max chunk size is 204800 bytes.
 |» upload_id|body|string|true|returned by the first call and required from the second|
 |» offset|body|string|true|offset of the chunk|
 |» expires|body|string|false|expiration time|
-|» image|body|string|false|Image chunk to be uploaded|
-|» document|body|string|false|Document chunk to be uploaded|
+|» image|body|blob|false|Image chunk to be uploaded|
+|» document|body|blob|false|Document chunk to be uploaded|
 
 > Example responses
 
@@ -277,7 +277,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 |---|---|---|---|---|
 |» type|body|string|true|none|
 |» url|body|string(uri)|if `type` is *url*|Required for type url|
-|» embed|body|object|if `type` is *embed*|[Embed](#schemaembed) object|
+|» embed|body|[Embed](#schemaembed)|if `type` is *embed*|none|
 
 #### Enumerated Values
 

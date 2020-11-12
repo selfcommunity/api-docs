@@ -87,7 +87,6 @@ This endpoint retrieves all discussions.
           "stream_order_by": "recent"
         }
       ],
-      "media_type": "images",
       "medias": [
         {
           "id": 0,
@@ -165,9 +164,9 @@ This endpoint retrieves all discussions.
       "summary": "string",
       "deleted": true,
       "collapsed": "string",
-      "comment_count": "string",
+      "comment_count": 0,
       "vote_count": 0,
-      "flag_count": "string",
+      "flag_count": 0,
       "addressing": [
         0
       ],
@@ -192,7 +191,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
+|» results|list([Discussion](#schemadiscussion))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -284,7 +283,6 @@ This endpoint retrieves all uncommented discussions.
           "stream_order_by": "recent"
         }
       ],
-      "media_type": "images",
       "medias": [
         {
           "id": 0,
@@ -362,9 +360,9 @@ This endpoint retrieves all uncommented discussions.
       "summary": "string",
       "deleted": true,
       "collapsed": "string",
-      "comment_count": "string",
+      "comment_count": 0,
       "vote_count": 0,
-      "flag_count": "string",
+      "flag_count": 0,
       "addressing": [
         0
       ],
@@ -389,7 +387,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
+|» results|list([Discussion](#schemadiscussion))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication
@@ -480,7 +478,6 @@ This endpoint perform search operation to discussions.
             "stream_order_by": "recent"
           }
         ],
-        "media_type": "images",
         "medias": [
           {
             "id": 0,
@@ -558,15 +555,11 @@ This endpoint perform search operation to discussions.
         "summary": "string",
         "deleted": true,
         "collapsed": "string",
-        "comment_count": "string",
+        "comment_count": 0,
         "vote_count": 0,
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [],
         "follower_count": "string",
-        "seen_by_id": [
-            null
-        ],
-        "has_boost": true,
         "matches": [
           {
             "object": {
@@ -608,7 +601,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[SearchDiscussion](#schemasearchdiscussion)]|true|none|List of results|
+|» results|list([SearchDiscussion](#schemasearchdiscussion))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -651,10 +644,6 @@ const inputBody = '{
         "choice": "string"
       }
     ]
-  },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
   },
   "addressing": []
 }';
@@ -708,10 +697,6 @@ This endpoint creates a discussion.
       }
     ]
   },
-  "captcha": {
-    "hashkey": "string",
-    "response": "string"
-  },
   "addressing": []
 }
 ```
@@ -722,8 +707,8 @@ This endpoint creates a discussion.
 |---|---|---|---|---|
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
-|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
+|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
+|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -732,12 +717,9 @@ This endpoint creates a discussion.
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» choices|body|[object]|true|none|
+|»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
-|» captcha|body|object|false|Required only when daily discussion limit is passed|
-|»» hashkey|body|string|true|none|
-|»» response|body|string|true|none|
-|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
+|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -773,7 +755,6 @@ This endpoint creates a discussion.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -851,9 +832,9 @@ This endpoint creates a discussion.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
 }
@@ -949,7 +930,6 @@ This endpoint retrieves a specific discussion using ID.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -1027,9 +1007,9 @@ This endpoint retrieves a specific discussion using ID.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
 }
@@ -1144,8 +1124,8 @@ This endpoint update a specific discussion.
 |---|---|---|---|---|
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
-|» categories|body|[integer]|true|List of id of [Category](#schemacategory)|
-|» medias|body|[integer]|false|List of id of [Media](#schemamedia)|
+|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
+|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
@@ -1154,12 +1134,9 @@ This endpoint update a specific discussion.
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
-|»» choices|body|[object]|true|none|
+|»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
-|» captcha|body|object|false|Required only when daily discussion limit is passed|
-|»» hashkey|body|string|true|none|
-|»» response|body|string|true|none|
-|» addressing|body|[integer]|false|List of id of [Tag](#schematag)|
+|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
 
@@ -1195,7 +1172,6 @@ This endpoint update a specific discussion.
       "stream_order_by": "recent"
     }
   ],
-  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -1273,9 +1249,9 @@ This endpoint update a specific discussion.
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": 0,
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
 }
@@ -1431,7 +1407,6 @@ This endpoint retrieve related discussions
               "stream_order_by": "recent"
           }
         ],
-        "media_type": "images",
         "medias": [
           {
             "id": 0,
@@ -1509,9 +1484,9 @@ This endpoint retrieve related discussions
         "summary": "string",
         "deleted": true,
         "collapsed": "string",
-        "comment_count": "string",
+        "comment_count": 0,
         "vote_count": 0,
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [],
         "follower_count": "string"
       }
@@ -1528,7 +1503,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Discussion](#schemadiscussion)]|true|none|List of results|
+|» results|list([Discussion](#schemadiscussion))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -1608,7 +1583,7 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Vote](#schemavote)]|true|none|List of results|
+|» results|list([Vote](#schemavote))|true|none|List of results|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false

@@ -179,7 +179,7 @@ This endpoint retrieves the main (home) feed
         "collapsed": "string",
         "comment_count": 0,
         "vote_count": "string",
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [
           0
         ],
@@ -187,7 +187,50 @@ This endpoint retrieves the main (home) feed
         "slug": "string",
         "view_count": 0,
         "follower_count": "string"
-      }
+      },
+      "seen_by_id": [
+        0
+      ],
+      "has_boost": false,
+      "activities": [
+        {
+          "type": "string",
+          "object": {},
+          "author": {
+            "id": 0,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "position": "string",
+            "birthday": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "http://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [
+              {
+                "id": 0,
+                "active": true,
+                "type": "user",
+                "name": "string",
+                "description": "string",
+                "color": "string",
+                "visible": true,
+                "deleted": true,
+                "created_at": "2019-08-24T14:15:22Z"
+              }
+            ]
+          },
+          "active_at": "2019-08-24T14:15:22Z",
+          "seen_by_id": [
+            null
+          ]
+        }
+      ]
     }
   ]
 }
@@ -208,7 +251,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[Feed](#schemafeed)]|false|none|none|
+|» results|list([Feed](#schemafeed))|false|none|none|
 
 <aside class="notice">
 This operation require authentication
@@ -392,7 +435,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
         "collapsed": "string",
         "comment_count": 0,
         "vote_count": "string",
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [
           0
         ],
@@ -400,7 +443,11 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
         "slug": "string",
         "view_count": 0,
         "follower_count": "string"
-      }
+      },
+      "seen_by_id": [
+        0
+      ],
+      "has_boost": false,
     }
   ]
 }
@@ -421,14 +468,13 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[Feed](#schemafeed)]|false|none|none|
-
+|» results|list([Feed](#schemafeed))|false|none|none|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-## Get Main Feed Summary
+## Get Main Feed Unseen Count
 
 <a id="opIdsummaryFeed"></a>
 
@@ -436,7 +482,7 @@ This operation require authentication only if `content_availability` community o
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/feed/summary/ \
+curl -X GET /api/v2/feed/unseen/count/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
@@ -449,7 +495,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/feed/summary/',
+fetch('/api/v2/feed/unseen/count/',
 {
   method: 'GET',
 
@@ -463,11 +509,11 @@ fetch('/api/v2/feed/summary/',
 
 ```
 
-This endpoint retrieves Main Feed unread count
+This endpoint retrieves Main Feed unseen count
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/feed/summary/`
+`GET /api/v2/feed/unseen/count/`
 
 > Example responses
 
@@ -490,7 +536,7 @@ This endpoint retrieves Main Feed unread count
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[FeedSummary](#schemafeedsummary)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[FeedUnseenCount](#schemafeedunseencount)|
 
 <aside class="notice">
 This operation require authentication
@@ -758,7 +804,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
         "collapsed": "string",
         "comment_count": 0,
         "vote_count": "string",
-        "flag_count": "string",
+        "flag_count": 0,
         "addressing": [
           0
         ],
@@ -766,7 +812,11 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
         "slug": "string",
         "view_count": 0,
         "follower_count": "string"
-      }
+      },
+      "seen_by_id": [
+        0
+      ],
+      "has_boost": false
     }
   ]
 }
@@ -779,7 +829,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[Feed](#schemafeed)]|false|none|none|
+|» results|list([Feed](#schemafeed))|false|none|none|
 
 <aside class="notice">
 This operation require authentication

@@ -110,9 +110,9 @@
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": "string",
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": [
     0
   ]
@@ -125,9 +125,9 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|categories|[object]|true|none|List of [Category](#schemacategory)|
+|categories|list([Category](#schemacategory))|true|none|none|
 |media_type|string|false|read-only|none|
-|medias|[object]|false|none|List of [Media](#schemamedia)|
+|medias|list([Media](#schemamedia))|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -141,25 +141,25 @@
 |» closed|boolean|false|none|none|
 |» expiration_at|string(date-time)|true|none|none|
 |» hidden|string|false|read-only|none|
-|» choices|[object]|true|none|none|
+|» choices|list(object)|true|none|none|
 |»» id|integer|false|read-only|none|
 |»» choice|string|true|none|none|
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
 |»» count_votes|string|false|read-only|none|
-|» votes|[object]¦null|false|none|none|
+|» votes|list(object)¦null|false|none|none|
 |»» id|integer|false|read-only|none|
 |»» choice|string|false|read-only|none|
 |»» user|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
-|author|object|false|read-only|[User](#schemauser)|
+|author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
-|comment_count|string|false|read-only|none|
+|comment_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
@@ -276,16 +276,12 @@
   "summary": "string",
   "deleted": true,
   "collapsed": "string",
-  "comment_count": "string",
+  "comment_count": 0,
   "vote_count": "string",
-  "flag_count": "string",
+  "flag_count": 0,
   "addressing": [
     0
   ],
-  "seen_by_id": [
-    null
-  ],
-  "has_boost": true,
   "matches": [
     {
       "object": {
@@ -322,9 +318,8 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|categories|[object]|true|none|List of [Category](#schemacategory)|
-|media_type|string|false|read-only|none|
-|medias|[object]|false|none|List of [Media](#schemamedia)|
+|categories|list([Category](#schemacategory))|true|none|none|
+|medias|list([Media](#schemamedia))|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
@@ -338,28 +333,26 @@
 |» closed|boolean|false|none|none|
 |» expiration_at|string(date-time)|true|none|none|
 |» hidden|string|false|read-only|none|
-|» choices|[object]|true|none|none|
+|» choices|list(object)|true|none|none|
 |»» id|integer|false|read-only|none|
 |»» choice|string|true|none|none|
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
 |»» count_votes|string|false|read-only|none|
-|» votes|[object]¦null|false|none|none|
+|» votes|list(object)¦null|false|none|none|
 |»» id|integer|false|read-only|none|
 |»» choice|string|false|read-only|none|
 |»» user|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
-|author|object|false|read-only|[User](#schemauser)|
+|author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
 |summary|string|false|read-only|none|
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
-|comment_count|string|false|read-only|none|
+|comment_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
-|seen_by_id|[any]|false|none|none|
-|has_boost|boolean|false|none|none|
-|matches|[object]|false|read-only|[SearchMatch](#schemasearchmatch)|
+|matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|

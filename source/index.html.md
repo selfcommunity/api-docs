@@ -13,7 +13,6 @@ includes:
   - authentication/jwt
   - endpoints/sso
   - endpoints/user
-  - endpoints/captcha
   - endpoints/locality
   - endpoints/category
   - endpoints/embed
@@ -27,7 +26,6 @@ includes:
   - schemas
   - schemas/user
   - schemas/connectionRequest
-  - schemas/captcha
   - schemas/locality
   - schemas/category
   - schemas/embed

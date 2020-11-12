@@ -85,18 +85,9 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» count|integer|false|none|Total number of results|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|[[Locality](#schemalocality)]|false|none|List of results|
-|»» full_address|string|false|read-only|none|
-|»» postal_code|string|false|read-only|none|
-|»» town|string|false|read-only|none|
-|»» province|string|false|read-only|none|
-|»» province_short|string|false|read-only|none|
-|»» region|string|false|read-only|none|
-|»» country|string|false|read-only|none|
-|»» lat|number|false|read-only|none|
-|»» lng|number|false|read-only|none|
+|» next|string(uri)¦null|false|none|none|
+|» previous|string(uri)¦null|false|none|none|
+|» results|list([Locality](#schemalocality))|false|none|none|
 
 <aside class="notice">
 This operation does not require authentication

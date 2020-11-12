@@ -84,7 +84,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[Embed](#schemaembed)]|false|none|none|
+|» results|list([Embed](#schemaembed))|false|none|none|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
@@ -269,7 +269,7 @@ Status Code **200**
 |» count|integer|false|none|none|
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
-|» results|[[Embed](#schemaembed)]|false|none|none|
+|» results|list([Embed](#schemaembed))|false|none|none|
 
 <aside class="notice">
 This operation require authentication only if `content_availability` community option is false
