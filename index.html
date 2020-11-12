@@ -357,12 +357,6 @@
                     <a href="#delete-a-specific-user" class="toc-h2 toc-link" data-title="Delete a Specific User">Delete a Specific User</a>
                   </li>
                   <li>
-                    <a href="#change-user-password" class="toc-h2 toc-link" data-title="Change User Password">Change User Password</a>
-                  </li>
-                  <li>
-                    <a href="#change-user-password-2" class="toc-h2 toc-link" data-title="Change User Password">Change User Password</a>
-                  </li>
-                  <li>
                     <a href="#me" class="toc-h2 toc-link" data-title="Me">Me</a>
                   </li>
                   <li>
@@ -2287,241 +2281,185 @@ There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</s
 <aside class="notice">
 This operation require authentication
 </aside>
-<h2 id='change-user-password'>Change User Password</h2>
-<p><a id="opIdchangeEmailUser"></a></p>
 
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/change_email/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+<!-- 
+
+## Change User Password
+
+<a id="opIdchangeEmailUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/user/{id}/change_email/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
   "new_email": "user@example.com"
-}</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
-<span class="p">};</span>
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/change_email/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
+fetch('/api/v2/user/{id}/change_email/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
-</code></pre></div>
-<p>Change the email of the authenticated user.</p>
+```
+
+Change the email of the authenticated user.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code>PATCH /api/v2/user/{id}/change_email/</code></p>
+`PATCH /api/v2/user/{id}/change_email/`
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"new_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">new_email</span><span class="pi">:</span> <span class="s">user@example.com</span>
+> Body parameter
 
-</code></pre></div>
+```json
+{
+  "new_email": "user@example.com"
+}
+```
+
+```yaml
+new_email: user@example.com
+
+```
+
 <h3 id="changeemailuser-parameters">Parameters</h3>
 
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>path</td>
-<td>string</td>
-<td>true</td>
-<td>A unique integer value identifying this user.</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemachangeemail">ChangeEmail</a></td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» new_email</td>
-<td>body</td>
-<td>string(email)</td>
-<td>true</td>
-<td>none</td>
-</tr>
-</tbody></table>
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|body|body|[ChangeEmail](#schemachangeemail)|false|none|
+|» new_email|body|string(email)|true|none|
 
-<blockquote>
-<p>Example responses</p>
+> Example responses
 
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"new_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+> 200 Response
+
+```json
+{
+  "new_email": "user@example.com"
+}
+```
+
 <h3 id="changeemailuser-responses">Responses</h3>
 
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>none</td>
-<td><a href="#schemachangeemail">ChangeEmail</a></td>
-</tr>
-</tbody></table>
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangeEmail](#schemachangeemail)|
 
 <aside class="notice">
 This operation require authentication
 </aside>
-<h2 id='change-user-password-2'>Change User Password</h2>
-<p><a id="opIdchangePasswordUser"></a></p>
 
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/change_password/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+## Change User Password
+
+<a id="opIdchangePasswordUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/user/{id}/change_password/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
   "password": "string",
   "new_password": "string"
-}</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
-<span class="p">};</span>
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/change_password/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
+fetch('/api/v2/user/{id}/change_password/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
-</code></pre></div>
-<p>Change the password of the authenticated user.</p>
+```
+
+Change the password of the authenticated user.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code>PATCH /api/v2/user/{id}/change_password/</code></p>
+`PATCH /api/v2/user/{id}/change_password/`
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">password</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">new_password</span><span class="pi">:</span> <span class="s">string</span>
+> Body parameter
 
-</code></pre></div>
+```json
+{
+  "password": "string",
+  "new_password": "string"
+}
+```
+
+```yaml
+password: string
+new_password: string
+
+```
+
 <h3 id="changepassworduser-parameters">Parameters</h3>
 
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>path</td>
-<td>string</td>
-<td>true</td>
-<td>A unique integer value identifying this user.</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemachangepassword">ChangePassword</a></td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» password</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» new_password</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-</tr>
-</tbody></table>
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|body|body|[ChangePassword](#schemachangepassword)|false|none|
+|» password|body|string|true|none|
+|» new_password|body|string|true|none|
 
-<blockquote>
-<p>Example responses</p>
+> Example responses
 
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+> 200 Response
+
+```json
+{
+  "password": "string",
+  "new_password": "string"
+}
+```
+
 <h3 id="changepassworduser-responses">Responses</h3>
 
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>none</td>
-<td><a href="#schemachangepassword">ChangePassword</a></td>
-</tr>
-</tbody></table>
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangePassword](#schemachangepassword)|
 
 <aside class="notice">
 This operation require authentication
 </aside>
+
+-->
 <h2 id='me'>Me</h2>
 <p><a id="opIdmeUser"></a></p>
 
