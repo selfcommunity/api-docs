@@ -34,9 +34,11 @@ fetch('/api/v2/user/',
 
 ```
 
-`GET /api/v2/user/`
-
 This endpoint retrieve the list of all users. 
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/`
 
 <h3 id="listusers-parameters">Parameters</h3>
 
@@ -143,9 +145,11 @@ fetch('/api/v2/user/search/',
 
 ```
 
-`GET /api/v2/user/search/`
-
 This endpoint perform search users. 
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/search/`
 
 <h3 id="searchusers-parameters">Parameters</h3>
 
@@ -253,9 +257,11 @@ fetch('/api/v2/user/{id}/',
 
 ```
 
-`GET /api/v2/user/{id}/`
-
 This endpoint retrieve a specific user's profile identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/`
 
 <h3 id="retrieveuser-parameters">Parameters</h3>
 
@@ -347,9 +353,11 @@ fetch('/api/v2/user/{id}/',
 
 ```
 
-`PUT /api/v2/user/{id}/`
-
 This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PUT /api/v2/user/{id}/`
 
 > Body parameter
 
@@ -469,11 +477,14 @@ fetch('/api/v2/user/{id}/',
 
 ```
 
-`PATCH /api/v2/user/{id}/`
 
 This endpoint patch a specific user identified by {id}. A user can only update their personal data.
 
 **NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/user/{id}/`
 
 <h3 id="partialupdateuser-parameters">Parameters</h3>
 
@@ -536,7 +547,8 @@ curl -X DELETE /api/v2/user/{id}/
 ```javascript
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 fetch('/api/v2/user/{id}/',
 {
@@ -550,8 +562,6 @@ fetch('/api/v2/user/{id}/',
 });
 
 ```
-
-`DELETE /api/v2/user/{id}/`
 
 Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 There are two ways of deleting a user: **soft** and **hard**.
@@ -567,6 +577,10 @@ In particular:
 * If the delete is hard and the user is already soft deleted perform hard delete
 * If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)
 
+<h3 id="http-request">HTTP Request</h3>
+
+`DELETE /api/v2/user/{id}/`
+
 <h3 id="destroyuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -579,6 +593,182 @@ In particular:
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+
+## Change User Password
+
+<a id="opIdchangeEmailUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/user/{id}/change_email/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
+  "new_email": "user@example.com"
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/change_email/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Change the email of the authenticated user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/user/{id}/change_email/`
+
+> Body parameter
+
+```json
+{
+  "new_email": "user@example.com"
+}
+```
+
+```yaml
+new_email: user@example.com
+
+```
+
+<h3 id="changeemailuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|body|body|[ChangeEmail](#schemachangeemail)|false|none|
+|» new_email|body|string(email)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "new_email": "user@example.com"
+}
+```
+
+<h3 id="changeemailuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangeEmail](#schemachangeemail)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Change User Password
+
+<a id="opIdchangePasswordUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X PATCH /api/v2/user/{id}/change_password/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
+  "password": "string",
+  "new_password": "string"
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/change_password/',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Change the password of the authenticated user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/user/{id}/change_password/`
+
+> Body parameter
+
+```json
+{
+  "password": "string",
+  "new_password": "string"
+}
+```
+
+```yaml
+password: string
+new_password: string
+
+```
+
+<h3 id="changepassworduser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|body|body|[ChangePassword](#schemachangepassword)|false|none|
+|» password|body|string|true|none|
+|» new_password|body|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "password": "string",
+  "new_password": "string"
+}
+```
+
+<h3 id="changepassworduser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangePassword](#schemachangepassword)|
 
 <aside class="notice">
 This operation require authentication
@@ -619,9 +809,11 @@ fetch('/api/v2/user/me/',
 
 ```
 
-`GET /api/v2/user/me/`
-
 Return the user identified by the authentication token.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/me/`
 
 > Example responses
 
@@ -696,9 +888,11 @@ fetch('/api/v2/user/{id}/feed/',
 
 ```
 
-`GET /api/v2/user/{id}/feed/`
-
 This endpoint retrive the list of user's post of the user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/feed/`
 
 <h3 id="listfeeduser-parameters">Parameters</h3>
 
@@ -820,135 +1014,6 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-<!-- 
-
-## Get User's Notifications
-
-<a id="opIdnotificationsUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/{id}/notifications/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/{id}/notifications/',
-{
-  method: 'GET',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/{id}/notifications/`
-
-This endpoint retrive the list of user notifications
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "next_id": 0,
-  "prev_id": 0,
-  "is_new": true,
-  "collapsed": "string"
-}
-```
-
-<h3 id="notificationsuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
-## Get Unseen User's Notifications
-
-<a id="opIdunseenUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/{id}/unseen/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/{id}/unseen/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/{id}/notifications/unseen/`
-
-This endpoint retrive the list unseen notifications for the user
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "unseen": [
-     {
-        "id": int
-     }
-  ],
-  "total": 0
-}
-```
-
-<h3 id="unseenuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
--->
-
 ## Get User's Followers
 
 <a id="opIdfollowersUser"></a>
@@ -981,9 +1046,11 @@ fetch('/api/v2/user/{id}/followers/',
 
 ```
 
-`GET /api/v2/user/{id}/followers/`
-
 This endpoint retrieve the list of followers of a specific user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/followers/`
 
 <h3 id="followersuser-parameters">Parameters</h3>
 
@@ -1081,9 +1148,11 @@ fetch('/api/v2/user/{id}/followings/',
 
 ```
 
-`GET /api/v2/user/{id}/followings/`
-
 This endpoint retrieve the list of following of a specific user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/followings/`
 
 <h3 id="followingsuser-parameters">Parameters</h3>
 
@@ -1183,11 +1252,13 @@ fetch('/api/v2/user/{id}/follow/',
 
 ```
 
-`POST /api/v2/user/{id}/follow/`
-
 This endpoint allows a user to follow another user identified by {id}. 
 
 **Note:** If a user already follows the user, it will be unfollowed.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/follow/`
 
 <h3 id="followuser-parameters">Parameters</h3>
 
@@ -1246,9 +1317,11 @@ fetch('/api/v2/user/{id}/is_followed/',
 
 ```
 
-`GET /api/v2/user/{id}/is_followed/`
-
 Return is_followed=true if the user (identified in path) is followed by me.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/is_followed/`
 
 <h3 id="isfolloweduser-parameters">Parameters</h3>
 
@@ -1313,9 +1386,11 @@ fetch('/api/v2/user/{id}/is_follower/',
 
 ```
 
-`GET /api/v2/user/{id}/is_follower/`
-
 Return is_follower=true if the user (identified in path) follow me.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/is_follower/`
 
 <h3 id="isfolloweruser-parameters">Parameters</h3>
 
@@ -1379,9 +1454,11 @@ fetch('/api/v2/user/{id}/connections/',
 
 ```
 
-`GET /api/v2/user/{id}/connections/`
-
 This endpoint retrieve the list of connections of a specific user identified by id.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/connections/`
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -1484,9 +1561,11 @@ fetch('/api/v2/user/{id}/is_connection/',
 
 ```
 
-`GET /api/v2/user/{id}/is_connection/`
-
 Return is_connection=true if the user (identified in path) is connected with me.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/is_connection/`
 
 <h3 id="isconnectionuser-parameters">Parameters</h3>
 
@@ -1548,9 +1627,11 @@ fetch('/api/v2/user/{id}/connection_requests/',
 
 ```
 
-`GET /api/v2/user/{id}/connection/requests/`
-
 This endpoint retrieve the list of connection requests received of a specific user identified by id.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/connection/requests/`
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -1680,9 +1761,11 @@ fetch('/api/v2/user/{id}/connection/requests_sent/',
 
 ```
 
-`GET /api/v2/user/{id}/connection/requests_sent/`
-
 This endpoint retrieve a specific user's list of connection requests sent by user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/connection/requests_sent/`
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -1813,9 +1896,11 @@ fetch('/api/v2/user/{id}/connection/accept/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/accept/`
-
 This endpoint accept a request connection of the user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/accept/`
 
 <h3 id="connectionacceptuser-parameters">Parameters</h3>
 
@@ -1877,9 +1962,11 @@ fetch('/api/v2/user/{id}/connection/request/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/request/`
-
 This endpoint request connection to the user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/request/`
 
 <h3 id="connectionrequestuser-parameters">Parameters</h3>
 
@@ -1940,10 +2027,11 @@ fetch('/api/v2/user/{id}/connection/remove/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/remove/`
-
 This endpoint remove connection with the user identified by {id}.
 
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/remove/`
 
 <h3 id="connectionremoveuser-parameters">Parameters</h3>
 
@@ -2003,9 +2091,11 @@ fetch('/api/v2/user/{id}/connection/cancel_reject/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/cancel_reject/`
-
 This endpoint cancel reject connection to a user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/cancel_reject/`
 
 <h3 id="connectioncancelrejectuser-parameters">Parameters</h3>
 
@@ -2066,9 +2156,11 @@ fetch('/api/v2/user/{id}/connection/cancel_request/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/cancel_request/`
-
 This endpoint cancel a request connection for a user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/cancel_request/`
 
 <h3 id="connectioncancelrequestuser-parameters">Parameters</h3>
 
@@ -2131,9 +2223,11 @@ fetch('/api/v2/user/{id}/connection/reject/',
 
 ```
 
-`POST /api/v2/user/{id}/connection/reject/`
-
 This endpoint reject a connection request sent from user identified by {id}.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection/reject/`
 
 <h3 id="connectionrejectuser-parameters">Parameters</h3>
 
@@ -2194,9 +2288,11 @@ fetch('/api/v2/user/{id}/connection_requests/mark_seen/',
 
 ```
 
-`POST /api/v2/user/{id}/connection_requests/mark_seen/`
+This endpoint mark seen a connection request of user identified by {id} for the user authenticated.
 
-This endpoint mark seen a connection request of user identified by {id} for teh user authenticated.
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/connection_requests/mark_seen/`
 
 <h3 id="connectionrequestsmarkseenuser-parameters">Parameters</h3>
 
@@ -2210,65 +2306,6 @@ This endpoint mark seen a connection request of user identified by {id} for teh 
 > 204 Response
 
 <h3 id="connectionrequestsmarkseenuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation requires authentication
-</aside>
-
-## Mark User Seen
-
-<a id="opIdmarkSeenUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/user/{id}/markseen/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/{id}/markseen/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/user/{id}/markseen/`
-
-This endpoint mark as seen posts for user identified by {id} for the user authenticated.
-
-
-<h3 id="markseenuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[User](#schemauser)|false|none|
-
-> Example responses
-
-> 204 Response
-
-<h3 id="markseenuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2313,9 +2350,11 @@ fetch('/api/v2/user/{id}/hide/',
 
 ```
 
-`POST /api/v2/user/{id}/hide/`
+This endpoint show/hide a user (user and user's post) identified by {id} for the authenticated user.
 
-This endpoint show/Hide a user (user and user's post) identified by {id} for the authenticated user. 
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/hide/` 
 
 <h3 id="hideuseruser-parameters">Parameters</h3>
 
