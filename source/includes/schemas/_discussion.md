@@ -370,6 +370,4 @@
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 |follower_count|string|false|read-only|none|
-|seen_by_id|[any]|false|none|none|
-|has_boost|boolean|false|none|none|
 |matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|
