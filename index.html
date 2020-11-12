@@ -357,6 +357,12 @@
                     <a href="#delete-a-specific-user" class="toc-h2 toc-link" data-title="Delete a Specific User">Delete a Specific User</a>
                   </li>
                   <li>
+                    <a href="#change-user-password" class="toc-h2 toc-link" data-title="Change User Password">Change User Password</a>
+                  </li>
+                  <li>
+                    <a href="#change-user-password-2" class="toc-h2 toc-link" data-title="Change User Password">Change User Password</a>
+                  </li>
+                  <li>
                     <a href="#me" class="toc-h2 toc-link" data-title="Me">Me</a>
                   </li>
                   <li>
@@ -409,9 +415,6 @@
                   </li>
                   <li>
                     <a href="#mark-seen-a-connection-request" class="toc-h2 toc-link" data-title="Mark Seen a Connection Request">Mark Seen a Connection Request</a>
-                  </li>
-                  <li>
-                    <a href="#mark-user-seen" class="toc-h2 toc-link" data-title="Mark User Seen">Mark User Seen</a>
                   </li>
                   <li>
                     <a href="#show-hide-user" class="toc-h2 toc-link" data-title="Show/Hide User">Show/Hide User</a>
@@ -1396,9 +1399,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/</code></p>
-
 <p>This endpoint retrieve the list of all users. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/</code></p>
 
 <h3 id="listusers-parameters">Parameters</h3>
 
@@ -1603,9 +1608,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/search/ <span class="se">\</spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/search/</code></p>
-
 <p>This endpoint perform search users. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/search/</code></p>
 
 <h3 id="searchusers-parameters">Parameters</h3>
 
@@ -1842,9 +1849,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/</code></p>
-
 <p>This endpoint retrieve a specific user&#39;s profile identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/</code></p>
 
 <h3 id="retrieveuser-parameters">Parameters</h3>
 
@@ -1955,9 +1964,11 @@ curl <span class="nt">-X</span> PUT /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>PUT /api/v2/user/{id}/</code></p>
-
 <p>This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>PUT /api/v2/user/{id}/</code></p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -2098,11 +2109,13 @@ curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>PATCH /api/v2/user/{id}/</code></p>
-
 <p>This endpoint patch a specific user identified by {id}. A user can only update their personal data.</p>
 
 <p><strong>NOTE</strong>: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>PATCH /api/v2/user/{id}/</code></p>
 
 <h3 id="partialupdateuser-parameters">Parameters</h3>
 
@@ -2191,7 +2204,8 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
 <span class="p">};</span>
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
@@ -2205,8 +2219,6 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>DELETE /api/v2/user/{id}/</code></p>
-
 <p>Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</strong>.</p>
 
@@ -2222,6 +2234,10 @@ There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</s
 <li>If the delete is hard and the user is already soft deleted perform hard delete</li>
 <li>If the delete is hard and the user is already hard deleted you will get a 404 response (User not found)</li>
 </ul>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>DELETE /api/v2/user/{id}/</code></p>
 
 <h3 id="destroyuser-parameters">Parameters</h3>
 
@@ -2271,6 +2287,241 @@ There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</s
 <aside class="notice">
 This operation require authentication
 </aside>
+<h2 id='change-user-password'>Change User Password</h2>
+<p><a id="opIdchangeEmailUser"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/change_email/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "new_email": "user@example.com"
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/change_email/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Change the email of the authenticated user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>PATCH /api/v2/user/{id}/change_email/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"new_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">new_email</span><span class="pi">:</span> <span class="s">user@example.com</span>
+
+</code></pre></div>
+<h3 id="changeemailuser-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this user.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemachangeemail">ChangeEmail</a></td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» new_email</td>
+<td>body</td>
+<td>string(email)</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"new_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="changeemailuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemachangeemail">ChangeEmail</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='change-user-password-2'>Change User Password</h2>
+<p><a id="opIdchangePasswordUser"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/change_password/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "password": "string",
+  "new_password": "string"
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/change_password/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Change the password of the authenticated user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>PATCH /api/v2/user/{id}/change_password/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">password</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">new_password</span><span class="pi">:</span> <span class="s">string</span>
+
+</code></pre></div>
+<h3 id="changepassworduser-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this user.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemachangepassword">ChangePassword</a></td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» password</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» new_password</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"new_password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="changepassworduser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemachangepassword">ChangePassword</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h2 id='me'>Me</h2>
 <p><a id="opIdmeUser"></a></p>
 
@@ -2300,9 +2551,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/me/ <span class="se">\</span>
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/me/</code></p>
-
 <p>Return the user identified by the authentication token.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/me/</code></p>
 
 <blockquote>
 <p>Example responses</p>
@@ -2381,9 +2634,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/feed/</code></p>
-
 <p>This endpoint retrive the list of user&#39;s post of the user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/feed/</code></p>
 
 <h3 id="listfeeduser-parameters">Parameters</h3>
 
@@ -2573,135 +2828,6 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <aside class="notice">
 This operation does not require authentication
 </aside>
-
-<!-- 
-
-## Get User's Notifications
-
-<a id="opIdnotificationsUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/{id}/notifications/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/{id}/notifications/',
-{
-  method: 'GET',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/{id}/notifications/`
-
-This endpoint retrive the list of user notifications
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "next_id": 0,
-  "prev_id": 0,
-  "is_new": true,
-  "collapsed": "string"
-}
-```
-
-<h3 id="notificationsuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
-## Get Unseen User's Notifications
-
-<a id="opIdunseenUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/user/{id}/unseen/ \
-  -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-  'Authorization: Bearer <token>'
-};
-
-fetch('/api/v2/user/{id}/unseen/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`GET /api/v2/user/{id}/notifications/unseen/`
-
-This endpoint retrive the list unseen notifications for the user
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "unseen": [
-     {
-        "id": int
-     }
-  ],
-  "total": 0
-}
-```
-
-<h3 id="unseenuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserUnseen](#schemauserunseen)|
-
-<aside class="notice">
-This operation requires authentication 
-</aside>
-
--->
 <h2 id='get-user-39-s-followers'>Get User&#39;s Followers</h2>
 <p><a id="opIdfollowersUser"></a></p>
 
@@ -2729,9 +2855,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/followers/</code></p>
-
 <p>This endpoint retrieve the list of followers of a specific user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/followers/</code></p>
 
 <h3 id="followersuser-parameters">Parameters</h3>
 
@@ -2892,9 +3020,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/followings/</code></p>
-
 <p>This endpoint retrieve the list of following of a specific user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/followings/</code></p>
 
 <h3 id="followingsuser-parameters">Parameters</h3>
 
@@ -3057,11 +3187,13 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/follow/</code></p>
-
 <p>This endpoint allows a user to follow another user identified by {id}. </p>
 
 <p><strong>Note:</strong> If a user already follows the user, it will be unfollowed.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/follow/</code></p>
 
 <h3 id="followuser-parameters">Parameters</h3>
 
@@ -3142,9 +3274,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/is_followed/</code></p>
-
 <p>Return is_followed=true if the user (identified in path) is followed by me.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/is_followed/</code></p>
 
 <h3 id="isfolloweduser-parameters">Parameters</h3>
 
@@ -3228,9 +3362,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/is_follower/</code></p>
-
 <p>Return is_follower=true if the user (identified in path) follow me.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/is_follower/</code></p>
 
 <h3 id="isfolloweruser-parameters">Parameters</h3>
 
@@ -3312,9 +3448,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/connections/</code></p>
-
 <p>This endpoint retrieve the list of connections of a specific user identified by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/connections/</code></p>
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -3480,9 +3618,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/is_connection/</code></p>
-
 <p>Return is_connection=true if the user (identified in path) is connected with me.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/is_connection/</code></p>
 
 <h3 id="isconnectionuser-parameters">Parameters</h3>
 
@@ -3563,9 +3703,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/connection/requests/</code></p>
-
 <p>This endpoint retrieve the list of connection requests received of a specific user identified by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/connection/requests/</code></p>
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -3758,9 +3900,11 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>GET /api/v2/user/{id}/connection/requests_sent/</code></p>
-
 <p>This endpoint retrieve a specific user&#39;s list of connection requests sent by user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/connection/requests_sent/</code></p>
 
 <h3 id="connectionsuser-parameters">Parameters</h3>
 
@@ -3954,9 +4098,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/accept/</code></p>
-
 <p>This endpoint accept a request connection of the user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/accept/</code></p>
 
 <h3 id="connectionacceptuser-parameters">Parameters</h3>
 
@@ -4039,9 +4185,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/request/</code></p>
-
 <p>This endpoint request connection to the user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/request/</code></p>
 
 <h3 id="connectionrequestuser-parameters">Parameters</h3>
 
@@ -4123,9 +4271,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/remove/</code></p>
-
 <p>This endpoint remove connection with the user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/remove/</code></p>
 
 <h3 id="connectionremoveuser-parameters">Parameters</h3>
 
@@ -4207,9 +4357,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/cancel_reject/</code></p>
-
 <p>This endpoint cancel reject connection to a user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/cancel_reject/</code></p>
 
 <h3 id="connectioncancelrejectuser-parameters">Parameters</h3>
 
@@ -4291,9 +4443,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/cancel_request/</code></p>
-
 <p>This endpoint cancel a request connection for a user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/cancel_request/</code></p>
 
 <h3 id="connectioncancelrequestuser-parameters">Parameters</h3>
 
@@ -4375,9 +4529,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection/reject/</code></p>
-
 <p>This endpoint reject a connection request sent from user identified by {id}.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection/reject/</code></p>
 
 <h3 id="connectionrejectuser-parameters">Parameters</h3>
 
@@ -4459,9 +4615,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/connection_requests/mark_seen/</code></p>
+<p>This endpoint mark seen a connection request of user identified by {id} for the user authenticated.</p>
 
-<p>This endpoint mark seen a connection request of user identified by {id} for teh user authenticated.</p>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/connection_requests/mark_seen/</code></p>
 
 <h3 id="connectionrequestsmarkseenuser-parameters">Parameters</h3>
 
@@ -4490,86 +4648,6 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 </blockquote>
 
 <h3 id="connectionrequestsmarkseenuser-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>204</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
-<td>none</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-This operation requires authentication
-</aside>
-<h2 id='mark-user-seen'>Mark User Seen</h2>
-<p><a id="opIdmarkSeenUser"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/markseen/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/markseen/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div>
-<p><code>POST /api/v2/user/{id}/markseen/</code></p>
-
-<p>This endpoint mark as seen posts for user identified by {id} for the user authenticated.</p>
-
-<h3 id="markseenuser-parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>body</td>
-<td>body</td>
-<td><a href="#schemauser">User</a></td>
-<td>false</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>204 Response</p>
-</blockquote>
-
-<h3 id="markseenuser-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -4619,9 +4697,11 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <span class="p">});</span>
 
 </code></pre></div>
-<p><code>POST /api/v2/user/{id}/hide/</code></p>
+<p>This endpoint show/hide a user (user and user&#39;s post) identified by {id} for the authenticated user.</p>
 
-<p>This endpoint show/Hide a user (user and user&#39;s post) identified by {id} for the authenticated user. </p>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/user/{id}/hide/</code> </p>
 
 <h3 id="hideuseruser-parameters">Parameters</h3>
 
