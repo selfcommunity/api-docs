@@ -21,10 +21,19 @@ includes:
   - endpoints/post
   - endpoints/comment
   - endpoints/feed
+  # - endpoints/notification
   - endpoints/tag
   - endpoints/suggestion
   - schemas
   - schemas/user
+  - schemas/userSettings
+  - schemas/notification
+  - schemas/notification_types/_type_answer
+  - schemas/notification_types/_type_comment
+  - schemas/notification_types/_type_connection_accept
+  - schemas/_targetedBannerVisibility
+  - schemas/targeted_banner_types/_targetedHtmlBanner
+  - schemas/targeted_banner_types/_targetedNotificationBanner
   - schemas/connectionRequest
   - schemas/locality
   - schemas/category

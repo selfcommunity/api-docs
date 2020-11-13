@@ -1,9 +1,9 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeAnswer</h2>
+<h2 id="tocS_NotificationTypeAnswer">NotificationTypeFavorite</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypeanswer"></a>
-<a id="schema_NotificationTypeAnswer"></a>
-<a id="tocSnotificationtypeanswer"></a>
-<a id="tocsnotificationtypeanswer"></a>
+<a id="schemanotificationtypefavorite"></a>
+<a id="schema_NotificationTypeFavorite"></a>
+<a id="tocSnotificationtypefavorite"></a>
+<a id="tocsnotificationtypefavorite"></a>
 
 ```json
 {
@@ -13,7 +13,6 @@
         {
           "notification_type": "answer",
           "post": {}
-          "answer": {}
         }
    ]
 }
@@ -27,4 +26,3 @@
 |sid|string|false|read-only|Serialization id of the notification block|
 |notification_type|string|false|read-only|Type "answer"|
 |post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
-|answer|[Comment](#schemacomment)|true|read-only|Answer|

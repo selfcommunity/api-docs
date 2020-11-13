@@ -1,9 +1,9 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeAnswer</h2>
+<h2 id="tocS_NotificationTypeAnswer">NotificationTypeUpdateAnswer</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypeanswer"></a>
-<a id="schema_NotificationTypeAnswer"></a>
-<a id="tocSnotificationtypeanswer"></a>
-<a id="tocsnotificationtypeanswer"></a>
+<a id="schemanotificationtypeupdateanswer"></a>
+<a id="schema_NotificationTypeUpdateAnswer"></a>
+<a id="tocSnotificationtypeupdateanswer"></a>
+<a id="tocsnotificationtypeupdateanswer"></a>
 
 ```json
 {

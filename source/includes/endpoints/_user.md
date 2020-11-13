@@ -599,9 +599,7 @@ This operation require authentication
 </aside>
 
 
-<!-- 
-
-## Change User Password
+## Change User's Email
 
 <a id="opIdchangeEmailUser"></a>
 
@@ -617,7 +615,8 @@ curl -X PATCH /api/v2/user/{id}/change_email/ \
 
 ```javascript
 const inputBody = '{
-  "new_email": "user@example.com"
+  "new_email": "user@example.com",
+  "confirm": 0
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -649,13 +648,9 @@ Change the email of the authenticated user.
 
 ```json
 {
-  "new_email": "user@example.com"
+  "new_email": "user@example.com",
+  "confirm": 0
 }
-```
-
-```yaml
-new_email: user@example.com
-
 ```
 
 <h3 id="changeemailuser-parameters">Parameters</h3>
@@ -663,30 +658,115 @@ new_email: user@example.com
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[ChangeEmail](#schemachangeemail)|false|none|
-|» new_email|body|string(email)|true|none|
+|new_email|body|string(email)|true|none|
+|confirm|body|boolean|false|If confirm=1 (or true), the email is not changed directly but a validation code is generated to be used in the [confirm](opIdconfirmEmailUser) call to validate the email. |
 
-> Example responses
 
-> 200 Response
+> Example responses (confirm=1)
+
+> 201 Response
 
 ```json
 {
-  "new_email": "user@example.com"
+  "validation_code": "string"
 }
 ```
 
-<h3 id="changeemailuser-responses">Responses</h3>
+> Example responses (confirm=0)
+
+> 204 Response
+
+<h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangeEmail](#schemachangeemail)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|If confirm=1, the response body contains the validation code.|None|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|If confirm=0, there is no body response.|None|
 
 <aside class="notice">
 This operation require authentication
 </aside>
 
-## Change User Password
+## Confirm User's Change Email
+
+<a id="opIdconfirmEmailUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/confirm_email/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
+  "new_email": "user@example.com",
+  "confirm": false,
+  "validation_code": "string"
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/confirm_email/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Confirm email
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/confirm_email/`
+
+> Body parameter
+
+```json
+{
+  "new_email": "user@example.com",
+  "validation_code": "string"
+}
+```
+
+<h3 id="confirmemailuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+|new_email|body|string(email)|true|New email to confirm|
+|validation_code|body|boolean|false|Validation code obtained with [Change User's Email](#opIdchangeEmailUser)|
+
+
+> Example responses
+
+> 204 Response
+
+<h3 id="followuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
+
+
+## Change User's Password
 
 <a id="opIdchangePasswordUser"></a>
 
@@ -740,20 +820,75 @@ Change the password of the authenticated user.
 }
 ```
 
-```yaml
-password: string
-new_password: string
-
-```
-
 <h3 id="changepassworduser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|body|body|[ChangePassword](#schemachangepassword)|false|none|
-|» password|body|string|true|none|
-|» new_password|body|string|true|none|
+|password|string|true|none|none|
+|new_password|string|true|none|none|
+
+> Example responses
+
+> 204 Response
+
+<h3 id="followuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+
+## Get User's Settings
+
+<a id="opIdmanageSettingsUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/settings/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/settings/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Retrive all current user's settings for the authenticated user.
+See [UserSettings](#schemausersettings) for the list of possible user settings.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/settings/`
+
+<h3 id="managesettingsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying the current user id.|
 
 > Example responses
 
@@ -761,22 +896,101 @@ new_password: string
 
 ```json
 {
-  "password": "string",
-  "new_password": "string"
+  "qa_frequency": -1,
+  "email_notification_not_qa": 1,
+  "interests_frequency": -1,
+  "engagement_frequency": 1,
+  "mobile_notifications_scmty": 1,
+  "toast_notifications_emit_sound": 1,
+  "show_toast_notifications": 1
 }
 ```
 
-<h3 id="changepassworduser-responses">Responses</h3>
+<h3 id="meuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ChangePassword](#schemachangepassword)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserSettings](#schemausersettings)|
+
 
 <aside class="notice">
 This operation require authentication
 </aside>
 
--->
+## Change User's Settings
+
+<a id="opIdmanageSettingsUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/{id}/settings/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+const inputBody = '{
+  "interests_frequency": -1,
+  "engagement_frequency": 1
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/settings/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Change the user settings for the authenticated user.
+See [UserSettings](#schemausersettings) for the list of possible user settings.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/user/{id}/settings/`
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "interests_frequency": -1,
+  "engagement_frequency": 1
+}
+```
+
+<h3 id="managesettingsuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying the current user id.|
+|body|body|[UserSettings](#schemausersettings)|false|none|
+
+<h3 id="meuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserSettings](#schemausersettings)|
+
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
 
 ## Me
 

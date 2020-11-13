@@ -54,8 +54,8 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|from_user|list([User](#schemauser))|false|read-only|none|
-|to_user|list([User](#schemauser))|false|read-only|none|
+|from_user|[User](#schemauser)|false|read-only|none|
+|to_user|[User](#schemauser)|false|read-only|none|
 |created|string(date-time)|false|read-only|none|
 |rejected|string(date-time)|false|read-only|none|
 |viewed|string(date-time)|false|read-only|none|

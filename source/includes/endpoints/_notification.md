@@ -1,4 +1,4 @@
-<h1 id="selfcommunity-api-notification">notification</h1>
+<h1 id="selfcommunity-api-notification">Notification</h1>
 
 ## List User's Notification
 
@@ -10,19 +10,19 @@
 # You can also use wget
 curl -X GET /api/v2/notification/ \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/notification/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -33,7 +33,88 @@ fetch('/api/v2/notification/',
 
 ```
 
-List all user notifications related to the community
+List all user notifications related to the community.
+
+Notification types:
+
+* *answer*: comment of first level
+* *comment*: comment of second level
+* *mention*: user mention  
+* *vote_up*: vote up a post/discussion/comment
+* *favorite*: favorite/like post/discussion
+* *private_message*: private message
+* *deleted_for_advertising*: deleted by moderator with motivation the content is advertising
+* *deleted_for_aggressive*: deleted by moderators with motivation the content is aggressive
+* *deleted_for_vulgar*: deleted by moderators with motivation the content is vulgar
+* *deleted_for_generic*: deleted by moderators with a generic motivation
+* *deleted_for_poor*: deleted by moderators with motivation the content is poor
+* *deleted_for_offtopic*: deleted by moderators with motivation the content is offtopic
+* *undeleted_for*: the post has been rehabilitated by the moderators
+* *collapsed_for_advertising*: colapsed by moderator with motivation the content is advertising
+* *collapsed_for_aggressive*: colapsed by moderator with motivation the content is aggressive
+* *collapsed_for_vulgar*: colapsed by moderator with motivation the content is vulgar
+* *collapsed_for_poor*: colapsed by moderator with motivation the content is poor
+* *collapsed_for_offtopic*: colapsed by moderator with motivation the content is offtopic
+* *collapsed_for_generic*: colapsed by moderator with generic motivation
+* *connection_request*: connect request
+* *connection_accept*: connection accept
+* *user_follow*: follow user
+* *kindly_notice_advertising*: content notified as advertising
+* *kindly_notice_aggressive*: content notified as aggressive
+* *kindly_notice_vulgar*: content notified as vulgar
+* *kindly_notice_poor*: content notified as poor
+* *kindly_notice_offtopic*: content notified as offtopic
+* *kindly_notice_generic*: generic content notified
+* *kindly_notice_flag*: content flagged
+* *blocked_user*: user blocked
+* *unblocked_user*: user unblocked
+* *incubator_approved*: incubator approved
+* *custom_notification*: custom notification
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "next": "string",
+  "previous": "string",
+  "results": [
+    {
+        "is_new": false,
+        "sid": "1605259249000",
+        "post": {...},
+        "aggregated": [
+            {
+                "is_new": false,
+                "sid": 16052592493610000000054990,
+                "notification_type": "answer",
+                "post": {},
+                "answer": {}
+                
+            },
+            {
+                "is_new": false,
+                "sid": 16052592493610000000054990,
+                "notification_type": "answer",
+                "post": {},
+                "answer": {}
+            }
+        ]  
+    },
+    {
+       "is_new": false,
+       "sid": "1605259249000",
+       "aggregated": [
+            {
+              "notification_type": "connection_accept",
+              "accept_user": {}
+            }
+       ]
+    }
+  ]
+}
+```
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -43,23 +124,8 @@ List all user notifications related to the community
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|limit|query|integer|false|Number of results to return per page.|
-|offset|query|integer|false|The initial index from which to return the results.|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "count": 123,
-  "next": "string",
-  "previous": "string",
-  "results": [
-    {}
-  ]
-}
-```
+|next_id|query|string|false|Next page id|
+|previous_id|query|string|false|Previous page id|
 
 <h3 id="listnotifications-responses">Responses</h3>
 
@@ -73,285 +139,41 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» count|integer|false|none|none|
-|» next|string¦null|false|none|none|
-|» previous|string¦null|false|none|none|
-|» results|[[Notification](#schemanotification)]|false|none|none|
-|»» next_id|integer|false|write-only|none|
-|»» prev_id|integer|false|write-only|none|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|[[Notification](#schemanotification)]|false|none|List of results|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
-## bannerNotification
+## Mark Read Notifications
 
-<a id="opIdbannerNotification"></a>
+<a id="opIdreadNotificationsNotification"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/notification/banner/ \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/notification/banner/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-List of all top notification banners
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/notification/banner/`
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "banner": "string",
-  "added_at": "2019-08-24T14:15:22Z",
-  "disposed_at": "2019-08-24T14:15:22Z",
-  "viewed_at": "2019-08-24T14:15:22Z"
-}
-```
-
-<h3 id="bannernotification-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[TargetedBannerVisibility](#schematargetedbannervisibility)|
-
-<aside class="notice">
-This operation does not require authentication
-</aside>
-
-## bannerUndisposedNotification
-
-<a id="opIdbannerUndisposedNotification"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/notification/banner/undisposed/count/ \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/notification/banner/undisposed/count/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-Retrieve the total number of banners not yet undisposed by the user
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/notification/banner/undisposed/count/`
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "banner_ids": [
-    0
-  ]
-}
-```
-
-<h3 id="bannerundisposednotification-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ManageTargetedBanner](#schemamanagetargetedbanner)|
-
-<aside class="notice">
-This operation does not require authentication
-</aside>
-
-## bannerUnseenNotification
-
-<a id="opIdbannerUnseenNotification"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/notification/banner/unseen/count/ \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/notification/banner/unseen/count/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-Retrieve the total number of banners not yet seen by the user
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/notification/banner/unseen/count/`
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "banner_ids": [
-    0
-  ]
-}
-```
-
-<h3 id="bannerunseennotification-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[ManageTargetedBanner](#schemamanagetargetedbanner)|
-
-<aside class="notice">
-This operation does not require authentication
-</aside>
-
-## unseenNotification
-
-<a id="opIdunseenNotification"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/notification/unseen/count/ \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/notification/unseen/count/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-Retrieve the number of unseen/unread notifications
-
-<h3 id="http-request">HTTP Request</h3>
-
-`GET /api/v2/notification/unseen/count/`
-
-> Example responses
-
-> 200 Response
-
-```json
-{}
-```
-
-<h3 id="unseennotification-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Notification](#schemanotification)|
-
-<aside class="notice">
-This operation does not require authentication
-</aside>
-
-## disposeBannerNotification
-
-<a id="opIddisposeBannerNotification"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/notification/banner/dispose/ \
+curl -X POST /api/v2/notification/read/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
-
+  -H "Authorization: Bearer <token>"
 ```
 
 ```javascript
 const inputBody = '{
-  "banner_ids": [
-    0
+  "sids": [
+    "16051998593220000000052990", "16031945321500000000007190", ...
   ]
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/notification/banner/dispose/',
+fetch('/api/v2/notification/read/',
 {
   method: 'POST',
   body: inputBody,
@@ -365,56 +187,101 @@ fetch('/api/v2/notification/banner/dispose/',
 
 ```
 
-`POST /api/v2/notification/banner/dispose/`
+Mark read a list of notifications identified by serialization_ids (sids).
 
-Mark dispose a banner for a user
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/notification/read/`
 
 > Body parameter
 
 ```json
 {
-  "banner_ids": [
-    0
+  "sids": [
+    "string"
   ]
 }
 ```
 
-```yaml
-banner_ids:
-  - 0
-
-```
-
-<h3 id="disposebannernotification-parameters">Parameters</h3>
+<h3 id="readnotificationsnotification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageTargetedBanner](#schemamanagetargetedbanner)|false|none|
-|» banner_ids|body|[integer]|true|none|
+|sids|body|List of sid (serialization id)|true|none|
 
 > Example responses
 
-> 201 Response
+> 204 Response
 
-```json
-{
-  "banner_ids": [
-    0
-  ]
-}
-```
-
-<h3 id="disposebannernotification-responses">Responses</h3>
+<h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageTargetedBanner](#schemamanagetargetedbanner)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
 
-## notifyNotification
+## Get Unseen Notifications
+
+<a id="opIdunseenNotification"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/notification/unseen/count/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/notification/unseen/count/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Retrieve the number of unseen/unread notifications.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/notification/unseen/count/`
+
+> Example responses
+
+> 200 Response
+
+```json
+{"count":  3}
+```
+
+<h3 id="unseennotification-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Create Custom notification
 
 <a id="opIdnotifyNotification"></a>
 
@@ -425,6 +292,7 @@ This operation does not require authentication
 curl -X POST /api/v2/notification/notify/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
@@ -439,11 +307,12 @@ const inputBody = '{
   },
   "title": "string",
   "description": "string",
-  "user": 0
+  "user": 3
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
 fetch('/api/v2/notification/notify/',
@@ -460,10 +329,13 @@ fetch('/api/v2/notification/notify/',
 
 ```
 
-`POST /api/v2/notification/notify/`
+Generate a custom notification on behalf of a user (identified by the body param "user") and notifies it to all his connections/followers.
 
-Generate a custom notification and notify it to all followers/connections of this user.
 Es. <user> added an item to the wishlist
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/notification/notify/`
 
 > Body parameter
 
@@ -482,68 +354,254 @@ Es. <user> added an item to the wishlist
 }
 ```
 
-```yaml
-type: string
-embed:
-  embed_type: string
-  embed_id: string
-  url: http://example.com
-  metadata: "{}"
-title: string
-description: string
-user: 0
-
-```
-
 <h3 id="notifynotification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[CustomNotification](#schemacustomnotification)|false|none|
-|» id|body|integer|false|none|
-|» type|body|string|true|none|
-|» embed|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» embed_type|body|string|true|none|
-|»» embed_id|body|string|true|none|
-|»» url|body|string(uri)¦null|false|none|
-|»» metadata|body|object|false|none|
-|» title|body|string¦null|false|none|
-|» description|body|string¦null|false|none|
-|» user|body|integer|true|none|
+|type|body|string|true|A string that identifies a type of notification|
+|embed|body|object|false|[Embed](#schemaembed)|
+|title|body|string¦null|false|A title for the notification|
+|description|body|string¦null|false|A description for the notification|
+|user|body|integer|true|The user who issues the notification|
 
 > Example responses
 
-> 201 Response
+> 204 Response
 
-```json
-{
-  "id": 0,
-  "type": "string",
-  "embed": {
-    "id": 0,
-    "embed_type": "string",
-    "embed_id": "string",
-    "url": "http://example.com",
-    "metadata": "{}"
-  },
-  "title": "string",
-  "description": "string",
-  "user": 0
-}
-```
-
-<h3 id="notifynotification-responses">Responses</h3>
+<h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[CustomNotification](#schemacustomnotification)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication and admin role.
 </aside>
 
-## readBannerNotification
+
+## List User's Banner
+
+<a id="opIdbannerNotification"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/notification/banner/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/notification/banner/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+
+List of all top notification banners.
+Notification banners are notifications that have a high priority and for this reason they are placed at the top of the list in the notification page. 
+
+They belong to their own list. For some reasons they behave differently from the notification. 
+They are initially shown and can be removed.
+
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/notification/banner/`
+
+<h3 id="listnotifications-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 0,
+      "banner": {
+        "html": "<div>Hello!</div>",
+        "type_banner": "string"
+      },
+      "added_at": "2019-08-24T14:15:22Z",
+      "disposed_at": "2019-08-24T14:15:22Z",
+      "viewed_at": "2019-08-24T14:15:22Z"
+    }
+  ]
+```
+
+<h3 id="bannernotification-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[TargetedBannerVisibility](#schematargetedbannervisibility)|
+
+<h3 id="listusers-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|list([TargetedBannerVisibility](#schematargetedbannervisibility))|false|none|List of results|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## User's Banner Unseen Count
+
+<a id="opIdbannerUnseenNotification"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/notification/banner/unseen/count/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/notification/banner/unseen/count/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Retrieve the total number of notiifcation banners not yet seen by the user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/notification/banner/unseen/count/`
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 3
+}
+```
+
+<h3 id="bannerunseennotification-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+
+## User's Banner Undisposed Count
+
+<a id="opIdbannerUndisposedNotification"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/notification/banner/undisposed/count/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/notification/banner/undisposed/count/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Retrieve the total number of notiifcation banners not yet disposed by the user.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/notification/banner/undisposed/count/`
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 3
+}
+```
+
+<h3 id="bannerundisposednotification-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+
+## Mark Read User's Banner
 
 <a id="opIdreadBannerNotification"></a>
 
@@ -554,6 +612,7 @@ This operation does not require authentication
 curl -X POST /api/v2/notification/banner/read/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
@@ -582,9 +641,11 @@ fetch('/api/v2/notification/banner/read/',
 
 ```
 
-`POST /api/v2/notification/banner/read/`
+Mark viewed/read a notiifcation banner for a user.
 
-Mark viewed/read broadcast messages for a user
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/notification/banner/read/`
 
 > Body parameter
 
@@ -596,18 +657,11 @@ Mark viewed/read broadcast messages for a user
 }
 ```
 
-```yaml
-banner_ids:
-  - 0
-
-```
-
 <h3 id="readbannernotification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[ManageTargetedBanner](#schemamanagetargetedbanner)|false|none|
-|» banner_ids|body|[integer]|true|none|
+|banner_ids|list([integer])|true|none|none|
 
 > Example responses
 
@@ -621,42 +675,48 @@ banner_ids:
 }
 ```
 
-<h3 id="readbannernotification-responses">Responses</h3>
+> Example responses
+
+> 204 Response
+
+<h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[ManageTargetedBanner](#schemamanagetargetedbanner)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation does not require authentication
 </aside>
 
-## readNotificationsNotification
+## Dispose User's Banner 
 
-<a id="opIdreadNotificationsNotification"></a>
+<a id="opIddisposeBannerNotification"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/notification/read/ \
+curl -X POST /api/v2/notification/banner/dispose/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
 
 ```
 
 ```javascript
 const inputBody = '{
-  "sids": [
-    "string"
+  "banner_ids": [
+    0
   ]
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
 };
 
-fetch('/api/v2/notification/read/',
+fetch('/api/v2/notification/banner/dispose/',
 {
   method: 'POST',
   body: inputBody,
@@ -670,47 +730,41 @@ fetch('/api/v2/notification/read/',
 
 ```
 
-`POST /api/v2/notification/read/`
+Dispose notiifcation banner for a user.
 
-Mark read a list of notifications identified by serialization_ids (sids)
+The banner will disappear and will no longer appear in the notification banner list, see [List User's Banner](#opIdbannerNotification).
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/notification/banner/dispose/`
 
 > Body parameter
 
 ```json
 {
-  "sids": [
-    "string"
+  "banner_ids": [
+    0
   ]
 }
 ```
 
-```yaml
-sids:
-  - string
-
-```
-
-<h3 id="readnotificationsnotification-parameters">Parameters</h3>
+<h3 id="disposebannernotification-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[MarkReadNotifications](#schemamarkreadnotifications)|false|none|
-|» sids|body|[string]|true|none|
+|banner_ids|list([integer])|true|none|none|
 
 > Example responses
 
-> 201 Response
+> 204 Response
 
-```json
-{}
-```
-
-<h3 id="readnotificationsnotification-responses">Responses</h3>
+<h3 id="followuser-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[MarkReadNotifications](#schemamarkreadnotifications)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication
 </aside>
+

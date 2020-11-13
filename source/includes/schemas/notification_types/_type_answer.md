@@ -1,9 +1,9 @@
-<h2 id="tocS_Notification">Notification</h2>
+<h2 id="tocS_NotificationTypeAnswer">NotificationTypeAnswer</h2>
 <!-- backwards compatibility -->
-<a id="schemanotification"></a>
-<a id="schema_Notification"></a>
-<a id="tocSnotification"></a>
-<a id="tocsnotification"></a>
+<a id="schemanotificationtypeanswer"></a>
+<a id="schema_NotificationTypeAnswer"></a>
+<a id="tocSnotificationtypeanswer"></a>
+<a id="tocsnotificationtypeanswer"></a>
 
 ```json
 {
@@ -11,8 +11,9 @@
    "sid": "1605259249000",
    "aggregated": [
         {
-          "notification_type": "connection_accept",
-          "accept_user": {}
+          "notification_type": "answer",
+          "post": {}
+          "answer": {}
         }
    ]
 }
@@ -24,4 +25,6 @@
 |---|---|---|---|---|
 |is_new|boolean|false|read-only|Notification not yet read|
 |sid|string|false|read-only|Serialization id of the notification block|
-|aggregated|list(Object)|false|read-only|List of aggregated notifications by type|
+|notification_type|string|false|read-only|Type "answer"|
+|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|answer|[Comment](#schemacomment)|true|read-only|Answer|

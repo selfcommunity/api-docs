@@ -1,9 +1,9 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeComment</h2>
+<h2 id="tocS_NotificationTypeAnswer">NotificationTypeMention</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypecomment"></a>
-<a id="schema_NotificationTypeComment"></a>
-<a id="tocSnotificationtypecomment"></a>
-<a id="tocsnotificationtypecomment"></a>
+<a id="schemanotificationtypemention"></a>
+<a id="schema__type_comment.md"></a>
+<a id="tocSnotificationtypemention"></a>
+<a id="tocsnotificationtypemention"></a>
 
 ```json
 {
@@ -11,9 +11,9 @@
    "sid": "1605259249000",
    "aggregated": [
         {
-          "notification_type": "answer",
+          "notification_type": "mention",
           "post": {},
-          "comment": {}
+          "user": {}
         }
    ]
 }
@@ -28,3 +28,4 @@
 |notification_type|string|false|read-only|Type "answer"|
 |post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
 |comment|[Comment](#schemacomment)|true|read-only|Comment|
+|user|[User](#schemauser)|true|read-only|Comment|

@@ -1,9 +1,9 @@
-<h2 id="tocS_Notification">Notification</h2>
+<h2 id="tocS_NotificationTypeConnectionAccept">NotificationTypeConnectionAccept</h2>
 <!-- backwards compatibility -->
-<a id="schemanotification"></a>
-<a id="schema_Notification"></a>
-<a id="tocSnotification"></a>
-<a id="tocsnotification"></a>
+<a id="schemanotificationtypeconnectionaccept"></a>
+<a id="schema_NotificationTypeConnectionAccept"></a>
+<a id="tocSnotificationtypeconnectionaccept"></a>
+<a id="tocsnotificationtypeconnectionaccept"></a>
 
 ```json
 {
@@ -22,6 +22,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
-|aggregated|list(Object)|false|read-only|List of aggregated notifications by type|
+|is_new|boolean|true|read-only|Notification not yet read|
+|sid|string|true|read-only|Serialization id of the notification block|
+|notification_type|string|true|read-only|Type "answer"|
+|accept_user|[User](#schemauser)]|true|read-only|User accepted the connection request|
