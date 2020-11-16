@@ -13,17 +13,18 @@ curl -X POST /api/v2/media/upload/chunk/ \
   -H 'Accept: application/json' \
   -H "Transfer-Encoding: chunked" \
   -H "Authorization: Bearer {access_token}"
-  --data-binary $'------WebKitFormBoundaryT4U3VeMJUOwfER55\r\nContent-Disposition: form-data; name="cors"\r\n\r\n1\r\n------WebKitFormBoundaryT4U3VeMJUOwfER55\r\nContent-Disposition: form-data; name="image"; filename="p.gif"\r\nContent-Type: image/gif\r\n\r\n\r\n------WebKitFormBoundaryT4U3VeMJUOwfER55--\r\n' \
+  --data-binary $'------WebKitFormBoundaryT4U3VeMJUOwfER55\r\nContent-Disposition: form-data; name="image"; filename="p.gif"\r\nContent-Type: image/gif\r\n\r\n\r\n------WebKitFormBoundaryT4U3VeMJUOwfER55--\r\n' \
   --compressed
 ```
 
 ```javascript
 const inputBody = '{
   "upload_id": "string",
-  "offset": "string"
+  "offset": "string",
+  "image": "blob"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'multipart/form-data',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -104,7 +105,7 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/media/upload/complete/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw 'upload_id=UPLOAD_ID&md5=FILE_MD5' \
@@ -117,7 +118,7 @@ const inputBody = '{
   "md5": "string"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -207,10 +208,13 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/media/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
-  --data-raw 'url=http%3A%2F%2Fwww.example.com&type=url'
+  --data-raw '{
+    "type": "url",
+    "url": "http://example.com"
+  }'
 
 ```
 
@@ -221,7 +225,7 @@ const inputBody = '{
   "embed": null
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -332,9 +336,12 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/media/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "image": "http://example.com"
+  }'
 
 ```
 
@@ -343,7 +350,7 @@ const inputBody = '{
   "image": "http://example.com"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };

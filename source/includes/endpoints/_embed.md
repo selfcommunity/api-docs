@@ -99,9 +99,15 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X POST /api/v2/embed/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  --H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "http://example.com",
+    "metadata": {}
+}'
 
 ```
 
@@ -113,7 +119,7 @@ const inputBody = '{
   "metadata": {}
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -354,9 +360,13 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/embed/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "url": "http://example.com",
+    "metadata": {}
+  }'
 
 ```
 
@@ -366,7 +376,7 @@ const inputBody = '{
   "metadata": {}
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -441,9 +451,12 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X PATCH /api/v2/embed/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "url": "http://example.com"
+  }'
 
 ```
 
@@ -453,7 +466,7 @@ const inputBody = '{
   "metadata": {}
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };

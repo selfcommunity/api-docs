@@ -156,10 +156,15 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X POST /api/v2/comment/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
-  --DATA '{body}'
+  --raw-data '{
+    "object": 0,
+    "parent": 0,
+    "in_reply_to": 0,
+    "text": "string"
+  }'
 ```
 
 ```javascript
@@ -170,7 +175,7 @@ const inputBody = '{
   "text": "string"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization: 'Bearer {access_token}'
 };
@@ -429,10 +434,15 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/comment/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
-  --DATA '{body}'
+  --data-raw '{
+    "object": 0,
+    "parent": 0,
+    "in_reply_to": 0,
+    "text": "string"
+  }'
 ```
 
 ```javascript
@@ -443,7 +453,7 @@ const inputBody = '{
   "text": "string"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -702,7 +712,7 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X POST /api/v2/comment/{id}/vote/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
@@ -711,7 +721,7 @@ curl -X POST /api/v2/comment/{id}/vote/ \
 ```javascript
 const inputBody = '{}';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -761,7 +771,7 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/comment/{id}/vote/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
@@ -770,7 +780,7 @@ curl -X POST /api/v2/comment/{id}/vote/ \
 ```javascript
 const inputBody = '{}';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -924,9 +934,12 @@ This operation require authentication and admin role.
 ```shell
 # You can also use wget
 curl -X POST /api/v2/comment/{id}/flag/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --raw-data '{
+    "flag_type": 0
+  }'
 ```
 
 ```javascript
@@ -934,7 +947,7 @@ const inputBody = '{
   "flag_type": 0
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -1003,9 +1016,12 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/comment/{id}/flag/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --raw-data '{
+    "flag_type": 0
+  }'
 ```
 
 ```javascript
@@ -1013,7 +1029,7 @@ const inputBody = '{
   "flag_type": 0
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };

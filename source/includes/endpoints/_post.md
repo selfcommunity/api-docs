@@ -202,10 +202,31 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X POST /api/v2/post/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
-  --DATA '{body}'
+  --data-raw '{
+    "text": "string",
+    "categories": [0],
+    "medias": [0],
+    "location": {
+      "location": "string",
+      "lat": 0,
+      "lng": 0
+    },
+    "poll": {
+      "title": "string",
+      "multiple_choices": true,
+      "closed": true,
+      "expiration_at": "2019-08-24T14:15:22Z",
+      "choices": [
+        {
+          "choice": "string"
+        }
+      ]
+    },
+    "addressing": []
+  }'
 ```
 
 ```javascript
@@ -232,7 +253,7 @@ const inputBody = '{
   "addressing": []
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -818,10 +839,31 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/post/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
-  --DATA '{body}'
+  --data-raw '{
+    "text": "string",
+    "categories": [0],
+    "medias": [0],
+    "location": {
+      "location": "string",
+      "lat": 0,
+      "lng": 0
+    },
+    "poll": {
+      "title": "string",
+      "multiple_choices": true,
+      "closed": true,
+      "expiration_at": "2019-08-24T14:15:22Z",
+      "choices": [
+        {
+          "choice": "string"
+        }
+      ]
+    },
+    "addressing": []
+  }'
 ```
 
 ```javascript
@@ -848,7 +890,7 @@ const inputBody = '{
   "addressing": []
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -1186,7 +1228,7 @@ This operation require authentication only if `content_availability` community o
 ```shell
 # You can also use wget
 curl -X POST /api/v2/post/{id}/vote/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
@@ -1194,7 +1236,7 @@ curl -X POST /api/v2/post/{id}/vote/ \
 
 ```javascript
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -1243,7 +1285,7 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/post/{id}/vote/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
@@ -1251,7 +1293,7 @@ curl -X POST /api/v2/post/{id}/vote/ \
 
 ```javascript
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -1404,9 +1446,12 @@ This operation require authentication and admin role.
 ```shell
 # You can also use wget
 curl -X POST /api/v2/post/{id}/flag/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "flag_type": 0
+  }'
 ```
 
 ```javascript
@@ -1414,7 +1459,7 @@ const inputBody = '{
   "flag_type": 0
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -1483,9 +1528,12 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/post/{id}/flag/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "flag_type": 0
+  }'
 ```
 
 ```javascript
@@ -1493,7 +1541,7 @@ const inputBody = '{
   "flag_type": 0
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type':'application/json',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
