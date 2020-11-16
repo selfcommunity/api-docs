@@ -14,13 +14,17 @@
   "post": {}
 ```
 
+Example preview:
+
+<%= image_tag "notification_types/kindly_notice_aggressive.png" %>
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
-|notification_type|string|false|read-only|Types: "kindly_notice_advertising", "kindly_notice_aggressive", "kindly_notice_vulgar", "kindly_notice_poor", "kindly_notice_offtopic", "kindly_notice_generic", "kindly_notice_flag"|
+|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
+|sid|string|false|read-only|Serialization id of the notification|
+|notification_type|string|false|read-only|Types: "kindly_notice_advertising", "kindly_notice_aggressive", "kindly_notice_vulgar", "kindly_notice_poor", "kindly_notice_offtopic", "kindly_notice_flag"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
 |post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
 
@@ -33,4 +37,4 @@
 |notification_type|kindly_notice_vulgar|Vulgar content|
 |notification_type|kindly_notice_poor|Poor content|
 |notification_type|kindly_notice_offtopic|Offtopic content|
-|notification_type|kindly_notice_flag|Flagged content which is not irregular|
+|notification_type|kindly_notice_flag|Notification of irregularly flagged content. The content was valid, but the user flagged it|

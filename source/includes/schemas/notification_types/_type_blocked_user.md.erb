@@ -20,12 +20,16 @@
 }
 ```
 
+Example preview:
+
+<%= image_tag "notification_types/blocked_user.png" %>
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
-|notification_type|string|false|read-only|Type "answer"|
+|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
+|sid|string|false|read-only|Serialization id of the notification|
+|notification_type|string|false|read-only|Type "blocker_user"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
 |block_settings|[BlockedSettings](#schemablockedsettings)|true|read-only|Data of user block|

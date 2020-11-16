@@ -33,14 +33,20 @@ fetch('/api/v2/notification/',
 
 ```
 
-List all user notifications (in aggregate form) related to the community. 
+List all user notifications (in aggregate form) related to the community.
+
+Example previews:
+
+<%= image_tag "notification_types/notification_aggregate_1.png" %>
+
+<%= image_tag "notification_types/notification_aggregate_2.png" %>
 
 Notification types:
 
 Type | Description | Audience
 -------------- | -------------- | --------------
 *answer* | Comment of first level | Participants of the discussion/post, including those who follow the post
-*comment* | Comment of second level | The author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments, 
+*comment* | Comment of second level | The author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments
 *mention* | user mention | Who is mentioned in the contribute
 *vote_up* | vote up a post/discussion/comment | Who received the voteup
 *favorite* | favorite/like post/discussion | The author of the contribute (discussion/post)
@@ -67,7 +73,6 @@ Type | Description | Audience
 *kindly_notice_flag* | content flagged | The author of the contribute
 *blocked_user* | user blocked | The blocked user
 *unblocked_user* | user unblocked |  The unblocked user
-*incubator_approved* | incubator approved | The user who proposed the incubator and those who voted for it 
 *custom_notification* | custom notification | User followers/connections
 
 > Example responses
@@ -90,7 +95,7 @@ Type | Description | Audience
                 "notification_type": "answer",
                 "post": {},
                 "answer": {}
-                
+
             },
             {
                 "is_new": false,
@@ -99,7 +104,7 @@ Type | Description | Audience
                 "post": {},
                 "answer": {}
             }
-        ]  
+        ]
     },
     {
        "is_new": false,
@@ -138,9 +143,9 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|list([[Notification](#schemanotification)])|false|none|List of notification results|
+|next|string¦null|false|none|Next page url|
+|previous|string¦null|false|none|Previous page url|
+|results|list([[Notification](#schemanotification)])|false|none|List of notification results|
 
 <aside class="notice">
 This operation require authentication
@@ -415,9 +420,9 @@ fetch('/api/v2/notification/banner/',
 
 
 List of all top notification banners.
-Notification banners are notifications that have a high priority and for this reason they are placed at the top of the list in the notification page. 
+Notification banners are notifications that have a high priority and for this reason they are placed at the top of the list in the notification page.
 
-They belong to their own list. For some reasons they behave differently from the notification. 
+They belong to their own list. For some reasons they behave differently from the notification.
 They are initially shown and can be removed.
 
 
@@ -688,7 +693,7 @@ Mark viewed/read a notiifcation banner for a user.
 This operation does not require authentication
 </aside>
 
-## Dispose User's Banner 
+## Dispose User's Banner
 
 <a id="opIddisposeBannerNotification"></a>
 

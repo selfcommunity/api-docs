@@ -15,12 +15,16 @@
 }
 ```
 
+Example preview:
+
+<%= image_tag "notification_types/accept_connection.png" %>
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|true|read-only|Notification not yet read|
-|sid|string|true|read-only|Serialization id of the notification block|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
 |notification_type|string|true|read-only|Type "connection_accept"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|accept_user|[User](#schemauser)]|true|read-only|User accepted the connection request|
+|accept_user|[User](#schemauser)|true|read-only|User accepted the connection request|

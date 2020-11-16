@@ -15,12 +15,16 @@
 }
 ```
 
+Example preview:
+
+<%= image_tag "notification_types/mention.png" %>
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
+|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
+|sid|string|false|read-only|Serialization id of the notification|
 |notification_type|string|false|read-only|Type "mention"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Post were the user mentioned in|

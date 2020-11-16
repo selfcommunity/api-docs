@@ -14,13 +14,17 @@
   "post": {}
 ```
 
+Example preview:
+
+<%= image_tag "notification_types/collapsed_for_aggressive.png" %>
+
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
-|notification_type|string|false|read-only|Types: "collapsed_for_advertising", "collapsed_for_aggressive", "collapsed_for_vulgar", "collapsed_for_poor", "collapsed_for_offtopic", "collapsed_for_generic"|
+|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
+|sid|string|false|read-only|Serialization id of the notification|
+|notification_type|string|false|read-only|Types: "collapsed_for_advertising", "collapsed_for_aggressive", "collapsed_for_vulgar", "collapsed_for_poor", "collapsed_for_offtopic", "uncollapsed_for"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
 |post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
 
