@@ -77,4 +77,4 @@
 |type|embed|Media of type embed|
 |type|image|Media of type image|
 |type|eimage|Media of type inline image, used in [Discussion](#selfcommunity-api-discussion) or [Post](#selfcommunity-api-post)  text editor|
-|type|document|Media of type document (pdf)|
+|type|doc|Media of type document (pdf)|

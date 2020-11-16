@@ -10,6 +10,7 @@
 # You can also use wget
 curl -X POST /api/v2/media/upload/chunk/ \
   -H 'Content-Type: multipart/form-data' \
+  -H 'Content-Range: bytes 1433600-1638399/2124437' \
   -H 'Accept: application/json' \
   -H "Transfer-Encoding: chunked" \
   -H "Authorization: Bearer {access_token}"
@@ -25,6 +26,7 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'multipart/form-data',
+  'Content-Range': 'bytes 1433600-1638399/2124437',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
@@ -44,6 +46,8 @@ fetch('/api/v2/media/upload/chunk/',
 ```
 
 This endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the [Chunk Upload Complete](#opIdcreateMediaChunkComplete) endpoint with the given `upload_id` parameter to finalize the upload and retrieve the [Media](#schemamedia).
+
+To perform chunk upload the request must contain `Content-Range` header with the information about the chunk.
 
 Max file size for image file is 5M.
 
@@ -68,8 +72,8 @@ Max chunk size is 204800 bytes.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|» Content-Range|header|string|true|range of the chunk upload in the format `bytes start-end/total`|
 |» upload_id|body|string|true|returned by the first call and required from the second|
-|» offset|body|string|true|offset of the chunk|
 |» expires|body|string|false|expiration time|
 |» image|body|blob|false|Image chunk to be uploaded|
 |» document|body|blob|false|Document chunk to be uploaded|
@@ -105,7 +109,7 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X POST /api/v2/media/upload/complete/ \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw 'upload_id=UPLOAD_ID&md5=FILE_MD5' \
@@ -118,7 +122,7 @@ const inputBody = '{
   "md5": "string"
 }';
 const headers = {
-  'Content-Type':'application/json',
+  'Content-Type':'application/x-www-form-urlencoded',
   'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
