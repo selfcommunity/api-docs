@@ -1,9 +1,9 @@
-<h2 id="tocS_BlockSettings">BlockSettings</h2>
+<h2 id="tocS_BlockedSettings">BlockedSettings</h2>
 <!-- backwards compatibility -->
-<a id="schemablocksettings"></a>
-<a id="schema_BlockSettings"></a>
-<a id="tocSblocksettings"></a>
-<a id="tocsblocksettings"></a>
+<a id="schemablockedsettings"></a>
+<a id="schema_BlockedSettings"></a>
+<a id="tocSblockedsettings"></a>
+<a id="tocsblockedsettings"></a>
 
 ```json
 {

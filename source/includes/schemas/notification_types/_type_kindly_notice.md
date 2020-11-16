@@ -1,19 +1,17 @@
-<h2 id="tocS_NotificationTypeComment">NotificationTypeComment</h2>
+<h2 id="tocS_NotificationTypeComment">NotificationTypeKindlyNotice</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypecomment"></a>
-<a id="schema_NotificationTypeComment"></a>
-<a id="tocSnotificationtypecomment"></a>
-<a id="tocsnotificationtypecomment"></a>
+<a id="schemanotificationtypekindlynotice"></a>
+<a id="schema_NotificationTypekindlynotice"></a>
+<a id="tocSnotificationtypekindlynotice"></a>
+<a id="tocsnotificationtypekindlynotice"></a>
 
 ```json
 {
-  "is_new": false,
-  "sid": 16052906326300000000007190,
-  "notification_type": "comment",
-  "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "post": {},
-  "comment": {}
-}
+  "is_new": true,
+  "sid": 16053813898480000000224680,
+  "notification_type": "kindly_notice_<type>",
+  "notification_active_at": "2020-11-14T20:16:29.848490+01:00",
+  "post": {}
 ```
 
 ### Properties
@@ -22,7 +20,18 @@
 |---|---|---|---|---|
 |is_new|boolean|false|read-only|Notification not yet read|
 |sid|string|false|read-only|Serialization id of the notification block|
-|notification_type|string|false|read-only|Type "comment"|
+|notification_type|string|false|read-only|Types: "kindly_notice_advertising", "kindly_notice_aggressive", "kindly_notice_vulgar", "kindly_notice_poor", "kindly_notice_offtopic", "kindly_notice_generic", "kindly_notice_flag"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
 |post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
-|comment|[Comment](#schemacomment)|true|read-only|Comment|
+
+#### Enumerated Values
+
+|Property|Value|Description|
+|---|---|---|
+|notification_type|kindly_notice_advertising|none|
+|notification_type|kindly_notice_aggressive|none|
+|notification_type|kindly_notice_vulgar|none|
+|notification_type|kindly_notice_poor|none|
+|notification_type|kindly_notice_offtopic|none|
+|notification_type|kindly_notice_generic|none|
+|notification_type|kindly_notice_flag|none|

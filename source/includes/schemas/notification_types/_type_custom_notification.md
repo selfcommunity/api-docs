@@ -1,17 +1,18 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeMention</h2>
+<h2 id="tocS_NotificationTypeCustomNotification">NotificationTypeCustomNotification</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypemention"></a>
-<a id="schema__type_comment.md"></a>
-<a id="tocSnotificationtypemention"></a>
-<a id="tocsnotificationtypemention"></a>
+<a id="schemanotificationtypecustomnotification"></a>
+<a id="schema_NotificationTypeCustomNotification"></a>
+<a id="tocSnotificationtypecustomnotification"></a>
+<a id="tocsnotificationtypecustomnotification"></a>
 
 ```json
 {
-  "is_new": false,
-  "sid": 16052906326300000000007190,
-  "notification_type": "mention",
-  "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "post": {}
+    "is_new": false,
+    "sid": 16052592493610000000054990,
+    "notification_type": "custom_notification",
+    "notification_active_at": "2020-11-13T10:20:49.361022+01:00",
+    "custom_notification": {},
+    "user": {}
 }
 ```
 
@@ -23,4 +24,5 @@
 |sid|string|false|read-only|Serialization id of the notification block|
 |notification_type|string|false|read-only|Type "mention"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|custom_notification|[CustomNotification](#schemacustomnotification)|false|read-only|Custom notification|
+|user|[User](#schemauser)]|true|read-only|User generate the custom notification|

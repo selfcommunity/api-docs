@@ -1,17 +1,22 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeVoteUp</h2>
+<h2 id="tocS_NotificationTypeBlockedUser">NotificationTypeBlockedUser</h2>
 <!-- backwards compatibility -->
-<a id="schemanotificationtypevoteup"></a>
-<a id="schema_NotificationTypeVoteUp"></a>
-<a id="tocSnotificationtypevoteup"></a>
-<a id="tocsnotificationtypevoteup"></a>
+<a id="schemanotificationtypeblockeduser"></a>
+<a id="schema_NotificationTypeBlockedUser"></a>
+<a id="tocSnotificationtypeblockeduser"></a>
+<a id="tocsnotificationtypeblockeduser"></a>
 
 ```json
 {
   "is_new": true,
   "sid": 16053709616960000000063090,
-  "notification_type": "vote_up",
+  "notification_type": "blocked_user",
   "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "post": {},
+  "block_settings": {
+    "blocked_at": "2020-11-14T18:11:48.915332+01:00",
+    "days_blocked": 1,
+    "expire_at": "2020-11-15T18:11:48.915332+01:00",
+    "reputation_delta": 161
+  }
 }
 ```
 
@@ -23,4 +28,4 @@
 |sid|string|false|read-only|Serialization id of the notification block|
 |notification_type|string|false|read-only|Type "answer"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|block_settings|[BlockedSettings](#schemablockedsettings)|true|read-only|Data of user block|

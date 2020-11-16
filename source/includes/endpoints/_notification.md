@@ -33,43 +33,45 @@ fetch('/api/v2/notification/',
 
 ```
 
-List all user notifications related to the community.
+List all user notifications (in aggregate form) related to the community. 
 
 Notification types:
 
-* *answer*: comment of first level
-* *comment*: comment of second level
-* *mention*: user mention  
-* *vote_up*: vote up a post/discussion/comment
-* *favorite*: favorite/like post/discussion
-* *private_message*: private message
-* *deleted_for_advertising*: deleted by moderator with motivation the content is advertising
-* *deleted_for_aggressive*: deleted by moderators with motivation the content is aggressive
-* *deleted_for_vulgar*: deleted by moderators with motivation the content is vulgar
-* *deleted_for_generic*: deleted by moderators with a generic motivation
-* *deleted_for_poor*: deleted by moderators with motivation the content is poor
-* *deleted_for_offtopic*: deleted by moderators with motivation the content is offtopic
-* *undeleted_for*: the post has been rehabilitated by the moderators
-* *collapsed_for_advertising*: colapsed by moderator with motivation the content is advertising
-* *collapsed_for_aggressive*: colapsed by moderator with motivation the content is aggressive
-* *collapsed_for_vulgar*: colapsed by moderator with motivation the content is vulgar
-* *collapsed_for_poor*: colapsed by moderator with motivation the content is poor
-* *collapsed_for_offtopic*: colapsed by moderator with motivation the content is offtopic
-* *collapsed_for_generic*: colapsed by moderator with generic motivation
-* *connection_request*: connect request
-* *connection_accept*: connection accept
-* *user_follow*: follow user
-* *kindly_notice_advertising*: content notified as advertising
-* *kindly_notice_aggressive*: content notified as aggressive
-* *kindly_notice_vulgar*: content notified as vulgar
-* *kindly_notice_poor*: content notified as poor
-* *kindly_notice_offtopic*: content notified as offtopic
-* *kindly_notice_generic*: generic content notified
-* *kindly_notice_flag*: content flagged
-* *blocked_user*: user blocked
-* *unblocked_user*: user unblocked
-* *incubator_approved*: incubator approved
-* *custom_notification*: custom notification
+Type | Description | Audience
+-------------- | -------------- | --------------
+*answer* | Comment of first level | Participants of the discussion/post, including those who follow the post
+*comment* | Comment of second level | The author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments, 
+*mention* | user mention | Who is mentioned in the contribute
+*vote_up* | vote up a post/discussion/comment | Who received the voteup
+*favorite* | favorite/like post/discussion | The author of the contribute (discussion/post)
+*private_message* | private message | The recipient of the message
+*deleted_for_advertising* | deleted by moderator with motivation the content is advertising | The author of the contribute
+*deleted_for_aggressive* | deleted by moderators with motivation the content is aggressive | The author of the contribute
+*deleted_for_vulgar* | deleted by moderators with motivation the content is vulgar | The author of the contribute
+*deleted_for_generic* | deleted by moderators with a generic motivation | The author of the contribute
+*deleted_for_poor* | deleted by moderators with motivation the content is poor | The author of the contribute
+*deleted_for_offtopic* | deleted by moderators with motivation the content is offtopic | The author of the contribute
+*undeleted_for* | the post has been rehabilitated by the moderators | The author of the contribute
+*collapsed_for_advertising* | colapsed by moderator with motivation the content is advertising | The author of the contribute
+*collapsed_for_aggressive* | colapsed by moderator with motivation the content is aggressive | The author of the contribute
+*collapsed_for_vulgar* | colapsed by moderator with motivation the content is vulgar | The author of the contribute
+*collapsed_for_poor* | colapsed by moderator with motivation the content is poor | The author of the contribute
+*collapsed_for_offtopic* | colapsed by moderator with motivation the content is offtopic | The author of the contribute
+*collapsed_for_generic* | colapsed by moderator with generic motivation | The author of the contribute
+*connection_request* | connect request | The user who receives the request
+*connection_accept* | connection accept | Who had requested friendship
+*user_follow* | follow user | The user followed
+*kindly_notice_advertising* | content notified as advertising | The author of the contribute
+*kindly_notice_aggressive* | content notified as aggressive | The author of the contribute
+*kindly_notice_vulgar* | content notified as vulgar | The author of the contribute
+*kindly_notice_poor* | content notified as poor | The author of the contribute
+*kindly_notice_offtopic* | content notified as offtopic | The author of the contribute
+*kindly_notice_generic* | generic content notified | The author of the contribute
+*kindly_notice_flag* | content flagged | The author of the contribute
+*blocked_user* | user blocked | The blocked user
+*unblocked_user* | user unblocked |  The unblocked user
+*incubator_approved* | incubator approved | The user who proposed the incubator and those who voted for it 
+*custom_notification* | custom notification | User followers/connections
 
 > Example responses
 
@@ -141,7 +143,7 @@ Status Code **200**
 |---|---|---|---|---|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|[[Notification](#schemanotification)]|false|none|List of results|
+|» results|list([[Notification](#schemanotification)])|false|none|List of notification results|
 
 <aside class="notice">
 This operation require authentication

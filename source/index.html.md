@@ -28,13 +28,30 @@ includes:
   - schemas/user
   - schemas/userSettings
   - schemas/notification
-  - schemas/notification_types/_type_answer
-  - schemas/notification_types/_type_comment
-  - schemas/notification_types/_type_connection_accept
-  - schemas/_targetedBannerVisibility
-  - schemas/targeted_banner_types/_targetedHtmlBanner
-  - schemas/targeted_banner_types/_targetedNotificationBanner
+  - schemas/notification_types/type_answer
+  - schemas/notification_types/type_comment
+  - schemas/notification_types/type_connection_accept
+  - schemas/notification_types/type_connection_request
+  - schemas/notification_types/type_user_follow
+  - schemas/notification_types/type_voteup
+  - schemas/notification_types/type_mention
+  - schemas/notification_types/type_favorite
+  - schemas/notification_types/type_blocked_user
+  - schemas/notification_types/type_unblocked_user
+  - schemas/notification_types/type_kindly_notice
+  - schemas/notification_types/type_deleted_for
+  - schemas/notification_types/type_collapsed_for
+  - schemas/notification_types/type_private_message
+  - schemas/notification_types/type_incubator_approved
+  - schemas/notification_types/type_custom_notification
+  - schemas/targetedBannerVisibility
+  - schemas/targeted_banner_types/targetedHtmlBanner
+  - schemas/targeted_banner_types/targetedNotificationBanner
+  - schemas/privateMessage
+  - schemas/customNotification
+  - schemas/blockedSettings
   - schemas/connectionRequest
+  - schemas/incubatorCategory
   - schemas/locality
   - schemas/category
   - schemas/embed

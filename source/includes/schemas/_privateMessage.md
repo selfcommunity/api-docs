@@ -27,10 +27,12 @@
 |id|integer|false|read-only|Unique integer value identifying this tag|
 |headline|string|true|none|Text message|
 |html|string|true|none|Text message in html format|
+|sender|[User](#schemauser)]|true|none|User that send the private message|
 |sent_at|string(date-time)|false|read-only|Send date time|
-|status|int|false|none|Is this tag active?|
+|status|int|false|none|Message status: created, deleted or hidden|
 
 |Property|Value|Description|
 |---|---|---|
-|status|0|Only for user|
-|status|1|Only for category|
+|status|0|Message created|
+|status|2|Message deleted|
+|status|3|Message hidden|
