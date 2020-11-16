@@ -35,6 +35,8 @@ fetch('/api/v2/notification/',
 
 List all user notifications (in aggregate form) related to the community.
 
+Notifications include all possible interactions with other users of the community, such as replies, comments to the same post, mentions, requests for friendship etc.
+
 Example previews:
 
 <%= image_tag "notification_types/notification_aggregate_1.png" %>
@@ -45,35 +47,37 @@ Notification types:
 
 Type | Description | Audience
 -------------- | -------------- | --------------
-*answer* | comment of first level | participants of the discussion/post, including those who follow the post
-*comment* | comment of second level | author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments
-*mention* | user mention | who is mentioned in the contribute
-*vote_up* | vote up a post/discussion/comment | who received the voteup
-*favorite* | favorite/like post/discussion | author of the contribute (discussion/post)
-*private_message* | private message | recipient of the message
-*deleted_for_advertising* | deleted by moderators with motivation the content is advertising | author of the contribute
-*deleted_for_aggressive* | deleted by moderators with motivation the content is aggressive | author of the contribute
-*deleted_for_vulgar* | deleted by moderators with motivation the content is vulgar | author of the contribute
-*deleted_for_poor* | deleted by moderators with motivation the content is poor | author of the contribute
-*deleted_for_offtopic* | deleted by moderators with motivation the content is offtopic | author of the contribute
-*undeleted_for* | the post has been rehabilitated by the moderators | author of the contribute
-*collapsed_for_advertising* | hidden content by moderator with motivation the content is advertising | author of the contribute
-*collapsed_for_aggressive* | hidden content by moderator with motivation the content is aggressive | author of the contribute
-*collapsed_for_vulgar* | hidden content by moderator with motivation the content is vulgar | author of the contribute
-*collapsed_for_poor* | hidden content by moderator with motivation the content is poor | author of the contribute
-*collapsed_for_offtopic* | hidden content by moderator with motivation the content is offtopic | author of the contribute
-*connection_request* | connect request | user who receives the request
-*connection_accept* | connection accept | who had requested friendship
-*user_follow* | follow user | user followed
-*kindly_notice_advertising* | content notified as advertising, only for comments | author of the contribute
-*kindly_notice_aggressive* | content notified as aggressive, only for comments | author of the contribute
-*kindly_notice_vulgar* | content notified as vulgar, only for comments | author of the contribute
-*kindly_notice_poor* | content notified as poor, only for comments | author of the contribute
-*kindly_notice_offtopic* | content notified as offtopic, only for comments | author of the contribute
-*kindly_notice_flag* | the content flagged was valid, but the user flagged it | author of the contribute
-*blocked_user* | user blocked | blocked user
-*unblocked_user* | user unblocked | unblocked user
-*custom_notification* | custom notification | user followers/connections
+answer* | comment of first level | participants of the discussion/post, including those who follow the post
+comment* | comment of second level | author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments
+mention* | user mention | who is mentioned in the contribute
+vote_up* | vote up a post/discussion/comment | who received the voteup
+favorite* | favorite/like post/discussion | author of the contribute (discussion/post)
+private_message* | private message | recipient of the message
+deleted_for_advertising | deleted by moderators with motivation the content is advertising | author of the contribute
+deleted_for_aggressive | deleted by moderators with motivation the content is aggressive | author of the contribute
+deleted_for_vulgar | deleted by moderators with motivation the content is vulgar | author of the contribute
+deleted_for_poor | deleted by moderators with motivation the content is poor | author of the contribute
+deleted_for_offtopic | deleted by moderators with motivation the content is offtopic | author of the contribute
+undeleted_for | the post has been rehabilitated by the moderators | author of the contribute
+collapsed_for_advertising | hidden content by moderator with motivation the content is advertising | author of the contribute
+collapsed_for_aggressive | hidden content by moderator with motivation the content is aggressive | author of the contribute
+collapsed_for_vulgar | hidden content by moderator with motivation the content is vulgar | author of the contribute
+collapsed_for_poor | hidden content by moderator with motivation the content is poor | author of the contribute
+collapsed_for_offtopic | hidden content by moderator with motivation the content is offtopic | author of the contribute
+connection_request | connect request | user who receives the request
+connection_accept | connection accept | who had requested friendship
+user_follow | follow user | user followed
+kindly_notice_advertising | content notified as advertising, only for comments | author of the contribute
+kindly_notice_aggressive | content notified as aggressive, only for comments | author of the contribute
+kindly_notice_vulgar | content notified as vulgar, only for comments | author of the contribute
+kindly_notice_poor | content notified as poor, only for comments | author of the contribute
+kindly_notice_offtopic | content notified as offtopic, only for comments | author of the contribute
+kindly_notice_flag | the content flagged was valid, but the user flagged it | author of the contribute
+blocked_user | user blocked | blocked user
+unblocked_user | user unblocked | unblocked user
+custom_notification | custom notification | user followers/connections
+
+*if chronologically consecutive these types of notifications can be aggregated
 
 > Example responses
 
@@ -143,7 +147,7 @@ Status Code **200**
 |---|---|---|---|---|
 |next|string¦null|false|none|Next page url|
 |previous|string¦null|false|none|Previous page url|
-|results|list([[Notification](#schemanotification)])|false|none|List of notification results|
+|results|list([Notification](#schemanotification))|false|none|List of notification results|
 
 <aside class="notice">
 This operation require authentication
