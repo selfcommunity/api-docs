@@ -678,6 +678,38 @@
               </ul>
           </li>
           <li>
+            <a href="#selfcommunity-api-notification" class="toc-h1 toc-link" data-title="Notification">Notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-user-39-s-notification" class="toc-h2 toc-link" data-title="List User's Notification">List User's Notification</a>
+                  </li>
+                  <li>
+                    <a href="#mark-read-notifications" class="toc-h2 toc-link" data-title="Mark Read Notifications">Mark Read Notifications</a>
+                  </li>
+                  <li>
+                    <a href="#get-unseen-notifications" class="toc-h2 toc-link" data-title="Get Unseen Notifications">Get Unseen Notifications</a>
+                  </li>
+                  <li>
+                    <a href="#create-custom-notification" class="toc-h2 toc-link" data-title="Create Custom notification">Create Custom notification</a>
+                  </li>
+                  <li>
+                    <a href="#list-user-39-s-banner" class="toc-h2 toc-link" data-title="List User's Banner">List User's Banner</a>
+                  </li>
+                  <li>
+                    <a href="#user-39-s-banner-unseen-count" class="toc-h2 toc-link" data-title="User's Banner Unseen Count">User's Banner Unseen Count</a>
+                  </li>
+                  <li>
+                    <a href="#user-39-s-banner-undisposed-count" class="toc-h2 toc-link" data-title="User's Banner Undisposed Count">User's Banner Undisposed Count</a>
+                  </li>
+                  <li>
+                    <a href="#mark-read-user-39-s-banner" class="toc-h2 toc-link" data-title="Mark Read User's Banner">Mark Read User's Banner</a>
+                  </li>
+                  <li>
+                    <a href="#dispose-user-39-s-banner" class="toc-h2 toc-link" data-title="Dispose User's Banner">Dispose User's Banner</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#selfcommunity-api-tag" class="toc-h1 toc-link" data-title="Tag">Tag</a>
               <ul class="toc-list-h2">
                   <li>
@@ -767,9 +799,6 @@
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypePrivateMessage" class="toc-h2 toc-link" data-title="NotificationTypePrivateMessage">NotificationTypePrivateMessage</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_NotificationTypeIncubatorApproved" class="toc-h2 toc-link" data-title="NotificationTypeIncubatorApproved">NotificationTypeIncubatorApproved</a>
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypeCustomNotification" class="toc-h2 toc-link" data-title="NotificationTypeCustomNotification">NotificationTypeCustomNotification</a>
@@ -7902,6 +7931,7 @@ This operation require authentication only if `content_availability` community o
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: multipart/form-data'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Range: bytes 1433600-1638399/2124437'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Transfer-Encoding: chunked"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {access_token}"</span>
@@ -7914,6 +7944,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">multipart/form-data</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Range</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bytes 1433600-1638399/2124437</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
@@ -7932,6 +7963,8 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 
 </code></pre></div>
 <p>This endpoint perform the chunk upload of a media with type image or document. The client must split the file into chunks and send to the server in series. After all the chunks have been uploaded the client must call the <a href="#opIdcreateMediaChunkComplete">Chunk Upload Complete</a> endpoint with the given <code>upload_id</code> parameter to finalize the upload and retrieve the <a href="#schemamedia">Media</a>.</p>
+
+<p>To perform chunk upload the request must contain <code>Content-Range</code> header with the information about the chunk.</p>
 
 <p>Max file size for image file is 5M.</p>
 
@@ -7963,18 +7996,18 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/chunk/ <span class="se
 </tr>
 </thead><tbody>
 <tr>
+<td>» Content-Range</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>range of the chunk upload in the format <code>bytes start-end/total</code></td>
+</tr>
+<tr>
 <td>» upload_id</td>
 <td>body</td>
 <td>string</td>
 <td>true</td>
 <td>returned by the first call and required from the second</td>
-</tr>
-<tr>
-<td>» offset</td>
-<td>body</td>
-<td>string</td>
-<td>true</td>
-<td>offset of the chunk</td>
 </tr>
 <tr>
 <td>» expires</td>
@@ -8039,7 +8072,7 @@ This operation require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
   <span class="nt">--data-raw</span> <span class="s1">'upload_id=UPLOAD_ID&amp;md5=FILE_MD5'</span> <span class="se">\</span>
@@ -8049,7 +8082,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
   "md5": "string"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
@@ -15990,6 +16023,1138 @@ curl <span class="nt">-X</span> POST /api/v2/feed/likethis/ <span class="se">\</
 <aside class="notice">
 This operation require authentication
 </aside>
+<h1 id="selfcommunity-api-notification">Notification</h1>
+<h2 id='list-user-39-s-notification'>List User&#39;s Notification</h2>
+<p><a id="opIdlistNotifications"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>List all user notifications (in aggregate form) related to the community.</p>
+
+<p>Notifications include all possible interactions with other users of the community, such as replies, comments to the same post, mentions, requests for friendship etc.</p>
+
+<p>Example previews:</p>
+
+<p><img src="images/notification_types/notification_aggregate_1-9c086624.png" alt="" /></p>
+
+<p><img src="images/notification_types/notification_aggregate_2-b29fcced.png" alt="" /></p>
+
+<p>Notification types:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Audience</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>answer*</td>
+<td>comment of first level</td>
+<td>participants of the discussion/post, including those who follow the post</td>
+</tr>
+<tr>
+<td>comment*</td>
+<td>comment of second level</td>
+<td>author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments</td>
+</tr>
+<tr>
+<td>mention*</td>
+<td>user mention</td>
+<td>who is mentioned in the contribute</td>
+</tr>
+<tr>
+<td>vote_up*</td>
+<td>vote up a post/discussion/comment</td>
+<td>who received the voteup</td>
+</tr>
+<tr>
+<td>favorite*</td>
+<td>favorite/like post/discussion</td>
+<td>author of the contribute (discussion/post)</td>
+</tr>
+<tr>
+<td>private_message*</td>
+<td>private message</td>
+<td>recipient of the message</td>
+</tr>
+<tr>
+<td>deleted_for_advertising</td>
+<td>deleted by moderators with motivation the content is advertising</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>deleted_for_aggressive</td>
+<td>deleted by moderators with motivation the content is aggressive</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>deleted_for_vulgar</td>
+<td>deleted by moderators with motivation the content is vulgar</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>deleted_for_poor</td>
+<td>deleted by moderators with motivation the content is poor</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>deleted_for_offtopic</td>
+<td>deleted by moderators with motivation the content is offtopic</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>undeleted_for</td>
+<td>the post has been rehabilitated by the moderators</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>collapsed_for_advertising</td>
+<td>hidden content by moderator with motivation the content is advertising</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>collapsed_for_aggressive</td>
+<td>hidden content by moderator with motivation the content is aggressive</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>collapsed_for_vulgar</td>
+<td>hidden content by moderator with motivation the content is vulgar</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>collapsed_for_poor</td>
+<td>hidden content by moderator with motivation the content is poor</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>collapsed_for_offtopic</td>
+<td>hidden content by moderator with motivation the content is offtopic</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>connection_request</td>
+<td>connect request</td>
+<td>user who receives the request</td>
+</tr>
+<tr>
+<td>connection_accept</td>
+<td>connection accept</td>
+<td>who had requested friendship</td>
+</tr>
+<tr>
+<td>user_follow</td>
+<td>follow user</td>
+<td>user followed</td>
+</tr>
+<tr>
+<td>kindly_notice_advertising</td>
+<td>content notified as advertising, only for comments</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>kindly_notice_aggressive</td>
+<td>content notified as aggressive, only for comments</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>kindly_notice_vulgar</td>
+<td>content notified as vulgar, only for comments</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>kindly_notice_poor</td>
+<td>content notified as poor, only for comments</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>kindly_notice_offtopic</td>
+<td>content notified as offtopic, only for comments</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>kindly_notice_flag</td>
+<td>the content flagged was valid, but the user flagged it</td>
+<td>author of the contribute</td>
+</tr>
+<tr>
+<td>blocked_user</td>
+<td>user blocked</td>
+<td>blocked user</td>
+</tr>
+<tr>
+<td>unblocked_user</td>
+<td>user unblocked</td>
+<td>unblocked user</td>
+</tr>
+<tr>
+<td>custom_notification</td>
+<td>custom notification</td>
+<td>user followers/connections</td>
+</tr>
+</tbody></table>
+
+<p>*if chronologically consecutive these types of notifications can be aggregated</p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+        </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+       </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/notification/</code></p>
+
+<h3 id="listnotifications-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>next_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Next page id</td>
+</tr>
+<tr>
+<td>previous_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Previous page id</td>
+</tr>
+</tbody></table>
+
+<h3 id="listnotifications-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>Inline</td>
+</tr>
+</tbody></table>
+
+<h3 id="listnotifications-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>next</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Next page url</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Previous page url</td>
+</tr>
+<tr>
+<td>results</td>
+<td>list(<a href="#schemanotification">Notification</a>)</td>
+<td>false</td>
+<td>none</td>
+<td>List of notification results</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='mark-read-notifications'>Mark Read Notifications</h2>
+<p><a id="opIdreadNotificationsNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/notification/read/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "sids": [
+    "16051998593220000000052990", "16031945321500000000007190", ...
+  ]
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/read/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Mark read a list of notifications identified by serialization_ids (sids).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/notification/read/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="readnotificationsnotification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sids</td>
+<td>body</td>
+<td>List of sid (serialization id)</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>204 Response</p>
+</blockquote>
+
+<h3 id="followuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='get-unseen-notifications'>Get Unseen Notifications</h2>
+<p><a id="opIdunseenNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/notification/unseen/count/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/unseen/count/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve the number of unseen/unread notifications.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/notification/unseen/count/</code></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"count"</span><span class="p">:</span><span class="w">  </span><span class="mi">3</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="unseennotification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='create-custom-notification'>Create Custom notification</h2>
+<p><a id="opIdnotifyNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/notification/notify/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "type": "string",
+  "embed": {
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "http://example.com",
+    "metadata": "{}"
+  },
+  "title": "string",
+  "description": "string",
+  "user": 3
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/notify/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Generate a custom notification on behalf of a user (identified by the body param &quot;user&quot;) and notifies it to all his connections/followers.</p>
+
+<p>Es. <user> added an item to the wishlist</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/notification/notify/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"embed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"embed_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"embed_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="notifynotification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>A string that identifies a type of notification</td>
+</tr>
+<tr>
+<td>embed</td>
+<td>body</td>
+<td>object</td>
+<td>false</td>
+<td><a href="#schemaembed">Embed</a></td>
+</tr>
+<tr>
+<td>title</td>
+<td>body</td>
+<td>string¦null</td>
+<td>false</td>
+<td>A title for the notification</td>
+</tr>
+<tr>
+<td>description</td>
+<td>body</td>
+<td>string¦null</td>
+<td>false</td>
+<td>A description for the notification</td>
+</tr>
+<tr>
+<td>user</td>
+<td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>The user who issues the notification</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>204 Response</p>
+</blockquote>
+
+<h3 id="followuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication and admin role.
+</aside>
+<h2 id='list-user-39-s-banner'>List User&#39;s Banner</h2>
+<p><a id="opIdbannerNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/notification/banner/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/banner/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>List of all top notification banners.
+Notification banners are notifications that have a high priority and for this reason they are placed at the top of the list in the notification page.</p>
+
+<p>They belong to their own list. For some reasons they behave differently from the notification.
+They are initially shown and can be removed.</p>
+
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/notification_banner-5917993e.png" alt="" /></p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/notification/banner/</code></p>
+
+<h3 id="listnotifications-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Number of results to return per page</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Number of results to return per page.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>The initial index from which to return the results.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"banner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Hello!&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type_banner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disposed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"viewed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h3 id="bannernotification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schematargetedbannervisibility">TargetedBannerVisibility</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="listusers-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» count</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Total results count</td>
+</tr>
+<tr>
+<td>» next</td>
+<td>string(uri)¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Next page url</td>
+</tr>
+<tr>
+<td>» previous</td>
+<td>string(uri)¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Previous page url</td>
+</tr>
+<tr>
+<td>» results</td>
+<td>list(<a href="#schematargetedbannervisibility">TargetedBannerVisibility</a>)</td>
+<td>false</td>
+<td>none</td>
+<td>List of results</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='user-39-s-banner-unseen-count'>User&#39;s Banner Unseen Count</h2>
+<p><a id="opIdbannerUnseenNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/notification/banner/unseen/count/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/banner/unseen/count/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve the total number of notiifcation banners not yet seen by the user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/notification/banner/unseen/count/</code></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="bannerunseennotification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='user-39-s-banner-undisposed-count'>User&#39;s Banner Undisposed Count</h2>
+<p><a id="opIdbannerUndisposedNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/notification/banner/undisposed/count/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/banner/undisposed/count/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve the total number of notiifcation banners not yet disposed by the user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/notification/banner/undisposed/count/</code></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="bannerundisposednotification-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='mark-read-user-39-s-banner'>Mark Read User&#39;s Banner</h2>
+<p><a id="opIdreadBannerNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/notification/banner/read/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "banner_ids": [
+    0
+  ]
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/banner/read/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Mark viewed/read a notiifcation banner for a user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/notification/banner/read/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"banner_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="readbannernotification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>banner_ids</td>
+<td>list([integer])</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>201 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"banner_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Example responses</p>
+
+<p>204 Response</p>
+</blockquote>
+
+<h3 id="followuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
+<h2 id='dispose-user-39-s-banner'>Dispose User&#39;s Banner</h2>
+<p><a id="opIddisposeBannerNotification"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/notification/banner/dispose/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "banner_ids": [
+    0
+  ]
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/notification/banner/dispose/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Dispose notiifcation banner for a user.</p>
+
+<p>The banner will disappear and will no longer appear in the notification banner list, see <a href="#opIdbannerNotification">List User&#39;s Banner</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/notification/banner/dispose/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"banner_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="disposebannernotification-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>banner_ids</td>
+<td>list([integer])</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>204 Response</p>
+</blockquote>
+
+<h3 id="followuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h1 id="selfcommunity-api-tag">Tag</h1>
 <h2 id='get-all-tags'>Get All Tags</h2>
 <p><a id="opIdlistTags"></a></p>
@@ -17551,28 +18716,28 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if there is in aggregate list at least one notification not yet read by the user, otherwise false.</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the macro notification aggregate block.</td>
 </tr>
 <tr>
 <td>post</td>
 <td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved. For some types of notifications it will not be present.</td>
+<td>Primary object involved (object that is common to notifications group). For some types of notifications it will not be present.</td>
 </tr>
 <tr>
 <td>aggregated</td>
 <td>list(Object)</td>
 <td>false</td>
 <td>read-only</td>
-<td>List of aggregated notifications by type. Types Object: <a href="#schemanotificationtypeanswer">NotificationTypeAnswer</a>, <a href="#schemanotificationtypecomment">NotificationTypeComment</a>, <a href="#schemanotificationtypemention">NotificationTypeMention</a>, <a href="#schemanotificationtypeconnectionaccept">NotificationTypeConnectionAccept</a>, <a href="#schemanotificationtypeconnectionrequest">NotificationTypeConnectionRequest</a>, <a href="#schemanotificationtypeprivatemessage">NotificationTypePrivateMessage</a>, <a href="#schemanotificationtypefavorite">NotificationTypeFavorite</a>, <a href="#schemanotificationtypevoteup">NotificationTypeVoteUp</a>, <a href="#schemanotificationtypeblockeduser">NotificationTypeBlockedUser</a>, <a href="#schemanotificationtypeunblockeduser">NotificationTypeUnBlockedUser</a>, <a href="#schemanotificationtypekindlynotice">NotificationTypeKindlyNotice</a>, <a href="#schemanotificationtypecollapsedfor">NotificationTypeCollapsedFor</a>, <a href="#schemanotificationtypedeletedfor">NotificationTypeDeletedFor</a>, <a href="#schemanotificationtypeincubatorapproved">NotificationTypeIncubatorApproved</a>, <a href="#schemanotificationtypecustomnotification">NotificationTypeCustomNotification</a></td>
+<td>List of aggregated notifications by type. Types Object: <a href="#schemanotificationtypeanswer">NotificationTypeAnswer</a>, <a href="#schemanotificationtypecomment">NotificationTypeComment</a>, <a href="#schemanotificationtypemention">NotificationTypeMention</a>, <a href="#schemanotificationtypeconnectionaccept">NotificationTypeConnectionAccept</a>, <a href="#schemanotificationtypeconnectionrequest">NotificationTypeConnectionRequest</a>, <a href="#schemanotificationtypeprivatemessage">NotificationTypePrivateMessage</a>, <a href="#schemanotificationtypefavorite">NotificationTypeFavorite</a>, <a href="#schemanotificationtypevoteup">NotificationTypeVoteUp</a>, <a href="#schemanotificationtypeblockeduser">NotificationTypeBlockedUser</a>, <a href="#schemanotificationtypeunblockeduser">NotificationTypeUnBlockedUser</a>, <a href="#schemanotificationtypekindlynotice">NotificationTypeKindlyNotice</a>, <a href="#schemanotificationtypecollapsedfor">NotificationTypeCollapsedFor</a>, <a href="#schemanotificationtypedeletedfor">NotificationTypeDeletedFor</a>, <a href="#schemanotificationtypecustomnotification">NotificationTypeCustomNotification</a></td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeAnswer">NotificationTypeAnswer</h2>
@@ -17588,10 +18753,13 @@ This operation requires authentication
     </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/answer-23278909.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17606,14 +18774,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -17628,13 +18796,6 @@ This operation requires authentication
 <td>false</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
-</tr>
-<tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
-<td>false</td>
-<td>read-only</td>
-<td>Primary object involved.</td>
 </tr>
 <tr>
 <td>answer</td>
@@ -17657,10 +18818,15 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comment"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/comment-10481c94.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17675,14 +18841,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -17699,7 +18865,7 @@ This operation requires authentication
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
+<td>answer</td>
 <td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
 <td>false</td>
 <td>read-only</td>
@@ -17711,6 +18877,13 @@ This operation requires authentication
 <td>true</td>
 <td>read-only</td>
 <td>Comment</td>
+</tr>
+<tr>
+<td>in_reply_to</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>true</td>
+<td>read-only</td>
+<td>Only if comment reply to another comment</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeConnectionAccept">NotificationTypeConnectionAccept</h2>
@@ -17728,7 +18901,11 @@ This operation requires authentication
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/accept_connection-c898d8d8.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17743,14 +18920,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>true</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -17768,7 +18945,7 @@ This operation requires authentication
 </tr>
 <tr>
 <td>accept_user</td>
-<td><a href="#schemauser">User</a>]</td>
+<td><a href="#schemauser">User</a></td>
 <td>true</td>
 <td>read-only</td>
 <td>User accepted the connection request</td>
@@ -17789,7 +18966,11 @@ This operation requires authentication
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"request_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/request_connection-24a3d578.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17804,21 +18985,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>true</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Type &quot;connection_accept&quot;</td>
+<td>Type &quot;connection_request&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -17829,7 +19010,7 @@ This operation requires authentication
 </tr>
 <tr>
 <td>request_user</td>
-<td><a href="#schemauser">User</a>]</td>
+<td><a href="#schemauser">User</a></td>
 <td>true</td>
 <td>read-only</td>
 <td>User request the connection</td>
@@ -17850,7 +19031,11 @@ This operation requires authentication
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/user_follow-67440354.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17865,14 +19050,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>true</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -17890,7 +19075,7 @@ This operation requires authentication
 </tr>
 <tr>
 <td>follower</td>
-<td><a href="#schemauser">User</a>]</td>
+<td><a href="#schemauser">User</a></td>
 <td>true</td>
 <td>read-only</td>
 <td>Follower user</td>
@@ -17911,7 +19096,11 @@ This operation requires authentication
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/voteup-d3836d46.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17933,14 +19122,14 @@ This operation requires authentication
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Type &quot;answer&quot;</td>
+<td>Type &quot;vote_up&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -17954,7 +19143,7 @@ This operation requires authentication
 <td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>Voted post</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeAnswer">NotificationTypeMention</h2>
@@ -17972,7 +19161,11 @@ This operation requires authentication
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/mention-42dec53b.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17987,14 +19180,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -18015,7 +19208,7 @@ This operation requires authentication
 <td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>Post were the user mentioned in</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeFavorite">NotificationTypeFavorite</h2>
@@ -18033,7 +19226,11 @@ This operation requires authentication
     </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/favorite-4eab4617.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18048,14 +19245,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -18099,7 +19296,11 @@ This operation requires authentication
     </span><span class="nl">"reputation_delta"</span><span class="p">:</span><span class="w"> </span><span class="mi">161</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/blocked_user-d6c33b0c.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18114,21 +19315,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Type &quot;answer&quot;</td>
+<td>Type &quot;blocker_user&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -18159,7 +19360,11 @@ This operation requires authentication
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unblocked_user"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/unblocked_user-7cbc210b.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18174,14 +19379,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -18212,7 +19417,11 @@ This operation requires authentication
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kindly_notice_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/kindly_notice_aggressive-7fe41acb.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18227,21 +19436,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Types: &quot;kindly_notice_advertising&quot;, &quot;kindly_notice_aggressive&quot;, &quot;kindly_notice_vulgar&quot;, &quot;kindly_notice_poor&quot;, &quot;kindly_notice_offtopic&quot;, &quot;kindly_notice_generic&quot;, &quot;kindly_notice_flag&quot;</td>
+<td>Types: &quot;kindly_notice_advertising&quot;, &quot;kindly_notice_aggressive&quot;, &quot;kindly_notice_vulgar&quot;, &quot;kindly_notice_poor&quot;, &quot;kindly_notice_offtopic&quot;, &quot;kindly_notice_flag&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -18294,7 +19503,7 @@ This operation requires authentication
 <tr>
 <td>notification_type</td>
 <td>kindly_notice_flag</td>
-<td>Flagged content which is not irregular</td>
+<td>Notification of irregularly flagged content. The content was valid, but the user flagged it</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeDeletedFor">NotificationTypeDeletedFor</h2>
@@ -18311,7 +19520,11 @@ This operation requires authentication
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/deleted_for_aggressive-10e3150b.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18326,21 +19539,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Types: &quot;deleted_for_advertising&quot;, &quot;deleted_for_aggressive&quot;, &quot;deleted_for_vulgar&quot;, &quot;deleted_for_poor&quot;, &quot;deleted_for_offtopic&quot;, &quot;deleted_for_generic&quot;, &quot;undeleted_for&quot;</td>
+<td>Types: &quot;deleted_for_advertising&quot;, &quot;deleted_for_aggressive&quot;, &quot;deleted_for_vulgar&quot;, &quot;deleted_for_poor&quot;, &quot;deleted_for_offtopic&quot;, &quot;undeleted_for&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -18410,7 +19623,11 @@ This operation requires authentication
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collapsed_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/collapsed_for_aggressive-8249f1eb.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18425,21 +19642,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Types: &quot;collapsed_for_advertising&quot;, &quot;collapsed_for_aggressive&quot;, &quot;collapsed_for_vulgar&quot;, &quot;collapsed_for_poor&quot;, &quot;collapsed_for_offtopic&quot;, &quot;collapsed_for_generic&quot;</td>
+<td>Types: &quot;collapsed_for_advertising&quot;, &quot;collapsed_for_aggressive&quot;, &quot;collapsed_for_vulgar&quot;, &quot;collapsed_for_poor&quot;, &quot;collapsed_for_offtopic&quot;, &quot;uncollapsed_for&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -18517,7 +19734,11 @@ This operation requires authentication
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/private_message-5c0dcea0.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18532,14 +19753,14 @@ This operation requires authentication
 <td>boolean</td>
 <td>true</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
@@ -18563,67 +19784,6 @@ This operation requires authentication
 <td>Message received</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeIncubatorApproved">NotificationTypeIncubatorApproved</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemanotificationtypeincubatorapproved"></a>
-<a id="schema_NotificationTypeIncubatorApproved"></a>
-<a id="tocSnotificationtypeincubatorapproved"></a>
-<a id="tocsnotificationtypeincubatorapproved"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"incubator_approved"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-13T10:20:49.361022+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"incubator"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>is_new</td>
-<td>boolean</td>
-<td>false</td>
-<td>read-only</td>
-<td>Notification not yet read</td>
-</tr>
-<tr>
-<td>sid</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>Serialization id of the notification block</td>
-</tr>
-<tr>
-<td>notification_type</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>Type &quot;mention&quot;</td>
-</tr>
-<tr>
-<td>notification_active_at</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>read-only</td>
-<td>Time when the notification was generated</td>
-</tr>
-<tr>
-<td>incubator</td>
-<td><a href="#schemaincubatorcategory">IncubatorCategory</a></td>
-<td>false</td>
-<td>read-only</td>
-<td>Incubator approved</td>
-</tr>
-</tbody></table>
 <h2 id="tocS_NotificationTypeCustomNotification">NotificationTypeCustomNotification</h2>
 
 <!-- backwards compatibility -->
@@ -18640,7 +19800,11 @@ This operation requires authentication
     </span><span class="nl">"custom_notification"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div>
+<p>Example preview:</p>
+
+<p><img src="images/notification_types/custom_notification-d1fd2d4d.png" alt="" /></p>
+<h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18655,21 +19819,21 @@ This operation requires authentication
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Notification not yet read</td>
+<td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Serialization id of the notification block</td>
+<td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Type &quot;mention&quot;</td>
+<td>Type &quot;custom_notification&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
@@ -18687,7 +19851,7 @@ This operation requires authentication
 </tr>
 <tr>
 <td>user</td>
-<td><a href="#schemauser">User</a>]</td>
+<td><a href="#schemauser">User</a></td>
 <td>true</td>
 <td>read-only</td>
 <td>User generate the custom notification</td>
@@ -19907,7 +21071,7 @@ This operation requires authentication
 </tr>
 <tr>
 <td>type</td>
-<td>document</td>
+<td>doc</td>
 <td>Media of type document (pdf)</td>
 </tr>
 </tbody></table>
