@@ -11,8 +11,9 @@
   "sid": 16052906326300000000007190,
   "notification_type": "comment",
   "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "post": {},
-  "comment": {}
+  "answer": {},
+  "comment": {},
+  "in_reply_to": {}
 }
 ```
 
@@ -24,5 +25,6 @@
 |sid|string|false|read-only|Serialization id of the notification block|
 |notification_type|string|false|read-only|Type "comment"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|answer|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
 |comment|[Comment](#schemacomment)|true|read-only|Comment|
+|in_reply_to|[Comment](#schemacomment)|true|read-only|Only if comment reply to another comment|
