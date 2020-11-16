@@ -28,9 +28,9 @@
 
 |Property|Value|Description|
 |---|---|---|
-|notification_type|collapsed_for_advertising|none|
-|notification_type|collapsed_for_aggressive|none|
-|notification_type|collapsed_for_vulgar|none|
-|notification_type|collapsed_for_generic|none|
-|notification_type|collapsed_for_poor|none|
-|notification_type|collapsed_for_offtopic|none|
+|notification_type|collapsed_for_advertising|Advertising content|
+|notification_type|collapsed_for_aggressive|Aggressive content|
+|notification_type|collapsed_for_vulgar|Vulgar content|
+|notification_type|collapsed_for_poor|Poor content|
+|notification_type|collapsed_for_offtopic|Offtopic content|
+|notification_type|uncollapsed_for|Restored from collapsed status|

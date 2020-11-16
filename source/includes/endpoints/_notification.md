@@ -48,7 +48,6 @@ Type | Description | Audience
 *deleted_for_advertising* | deleted by moderator with motivation the content is advertising | The author of the contribute
 *deleted_for_aggressive* | deleted by moderators with motivation the content is aggressive | The author of the contribute
 *deleted_for_vulgar* | deleted by moderators with motivation the content is vulgar | The author of the contribute
-*deleted_for_generic* | deleted by moderators with a generic motivation | The author of the contribute
 *deleted_for_poor* | deleted by moderators with motivation the content is poor | The author of the contribute
 *deleted_for_offtopic* | deleted by moderators with motivation the content is offtopic | The author of the contribute
 *undeleted_for* | the post has been rehabilitated by the moderators | The author of the contribute
@@ -57,7 +56,6 @@ Type | Description | Audience
 *collapsed_for_vulgar* | colapsed by moderator with motivation the content is vulgar | The author of the contribute
 *collapsed_for_poor* | colapsed by moderator with motivation the content is poor | The author of the contribute
 *collapsed_for_offtopic* | colapsed by moderator with motivation the content is offtopic | The author of the contribute
-*collapsed_for_generic* | colapsed by moderator with generic motivation | The author of the contribute
 *connection_request* | connect request | The user who receives the request
 *connection_accept* | connection accept | Who had requested friendship
 *user_follow* | follow user | The user followed
@@ -66,7 +64,6 @@ Type | Description | Audience
 *kindly_notice_vulgar* | content notified as vulgar | The author of the contribute
 *kindly_notice_poor* | content notified as poor | The author of the contribute
 *kindly_notice_offtopic* | content notified as offtopic | The author of the contribute
-*kindly_notice_generic* | generic content notified | The author of the contribute
 *kindly_notice_flag* | content flagged | The author of the contribute
 *blocked_user* | user blocked | The blocked user
 *unblocked_user* | user unblocked |  The unblocked user
