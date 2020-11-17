@@ -762,9 +762,6 @@
                     <a href="#tocS_Notification" class="toc-h2 toc-link" data-title="Notification">Notification</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeAnswer" class="toc-h2 toc-link" data-title="NotificationTypeAnswer">NotificationTypeAnswer</a>
-                  </li>
-                  <li>
                     <a href="#tocS_NotificationTypeComment" class="toc-h2 toc-link" data-title="NotificationTypeComment">NotificationTypeComment</a>
                   </li>
                   <li>
@@ -783,7 +780,7 @@
                     <a href="#tocS_NotificationTypeMention" class="toc-h2 toc-link" data-title="NotificationTypeMention">NotificationTypeMention</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeFavorite" class="toc-h2 toc-link" data-title="NotificationTypeFavorite">NotificationTypeFavorite</a>
+                    <a href="#tocS_NotificationTypeFollow" class="toc-h2 toc-link" data-title="NotificationTypeFollow">NotificationTypeFollow</a>
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypeBlockedUser" class="toc-h2 toc-link" data-title="NotificationTypeBlockedUser">NotificationTypeBlockedUser</a>
@@ -16176,12 +16173,12 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 </thead><tbody>
 <tr>
-<td>answer*</td>
+<td>comment*</td>
 <td>comment of first level</td>
 <td>participants of the discussion/post, including those who follow the post</td>
 </tr>
 <tr>
-<td>comment*</td>
+<td>nested_comment*</td>
 <td>comment of second level</td>
 <td>author of the top-level comment (unless the user has hidden it) and the authors of the siblings comments</td>
 </tr>
@@ -16196,9 +16193,9 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 <td>who received the voteup</td>
 </tr>
 <tr>
-<td>favorite*</td>
-<td>favorite/like post/discussion</td>
-<td>author of the contribute (discussion/post)</td>
+<td>follow*</td>
+<td>follow a post/discussion</td>
+<td>author of the content (discussion/post)</td>
 </tr>
 <tr>
 <td>private_message*</td>
@@ -16341,15 +16338,17 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comment"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nested_comment"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-25T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -16358,8 +16357,9 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
        </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
        </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -16396,6 +16396,10 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 <td>Previous page id</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>if both parameters are sent previus_id takes precedence</li>
+</ul>
 
 <h3 id="listnotifications-responses">Responses</h3>
 
@@ -18798,11 +18802,14 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
    </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+   </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
    </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16037238513640000000074020</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T15:50:51.364336+01:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
         </span><span class="p">}</span><span class="w">
    </span><span class="p">]</span><span class="w">
@@ -18850,72 +18857,7 @@ This operation requires authentication
 <td>list(Object)</td>
 <td>false</td>
 <td>read-only</td>
-<td>List of aggregated notifications by type. Types Object: <a href="#schemanotificationtypeanswer">NotificationTypeAnswer</a>, <a href="#schemanotificationtypecomment">NotificationTypeComment</a>, <a href="#schemanotificationtypemention">NotificationTypeMention</a>, <a href="#schemanotificationtypeconnectionaccept">NotificationTypeConnectionAccept</a>, <a href="#schemanotificationtypeconnectionrequest">NotificationTypeConnectionRequest</a>, <a href="#schemanotificationtypeprivatemessage">NotificationTypePrivateMessage</a>, <a href="#schemanotificationtypefavorite">NotificationTypeFavorite</a>, <a href="#schemanotificationtypevoteup">NotificationTypeVoteUp</a>, <a href="#schemanotificationtypeblockeduser">NotificationTypeBlockedUser</a>, <a href="#schemanotificationtypeunblockeduser">NotificationTypeUnBlockedUser</a>, <a href="#schemanotificationtypekindlynotice">NotificationTypeKindlyNotice</a>, <a href="#schemanotificationtypecollapsedfor">NotificationTypeCollapsedFor</a>, <a href="#schemanotificationtypedeletedfor">NotificationTypeDeletedFor</a>, <a href="#schemanotificationtypecustomnotification">NotificationTypeCustomNotification</a></td>
-</tr>
-</tbody></table>
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeAnswer</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemanotificationtypeanswer"></a>
-<a id="schema_NotificationTypeAnswer"></a>
-<a id="tocSnotificationtypeanswer"></a>
-<a id="tocsnotificationtypeanswer"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Example preview:</p>
-
-<p><img src="images/notification_types/answer-23278909.png" alt="" /></p>
-<h3 id='properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>is_new</td>
-<td>boolean</td>
-<td>true</td>
-<td>read-only</td>
-<td>True if the notification has been read, otherwise false</td>
-</tr>
-<tr>
-<td>sid</td>
-<td>string</td>
-<td>true</td>
-<td>read-only</td>
-<td>Serialization id of the notification</td>
-</tr>
-<tr>
-<td>notification_type</td>
-<td>string</td>
-<td>true</td>
-<td>read-only</td>
-<td>Type &quot;answer&quot;</td>
-</tr>
-<tr>
-<td>notification_active_at</td>
-<td>string(date-time)</td>
-<td>true</td>
-<td>read-only</td>
-<td>Time when the notification was generated</td>
-</tr>
-<tr>
-<td>answer</td>
-<td><a href="#schemacomment">Comment</a></td>
-<td>true</td>
-<td>read-only</td>
-<td>Answer</td>
+<td>List of aggregated notifications by type. Types Object: <a href="#schemanotificationtypecomment">NotificationTypeComment</a>, <a href="#schemanotificationtypemention">NotificationTypeMention</a>, <a href="#schemanotificationtypeconnectionaccept">NotificationTypeConnectionAccept</a>, <a href="#schemanotificationtypeconnectionrequest">NotificationTypeConnectionRequest</a>, <a href="#schemanotificationtypeprivatemessage">NotificationTypePrivateMessage</a>, <a href="#schemanotificationtypefollow">NotificationTypeFollow</a>, <a href="#schemanotificationtypevoteup">NotificationTypeVoteUp</a>, <a href="#schemanotificationtypeblockeduser">NotificationTypeBlockedUser</a>, <a href="#schemanotificationtypeunblockeduser">NotificationTypeUnBlockedUser</a>, <a href="#schemanotificationtypekindlynotice">NotificationTypeKindlyNotice</a>, <a href="#schemanotificationtypecollapsedfor">NotificationTypeCollapsedFor</a>, <a href="#schemanotificationtypedeletedfor">NotificationTypeDeletedFor</a>, <a href="#schemanotificationtypecustomnotification">NotificationTypeCustomNotification</a></td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeComment">NotificationTypeComment</h2>
@@ -18929,16 +18871,16 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comment"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comment"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Example preview:</p>
+<p>Example previews:</p>
 
-<p><img src="images/notification_types/comment-10481c94.png" alt="" /></p>
+<p><img src="images/notification_types/comment-23278909.png" alt="" /></p>
+
+<p><img src="images/notification_types/nested_comment-10481c94.png" alt="" /></p>
 <h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
@@ -18964,25 +18906,18 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
-<td>Type &quot;comment&quot;</td>
+<td>Type &quot;comment&quot; or &quot;nested_comment&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
-</tr>
-<tr>
-<td>answer</td>
-<td><a href="#schemacomment">Comment</a></td>
-<td>true</td>
-<td>read-only</td>
-<td>Comment of first level</td>
 </tr>
 <tr>
 <td>comment</td>
@@ -18991,12 +18926,24 @@ This operation requires authentication
 <td>read-only</td>
 <td>Comment of second level</td>
 </tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
 <tr>
-<td>in_reply_to</td>
-<td><a href="#schemacomment">Comment</a></td>
-<td>false</td>
-<td>read-only</td>
-<td>Only if comment reply to another comment</td>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>comment</td>
+<td>First level comment</td>
+</tr>
+<tr>
+<td>type</td>
+<td>nested_comment</td>
+<td>Second level comment</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeConnectionAccept">NotificationTypeConnectionAccept</h2>
@@ -19010,9 +18957,9 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19043,14 +18990,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;connection_accept&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19075,9 +19022,9 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_request"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"request_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19108,14 +19055,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;connection_request&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19140,9 +19087,9 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_follow"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_follow"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19173,14 +19120,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;user_follow&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19205,11 +19152,11 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053709616960000000063090</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_up"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_up"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19240,14 +19187,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;vote_up&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19286,11 +19233,11 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mention"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mention"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19321,14 +19268,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;mention&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19356,26 +19303,27 @@ This operation requires authentication
 <td>if user is mentioned in a comment</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeFavorite">NotificationTypeFavorite</h2>
+<h2 id="tocS_NotificationTypeFollow">NotificationTypeFollow</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemanotificationtypefavorite"></a>
-<a id="schema_NotificationTypeFavorite"></a>
-<a id="tocSnotificationtypefavorite"></a>
-<a id="tocsnotificationtypefavorite"></a></p>
+<p><a id="schemanotificationtypefollow"></a>
+<a id="schema_NotificationTypeFollow"></a>
+<a id="tocSnotificationtypefollow"></a>
+<a id="tocsnotificationtypefollow"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053710571250000000007160</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"favorite"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"follow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
 
-<p><img src="images/notification_types/favorite-4eab4617.png" alt="" /></p>
+<p><img src="images/notification_types/follow-4eab4617.png" alt="" /></p>
 <h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
@@ -19401,14 +19349,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
-<td>Type &quot;favorite&quot;</td>
+<td>Type &quot;follow&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>false</td>
 <td>read-only</td>
@@ -19419,14 +19367,21 @@ This operation requires authentication
 <td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>if a discussion is favorited(followed)</td>
+<td>if a discussion is followed</td>
 </tr>
 <tr>
 <td>post</td>
 <td><a href="#schemadpost">Post</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>if a post is favorited(followed)</td>
+<td>if a post is followed</td>
+</tr>
+<tr>
+<td>user</td>
+<td><a href="#schemaduser">User</a></td>
+<td>true</td>
+<td>read-only</td>
+<td>Follower user</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeBlockedUser">NotificationTypeBlockedUser</h2>
@@ -19440,8 +19395,8 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053709616960000000063090</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blocked_user"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blocked_user"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"block_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"blocked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T18:11:48.915332+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"days_blocked"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -19478,14 +19433,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;blocker_user&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19510,8 +19465,8 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053709616960000000063090</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unblocked_user"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unblocked_user"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19542,14 +19497,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;unblocked_user&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19567,11 +19522,11 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kindly_notice_&lt;type&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kindly_notice_&lt;type&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19602,14 +19557,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Types: &quot;kindly_notice_advertising&quot;, &quot;kindly_notice_aggressive&quot;, &quot;kindly_notice_vulgar&quot;, &quot;kindly_notice_poor&quot;, &quot;kindly_notice_offtopic&quot;, &quot;kindly_notice_flag&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19646,32 +19601,32 @@ This operation requires authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_advertising</td>
 <td>Advertising content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_aggressive</td>
 <td>Aggressive content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_vulgar</td>
 <td>Vulgar content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_poor</td>
 <td>Poor content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_offtopic</td>
 <td>Offtopic content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>kindly_notice_flag</td>
 <td>Notification of irregularly flagged content. The content was valid, but the user flagged it</td>
 </tr>
@@ -19687,11 +19642,11 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19722,14 +19677,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Types: &quot;deleted_for_advertising&quot;, &quot;deleted_for_aggressive&quot;, &quot;deleted_for_vulgar&quot;, &quot;deleted_for_poor&quot;, &quot;deleted_for_offtopic&quot;, &quot;undeleted_for&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19766,32 +19721,32 @@ This operation requires authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>deleted_for_advertising</td>
 <td>Advertising content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>deleted_for_aggressive</td>
 <td>Aggressive content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>deleted_for_vulgar</td>
 <td>Vulgar content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>deleted_for_poor</td>
 <td>Poor content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>deleted_for_offtopic</td>
 <td>Offtopic content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>undeleted_for</td>
 <td>Undeleted content</td>
 </tr>
@@ -19807,9 +19762,9 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collapsed_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collapsed_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19840,14 +19795,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Types: &quot;collapsed_for_advertising&quot;, &quot;collapsed_for_aggressive&quot;, &quot;collapsed_for_vulgar&quot;, &quot;collapsed_for_poor&quot;, &quot;collapsed_for_offtopic&quot;, &quot;uncollapsed_for&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19870,32 +19825,32 @@ This operation requires authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>collapsed_for_advertising</td>
 <td>Advertising content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>collapsed_for_aggressive</td>
 <td>Aggressive content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>collapsed_for_vulgar</td>
 <td>Vulgar content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>collapsed_for_poor</td>
 <td>Poor content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>collapsed_for_offtopic</td>
 <td>Offtopic content</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>uncollapsed_for</td>
 <td>Restored from collapsed status</td>
 </tr>
@@ -19911,8 +19866,8 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053713157510000000004370</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private_message"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private_message"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello, how are you?!😊"</span><span class="p">,</span><span class="w">
@@ -19951,14 +19906,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;private_message&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
@@ -19983,10 +19938,10 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_notification"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-13T10:20:49.361022+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom_notification"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_notification"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-13T10:20:49.361022+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom_notification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -20017,14 +19972,14 @@ This operation requires authentication
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
-<td>notification_type</td>
+<td>type</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>Type &quot;custom_notification&quot;</td>
 </tr>
 <tr>
-<td>notification_active_at</td>
+<td>active_at</td>
 <td>string(date-time)</td>
 <td>true</td>
 <td>read-only</td>
