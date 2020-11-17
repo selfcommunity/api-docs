@@ -774,13 +774,13 @@
                     <a href="#tocS_NotificationTypeConnectionRequest" class="toc-h2 toc-link" data-title="NotificationTypeConnectionRequest">NotificationTypeConnectionRequest</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeConnectionAccept" class="toc-h2 toc-link" data-title="NotificationTypeUserFollow">NotificationTypeUserFollow</a>
+                    <a href="#tocS_NotificationTypeUserFollow" class="toc-h2 toc-link" data-title="NotificationTypeUserFollow">NotificationTypeUserFollow</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeAnswer" class="toc-h2 toc-link" data-title="NotificationTypeVoteUp">NotificationTypeVoteUp</a>
+                    <a href="#tocS_NotificationTypeVoteUp" class="toc-h2 toc-link" data-title="NotificationTypeVoteUp">NotificationTypeVoteUp</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeAnswer" class="toc-h2 toc-link" data-title="NotificationTypeMention">NotificationTypeMention</a>
+                    <a href="#tocS_NotificationTypeMention" class="toc-h2 toc-link" data-title="NotificationTypeMention">NotificationTypeMention</a>
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypeFavorite" class="toc-h2 toc-link" data-title="NotificationTypeFavorite">NotificationTypeFavorite</a>
@@ -789,16 +789,16 @@
                     <a href="#tocS_NotificationTypeBlockedUser" class="toc-h2 toc-link" data-title="NotificationTypeBlockedUser">NotificationTypeBlockedUser</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeAnswer" class="toc-h2 toc-link" data-title="NotificationTypeUnBlockedUser">NotificationTypeUnBlockedUser</a>
+                    <a href="#tocS_NotificationTypeUnBlockedUser" class="toc-h2 toc-link" data-title="NotificationTypeUnBlockedUser">NotificationTypeUnBlockedUser</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeComment" class="toc-h2 toc-link" data-title="NotificationTypeKindlyNotice">NotificationTypeKindlyNotice</a>
+                    <a href="#tocS_NotificationTypeKindlyNotice" class="toc-h2 toc-link" data-title="NotificationTypeKindlyNotice">NotificationTypeKindlyNotice</a>
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypeDeletedFor" class="toc-h2 toc-link" data-title="NotificationTypeDeletedFor">NotificationTypeDeletedFor</a>
                   </li>
                   <li>
-                    <a href="#tocS_NotificationTypeDeletedFor" class="toc-h2 toc-link" data-title="NotificationTypeCollapsedFor">NotificationTypeCollapsedFor</a>
+                    <a href="#tocS_NotificationTypeCollapsedFor" class="toc-h2 toc-link" data-title="NotificationTypeCollapsedFor">NotificationTypeCollapsedFor</a>
                   </li>
                   <li>
                     <a href="#tocS_NotificationTypePrivateMessage" class="toc-h2 toc-link" data-title="NotificationTypePrivateMessage">NotificationTypePrivateMessage</a>
@@ -16207,57 +16207,57 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 <tr>
 <td>deleted_for_advertising</td>
-<td>deleted by moderators with motivation the content is advertising</td>
+<td>deleted content by moderators with motivation the content is advertising</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>deleted_for_aggressive</td>
-<td>deleted by moderators with motivation the content is aggressive</td>
+<td>deleted content by moderators with motivation the content is aggressive</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>deleted_for_vulgar</td>
-<td>deleted by moderators with motivation the content is vulgar</td>
+<td>deleted content by moderators with motivation the content is vulgar</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>deleted_for_poor</td>
-<td>deleted by moderators with motivation the content is poor</td>
+<td>deleted content by moderators with motivation the content is poor</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>deleted_for_offtopic</td>
-<td>deleted by moderators with motivation the content is offtopic</td>
+<td>deleted content by moderators with motivation the content is offtopic</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>undeleted_for</td>
-<td>the post has been rehabilitated by the moderators</td>
+<td>the content has been rehabilitated by the moderators</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>collapsed_for_advertising</td>
-<td>hidden content by moderator with motivation the content is advertising</td>
+<td>only for comments, hidden content by moderator with motivation the content is advertising</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>collapsed_for_aggressive</td>
-<td>hidden content by moderator with motivation the content is aggressive</td>
+<td>only for comments, hidden content by moderator with motivation the content is aggressive</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>collapsed_for_vulgar</td>
-<td>hidden content by moderator with motivation the content is vulgar</td>
+<td>only for comments, hidden content by moderator with motivation the content is vulgar</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>collapsed_for_poor</td>
-<td>hidden content by moderator with motivation the content is poor</td>
+<td>only for comments, hidden content by moderator with motivation the content is poor</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>collapsed_for_offtopic</td>
-<td>hidden content by moderator with motivation the content is offtopic</td>
+<td>only for comments, hidden content by moderator with motivation the content is offtopic</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
@@ -18798,6 +18798,8 @@ This operation requires authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
    </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
    </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
@@ -18818,23 +18820,30 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if there is in aggregate list at least one notification not yet read by the user, otherwise false.</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the macro notification aggregate block.</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved (object that is common to notifications group). For some types of notifications it will not be present.</td>
+<td>Primary object involved (object that is common to notifications group) if it is a discusssion. For some types of notifications it will not be present.</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemapost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>Primary object involved (object that is common to notifications group) if it is a post. For some types of notifications it will not be present.</td>
 </tr>
 <tr>
 <td>aggregated</td>
@@ -18876,28 +18885,28 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;answer&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -18943,49 +18952,49 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;comment&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
 <td>answer</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
-<td>false</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>true</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>Comment of first level</td>
 </tr>
 <tr>
 <td>comment</td>
 <td><a href="#schemacomment">Comment</a></td>
 <td>true</td>
 <td>read-only</td>
-<td>Comment</td>
+<td>Comment of second level</td>
 </tr>
 <tr>
 <td>in_reply_to</td>
 <td><a href="#schemacomment">Comment</a></td>
-<td>true</td>
+<td>false</td>
 <td>read-only</td>
 <td>Only if comment reply to another comment</td>
 </tr>
@@ -19043,7 +19052,7 @@ This operation requires authentication
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -19108,7 +19117,7 @@ This operation requires authentication
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -19120,7 +19129,7 @@ This operation requires authentication
 <td>User request the connection</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeConnectionAccept">NotificationTypeUserFollow</h2>
+<h2 id="tocS_NotificationTypeUserFollow">NotificationTypeUserFollow</h2>
 
 <!-- backwards compatibility -->
 
@@ -19173,7 +19182,7 @@ This operation requires authentication
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -19185,7 +19194,7 @@ This operation requires authentication
 <td>Follower user</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeVoteUp</h2>
+<h2 id="tocS_NotificationTypeVoteUp">NotificationTypeVoteUp</h2>
 
 <!-- backwards compatibility -->
 
@@ -19198,7 +19207,9 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053709616960000000063090</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_up"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19217,40 +19228,54 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Notification not yet read</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;vote_up&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Voted post</td>
+<td>Discussion were the user mentioned in if it voteup a discussion</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemadpost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>Post were the user mentioned in if it is voteup a post</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>Comment of second level if it is voteup a comment</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeMention</h2>
+<h2 id="tocS_NotificationTypeMention">NotificationTypeMention</h2>
 
 <!-- backwards compatibility -->
 
@@ -19263,7 +19288,9 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052906326300000000007190</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mention"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
@@ -19282,37 +19309,51 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;mention&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Post were the user mentioned in</td>
+<td>if it is mentioned in a discussion</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemadpost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if it is mentioned in a post</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if it is mentioned in a comment</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeFavorite">NotificationTypeFavorite</h2>
@@ -19328,6 +19369,7 @@ This operation requires authentication
     </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053710571250000000007160</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"favorite"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T17:52:20.967302+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -19373,11 +19415,18 @@ This operation requires authentication
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>if a discussion is favorite(followed)</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemadpost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if a post is favorite(followed)</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeBlockedUser">NotificationTypeBlockedUser</h2>
@@ -19417,28 +19466,28 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;blocker_user&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -19450,7 +19499,7 @@ This operation requires authentication
 <td>Data of user block</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeUnBlockedUser</h2>
+<h2 id="tocS_NotificationTypeUnBlockedUser">NotificationTypeUnBlockedUser</h2>
 
 <!-- backwards compatibility -->
 
@@ -19481,38 +19530,38 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;unblocked_user&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeComment">NotificationTypeKindlyNotice</h2>
+<h2 id="tocS_NotificationTypeKindlyNotice">NotificationTypeKindlyNotice</h2>
 
 <!-- backwards compatibility -->
 
 <p><a id="schemanotificationtypekindlynotice"></a>
-<a id="schema_NotificationTypekindlynotice"></a>
+<a id="schema_NotificationTypeKindlyNotice"></a>
 <a id="tocSnotificationtypekindlynotice"></a>
 <a id="tocsnotificationtypekindlynotice"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -19520,7 +19569,10 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kindly_notice_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
 
@@ -19538,37 +19590,51 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Types: &quot;kindly_notice_advertising&quot;, &quot;kindly_notice_aggressive&quot;, &quot;kindly_notice_vulgar&quot;, &quot;kindly_notice_poor&quot;, &quot;kindly_notice_offtopic&quot;, &quot;kindly_notice_flag&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>if a discussion is noticed</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemadpost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if a post is noticed</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if a comment is noticed</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -19623,7 +19689,10 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
 
@@ -19641,37 +19710,51 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Types: &quot;deleted_for_advertising&quot;, &quot;deleted_for_aggressive&quot;, &quot;deleted_for_vulgar&quot;, &quot;deleted_for_poor&quot;, &quot;deleted_for_offtopic&quot;, &quot;undeleted_for&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
+<td>discussion</td>
+<td><a href="#schemadiscussion">Discussion</a></td>
 <td>false</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>if a discussion is deleted</td>
+</tr>
+<tr>
+<td>post</td>
+<td><a href="#schemadpost">Post</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if a post is deleted</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>if a comment is deleted</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -19713,7 +19796,7 @@ This operation requires authentication
 <td>Undeleted content</td>
 </tr>
 </tbody></table>
-<h2 id="tocS_NotificationTypeDeletedFor">NotificationTypeCollapsedFor</h2>
+<h2 id="tocS_NotificationTypeCollapsedFor">NotificationTypeCollapsedFor</h2>
 
 <!-- backwards compatibility -->
 
@@ -19726,7 +19809,8 @@ This operation requires authentication
   </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16053813898480000000224680</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collapsed_for_&lt;type&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notification_active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-14T20:16:29.848490+01:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Example preview:</p>
 
@@ -19744,37 +19828,37 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Types: &quot;collapsed_for_advertising&quot;, &quot;collapsed_for_aggressive&quot;, &quot;collapsed_for_vulgar&quot;, &quot;collapsed_for_poor&quot;, &quot;collapsed_for_offtopic&quot;, &quot;uncollapsed_for&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
-<td>post</td>
-<td><a href="#schemadiscussion">Discussion</a>, <a href="#schemapost">Post</a></td>
-<td>false</td>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a></td>
+<td>true</td>
 <td>read-only</td>
-<td>Primary object involved.</td>
+<td>if a comment is collapsed</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values'>Enumerated Values</h4>
@@ -19876,7 +19960,7 @@ This operation requires authentication
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
@@ -19921,35 +20005,35 @@ This operation requires authentication
 <tr>
 <td>is_new</td>
 <td>boolean</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>True if the notification has been read, otherwise false</td>
 </tr>
 <tr>
 <td>sid</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Serialization id of the notification</td>
 </tr>
 <tr>
 <td>notification_type</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Type &quot;custom_notification&quot;</td>
 </tr>
 <tr>
 <td>notification_active_at</td>
 <td>string(date-time)</td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Time when the notification was generated</td>
 </tr>
 <tr>
 <td>custom_notification</td>
 <td><a href="#schemacustomnotification">CustomNotification</a></td>
-<td>false</td>
+<td>true</td>
 <td>read-only</td>
 <td>Custom notification</td>
 </tr>
