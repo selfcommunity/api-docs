@@ -9,11 +9,11 @@
 {
   "is_new": true,
   "sid": 16053709616960000000063090,
-  "notification_type": "vote_up",
-  "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "discussion": {},
-  "post": {},
-  "comment": {}
+  "type": "vote_up",
+  "active_at": "2020-11-14T17:52:20.967302+01:00",
+  "discussion": {...},
+  "post": {...},
+  "comment": {...}
 }
 ```
 
@@ -27,8 +27,8 @@ Example preview:
 |---|---|---|---|---|
 |is_new|boolean|true|read-only|Notification not yet read|
 |sid|string|true|read-only|Serialization id of the notification|
-|notification_type|string|true|read-only|Type "vote_up"|
-|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|type|string|true|read-only|Type "vote_up"|
+|active_at|string(date-time)|true|read-only|Time when the notification was generated|
 |discussion|[Discussion](#schemadiscussion)|false|read-only|if a discussion is voted up|
 |post|[Post](#schemadpost)|false|read-only|if a post is voted up|
 |comment|[Comment](#schemacomment)|false|read-only|if a comment is voted up|

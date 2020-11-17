@@ -9,11 +9,11 @@
 {
   "is_new": true,
   "sid": 16053813898480000000224680,
-  "notification_type": "kindly_notice_<type>",
-  "notification_active_at": "2020-11-14T20:16:29.848490+01:00",
-  "discussion": {},
-  "post": {},
-  "comment": {}
+  "type": "kindly_notice_<type>",
+  "active_at": "2020-11-14T20:16:29.848490+01:00",
+  "discussion": {...},
+  "post": {...},
+  "comment": {...}
 }
 ```
 
@@ -27,8 +27,8 @@ Example preview:
 |---|---|---|---|---|
 |is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
 |sid|string|true|read-only|Serialization id of the notification|
-|notification_type|string|true|read-only|Types: "kindly_notice_advertising", "kindly_notice_aggressive", "kindly_notice_vulgar", "kindly_notice_poor", "kindly_notice_offtopic", "kindly_notice_flag"|
-|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|type|string|true|read-only|Types: "kindly_notice_advertising", "kindly_notice_aggressive", "kindly_notice_vulgar", "kindly_notice_poor", "kindly_notice_offtopic", "kindly_notice_flag"|
+|active_at|string(date-time)|true|read-only|Time when the notification was generated|
 |discussion|[Discussion](#schemadiscussion)|false|read-only|if a discussion is noticed|
 |post|[Post](#schemadpost)|false|read-only|if a post is noticed|
 |comment|[Comment](#schemacomment)|false|read-only|if a comment is noticed|
@@ -37,9 +37,9 @@ Example preview:
 
 |Property|Value|Description|
 |---|---|---|
-|notification_type|kindly_notice_advertising|Advertising content|
-|notification_type|kindly_notice_aggressive|Aggressive content|
-|notification_type|kindly_notice_vulgar|Vulgar content|
-|notification_type|kindly_notice_poor|Poor content|
-|notification_type|kindly_notice_offtopic|Offtopic content|
-|notification_type|kindly_notice_flag|Notification of irregularly flagged content. The content was valid, but the user flagged it|
+|type|kindly_notice_advertising|Advertising content|
+|type|kindly_notice_aggressive|Aggressive content|
+|type|kindly_notice_vulgar|Vulgar content|
+|type|kindly_notice_poor|Poor content|
+|type|kindly_notice_offtopic|Offtopic content|
+|type|kindly_notice_flag|Notification of irregularly flagged content. The content was valid, but the user flagged it|
