@@ -11,6 +11,7 @@
     "sid": 16053710571250000000007160,
     "notification_type": "favorite",
     "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
+    "discussion": {},
     "post": {}
 }
 ```
@@ -27,4 +28,5 @@ Example preview:
 |sid|string|false|read-only|Serialization id of the notification|
 |notification_type|string|false|read-only|Type "favorite"|
 |notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|discussion|[Discussion](#schemadiscussion)|false|read-only|if a discussion is favorite(followed)|
+|post|[Post](#schemadpost)|false|read-only|if a post is favorite(followed)|

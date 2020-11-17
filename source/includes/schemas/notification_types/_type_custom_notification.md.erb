@@ -24,9 +24,9 @@ Example preview:
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
-|sid|string|false|read-only|Serialization id of the notification|
-|notification_type|string|false|read-only|Type "custom_notification"|
-|notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|custom_notification|[CustomNotification](#schemacustomnotification)|false|read-only|Custom notification|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
+|notification_type|string|true|read-only|Type "custom_notification"|
+|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|custom_notification|[CustomNotification](#schemacustomnotification)|true|read-only|Custom notification|
 |user|[User](#schemauser)|true|read-only|User generate the custom notification|

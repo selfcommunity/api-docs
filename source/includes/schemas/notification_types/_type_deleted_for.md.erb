@@ -11,7 +11,10 @@
   "sid": 16053813898480000000224680,
   "notification_type": "deleted_for_<type>",
   "notification_active_at": "2020-11-14T20:16:29.848490+01:00",
-  "post": {}
+  "discussion": {},
+  "post": {},
+  "comment": {}
+}
 ```
 
 Example preview:
@@ -22,11 +25,13 @@ Example preview:
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
-|sid|string|false|read-only|Serialization id of the notification|
-|notification_type|string|false|read-only|Types: "deleted_for_advertising", "deleted_for_aggressive", "deleted_for_vulgar", "deleted_for_poor", "deleted_for_offtopic", "undeleted_for"|
-|notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Primary object involved.|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
+|notification_type|string|true|read-only|Types: "deleted_for_advertising", "deleted_for_aggressive", "deleted_for_vulgar", "deleted_for_poor", "deleted_for_offtopic", "undeleted_for"|
+|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|discussion|[Discussion](#schemadiscussion)|false|read-only|if a discussion is deleted|
+|post|[Post](#schemadpost)|false|read-only|if a post is deleted|
+|comment|[Comment](#schemacomment)|false|read-only|if a comment is deleted|
 
 #### Enumerated Values
 

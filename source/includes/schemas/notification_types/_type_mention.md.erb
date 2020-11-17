@@ -1,4 +1,4 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeMention</h2>
+<h2 id="tocS_NotificationTypeMention">NotificationTypeMention</h2>
 <!-- backwards compatibility -->
 <a id="schemanotificationtypemention"></a>
 <a id="schema_NotificationTypeMention"></a>
@@ -11,7 +11,9 @@
   "sid": 16052906326300000000007190,
   "notification_type": "mention",
   "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "post": {}
+  "discussion": {},
+  "post": {},
+  "comment": {},
 }
 ```
 
@@ -23,8 +25,10 @@ Example preview:
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
-|sid|string|false|read-only|Serialization id of the notification|
-|notification_type|string|false|read-only|Type "mention"|
-|notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|post|[Discussion](#schemadiscussion), [Post](#schemapost)|false|read-only|Post were the user mentioned in|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
+|notification_type|string|true|read-only|Type "mention"|
+|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|discussion|[Discussion](#schemadiscussion)|false|read-only|if it is mentioned in a discussion|
+|post|[Post](#schemadpost)|false|read-only|if it is mentioned in a post|
+|comment|[Comment](#schemacomment)|false|read-only|if it is mentioned in a comment|
