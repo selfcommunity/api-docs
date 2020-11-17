@@ -9,17 +9,17 @@
 {
   "is_new": false,
   "sid": 16052906326300000000007190,
-  "notification_type": "comment",
-  "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
-  "answer": {},
-  "comment": {},
-  "in_reply_to": {}
+  "type": "comment",
+  "active_at": "2020-11-14T17:52:20.967302+01:00",
+  "comment": {...}
 }
 ```
 
-Example preview:
+Example previews:
 
 <%= image_tag "notification_types/comment.png" %>
+
+<%= image_tag "notification_types/nested_comment.png" %>
 
 ### Properties
 
@@ -27,8 +27,13 @@ Example preview:
 |---|---|---|---|---|
 |is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
 |sid|string|true|read-only|Serialization id of the notification|
-|notification_type|string|true|read-only|Type "comment"|
-|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
-|answer|[Comment](#schemacomment)|true|read-only|Comment of first level|
+|type|string|true|read-only|Type "comment" or "nested_comment"|
+|active_at|string(date-time)|true|read-only|Time when the notification was generated|
 |comment|[Comment](#schemacomment)|true|read-only|Comment of second level|
-|in_reply_to|[Comment](#schemacomment)|false|read-only|Only if comment reply to another comment|
+
+#### Enumerated Values
+
+|Property|Value|Description|
+|---|---|---|
+|type|comment|First level comment|
+|type|nested_comment|Second level comment|

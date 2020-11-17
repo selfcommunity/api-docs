@@ -9,8 +9,8 @@
 {
   "is_new": true,
   "sid": 16053709616960000000063090,
-  "notification_type": "blocked_user",
-  "notification_active_at": "2020-11-14T17:52:20.967302+01:00",
+  "type": "blocked_user",
+  "active_at": "2020-11-14T17:52:20.967302+01:00",
   "block_settings": {
     "blocked_at": "2020-11-14T18:11:48.915332+01:00",
     "days_blocked": 1,
@@ -30,6 +30,6 @@ Example preview:
 |---|---|---|---|---|
 |is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
 |sid|string|true|read-only|Serialization id of the notification|
-|notification_type|string|true|read-only|Type "blocker_user"|
-|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|type|string|true|read-only|Type "blocker_user"|
+|active_at|string(date-time)|true|read-only|Time when the notification was generated|
 |block_settings|[BlockedSettings](#schemablockedsettings)|true|read-only|Data of user block|
