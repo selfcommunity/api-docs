@@ -19,8 +19,8 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|Notification not yet read|
-|sid|string|false|read-only|Serialization id of the notification block|
-|notification_type|string|false|read-only|Type "mention"|
-|notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
-|incubator|[IncubatorCategory](#schemaincubatorcategory)|false|read-only|Incubator approved|
+|is_new|boolean|true|read-only|Notification not yet read|
+|sid|string|true|read-only|Serialization id of the notification block|
+|notification_type|string|true|read-only|Type "mention"|
+|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
+|incubator|[IncubatorCategory](#schemaincubatorcategory)|true|read-only|Incubator approved|

@@ -1,4 +1,4 @@
-<h2 id="tocS_NotificationTypeAnswer">NotificationTypeUnBlockedUser</h2>
+<h2 id="tocS_NotificationTypeUnBlockedUser">NotificationTypeUnBlockedUser</h2>
 <!-- backwards compatibility -->
 <a id="schemanotificationtypeunblockeduser"></a>
 <a id="schema_NotificationTypeUnBlockedUser"></a>
@@ -22,7 +22,7 @@ Example preview:
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|is_new|boolean|false|read-only|True if the notification has been read, otherwise false|
-|sid|string|false|read-only|Serialization id of the notification|
-|notification_type|string|false|read-only|Type "unblocked_user"|
-|notification_active_at|string(date-time)|false|read-only|Time when the notification was generated|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
+|notification_type|string|true|read-only|Type "unblocked_user"|
+|notification_active_at|string(date-time)|true|read-only|Time when the notification was generated|
