@@ -331,6 +331,88 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 This operation require authentication
 </aside>
 
+## Get a specific Media
+
+<a id="opIdretrieveMedia"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/media/{id}/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/media/{id}/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieves a specific media using ID.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/media/{id}/`
+
+<h3 id="retrievemedia-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this media.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "id": 0,
+  "added_at": "2019-08-24T14:15:22Z",
+  "type": "vimeo",
+  "title": "string",
+  "description": "string",
+  "url": "http://example.com",
+  "image": "string",
+  "image_width": 0,
+  "image_height": 0,
+  "order": 0,
+  "embed": {
+    "id": 0,
+    "embed_type": "string",
+    "embed_id": "string",
+    "url": "string",
+    "metadata": {}
+  }
+}
+```
+
+<h3 id="retrievemedia-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Media](#schemamedia)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
 ## Update a Media
 
 <a id="opIdupdateMedia"></a>
