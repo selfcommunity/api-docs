@@ -1961,7 +1961,7 @@ This endpoint retrieves a List of Flags for a Specific Discussion.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require authentication and admin role.
+This operation require moderation role.
 </aside>
 
 ## Flag a Specific Discussion
