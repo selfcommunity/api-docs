@@ -1,14 +1,14 @@
-<h2 id="tocS_FlaggedContribute">FlaggedContribute</h2>
+<h2 id="tocS_FlaggedContribution">FlaggedContribution</h2>
 <!-- backwards compatibility -->
-<a id="schemaflaggedcontribute"></a>
-<a id="schema_FlaggedContribute"></a>
-<a id="tocSflaggedcontribute"></a>
-<a id="tocsflaggedcontribute"></a>
+<a id="schemaflaggedcontribution"></a>
+<a id="schema_FlaggedContribution"></a>
+<a id="tocSflaggedcontribution"></a>
+<a id="tocsflaggedcontribution"></a>
 
 ```json
 {
-  "contribute_type": "string",
-  "contribute": {
+  "contribution_type": "string",
+  "contribution": {
     "id": 0,
     "author": {
       "id": 0,
@@ -62,8 +62,8 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|contribute_type|string|true|none|none|
-|contribute|[object]|true|none|none|
+|contribution_type|string|true|none|none|
+|contribution|[object]|true|none|none|
 |last_flagged_at|string(date-time)|true|none|none|
 |moderation_status|string|true|none|none|
 
@@ -71,10 +71,10 @@
 
 |Property|Value|
 |---|---|
-|contribute_type|discussion|
-|contribute_type|post|
-|contribute_type|comment|
+|contribution_type|discussion|
+|contribution_type|post|
+|contribution_type|comment|
 |moderation_status|ignored|
-|moderation_status|contribute deleted|
-|moderation_status|contribute hidden|
+|moderation_status|deleted|
+|moderation_status|hidden|
 |moderation_status|open|

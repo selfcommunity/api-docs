@@ -202,15 +202,15 @@ This endpoint perform moderation for users
 This operation require moderation role.
 </aside>
 
-## List All Flagged Contributes
+## Get All Flagged Contributions
 
-<a id="opIdlistFlaggedContributes"></a>
+<a id="opIdlistModerationContributions"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/moderation/contribute/ \
+curl -X GET /api/v2/moderation/contribution/ \
   -H 'Accept: application/json'
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -222,7 +222,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/moderation/contribute/',
+fetch('/api/v2/moderation/contribution/',
 {
   method: 'GET',
   headers: headers
@@ -235,34 +235,32 @@ fetch('/api/v2/moderation/contribute/',
 
 ```
 
-This endpoint retrieves all flagged contributes.
+This endpoint retrieves all flagged contributions.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/moderation/contribute/`
+`GET /api/v2/moderation/contribution/`
 
-<h3 id="listflaggedcontributes-parameters">Parameters</h3>
+<h3 id="listmoderationcontributions-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |min_flags|query|integer|false|Minimum number of flags received by a contribute to display it in this list.|
 |author|query|string|false|Username (or part of it) of the contributes' author|
 |flagged_by|query|string|false|Username (or part of it) of the contributes' flagger|
-|contribute_id|query|integer|false|The id of the contribute.|
 |content|query|string|false|Content text (or part of it) of the contributes|
 |moderation_status|query|string|false|Moderation status of the contributes flagged|
-|order_by|query|string|false|Order field of the contributes list. Default ordering is: -last_flagged_at|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-
+|order_by|query|string|false|Default ordering is: -last_flagged_at. Other valid fields are: flag_count, last_moderated_at|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
 |moderation_status|ignored|
-|moderation_status|contribute deleted|
-|moderation_status|contribute hidden|
+|moderation_status|deleted|
+|moderation_status|hidden|
 |moderation_status|open|
 |order_by|flag_count|
 |order_by|-flag_count|
@@ -335,13 +333,13 @@ This endpoint retrieves all flagged contributes.
 }
 ```
 
-<h3 id="listflaggedcontributes-responses">Responses</h3>
+<h3 id="listmoderationcontributions-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listflaggedcontributes-responseschema">Response Schema</h3>
+<h3 id="listmoderationcontributions-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -350,21 +348,21 @@ Status Code **200**
 |» count|integer|false|none|Total results count|
 |» next|string(uri)¦null|false|none|Next page url|
 |» previous|string(uri)¦null|false|none|Previous page url|
-|» results|[[FlaggedContribute](#schemaflaggedcontribute)]|false|none|List of results|
+|» results|[[FlaggedContribution](#schemaflaggedcontribution)]|false|none|none|
 
 <aside class="notice">
 This operation require moderation role.
 </aside>
 
-## Get All Flags for a Contribute
+## Get All Flags for a Specific Contribution
 
-<a id="opIdflagFlaggedContribute"></a>
+<a id="opIdflagModerationContribution"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/moderation/contribute/{id}/flag/ \
+curl -X GET /api/v2/moderation/contribution/{id}/flag/ \
   -H 'Accept: application/json'
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -376,7 +374,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/moderation/contribute/{id}/flag/',
+fetch('/api/v2/moderation/contribution/{id}/flag/',
 {
   method: 'GET',
 
@@ -390,17 +388,17 @@ fetch('/api/v2/moderation/contribute/{id}/flag/',
 
 ```
 
-This endpoint retrieves all flags for the contributes.
+This endpoint retrieves all flags for a specific contribution.
 
 <h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/moderation/contribute/{id}/flag/`
+`GET /api/v2/moderation/contribution/{id}/flag/`
 
-<h3 id="listflaggedcontributes-parameters">Parameters</h3>
+<h3 id="flagmoderationcontribution-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
+|id|path|string|true|A unique integer value identifying this Contribution.|
 
 > Example responses
 
@@ -451,7 +449,7 @@ This endpoint retrieves all flags for the contributes.
 }
 ```
 
-<h3 id="flagflaggedcontribute-responses">Responses</h3>
+<h3 id="flagmoderationcontribution-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -461,15 +459,17 @@ This endpoint retrieves all flags for the contributes.
 This operation require moderation role.
 </aside>
 
-## Scold Author of a Flagged Contribute
 
-<a id="opIdscoldAuthorFlaggedContribute"></a>
+
+## Moderate a Specific Contribution
+
+<a id="opIdpartialUpdateModerationContribution"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/scold_author/ \
+curl -X PATCH /api/v2/moderation/contribution/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H 'Authorization: Bearer {access_token}'
@@ -478,7 +478,9 @@ curl -X POST /api/v2/moderation/contribute/{id}/scold_author/ \
 
 ```javascript
 const inputBody = '{
-  "moderation_type": 1
+  "contribution_type": "string",
+  "action": "string",
+  "moderation_type": "string"
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -486,9 +488,9 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/moderation/contribute/{id}/scold_author/',
+fetch('/api/v2/moderation/contribution/{id}/',
 {
-  method: 'POST',
+  method: 'PATCH',
   body: inputBody,
   headers: headers
 })
@@ -500,24 +502,31 @@ fetch('/api/v2/moderation/contribute/{id}/scold_author/',
 
 ```
 
-`POST /api/v2/moderation/contribute/{id}/scold_author/`
+This endpoint provides actions for flagged contributions moderation
 
-Send a notification to scold the flagged contribute author
+<h3 id="http-request">HTTP Request</h3>
+
+`PATCH /api/v2/moderation/contribution/{id}/`
 
 > Body parameter
 
 ```json
 {
-  "moderation_type": 1
+  "contribution_type": "string",
+  "action": "string",
+  "moderation_type": "string"
 }
 ```
 
-<h3 id="scoldauthorflaggedcontribute-parameters">Parameters</h3>
+<h3 id="partialupdatemoderationuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-|moderation_type|body|integer|true|An integer value to describe the moderation activity|
+|id|path|string|true|none|
+|contribution_type|body|string|true|Valid values are: post, discussion, comment|
+|action|body|string|true|Valid values are: scold_author, scold_flagger, ignore, hide, delete|
+|user|body|integer|true|The user id of the contribution flagger to scold (use only with action=scold_flagger)|
+|moderation_type|body|integer|true|An integer value to describe the moderation activity if action=hide or delete|
 
 #### Enumerated Values
 
@@ -529,461 +538,16 @@ Send a notification to scold the flagged contribute author
 |moderation_type|3|poor|
 |moderation_type|4|offtopic|
 
-<h3 id="scoldauthorflaggedcontribute-responses">Responses</h3>
+#### Toggle actions
+The folowing types of actions are "toggle actions": ignore, hode and delete.
+"toggle actions" means that calling the endpoint twice with the same action will cancel it.
+
+<h3 id="unfollowcategory-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-
-## Scold Flagger of a Flagged Contribute
-
-<a id="opIdscoldFlaggerFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/scold_flagger/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const inputBody = '{
-  "user": 123
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/scold_flagger/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/scold_flagger/`
-
-Send a notification to scold the flagger of a flagged contribute.
-
-> Body parameter
-
-```json
-{
-  "user": 123
-}
-```
-
-<h3 id="scoldauthorflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-|user|body|integer|true|An integer value identifying the Flagger user.|
-
-<h3 id="scoldauthorflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-## Ignore a Flagged Contribute
-
-<a id="opIdignoreFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/ignore/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/ignore/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/ignore/`
-
-Ignore a flagged contribute
-
-<h3 id="ignoreflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-
-<h3 id="ignoreflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-
-## Unignore a Flagged Contribute
-
-<a id="opIdunignoreFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/ignore/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/ignore/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/ignore/`
-
-Unignore a flagged contribute
-
-<h3 id="unignoreflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-
-<h3 id="unignoreflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-## Hide a Flagged Contribute
-
-<a id="opIdhideFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/hide/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const inputBody = '{
-  "moderation_type": 1
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/hide/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/hide/`
-
-Hide a flagged contribute
-
-> Body parameter
-
-```json
-{
-  "moderation_type": 1
-}
-```
-
-<h3 id="hideflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-|moderation_type|body|integer|true|An integer value to describe the moderation activity|
-
-#### Enumerated Values
-
-|Parameter|Value|Description|
-|---|---|---|
-|moderation_type|0|spam|
-|moderation_type|1|aggressive|
-|moderation_type|2|vulgar|
-|moderation_type|3|poor|
-|moderation_type|4|offtopic|
-
-<h3 id="hideflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-
-## Unhide a Flagged Contribute
-
-<a id="opIdunhideFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/hide/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/hide/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/hide/`
-
-Unhide (show) a flagged contribute
-
-<h3 id="unhideflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-
-<h3 id="unhideflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-
-## Delete a Flagged Contribute
-
-<a id="opIddeleteFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/delete/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const inputBody = '{
-  "moderation_type": 1
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/delete/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/delete/`
-
-Delete a flagged contribute
-
-> Body parameter
-
-```json
-{
-  "moderation_type": 1
-}
-```
-
-<h3 id="deleteflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-|moderation_type|body|integer|true|An integer value to describe the moderation activity|
-
-#### Enumerated Values
-
-|Parameter|Value|Description|
-|---|---|---|
-|moderation_type|0|spam|
-|moderation_type|1|aggressive|
-|moderation_type|2|vulgar|
-|moderation_type|3|poor|
-|moderation_type|4|offtopic|
-
-<h3 id="deleteflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require moderation role.
-</aside>
-
-
-## Undelete a Flagged Contribute
-
-<a id="opIdundeleteFlaggedContribute"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/moderation/contribute/{id}/delete/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
-```
-
-```javascript
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/moderation/contribute/{id}/delete/',
-{
-  method: 'POST',
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`POST /api/v2/moderation/contribute/{id}/delete/`
-
-Undelete (restore) a flagged contribute
-
-<h3 id="undeleteflaggedcontribute-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Contribute.|
-
-<h3 id="undeleteflaggedcontribute-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
+<aside class="success">
 This operation require moderation role.
 </aside>
