@@ -126,7 +126,7 @@ Status Code **200**
 |status|b|blocked|
 |status|u|unregistered|
 
-<aside class="success">
+<aside class="notice">
 This operation require moderation role.
 </aside>
 
@@ -198,7 +198,7 @@ This endpoint perform moderation for users
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require moderation role.
 </aside>
 
@@ -548,6 +548,6 @@ The folowing types of actions are "toggle actions": ignore, hode and delete.
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
-<aside class="success">
+<aside class="notice">
 This operation require moderation role.
 </aside>
