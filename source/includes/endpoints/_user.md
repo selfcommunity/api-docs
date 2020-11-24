@@ -84,7 +84,8 @@ This endpoint retrieve the list of all users.
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
-      "tags": []
+      "tags": [],
+      "reputation": 39
     }
   ]
 }
@@ -199,7 +200,8 @@ This endpoint perform search users.
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
-      "tags": []
+      "tags": [],
+      "reputation": 39
     }
   ]
 }
@@ -293,7 +295,8 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
-  "tags": []
+  "tags": [],
+  "reputation": 39
 }
 ```
 
@@ -418,7 +421,8 @@ website: http://example.com
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
-  "tags": []
+  "tags": [],
+  "reputation": 39
 }
 ```
 
@@ -517,7 +521,8 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
-  "tags": []
+  "tags": [],
+  "reputation": 39
 }
 ```
 
@@ -1056,7 +1061,8 @@ Return the user identified by the authentication token.
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
-  "tags": []
+  "tags": [],
+  "reputation": 39
 }
 ```
 
@@ -1363,7 +1369,8 @@ This endpoint retrieve the list of followers of a specific user identified by {i
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
-      "tags": []
+      "tags": [],
+      "reputation": 39
     }
   ]
 }
@@ -1465,7 +1472,8 @@ This endpoint retrieve the list of following of a specific user identified by {i
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
-      "tags": []
+      "tags": [],
+      "reputation": 39
     }
   ]
 }
@@ -1771,7 +1779,8 @@ This endpoint retrieve the list of connections of a specific user identified by 
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
-      "tags": []
+      "tags": [],
+      "reputation": 39
     }
   ]
 }
@@ -1946,7 +1955,8 @@ This endpoint retrieve the list of connection requests received of a specific us
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
-        "tags": []
+        "tags": [],
+        "reputation": 39
       },
       "to_user": {
         "id": 3,
@@ -1967,7 +1977,8 @@ This endpoint retrieve the list of connection requests received of a specific us
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,
-        "tags": []
+        "tags": [],
+        "reputation": 39
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",
@@ -2080,7 +2091,8 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
-        "tags": []
+        "tags": [],
+        "reputation": 39
       },
       "to_user": {
         "id": 0,
@@ -2101,7 +2113,8 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,
-        "tags": []
+        "tags": [],
+        "reputation": 39
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",
