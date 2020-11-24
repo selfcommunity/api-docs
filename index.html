@@ -565,6 +565,15 @@
                     <a href="#remove-an-upvote-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Remove an Upvote for a Specific Discussion">Remove an Upvote for a Specific Discussion</a>
                   </li>
                   <li>
+                    <a href="#get-list-of-poll-votes-for-a-specific-discussion" class="toc-h2 toc-link" data-title="Get List of Poll Votes for a Specific Discussion">Get List of Poll Votes for a Specific Discussion</a>
+                  </li>
+                  <li>
+                    <a href="#upvote-for-a-specific-poll-choice" class="toc-h2 toc-link" data-title="Upvote for a Specific Poll Choice">Upvote for a Specific Poll Choice</a>
+                  </li>
+                  <li>
+                    <a href="#remove-an-upvote-for-a-specific-poll-choice" class="toc-h2 toc-link" data-title="Remove an Upvote for a Specific Poll Choice">Remove an Upvote for a Specific Poll Choice</a>
+                  </li>
+                  <li>
                     <a href="#follow-a-discussion" class="toc-h2 toc-link" data-title="Follow a Discussion">Follow a Discussion</a>
                   </li>
                   <li>
@@ -610,6 +619,15 @@
                   </li>
                   <li>
                     <a href="#remove-an-upvote-for-a-specific-post" class="toc-h2 toc-link" data-title="Remove an Upvote for a Specific Post">Remove an Upvote for a Specific Post</a>
+                  </li>
+                  <li>
+                    <a href="#get-list-of-poll-votes-for-a-specific-post" class="toc-h2 toc-link" data-title="Get List of Poll Votes for a Specific Post">Get List of Poll Votes for a Specific Post</a>
+                  </li>
+                  <li>
+                    <a href="#upvote-for-a-specific-poll-choice" class="toc-h2 toc-link" data-title="Upvote for a Specific Poll Choice">Upvote for a Specific Poll Choice</a>
+                  </li>
+                  <li>
+                    <a href="#remove-an-upvote-for-a-specific-poll-choice" class="toc-h2 toc-link" data-title="Remove an Upvote for a Specific Poll Choice">Remove an Upvote for a Specific Poll Choice</a>
                   </li>
                   <li>
                     <a href="#get-list-of-flags-for-a-specific-post" class="toc-h2 toc-link" data-title="Get List of Flags for a Specific Post">Get List of Flags for a Specific Post</a>
@@ -900,6 +918,9 @@
                   </li>
                   <li>
                     <a href="#tocS_Vote" class="toc-h2 toc-link" data-title="Vote">Vote</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_PollVote" class="toc-h2 toc-link" data-title="PollVote">PollVote</a>
                   </li>
                   <li>
                     <a href="#tocS_Tag" class="toc-h2 toc-link" data-title="Tag">Tag</a>
@@ -9560,29 +9581,29 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
     },
     "addressing": []
   }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "title": "string",
-  "text": "string",
-  "categories": [0],
-  "medias": [0],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
-  "addressing": []
-}</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">categories</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+  <span class="dl">"</span><span class="s2">medias</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+  <span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">lat</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">lng</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">poll</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">multiple_choices</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">closed</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">expiration_at</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2019-08-24T14:15:22Z</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">choices</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">addressing</span><span class="dl">"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">};</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -10120,29 +10141,29 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
     },
     "addressing": []
   }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "title": "string",
-  "text": "string",
-  "categories": [0],
-  "medias": [0],
-  "location": {
-    "location": "string",
-    "lat": 0,
-    "lng": 0
-  },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
-  "addressing": []
-}</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">categories</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+  <span class="dl">"</span><span class="s2">medias</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+  <span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">lat</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">lng</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">poll</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">multiple_choices</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">closed</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">expiration_at</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2019-08-24T14:15:22Z</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">choices</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">addressing</span><span class="dl">"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">};</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -11051,6 +11072,322 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <aside class="notice">
 This operation require authentication
 </aside>
+<h2 id='get-list-of-poll-votes-for-a-specific-discussion'>Get List of Poll Votes for a Specific Discussion</h2>
+<p><a id="opIdpollvoteDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint retrieves all poll votes for a specific discussion.
+If the discussion has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/discussion/{id}/poll/vote/</code></p>
+
+<h3 id="pollvotediscussion-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Number of results to return per page.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>The initial index from which to return the results.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="pollvotediscussion-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» count</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>Total results count</td>
+</tr>
+<tr>
+<td>» next</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Next page url</td>
+</tr>
+<tr>
+<td>» previous</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Previous page url</td>
+</tr>
+<tr>
+<td>» results</td>
+<td>list(<a href="#schemapollvote">PollVote</a>)</td>
+<td>true</td>
+<td>none</td>
+<td>List of results</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false
+</aside>
+<h2 id='upvote-for-a-specific-poll-choice'>Upvote for a Specific Poll Choice</h2>
+<p><a id="opIdpollvoteCreateDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+    "choice": 0
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint upvotes a specific poll choice in a discussion.
+If the discussion has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/discussion/{id}/poll/vote/</code></p>
+
+<h3 id="pollvotecreatediscussion-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique integer value identifying the choice to be upvoted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="pollvotecreatediscussion-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='remove-an-upvote-for-a-specific-poll-choice'>Remove an Upvote for a Specific Poll Choice</h2>
+<p><a id="opIdpollvoteRemoveDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+    "choice": 0
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint remove an upvote from a specific poll choice in a discussion.
+If the discussion has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/discussion/{id}/poll/vote/</code></p>
+
+<h3 id="pollvoteremovediscussion-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique integer value identifying the choice to be upvoted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="pollvoteremovediscussion-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h2 id='follow-a-discussion'>Follow a Discussion</h2>
 <p><a id="opIdfollowDiscussion"></a></p>
 
@@ -11337,9 +11674,9 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "flag_type": 0
-}</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">flag_type</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -11465,9 +11802,9 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "flag_type": 0
-}</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">flag_type</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -13321,6 +13658,322 @@ curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span 
 </tbody></table>
 
 <h3 id="voteremovepost-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='get-list-of-poll-votes-for-a-specific-post'>Get List of Poll Votes for a Specific Post</h2>
+<p><a id="opIdpollvotePost"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/post/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/post/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint retrieves all poll votes for a specific post.
+If the post has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/post/{id}/poll/vote/</code></p>
+
+<h3 id="pollvotepost-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this post.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Number of results to return per page.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>The initial index from which to return the results.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"previous"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="pollvotepost-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» count</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>Total results count</td>
+</tr>
+<tr>
+<td>» next</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Next page url</td>
+</tr>
+<tr>
+<td>» previous</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>Previous page url</td>
+</tr>
+<tr>
+<td>» results</td>
+<td>list(<a href="#schemapollvote">PollVote</a>)</td>
+<td>true</td>
+<td>none</td>
+<td>List of results</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false
+</aside>
+<h2 id='upvote-for-a-specific-poll-choice'>Upvote for a Specific Poll Choice</h2>
+<p><a id="opIdpollvoteCreatePost"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+    "choice": 0
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/post/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint upvotes a specific poll choice in a post.
+If the post has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/post/{id}/poll/vote/</code></p>
+
+<h3 id="pollvotecreatepost-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this post.</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique integer value identifying the choice to be upvoted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="pollvotecreatepost-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='remove-an-upvote-for-a-specific-poll-choice'>Remove an Upvote for a Specific Poll Choice</h2>
+<p><a id="opIdpollvoteRemovePost"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/poll/vote/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+    "choice": 0
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">choice</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/post/{id}/poll/vote/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>This endpoint remove an upvote from a specific poll choice in a post.
+If the post has no poll associated the response status code is <a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">404</a>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>POST /api/v2/post/{id}/poll/vote/</code></p>
+
+<h3 id="pollvoteremovepost-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this post.</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique integer value identifying the choice to be upvoted.</td>
+</tr>
+</tbody></table>
+
+<h3 id="pollvoteremovepost-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -25220,7 +25873,7 @@ This operation require moderation role.
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>string</td>
+<td>integer</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
@@ -25228,6 +25881,53 @@ This operation require moderation role.
 <tr>
 <td>voted_at</td>
 <td>string(date-time)</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_PollVote">PollVote</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapollvote"></a>
+<a id="schema_PollVote"></a>
+<a id="tocSpollvote"></a>
+<a id="tocspollvote"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>choice</td>
+<td>integer</td>
+<td>false</td>
+<td>read-only</td>
+<td>Poll Choice unique id</td>
+</tr>
+<tr>
+<td>user</td>
+<td>integer</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
