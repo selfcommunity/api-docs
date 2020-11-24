@@ -81,7 +81,8 @@ This endpoint retrieves all categories.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent"
+      "stream_order_by": "recent",
+      "tags": []
     }
   ]
 }
@@ -222,7 +223,8 @@ This endpoint creates a category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent"
+  "stream_order_by": "recent",
+   "tags": []
 }
 ```
 
@@ -306,7 +308,8 @@ This endpoint retrieves a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent"
+  "stream_order_by": "recent",
+  "tags": []
 }
 ```
 
@@ -435,7 +438,8 @@ This endpoint updates a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent"
+  "stream_order_by": "recent",
+  "tags": []
 }
 ```
 
@@ -570,7 +574,8 @@ For example to change `active` or `deleted` flags in an admin list/table interfa
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent"
+  "stream_order_by": "recent",
+  "tags": []
 }
 ```
 
@@ -1322,7 +1327,8 @@ This endpoint retrieves all followed categories by the user.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent"
+      "stream_order_by": "recent",
+      "tags": []
     }
   ]
 }

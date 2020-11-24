@@ -478,7 +478,7 @@ For example to change `active` or `visible` flags in an admin list/table interfa
 This operation requires authentication and admin role.
 </aside>
 
-## Assign a Tag to a User
+## Assign a Tag
 
 <a id="opIdassignTag"></a>
 
@@ -517,7 +517,7 @@ fetch('/api/v2/tag/{id}/assign/',
 
 ```
 
-Assign a tag to a user.
+Assign a tag to a user or to a category.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -536,7 +536,10 @@ Assign a tag to a user.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this tag.|
-|user|body|integer|true|A unique integer value identifying the user.|
+|user|body|integer|false|A unique integer value identifying the user.|
+|category|body|integer|false|A unique integer value identifying the category.|
+
+One between "user" and "category" need to be passed to this endpoint.
 
 <h3 id="assigntag-responses">Responses</h3>
 
@@ -548,7 +551,7 @@ Assign a tag to a user.
 This operation requires authentication and admin role.
 </aside>
 
-## Unassign a Tag to a User
+## Unassign a Tag
 
 <a id="opIdunassignTag"></a>
 
@@ -587,7 +590,7 @@ fetch('/api/v2/tag/{id}/assign/',
 
 ```
 
-Unassign a tag to a user.
+Unassign a tag from a user or a category.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -607,6 +610,9 @@ Unassign a tag to a user.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this tag.|
 |user|body|integer|true|A unique integer value identifying the user.|
+|category|body|integer|false|A unique integer value identifying the category.|
+
+One between "user" and "category" need to be passed to this endpoint.
 
 <h3 id="unassigntag-responses">Responses</h3>
 

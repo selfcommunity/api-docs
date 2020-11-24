@@ -27,7 +27,8 @@
   "emotional_image_original": "string",
   "emotional_image_position": 0,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent"
+  "stream_order_by": "recent",
+  "tags": []
 }
 
 ```
@@ -57,6 +58,7 @@
 |emotional_image_position|integer|false|none|Css background-position|
 |lastmod_datetime|string(date-time)|false|read-only|Last modify date time|
 |stream_order_by|string|false|none|Order of the category feed|
+|tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 
 #### Enumerated Values
 
