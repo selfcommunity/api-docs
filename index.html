@@ -917,6 +917,9 @@
                     <a href="#tocS_Flag" class="toc-h2 toc-link" data-title="Flag">Flag</a>
                   </li>
                   <li>
+                    <a href="#tocS_FlaggedContribution" class="toc-h2 toc-link" data-title="FlaggedContribution">FlaggedContribution</a>
+                  </li>
+                  <li>
                     <a href="#tocS_Vote" class="toc-h2 toc-link" data-title="Vote">Vote</a>
                   </li>
                   <li>
@@ -25663,6 +25666,139 @@ This operation require moderation role.
 <td>flag_type</td>
 <td>4</td>
 <td>offtopic</td>
+</tr>
+</tbody></table>
+<h2 id="tocS_FlaggedContribution">FlaggedContribution</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaflaggedcontribution"></a>
+<a id="schema_FlaggedContribution"></a>
+<a id="tocSflaggedcontribution"></a>
+<a id="tocsflaggedcontribution"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"contribution_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contribution"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"location_lat_lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"position_lat_lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ext_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contribution_type</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>contribution</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>last_flagged_at</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contribution_type</td>
+<td>discussion</td>
+</tr>
+<tr>
+<td>contribution_type</td>
+<td>post</td>
+</tr>
+<tr>
+<td>contribution_type</td>
+<td>comment</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>deleted</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>hidden</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>open</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_Vote">Vote</h2>
