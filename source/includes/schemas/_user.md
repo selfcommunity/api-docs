@@ -53,6 +53,7 @@
 |cover|string(binary)¦null|false|none|Cover of the user.|
 |ext_id|integer|false|read-only|The external ID of the user. It is assigned only during signup.|
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
+|reputation|integer|false|read-only|User reputation.|
 
 #### Enumerated Values
 
