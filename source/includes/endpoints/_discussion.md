@@ -646,7 +646,7 @@ curl -X POST /api/v2/discussion/ \
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "title": "string",
   "text": "string",
   "categories": [0],
@@ -668,7 +668,7 @@ const inputBody = '{
     ]
   },
   "addressing": []
-}';
+};
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
@@ -1085,7 +1085,7 @@ curl -X PUT /api/v2/discussion/{id}/ \
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "title": "string",
   "text": "string",
   "categories": [0],
@@ -1107,7 +1107,7 @@ const inputBody = '{
     ]
   },
   "addressing": []
-}';
+};
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
@@ -1747,6 +1747,218 @@ This endpoint removes an upvote for a specific discussion.
 This operation require authentication
 </aside>
 
+## Get List of Poll Votes for a Specific Discussion
+
+<a id="opIdpollvoteDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/{id}/poll/vote/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/poll/vote/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+This endpoint retrieves all poll votes for a specific discussion.
+If the discussion has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/discussion/{id}/poll/vote/`
+
+<h3 id="pollvotediscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string",
+  "previous": "string",
+  "results": [
+      {
+        "id": 0,
+        "choice": "string",
+        "user": "string"
+      }
+  ]
+}
+```
+
+<h3 id="pollvotediscussion-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|true|none|Total results count|
+|» next|string¦null|false|none|Next page url|
+|» previous|string¦null|false|none|Previous page url|
+|» results|list([PollVote](#schemapollvote))|true|none|List of results|
+
+<aside class="notice">
+This operation require authentication only if `content_availability` community option is false
+</aside>
+
+## Upvote for a Specific Poll Choice
+
+<a id="opIdpollvoteCreateDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/discussion/{id}/poll/vote/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+  --data-raw '{
+    "choice": 0
+  }'
+```
+
+```javascript
+const inputBody = {
+  "choice": 0
+};
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/poll/vote/',
+{
+  method: 'POST',
+  headers: headers,
+  body: inputBody
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint upvotes a specific poll choice in a discussion.
+If the discussion has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/poll/vote/`
+
+<h3 id="pollvotecreatediscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+|choice|body|integer|true|A unique integer value identifying the choice to be upvoted.|
+
+<h3 id="pollvotecreatediscussion-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+## Remove an Upvote for a Specific Poll Choice
+
+<a id="opIdpollvoteRemoveDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/discussion/{id}/poll/vote/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+  --data-raw '{
+    "choice": 0
+  }'
+```
+
+```javascript
+const inputBody = {
+  "choice": 0
+};
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/poll/vote/',
+{
+  method: 'POST',
+  headers: headers,
+  body: inputBody
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint remove an upvote from a specific poll choice in a discussion.
+If the discussion has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
+
+<h3 id="http-request">HTTP Request</h3>
+
+`POST /api/v2/discussion/{id}/poll/vote/`
+
+<h3 id="pollvoteremovediscussion-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+|choice|body|integer|true|A unique integer value identifying the choice to be upvoted.|
+
+<h3 id="pollvoteremovediscussion-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
 ## Follow a Discussion
 
 <a id="opIdfollowDiscussion"></a>
@@ -1979,9 +2191,9 @@ curl -X POST /api/v2/discussion/{id}/flag/ \
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "flag_type": 0
-}';
+};
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',
@@ -2058,9 +2270,9 @@ curl -X POST /api/v2/discussion/{id}/flag/ \
 ```
 
 ```javascript
-const inputBody = '{
+const inputBody = {
   "flag_type": 0
-}';
+};
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json',

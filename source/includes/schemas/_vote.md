@@ -17,5 +17,30 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|user|string|false|read-only|none|
+|user|integer|false|read-only|none|
 |voted_at|string(date-time)|false|read-only|none|
+
+
+<h2 id="tocS_PollVote">PollVote</h2>
+<!-- backwards compatibility -->
+<a id="schemapollvote"></a>
+<a id="schema_PollVote"></a>
+<a id="tocSpollvote"></a>
+<a id="tocspollvote"></a>
+
+```json
+{
+  "id": 0,
+  "choice": "string",
+  "user": "string"
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|integer|false|read-only|none|
+|choice|integer|false|read-only|Poll Choice unique id|
+|user|integer|false|read-only|none|
