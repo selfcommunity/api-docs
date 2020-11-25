@@ -25403,21 +25403,21 @@ This operation require moderation role.
 </tr>
 <tr>
 <td>post</td>
-<td><a href="#schemapost">Post</a>¦null</td>
+<td><a href="#schemapost">Post</a>¦undefined</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
 </tr>
 <tr>
 <td>seen_by_id</td>
-<td>list(integer)</td>
+<td>list(integer)¦undefined</td>
 <td>false</td>
 <td>read-only</td>
 <td>Id of <a href="#schemauser">User</a> that have seen this object</td>
 </tr>
 <tr>
 <td>has_boost</td>
-<td>boolean</td>
+<td>¦undefined</td>
 <td>false</td>
 <td>read-only</td>
 <td>True if this object has the visibility boost</td>
@@ -25441,7 +25441,7 @@ This operation require moderation role.
 <a id="tocsfeedactivity"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"object"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -25495,8 +25495,8 @@ This operation require moderation role.
 <td>none</td>
 </tr>
 <tr>
-<td>object</td>
-<td>object¦null</td>
+<td>comment</td>
+<td><a href="#schemacomment">Comment</a>¦null</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
