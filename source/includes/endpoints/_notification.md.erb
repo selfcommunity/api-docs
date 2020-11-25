@@ -77,7 +77,9 @@ blocked_user | user blocked | blocked user
 unblocked_user | user unblocked | unblocked user
 custom_notification | custom notification | user followers/connections
 
-*if chronologically consecutive these types of notifications can be aggregated
+*notifications of this type, if chronologically consecutive, can be aggregated
+
+**Note:** when calling this resource the notifications included in the list are automatically marked as read
 
 > Example responses
 
@@ -136,7 +138,7 @@ custom_notification | custom notification | user followers/connections
 |next_id|query|string|false|Next page id|
 |previous_id|query|string|false|Previous page id|
 
-* if both parameters are sent previus_id takes precedence
+*if both parameters are sent previous_id takes precedence
 
 <h3 id="listnotifications-responses">Responses</h3>
 
