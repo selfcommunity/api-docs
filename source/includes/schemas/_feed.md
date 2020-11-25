@@ -235,9 +235,9 @@
 |---|---|---|---|---|
 |type|string|false|read-only|The type of the object, can be `discussion` or `post`|
 |discussion|[Discussion](#schemadiscussion)¦null|false|read-only|none|
-|post|[Post](#schemapost)¦null|false|read-only|none|
-|seen_by_id|list(integer)|false|read-only|Id of [User](#schemauser) that have seen this object|
-|has_boost|boolean|false|read-only|True if this object has the visibility boost|
+|post|[Post](#schemapost)¦undefined|false|read-only|none|
+|seen_by_id|list(integer)¦undefined|false|read-only|Id of [User](#schemauser) that have seen this object|
+|has_boost|¦undefined|false|read-only|True if this object has the visibility boost|
 |activities|list([FeedActivity](#schemafeedactivity))¦undefined|false|read-only|List of feed acitivity. This field is returned only for relevance feed|
 
 <h2 id="tocS_FeedActivity">FeedActivity</h2>
@@ -250,7 +250,7 @@
 ```json
 {
   "type": "string",
-  "object": {},
+  "comment": {},
   "author": {
     "id": 0,
     "username": "string",
@@ -293,7 +293,7 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |type|string|false|read-only|none|
-|object|object¦null|false|read-only|none|
+|comment|[Comment](#schemacomment)¦null|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |active_at|string(date-time)|false|read-only|none|
 |seen_by_id|list(integer)¦null|false|read-only|Id of [User](#schemauser) that have seen this activity|
