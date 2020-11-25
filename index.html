@@ -17073,7 +17073,9 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 </tbody></table>
 
-<p>*if chronologically consecutive these types of notifications can be aggregated</p>
+<p>*notifications of this type, if chronologically consecutive, can be aggregated</p>
+
+<p><strong>Note:</strong> when calling this resource the notifications included in the list are automatically marked as read</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -17086,33 +17088,35 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
   </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1905252769000"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
         </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16456592493610000000054923</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comment"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-26T15:55:05.984561+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 
             </span><span class="p">},</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">16052592493610000000054990</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">18952592493610000000055990</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nested_comment"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-25T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-25T15:30:01.982831+01:00"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
        </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1605259249000"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1435259289000"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"aggregated"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"is_new"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"connection_accept"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23T15:50:05.982831+01:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"sid"</span><span class="p">:</span><span class="w"> </span><span class="mi">13452592763610000000054490</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23T12:20:03.982632+01:00"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"accept_user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
        </span><span class="p">]</span><span class="w">
@@ -17151,9 +17155,7 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 </tbody></table>
 
-<ul>
-<li>if both parameters are sent previus_id takes precedence</li>
-</ul>
+<p>*if both parameters are sent previous_id takes precedence</p>
 
 <h3 id="listnotifications-responses">Responses</h3>
 
@@ -22040,7 +22042,7 @@ This operation require moderation role.
 </tr>
 <tr>
 <td>embed</td>
-<td><a href="#schemaembed">Embde</a></td>
+<td><a href="#schemaembed">Embed</a></td>
 <td>false</td>
 <td>none</td>
 <td>Embed object if exist</td>
