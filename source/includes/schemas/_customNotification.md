@@ -28,6 +28,6 @@
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
 |type|string|true|none|Custom type notification|
-|embed|[Embde](#schemaembed)|false|none|Embed object if exist|
+|embed|[Embed](#schemaembed)|false|none|Embed object if exist|
 |title|string¦null|false|none|Notification title|
 |description|string¦null|false|none|Notification description|
