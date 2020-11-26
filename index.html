@@ -1428,6 +1428,20 @@ curl <span class="nt">-X</span> POST /api/v2/sso/signup/ <span class="se">\</spa
 <td>The username of the user. Max 255 characters. Letters, numbers and -/_ characters</td>
 </tr>
 <tr>
+<td>email</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>The email of the user.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>The password of the user. If passed, the password must be at least 8 characters (max 128 chararacters) and it must contains at least 3 of the following 4 types of characters: lower case letters, upper case letters, numbers and special characters (eg !@#$%^&amp;).</td>
+</tr>
+<tr>
 <td>role</td>
 <td>body</td>
 <td>string¦null</td>
@@ -1509,6 +1523,13 @@ curl <span class="nt">-X</span> POST /api/v2/sso/signup/ <span class="se">\</spa
 <td>true</td>
 <td>none</td>
 <td>Username of the registered user</td>
+</tr>
+<tr>
+<td>» email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Email of the registered user</td>
 </tr>
 <tr>
 <td>» role</td>
