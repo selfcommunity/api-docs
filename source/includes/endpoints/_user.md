@@ -571,9 +571,9 @@ fetch('/api/v2/user/{id}/',
 Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 There are two ways of deleting a user: **soft** and **hard**.
 
-Soft: the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id.
+Soft: the user is marked as deleted, it will not appear in the user lists, the user's posts will remain and it will not be possible to create a user with the same username and ext_id (status of the user will be set to deleted: 'd').
 
-Hard: all user's content (profile, post, votes, etc...) will be removed.
+Hard: all user's content (profile, post, votes, etc...) will be removed (status of the user will be set to unregistered: 'u').
 
 In particular:
 

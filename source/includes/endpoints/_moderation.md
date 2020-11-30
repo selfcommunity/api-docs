@@ -44,7 +44,7 @@ This endpoint retrieves all users for moderation purpose.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |search|query|string|false|A search term.|
-|status|query|string|false|Valid values are: a, b, u|
+|status|query|string|false|Valid values are: a, b, d, u|
 |low_visibility|query|integer|false|Valid values are 0, 1|
 |days_blocked|query|string|false|Number of days of block or the special value "forever"|
 |limit|query|integer|false|Number of results to return per page.|
@@ -124,7 +124,8 @@ Status Code **200**
 |---|---|---|
 |status|a|active|
 |status|b|blocked|
-|status|u|unregistered|
+|status|d|deleted|
+|status|u|unregistered (hard deleted user)|
 
 <aside class="notice">
 This operation require moderation role.
@@ -168,7 +169,7 @@ fetch('/api/v2/moderation/user/{id}/',
 });
 
 ```
-This endpoint perform moderation for users
+This endpoint perform moderation for users; at least one parameter between "status" and "low_visibility" is required.
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -188,9 +189,9 @@ This endpoint perform moderation for users
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
 |low_visibility|body|integer|false|Valid values are 0, 1|
-|status|body|string|false|Valid values are: a, b, u|
-|days_blocked|body|string|false|Number of days of block. If not passed the block will be forever|
-|hard|body|integer|false|If the value is 1 and status is u it will perform an hard deletion|
+|status|body|string|false|Valid values are: a, b, d, u|
+|days_blocked|body|string|false|Number of days of block. If not passed the block will be forever (status must be "b")|
+|hard|body|integer|false|If the value is 1 and status is "d" it will perform an hard deletion (equivalent to status "u")|
 
 <h3 id="unfollowcategory-responses">Responses</h3>
 

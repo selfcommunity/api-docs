@@ -64,4 +64,5 @@
 |gender|Unspecified|Unspecified|
 |status|a|Approved|
 |status|b|Blocked|
-|status|u|Unregistered|
+|status|d|Deleted|
+|status|u|Unregistered (hard deleted)|
