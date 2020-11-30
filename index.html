@@ -2408,9 +2408,9 @@ curl <span class="nt">-X</span> DELETE /api/v2/user/<span class="o">{</span><spa
 <p>Delete a specific user identified by {id}. Only the user identified by the {id} and the administrators can delete the user. 
 There are two ways of deleting a user: <strong>soft</strong> and <strong>hard</strong>.</p>
 
-<p>Soft: the user is marked as deleted, it will not appear in the user lists, the user&#39;s posts will remain and it will not be possible to create a user with the same username and ext_id.</p>
+<p>Soft: the user is marked as deleted, it will not appear in the user lists, the user&#39;s posts will remain and it will not be possible to create a user with the same username and ext_id (status of the user will be set to deleted: &#39;d&#39;).</p>
 
-<p>Hard: all user&#39;s content (profile, post, votes, etc...) will be removed.</p>
+<p>Hard: all user&#39;s content (profile, post, votes, etc...) will be removed (status of the user will be set to unregistered: &#39;u&#39;).</p>
 
 <p>In particular:</p>
 
@@ -19269,7 +19269,7 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/user/ <span class="se">\<
 <td>query</td>
 <td>string</td>
 <td>false</td>
-<td>Valid values are: a, b, u</td>
+<td>Valid values are: a, b, d, u</td>
 </tr>
 <tr>
 <td>low_visibility</td>
@@ -19437,8 +19437,13 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/user/ <span class="se">\<
 </tr>
 <tr>
 <td>status</td>
+<td>d</td>
+<td>deleted</td>
+</tr>
+<tr>
+<td>status</td>
 <td>u</td>
-<td>unregistered</td>
+<td>unregistered (hard deleted user)</td>
 </tr>
 </tbody></table>
 
@@ -19478,7 +19483,7 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/user/<span class="o">{<
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This endpoint perform moderation for users</p>
+<p>This endpoint perform moderation for users; at least one parameter between &quot;status&quot; and &quot;low_visibility&quot; is required.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -19521,21 +19526,21 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/user/<span class="o">{<
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Valid values are: a, b, u</td>
+<td>Valid values are: a, b, d, u</td>
 </tr>
 <tr>
 <td>days_blocked</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Number of days of block. If not passed the block will be forever</td>
+<td>Number of days of block. If not passed the block will be forever (status must be &quot;b&quot;)</td>
 </tr>
 <tr>
 <td>hard</td>
 <td>body</td>
 <td>integer</td>
 <td>false</td>
-<td>If the value is 1 and status is u it will perform an hard deletion</td>
+<td>If the value is 1 and status is &quot;d&quot; it will perform an hard deletion (equivalent to status &quot;u&quot;)</td>
 </tr>
 </tbody></table>
 
@@ -20334,8 +20339,13 @@ This operation require moderation role.
 </tr>
 <tr>
 <td>status</td>
+<td>d</td>
+<td>Deleted</td>
+</tr>
+<tr>
+<td>status</td>
 <td>u</td>
-<td>Unregistered</td>
+<td>Unregistered (hard deleted)</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_UserSettings">UserSettings</h2>
