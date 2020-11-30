@@ -47,7 +47,7 @@
 |date_of_birth|string(date)|false|none|Date of birth. Format: YYYY-MM-DD (ISO 8601).|
 |description|string|false|none|User description. Max 50 characters.|
 |gender|string|false|none|User gender. Values: Male, Female, Unspecified. Default: Unspecified.|
-|status|string|false|read-only|User status. Values: a (approved), b (blocked), u (unregistered, deleted). Default: a.|
+|status|string|false|read-only|User status. Values: a (approved), b (blocked), d (deleted; soft deleted), u (unregistered; hard deleted). Default: a.|
 |website|string(uri)|false|none|User website. Max 200 characters.|
 |avatar|string(binary)¦null|false|none|Avatar of the user.|
 |cover|string(binary)¦null|false|none|Cover of the user.|
