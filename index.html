@@ -457,6 +457,9 @@
                     <a href="#patch-a-specific-category" class="toc-h2 toc-link" data-title="Patch a Specific Category">Patch a Specific Category</a>
                   </li>
                   <li>
+                    <a href="#delete-a-specific-category" class="toc-h2 toc-link" data-title="Delete a Specific Category">Delete a Specific Category</a>
+                  </li>
+                  <li>
                     <a href="#get-category-39-s-audience" class="toc-h2 toc-link" data-title="Get Category's Audience">Get Category's Audience</a>
                   </li>
                   <li>
@@ -6197,6 +6200,100 @@ You can use this endpoint to edit a single field passing only the id and the nee
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>none</td>
 <td><a href="#schemacategory">Category</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation requires authentication and admin role.
+</aside>
+<h2 id='delete-a-specific-category'>Delete a Specific Category</h2>
+<p><a id="opIddestroyCategory"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> DELETE /api/v2/category/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/category/{id}/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Delete a specific category identified by {id}. 
+There are two ways of deleting a category: <strong>soft</strong> and <strong>hard</strong>.</p>
+
+<p><strong>soft</strong>: the category is marked as deleted and not active, so it will not be possible to create a new category with the same name/slug.</p>
+
+<p><strong>hard</strong>: the category is: marked as deleted, marked as not active and the name/slug is changed to make possibile to create a new category with the same name/slug.</p>
+
+<p>In particular:</p>
+
+<ul>
+<li>If the delete request is soft and the category is already soft deleted you will get a 400 response.</li>
+<li>If the delete request is hard and the category is already soft deleted perform hard delete.</li>
+<li>If the delete request is hard and the category is already hard deleted you will get a 400 response.</li>
+</ul>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>DELETE /api/v2/category/{id}/</code></p>
+
+<h3 id="destroycategory-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this category.</td>
+</tr>
+<tr>
+<td>hard</td>
+<td>query</td>
+<td>bool</td>
+<td>false</td>
+<td>If the value is set to 1, perform hard delete else execute a soft delete.</td>
+</tr>
+</tbody></table>
+
+<h3 id="destroycategory-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>none</td>
+<td>None</td>
 </tr>
 </tbody></table>
 
