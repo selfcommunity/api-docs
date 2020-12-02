@@ -590,6 +590,73 @@ This operation requires authentication and admin role.
 </aside>
 
 
+## Delete a Specific Category
+
+<a id="opIddestroyCategory"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X DELETE /api/v2/category/{id}/
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+fetch('/api/v2/category/{id}/',
+{
+  method: 'DELETE',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Delete a specific category identified by {id}. 
+There are two ways of deleting a category: **soft** and **hard**.
+
+**soft**: the category is marked as deleted and not active, so it will not be possible to create a new category with the same name/slug.
+
+**hard**: the category is: marked as deleted, marked as not active and the name/slug is changed to make possibile to create a new category with the same name/slug.
+
+In particular:
+
+* If the delete request is soft and the category is already soft deleted you will get a 400 response.
+* If the delete request is hard and the category is already soft deleted perform hard delete.
+* If the delete request is hard and the category is already hard deleted you will get a 400 response.
+
+<h3 id="http-request">HTTP Request</h3>
+
+`DELETE /api/v2/category/{id}/`
+
+<h3 id="destroycategory-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this category.|
+|hard|query|bool|false|If the value is set to 1, perform hard delete else execute a soft delete.|
+
+<h3 id="destroycategory-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation requires authentication and admin role.
+</aside>
+
+
 ## Get Category's Audience
 
 <a id="opIdaudienceCategory"></a>
