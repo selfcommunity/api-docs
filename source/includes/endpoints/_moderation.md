@@ -378,7 +378,6 @@ const headers = {
 fetch('/api/v2/moderation/contribution/{id}/flag/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -400,6 +399,8 @@ This endpoint retrieves all flags for a specific contribution.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this Contribution.|
+|contribution_type|body|string|true|Valid values are: post, discussion, comment|
+
 
 > Example responses
 
@@ -540,7 +541,7 @@ This endpoint provides actions for flagged contributions moderation
 |moderation_type|4|offtopic|
 
 #### Toggle actions
-The folowing types of actions are "toggle actions": ignore, hode and delete.
+The following types of actions are "toggle actions": ignore, hide and delete.
 "toggle actions" means that calling the endpoint twice with the same action will cancel it.
 
 <h3 id="unfollowcategory-responses">Responses</h3>
