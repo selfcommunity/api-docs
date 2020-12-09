@@ -19958,7 +19958,6 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/<span class=
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/moderation/contribution/{id}/flag/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -19991,6 +19990,13 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/<span class=
 <td>string</td>
 <td>true</td>
 <td>A unique integer value identifying this Contribution.</td>
+</tr>
+<tr>
+<td>contribution_type</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>Valid values are: post, discussion, comment</td>
 </tr>
 </tbody></table>
 
@@ -20196,7 +20202,7 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 </tr>
 </tbody></table>
 <h4 id='toggle-actions'>Toggle actions</h4>
-<p>The folowing types of actions are &quot;toggle actions&quot;: ignore, hode and delete.
+<p>The following types of actions are &quot;toggle actions&quot;: ignore, hide and delete.
 &quot;toggle actions&quot; means that calling the endpoint twice with the same action will cancel it.</p>
 
 <h3 id="unfollowcategory-responses">Responses</h3>
