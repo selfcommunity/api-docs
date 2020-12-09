@@ -472,10 +472,10 @@ This operation require moderation role.
 ```shell
 # You can also use wget
 curl -X PATCH /api/v2/moderation/contribution/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-
+  -H 'Authorization: Bearer {access_token}' \
+  --form 'contribution_type="post"' \
+  --form 'action="scold_author"' \
+  --form 'moderation_type="1"'
 ```
 
 ```javascript
@@ -486,7 +486,6 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
   'Authorization': 'Bearer {access_token}'
 };
 
@@ -510,16 +509,6 @@ This endpoint provides actions for flagged contributions moderation
 
 `PATCH /api/v2/moderation/contribution/{id}/`
 
-> Body parameter
-
-```json
-{
-  "contribution_type": "string",
-  "action": "string",
-  "moderation_type": "string"
-}
-```
-
 <h3 id="partialupdatemoderationuser-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
@@ -540,9 +529,15 @@ This endpoint provides actions for flagged contributions moderation
 |moderation_type|3|poor|
 |moderation_type|4|offtopic|
 
-#### Toggle actions
-The following types of actions are "toggle actions": ignore, hide and delete.
-"toggle actions" means that calling the endpoint twice with the same action will cancel it.
+#### Actions 
+The following actions can be performed using this endpoint:
+* `scold_author`: scold the author of the post, a notification will be sent to the author of the post with moderation_type as the cause
+* `scold_flagger`: scold a flagger of the post, a notification will be sent to the author of the flag
+* `ignore`: ignore the contribute into the moderation flow (for moderators)
+* `hide`: hide the contribution for all community users except for the author with moderation_type as the cause
+* `delete`: delete the contribution for all community users with moderation_type as the cause
+
+The following types of actions are "toggle actions" (calling the endpoint twice with the same action will cancel it): ignore, hide and delete.
 
 <h3 id="unfollowcategory-responses">Responses</h3>
 
