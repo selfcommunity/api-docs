@@ -20077,10 +20077,10 @@ This operation require moderation role.
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
-
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'contribution_type="post"'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'action="scold_author"'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'moderation_type="1"'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "contribution_type": "string",
   "action": "string",
@@ -20088,7 +20088,6 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
@@ -20111,15 +20110,6 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 
 <p><code>PATCH /api/v2/moderation/contribution/{id}/</code></p>
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"contribution_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"moderation_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
 <h3 id="partialupdatemoderationuser-parameters">Parameters</h3>
 
 <table><thead>
@@ -20201,9 +20191,15 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 <td>offtopic</td>
 </tr>
 </tbody></table>
-<h4 id='toggle-actions'>Toggle actions</h4>
-<p>The following types of actions are &quot;toggle actions&quot;: ignore, hide and delete.
-&quot;toggle actions&quot; means that calling the endpoint twice with the same action will cancel it.</p>
+<h4 id='actions'>Actions</h4>
+<p>The following actions can be performed using this endpoint:
+* <code>scold_author</code>: scold the author of the post, a notification will be sent to the author of the post with moderation_type as the cause
+* <code>scold_flagger</code>: scold a flagger of the post, a notification will be sent to the author of the flag
+* <code>ignore</code>: ignore the contribute into the moderation flow (for moderators)
+* <code>hide</code>: hide the contribution for all community users except for the author with moderation_type as the cause
+* <code>delete</code>: delete the contribution for all community users with moderation_type as the cause</p>
+
+<p>The following types of actions are &quot;toggle actions&quot; (calling the endpoint twice with the same action will cancel it): ignore, hide and delete.</p>
 
 <h3 id="unfollowcategory-responses">Responses</h3>
 
