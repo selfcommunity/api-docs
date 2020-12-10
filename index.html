@@ -17146,33 +17146,33 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 <tr>
 <td>kindly_notice_advertising</td>
-<td>content notified as advertising, only for comments</td>
+<td>content author notified for advertising content (via moderation)</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>kindly_notice_aggressive</td>
-<td>content notified as aggressive, only for comments</td>
+<td>content author notified for advertising content (via moderation)</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>kindly_notice_vulgar</td>
-<td>content notified as vulgar, only for comments</td>
+<td>content author notified for advertising content (via moderation)</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>kindly_notice_poor</td>
-<td>content notified as poor, only for comments</td>
+<td>content author notified for advertising content (via moderation)</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>kindly_notice_offtopic</td>
-<td>content notified as offtopic, only for comments</td>
+<td>content author notified for advertising content (via moderation)</td>
 <td>author of the contribute</td>
 </tr>
 <tr>
 <td>kindly_notice_flag</td>
-<td>the content flagged was valid, but the user flagged it</td>
-<td>author of the contribute</td>
+<td>flag author notified for bad flagging (via moderation)</td>
+<td>author of the flag</td>
 </tr>
 <tr>
 <td>blocked_user</td>
@@ -21446,7 +21446,7 @@ This operation require moderation role.
 <tr>
 <td>type</td>
 <td>kindly_notice_flag</td>
-<td>Notification of irregularly flagged content. The content was valid, but the user flagged it</td>
+<td>Notification for a bad flag</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_NotificationTypeDeletedFor">NotificationTypeDeletedFor</h2>
