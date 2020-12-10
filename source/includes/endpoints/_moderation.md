@@ -532,7 +532,7 @@ This endpoint provides actions for flagged contributions moderation
 ### Actions 
 The following actions can be performed using this endpoint:
 
-* *scold_author*: scold the author of the post, a kindly notification will be sent to the author of the post with moderation_type as the cause
+* *scold_author*: scold the author of the post, a kindly notification will be sent to the author of the contribution with moderation_type as the cause
 * *scold_flagger*: scold a flagger of the post, a kindly notification will be sent to the author of the flag
 * *ignore*: ignore the contribute into the moderation flow (for moderators)
 * *hide*: hide the contribution for all community users except for the author with moderation_type as the cause
