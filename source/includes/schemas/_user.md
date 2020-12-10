@@ -55,7 +55,7 @@
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 |reputation|integer|false|read-only|User reputation.|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|

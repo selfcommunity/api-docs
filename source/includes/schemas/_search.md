@@ -45,7 +45,7 @@
 |» html|string|false|read-only|The content of the object in html format, it contains the match of the search wrapped into `<b>` tag|
 |author|[User](#schemauser)|false|read-only|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|

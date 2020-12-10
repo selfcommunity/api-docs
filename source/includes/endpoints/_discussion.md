@@ -2235,7 +2235,7 @@ This endpoint flag a specific discussion.
 |id|path|string|true|A unique integer value identifying this post.|
 flag_type|body|integer|true|A integer from 0 to 4|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -2314,7 +2314,7 @@ This endpoint removes a flag for a specific discussion.
 |id|path|string|true|A unique integer value identifying this post.|
 flag_type|body|integer|true|A integer from 0 to 4|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|

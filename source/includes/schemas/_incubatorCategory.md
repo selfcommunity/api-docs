@@ -29,7 +29,7 @@
 |added_at|string(date-time)|false|read-only|Added at date time|
 |status|integer|true|none|Status incubator|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|

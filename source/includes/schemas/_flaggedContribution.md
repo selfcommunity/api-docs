@@ -67,7 +67,7 @@
 |last_flagged_at|string(date-time)|true|none|none|
 |moderation_status|string|true|none|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|
 |---|---|

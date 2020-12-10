@@ -24,7 +24,7 @@
 |flag_type|integer|true|none|none|
 |flag_type_description|string|false|read-only|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|

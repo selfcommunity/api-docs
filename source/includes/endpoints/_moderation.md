@@ -118,7 +118,7 @@ Status Code **200**
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[ModerationUser](#schemamoderationuser)]|false|none|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|
@@ -255,7 +255,7 @@ This endpoint retrieves all flagged contributions.
 |offset|query|integer|false|The initial index from which to return the results.|
 |order_by|query|string|false|Default ordering is: -last_flagged_at. Other valid fields are: flag_count, last_moderated_at|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|
 |---|---|
@@ -519,7 +519,7 @@ This endpoint provides actions for flagged contributions moderation
 |user|body|integer|true|The user id of the contribution flagger to scold (use only with action=scold_flagger)|
 |moderation_type|body|integer|true|An integer value to describe the moderation activity if action=hide or delete|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -529,7 +529,7 @@ This endpoint provides actions for flagged contributions moderation
 |moderation_type|3|poor|
 |moderation_type|4|offtopic|
 
-#### Actions 
+### Actions 
 The following actions can be performed using this endpoint:
 
 * *scold_author*: scold the author of the post, a kindly notification will be sent to the author of the post with moderation_type as the cause

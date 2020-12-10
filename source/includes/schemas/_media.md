@@ -68,7 +68,7 @@
 |order|integer|false|read-only|none|
 |embed|[Embed](#schemaembed)¦null|false|none|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|

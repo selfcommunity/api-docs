@@ -165,7 +165,7 @@ This endpoint complete the chunk upload and create the [Media](#schemamedia).
 |» upload_id|body|string|true|Id of the chunk uploaded file|
 |» md5|body|string|true|MD5 hash of the original file for checksum proposal|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -287,7 +287,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 |» url|body|string(uri)|if `type` is *url*|Required for type url|
 |» embed|body|[Embed](#schemaembed)|if `type` is *embed*|none|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|

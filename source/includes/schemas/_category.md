@@ -60,7 +60,7 @@
 |stream_order_by|string|false|none|Order of the category feed|
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|

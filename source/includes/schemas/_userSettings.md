@@ -31,7 +31,7 @@
 |toast_notifications_emit_sound|integer|false|none|Emit a sound when the notification popup is shown. See 'show_toast_notifications'.|
 
 
-#### Enumerated Values
+### Enumerated Values
 
 |Property|Value|Description|
 |---|---|---|
