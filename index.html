@@ -20192,12 +20192,15 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 </tr>
 </tbody></table>
 <h4 id='actions'>Actions</h4>
-<p>The following actions can be performed using this endpoint:
-* <code>scold_author</code>: scold the author of the post, a notification will be sent to the author of the post with moderation_type as the cause
-* <code>scold_flagger</code>: scold a flagger of the post, a notification will be sent to the author of the flag
-* <code>ignore</code>: ignore the contribute into the moderation flow (for moderators)
-* <code>hide</code>: hide the contribution for all community users except for the author with moderation_type as the cause
-* <code>delete</code>: delete the contribution for all community users with moderation_type as the cause</p>
+<p>The following actions can be performed using this endpoint:</p>
+
+<ul>
+<li><em>scold_author</em>: scold the author of the post, a kindly notification will be sent to the author of the post with moderation_type as the cause</li>
+<li><em>scold_flagger</em>: scold a flagger of the post, a kindly notification will be sent to the author of the flag</li>
+<li><em>ignore</em>: ignore the contribute into the moderation flow (for moderators)</li>
+<li><em>hide</em>: hide the contribution for all community users except for the author with moderation_type as the cause</li>
+<li><em>delete</em>: delete the contribution for all community users with moderation_type as the cause</li>
+</ul>
 
 <p>The following types of actions are &quot;toggle actions&quot; (calling the endpoint twice with the same action will cancel it): ignore, hide and delete.</p>
 
