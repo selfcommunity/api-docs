@@ -78,3 +78,4 @@
 |type|image|Media of type image|
 |type|eimage|Media of type inline image, used in [Discussion](#selfcommunity-api-discussion) or [Post](#selfcommunity-api-post)  text editor|
 |type|doc|Media of type document (pdf)|
+|type|share|Media associate to a community shared object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
