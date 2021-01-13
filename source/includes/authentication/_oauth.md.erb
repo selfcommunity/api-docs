@@ -134,10 +134,6 @@ https://127.0.0.1:8000/callback?code=uVqLxiHDKIirldDZQfSnDsmYW1Abj2
 This is the OAuth2 provider trying to give you a code in this case uVqLxiHDKIirldDZQfSnDsmYW1Abj2.
 
 ```
-curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" "https://<community_hostname>/oauth/token/" -d "client_id=${ID}" -d "client_secret=${SECRET}" -d "code=${CODE}" -d "redirect_uri=https://127.0.0.1:8000/callback" -d "grant_type=authorization_code"
-```
-
-```
 curl -X POST
     -H "Cache-Control: no-cache"
     -H "Content-Type: application/x-www-form-urlencoded"
@@ -167,19 +163,14 @@ The OAuth2 provider will return the follow response:
 }
 ```
 
-```
-curl -H "Authorization: Bearer jooqrnOrNa0BrNWlg68u9sl6SkdFZg"
-    -X GET https://<community_hostname>/api/v2/<resource>
-```
+To access the user resources we just use the access_token.
 
-To access the user resources we just use the access_token:
+Set the HTTP Authorization header as Bearer to access the protected resources as in the example below:
 
 `
 curl -H "Authorization: Bearer jooqrnOrNa0BrNWlg68u9sl6SkdFZg"
     -X GET https://<community_hostname>/api/v2/<resource>
 `
-
-
 
 
 
@@ -240,9 +231,9 @@ curl -X POST
 
 To start the Password Credential flow you call /token/ endpoint direct:
 
-```
+`
 curl -X POST -H "Cache-Control: no-cache" -H "Content-Type: application/x-www-form-urlencoded" "https://<community_hostname>/oauth/token/" -d "grant_type=password"
-```
+`
 
 The POST parameters in this request are explained below.
 
