@@ -131,7 +131,7 @@ Remenber we used https://127.0.0.1:8000/callback as redirect_uri you will get a 
 https://127.0.0.1:8000/callback?code=uVqLxiHDKIirldDZQfSnDsmYW1Abj2
 `
 
-This is the OAuth2 provider trying to give you a code in this case uVqLxiHDKIirldDZQfSnDsmYW1Abj2.
+This is the OAuth2 provider trying to give you a code, in this case uVqLxiHDKIirldDZQfSnDsmYW1Abj2.
 
 ```
 curl -X POST
@@ -162,6 +162,15 @@ The OAuth2 provider will return the follow response:
   "refresh_token": "HNvDQjjsnvDySaK0miwG4lttJEl9yD"
 }
 ```
+`
+{
+  "access_token": "jooqrnOrNa0BrNWlg68u9sl6SkdFZg",
+  "expires_in": 36000,
+  "token_type": "Bearer",
+  "scope": "read write",
+  "refresh_token": "HNvDQjjsnvDySaK0miwG4lttJEl9yD"
+}
+`
 
 To access the user resources we just use the access_token.
 
