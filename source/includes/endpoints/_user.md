@@ -2658,3 +2658,135 @@ This endpoint show/hide a user (user and user's post) identified by {id} for the
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+
+## Check User Hidden
+
+<a id="opIdisHiddenUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/is_hidden/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/is_hidden/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Return true if the user (identified in path) is hidden by me
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/is_hidden/`
+
+<h3 id="ishiddenuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "is_hidden": true
+}
+```
+
+<h3 id="ishiddenuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+
+## Check User Hidden By
+
+<a id="opIdisHiddenUserBy"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/is_hidden_by/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/is_hidden_by/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Return true if the user (identified in path) has hidden me
+
+<h3 id="http-request">HTTP Request</h3>
+
+`GET /api/v2/user/{id}/is_hidden_by/`
+
+<h3 id="ishiddenuser-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "is_hidden_by": true
+}
+```
+
+<h3 id="ishiddenbyuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|none|
+
+<aside class="notice">
+This operation require authentication
+</aside>
