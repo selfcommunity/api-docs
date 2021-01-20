@@ -322,6 +322,15 @@
                   <li>
                     <a href="#verify-jwts" class="toc-h2 toc-link" data-title="Verify JWTs">Verify JWTs</a>
                   </li>
+                  <li>
+                    <a href="#oauth-2-0" class="toc-h2 toc-link" data-title="OAuth 2.0">OAuth 2.0</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-oauth-2-0-app" class="toc-h2 toc-link" data-title="Create an OAuth 2.0 App">Create an OAuth 2.0 App</a>
+                  </li>
+                  <li>
+                    <a href="#testing-oauth-2-0-app" class="toc-h2 toc-link" data-title="Testing OAuth 2.0 App">Testing OAuth 2.0 App</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -427,6 +436,12 @@
                   </li>
                   <li>
                     <a href="#show-hide-user" class="toc-h2 toc-link" data-title="Show/Hide User">Show/Hide User</a>
+                  </li>
+                  <li>
+                    <a href="#check-user-hidden" class="toc-h2 toc-link" data-title="Check User Hidden">Check User Hidden</a>
+                  </li>
+                  <li>
+                    <a href="#check-user-hidden-by" class="toc-h2 toc-link" data-title="Check User Hidden By">Check User Hidden By</a>
                   </li>
               </ul>
           </li>
@@ -945,22 +960,30 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the SelfCommunity API! You can use our API to access SelfCommunity API endpoints!!</p>
+<p>Welcome to the SelfCommunity API! You can use our API to access SelfCommunity API endpoints!</p>
 
-<p>We have language bindings in Shell and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>The selfcommunity APIs are <strong>only available for enterprise communities</strong>.
+Take a look at the various <a href="https://selfcommunity.com/pricing/">plans</a> you can subscribe to on.</p>
+
+<p>If your community is Enterprise login to <a href="https://make.selfcommunity.com/">https://make.selfcommunity.com</a> with your account and go to Community APIs panel under Integration menu and check that you have <strong>enabled</strong> the <strong>Community APIs</strong> and <strong>Authentication APIs</strong>.</p>
+
+<p>Continue reading this documentation to learn how to use selfcommunity APIs. We have language bindings in Shell and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id="selfcommunity-api-authentication">Authentication</h1>
 <h2 id='intro'>Intro</h2>
 <p><a id="selfcommunity-api-authentication-intro"></a></p>
 
-<p>Selfcommunity supports JWT Access Token as authorization methods. 
-This is suitable for different scenarios (Authorization, Information Exchange, etc.).</p>
+<p>Selfcommunity supports two types of authentication methods:</p>
 
-<p>JSON Web Token (JWT) is an open standard <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.</p>
+<ul>
+<li>JWT Token</li>
+<li>OAuth 2.0</li>
+</ul>
 
-<p>JWTs will be signed using a shared secret (with the HMAC algorithm).
-If your product support JWT access token, you need to first <strong>request the secret (SECRET_KEY)</strong> by <a href="mailto:%20developers@selfcommunity.com">contacting us</a>.</p>
+<p>Both methods are suitable for different scenarios (Authorization, Information Exchange, etc.).</p>
 
-<p>If you want to learn more about JWTs, we recommend the full documentation at <a href="https://jwt.io/">jwt.io</a>.</p>
+<p>Depending on the type of interaction with the community APIs, it might be more convenient to use one method rather than another. 
+If access to APIs communities occurs only on server side, we recommend using JWT authentication. 
+In all other cases, for security reasons, use OAuth 2.0 authentication.</p>
 <h2 id='jwt-token'>JWT Token</h2>
 <p><a id="selfcommunity-api-authentication-jwt"></a></p>
 
@@ -971,16 +994,26 @@ If your product support JWT access token, you need to first <strong>request the 
 eyJleHAiOjE2MDI0OTYwMjksInVzZXJfaWQiOjcsImlhdCI6MTYwMjQ5NDIyOX0.
 v9H5nkbu_J0ysGqY2YUeufn1ypHmvvTc2k2WoDdztvw
 </code></pre></div>
-<p>JSON Web Tokens are strings of text which are passed on every request (Header Authorization) to access protected resources of the server. 
+<p>JSON Web Token (JWT) is an open standard <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.</p>
+
+<p>JWTs will be signed using a shared secret (with the HMAC algorithm).
+If your product support JWT access token, go to Community APIs panel under Integration menu on <a href="https://make.selfcommunity.com">https://make.selfcommunity.com</a>.
+You need to first check that you have <strong>enabled</strong> the <strong>Community APIs</strong> and <strong>Authentication APIs</strong> and <strong>retrieve the secret key</strong> in the JWT Authentication panel.</p>
+
+<p><img src="images/authentication/jwt_panel-8cfe9b03.png" alt="" /></p>
+
+<p>If you want to learn more about JWTs, we recommend the full documentation at <a href="https://jwt.io/">jwt.io</a>.</p>
+
+<p>JSON Web Tokens are strings of text which are passed on every request (Header Authorization) to access protected resources of the server.
 They contain a combination of secrets from the API and payload data in the form of a JSON object.</p>
 <h3 id='generating-jwts'>Generating JWTs</h3>
-<p>A single JWT consists of three components: Header, Payload, and Signature with a <code>.</code> separating each. </p>
+<p>A single JWT consists of three components: Header, Payload, and Signature with a <code>.</code> separating each.</p>
 
-<p>For example, a JWT typically looks like the following: </p>
+<p>For example, a JWT typically looks like the following:</p>
 
 <p><code>aaaaa.bbbbb.ccccc</code></p>
 
-<p>The SelfCommunity API recommends and supports libraries provided on <a href="https://jwt.io/">jwt.io</a>. 
+<p>The SelfCommunity API recommends and supports libraries provided on <a href="https://jwt.io/">jwt.io</a>.
 While other libraries can create JWT, these recommended libraries are the most robust.</p>
 
 <p>Below we see how to generate the three components of a jwt.</p>
@@ -1010,7 +1043,7 @@ Note: The SelfCommunity API uses HS256 to sign the token. Use of other algorithm
 
 <p><strong>Payload</strong></p>
 
-<p>The payload of a token contains the claims or the pieces of information being passed about the user and any metadata required. 
+<p>The payload of a token contains the claims or the pieces of information being passed about the user and any metadata required.
 While there are three types of claims, registered, public, and private, we highly recommend using registered claims for interoperability.</p>
 
 <blockquote>
@@ -1025,7 +1058,7 @@ While there are three types of claims, registered, public, and private, we highl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>A payload <strong>require</strong> an user id (<em>user_id</em>), an expiration time (<em>exp</em>), an issued at a time (<em>iat</em>) and a JWT ID (<em>jti</em>).
-The <em>ext_id</em> is not necessary in order to authenticate the user. 
+The <em>ext_id</em> is not necessary in order to authenticate the user.
 It is included if the token is generated by the community itself.
 It will not be verified in the authorization phase.</p>
 
@@ -1040,13 +1073,13 @@ It will not be verified in the authorization phase.</p>
 <li><em>jti</em> (JWT Id) notes a unique key identifier for the JWT. It is a (semi-)random string and the value MUST be assigned in a manner that ensures that there is a negligible probability that the same value will be accidentally assigned to a different data object. The &quot;jti&quot; claim can be used to prevent the JWT from being replayed (allows a token to be used only once). The &quot;jti&quot; value is a case-sensitive string. <em>Required.</em></li>
 </ul>
 
-<p>It is <strong>highly recommended to set the exp timestamp for a short period</strong>, i.e. a few minutes, a few hours. 
+<p>It is <strong>highly recommended to set the exp timestamp for a short period</strong>, i.e. a few minutes, a few hours.
 This way, if a token is intercepted or shared, the token will only be valid for a short period of time.</p>
 
 <aside class="notice">The expiration time (exp), the issued at time (iat) must be defined in as number containing a NumericDate value in seconds since Epoch (unix epoch time).</aside>
 
 <aside class="notice">
-Note: Though protected against tampering, the information contained in the Header and Payload is readable by anyone. 
+Note: Though protected against tampering, the information contained in the Header and Payload is readable by anyone.
 For this reason no confidential information in either of these elements will be stored.
 </aside>
 
@@ -1060,14 +1093,14 @@ For this reason no confidential information in either of these elements will be 
     base64UrlEncode(payload),
     SECRET_KEY)
 </code></pre></div>
-<p>The Signature of the token base64 encodes the header and payload, then includes the API Secret within the HMACSHA256 
+<p>The Signature of the token base64 encodes the header and payload, then includes the API Secret within the HMACSHA256
 algorithm to securely sign the entire package.</p>
 
 <p>The signature is used to verify the message wasn&#39;t changed along the way and it can also verify that the sender of the JWT is who it says it is.</p>
 
 <p><strong>Putting all together</strong></p>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Example of how to create a JWT token using jsonwebtoken library.</span>
-<span class="c1">// If jsonwebtoken is not installed, instal with: npm install --save jsonwebtoken  </span>
+<span class="c1">// If jsonwebtoken is not installed, instal with: npm install --save jsonwebtoken</span>
 <span class="c1">// To generate the token, use this code:</span>
 
 <span class="kd">var</span> <span class="nx">jwt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">jsonwebtoken</span><span class="dl">"</span><span class="p">);</span>
@@ -1086,7 +1119,7 @@ algorithm to securely sign the entire package.</p>
   <span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The output is three Base64-URL strings separated by dots that can be easily passed in the Authorization header.  </p>
+<p>The output is three Base64-URL strings separated by dots that can be easily passed in the Authorization header.</p>
 
 <p><code>
 &lt;header&gt;.&lt;payload&gt;.&lt;signature&gt;
@@ -1114,7 +1147,7 @@ Make sure to replace &lt;token&gt; with your JWT access token.
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;api_endpoint_here&gt;</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>  
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
@@ -1123,8 +1156,8 @@ Make sure to replace &lt;token&gt; with your JWT access token.
 <span class="p">});</span>
 
 </code></pre></div>
-<p>Whenever the user wants to access a protected route or resource, the user agent should send the JWT, 
-typically in the Authorization header using the Bearer schema. </p>
+<p>Whenever the user wants to access a protected route or resource, the user agent should send the JWT,
+typically in the Authorization header using the Bearer schema.</p>
 
 <p>The content of the header should look like the following:</p>
 
@@ -1132,10 +1165,10 @@ typically in the Authorization header using the Bearer schema. </p>
 Authorization: Bearer &lt;token&gt;
 </code></p>
 
-<p>This can be, in certain cases, a stateless authorization mechanism. 
-The server&#39;s protected routes will check for a valid JWT in the Authorization header, and if it&#39;s present, the user 
-will be allowed to access protected resources. 
-If the JWT contains the necessary data, the need to query the database for certain operations may be reduced, 
+<p>This can be, in certain cases, a stateless authorization mechanism.
+The server&#39;s protected routes will check for a valid JWT in the Authorization header, and if it&#39;s present, the user
+will be allowed to access protected resources.
+If the JWT contains the necessary data, the need to query the database for certain operations may be reduced,
 though this may not always be the case.</p>
 <h2 id='verify-jwts'>Verify JWTs</h2>
 <blockquote>
@@ -1152,14 +1185,14 @@ curl <span class="nt">-X</span> POST /api/v2/jwt/verify_token/ <span class="se">
 <span class="p">};</span>
 
 <span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;token&gt;</span><span class="dl">'</span> 
+    <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;token&gt;</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/jwt/verify_token/</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>   
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
@@ -1168,7 +1201,7 @@ curl <span class="nt">-X</span> POST /api/v2/jwt/verify_token/ <span class="se">
 <span class="p">});</span>
 
 </code></pre></div>
-<p>This Endpoint test the validity of the token. It verifies the JWS (Signature) of the token. </p>
+<p>This Endpoint test the validity of the token. It verifies the JWS (Signature) of the token.</p>
 
 <p><strong>Note:</strong> It does not verify the user_id, ext_id and the token_type of the payload.</p>
 
@@ -1203,6 +1236,286 @@ curl <span class="nt">-X</span> POST /api/v2/jwt/verify_token/ <span class="se">
 <aside class="notice">
 This operation does not require authentication
 </aside>
+<h2 id='oauth-2-0'>OAuth 2.0</h2>
+<p><a id="selfcommunity-api-authentication-oauth"></a></p>
+
+<p>To allow applications to manage individual user data, the Community provides direct support to OAuth2.0, the industry-standard authorization protocol that allows applications to obtain requested access to user accounts over HTTP.</p>
+
+<p>OAuth apps are typically end-user applications which allow secure integration with Community APIs to access authorized data for each user. As a developer, you can use OAuth to allow access to users’ information related to their Community accounts, upon granting permission.</p>
+
+<p>OAuth apps can either be installed and managed across an account by account admins as an account-level app or by end-users individually as a user-managed app.</p>
+<h2 id='create-an-oauth-2-0-app'>Create an OAuth 2.0 App</h2>
+<p><strong>Register Your App</strong></p>
+
+<p>To register your app, visit the <a href="https://make.selfcommunity.com">https://make.selfcommunity.com</a> and click on the Community Apis option under Integrations in the left menu.
+Enable Community Apis and Authentcation api if they are disabled.</p>
+
+<p><img src="images/authentication/switch_api_enable-c6586e12.png" alt="" /></p>
+
+<p>Go to OAuth 2.0 subpanel and click on &#39;ADD NEW APP&#39;.</p>
+
+<p><strong>Select Client Type</strong></p>
+
+<p>The first thing you are asked to specify when you want to create an oauth2 app is the Client Type.</p>
+
+<p><img src="images/authentication/oauth/oauth_step_1-a1518456.png" alt="" /></p>
+
+<p>The OAuth 2.0 framework specifies several grant types for different use cases. – <a href="https://oauth.net/2/grant-types/">Grant types</a></p>
+
+<p>In OAuth 2.0, the term “grant type” refers to the way an application gets an access token.
+OAuth 2.0 defines several grant types and each grant type is designed for a particular use case, whether that’s a web app, a mobile or desktop app, or server-to-server applications.
+Community Authentication supports three types of grants:</p>
+
+<ul>
+<li>Authorization-code</li>
+<li>Implicit</li>
+<li>Password</li>
+</ul>
+
+<p><em>Authorization Code</em></p>
+
+<p>The Authorization Code grant type is used by confidential and public clients to exchange an authorization code for an access token. After the user returns to the client via the redirect URL, the application will get the authorization code from the URL and use it to request an access token.</p>
+
+<p><em>Implicit</em></p>
+
+<p>The Implicit flow was a simplified OAuth flow previously recommended for native apps and JavaScript apps where the access token was returned immediately without an extra authorization code exchange step. It is not recommended to use the implicit flow (and some servers prohibit this flow entirely) due to the inherent risks of returning access tokens in an HTTP redirect without any confirmation that it has been received by the client. Public clients such as native apps and JavaScript apps should now use the authorization code flow.</p>
+
+<p><em>Password</em></p>
+
+<p>The Password grant type is a way to exchange a user&#39;s credentials for an access token. Because the client application has to collect the user&#39;s password and send it to the authorization server, it is not recommended that this grant be used at all anymore. This flow provides no mechanism for things like multifactor authentication or delegated accounts, so is quite limiting in practice.</p>
+
+<p><strong>Enter basic app information</strong></p>
+
+<p>Provide app related information and get client credentials
+The windows that follow will ask you to provide a series of information.</p>
+
+<p><img src="images/authentication/oauth/oauth_step_2-9bf89271.png" alt="" /></p>
+
+<p>Only the application name is required unless otherwise noted.
+Descriptions of each field are provided below:</p>
+
+<ul>
+<li><p>App Name: provide your app’s name here. The name is not unique, but it is required. Max 255 characters.</p></li>
+<li><p>App Description: description of the app. It is optionals. Max 255 characters.
+It will only appear during the OAuth 2.0 flow on the authorization page.</p></li>
+<li><p>App Image: image representing the app. It is optionals.
+If not present, a default image will be shown.
+It will only appear during the OAuth 2.0 flow on the authorization page.</p></li>
+</ul>
+
+<p><strong>Set Redirect URIs (not required if app grant type is password)</strong></p>
+
+<p>Redirect URIs are a critical part of the OAuth flow.
+After a user successfully authorizes an application, the authorization server will redirect the user back to the application with either an authorization code or access token in the URL. Because the redirect URL will contain sensitive information, it is critical that the service doesn’t redirect the user to arbitrary locations.</p>
+
+<p>The best way to ensure the user will only be directed to appropriate locations is to require to register one or more redirect URLs when they create the application.</p>
+
+<p>Redirect URIs are required only for client of grant type authorization-flow.
+You can enter a <strong>list of URIs, space separated</strong>.
+Redirect URIs determines where the API server redirects the user after the user completes the authorization flow.
+The value must exactly match one of the authorized redirect URIs for the OAuth 2.0 client, which you configured in your app. If this value doesn&#39;t match an authorized redirect URI for the provided client_id you will get a redirect_uri_mismatch error.</p>
+
+<p><img src="images/authentication/oauth/oauth_step_3-e345fb39.png" alt="" /></p>
+
+<p><strong>Submission</strong></p>
+
+<p>After you provide the information mentioned above, app credentials (Client ID/Secret Key) will be automatically generated for your app.</p>
+
+<p><img src="images/authentication/oauth/oauth_step_4-f9cb79e9.png" alt="" /></p>
+<h2 id='testing-oauth-2-0-app'>Testing OAuth 2.0 App</h2>
+<p><strong>Getting an Access Token</strong></p>
+
+<p>Depending on the type of client type for there are different ways to get a token.</p>
+
+<p>For the following examples let&#39;s assume we have created an app with the following credentials:</p>
+
+<ul>
+<li>client_id: vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8</li>
+<li>secret_key: DZFpuNjRdt5xUEzxXovAp40bU3lQvoMvF3awEStn61RXWE0Ses4RgzHWKJKTvUCHfRkhcBi3ebsEfSjfEO96vo2Sh6pZlxJ6f7KcUbhvqMMPoVxRwv4vfdWEoWMGPeIO</li>
+<li>redirect URIs: https://127.0.0.1:8000/callback</li>
+</ul>
+<h3 id='authorization-code'>Authorization Code</h3>
+<p>To start the Authorization code flow got to this URL with is the same as show bellow:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>https://&lt;community_hostname&gt;/oauth/authorize/?response_type=code&amp;client_id=vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8&amp;redirect_uri=https://127.0.0.1:8000/callback
+</code></pre></div>
+<p><code>
+https://&lt;community_hostname&gt;/oauth/authorize/?response_type=code&amp;client_id=vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8&amp;redirect_uri=https://127.0.0.1:8000/callback
+</code></p>
+
+<p>Note the parameters we pass:</p>
+
+<ul>
+<li>response_type: code</li>
+<li>client_id: vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8</li>
+<li>redirect_uri: https://127.0.0.1:8000/callback</li>
+</ul>
+
+<p>This identifies the application, the user is asked to authorize your application to access its resources.</p>
+
+<p><img src="images/authentication/oauth/authorize-9378f99a.png" alt="" /></p>
+
+<p>Remenber we used https://127.0.0.1:8000/callback as redirect_uri you will get a Page not found (404) but it worked if you get a url like:</p>
+
+<p><code>
+https://127.0.0.1:8000/callback?code=uVqLxiHDKIirldDZQfSnDsmYW1Abj2
+</code></p>
+
+<p>This is the OAuth2 provider trying to give you a code, in this case uVqLxiHDKIirldDZQfSnDsmYW1Abj2.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl -X POST
+    -H "Cache-Control: no-cache"
+    -H "Content-Type: application/x-www-form-urlencoded"
+    "https://&lt;community_hostname&gt;/oauth/token/"
+    -d "client_id=${ID}"
+    -d "client_secret=${SECRET}"
+    -d "code=${CODE}"
+    -d "redirect_uri=https://127.0.0.1:8000/callback"
+    -d "grant_type=authorization_code"
+</code></pre></div>
+<p>Now that you have the user authorization is time to get an access token:</p>
+
+<p><code>
+curl -X POST -H &quot;Cache-Control: no-cache&quot; -H &quot;Content-Type: application/x-www-form-urlencoded&quot; &quot;https://&lt;community_hostname&gt;/oauth/token/&quot; -d &quot;client_id=${ID}&quot; -d &quot;client_secret=${SECRET}&quot; -d &quot;code=${CODE}&quot; -d &quot;redirect_uri=https://127.0.0.1:8000/callback&quot; -d &quot;grant_type=authorization_code&quot;
+</code></p>
+
+<p>The OAuth2 provider will return the follow response:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jooqrnOrNa0BrNWlg68u9sl6SkdFZg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read write"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HNvDQjjsnvDySaK0miwG4lttJEl9yD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>
+{
+  &quot;access_token&quot;: &quot;jooqrnOrNa0BrNWlg68u9sl6SkdFZg&quot;,
+  &quot;expires_in&quot;: 36000,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;scope&quot;: &quot;read write&quot;,
+  &quot;refresh_token&quot;: &quot;HNvDQjjsnvDySaK0miwG4lttJEl9yD&quot;
+}
+</code></p>
+
+<p>To access the user resources we just use the access_token.</p>
+
+<p>Set the HTTP Authorization header as Bearer to access the protected resources as in the example below:</p>
+
+<p><code>
+curl -H &quot;Authorization: Bearer jooqrnOrNa0BrNWlg68u9sl6SkdFZg&quot;
+    -X GET https://&lt;community_hostname&gt;/api/v2/&lt;resource&gt;
+</code></p>
+<h3 id='implicit'>Implicit</h3><div class="highlight"><pre class="highlight plaintext"><code>https://&lt;community_hostname&gt;/oauth/authorize?client_id=vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8&amp;redirect_uri=https://127.0.0.1:8000/callback&amp;response_type=token
+</code></pre></div>
+<p>To start the Implicit flow got to this URL with is the same as show below:</p>
+
+<p><code>
+https://&lt;community_hostname&gt;/oauth/authorize?client_id=vW1RcAl7Mb0d5gyHNQIAcH110lWoOW2BmWJIero8&amp;redirect_uri=https://127.0.0.1:8000/callback&amp;response_type=token
+</code></p>
+
+<p>This identifies the application, the user is asked to authorize your application to access its resources as in the authorize-code flow.
+After the user has granted the authorization, the server responds with a redirect to redirect_uri.
+The only difference, respect to the authorization-code flow, is that in this case the access token will appear in the url fragment of the redirect_uri.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>https://127.0.0.1:8000/callback#access_token=uPYzDyan1nJfqRulCG6pMuCT6pwbpN&amp;expires_in=36000&amp;token_type=Bearer&amp;scope=read+write
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code># fragment values
+access_token=uPYzDyan1nJfqRulCG6pMuCT6pwbpN
+expires_in=36000
+token_type=Bearer
+scope=read+write
+</code></pre></div>
+<p><code>
+https://127.0.0.1:8000/callback#access_token=uPYzDyan1nJfqRulCG6pMuCT6pwbpN&amp;expires_in=36000&amp;token_type=Bearer&amp;scope=read+write&amp;state=
+</code></p>
+
+<p>In this case, a refresh token will not be issued.
+This flow is ideal for accessing the community APIs from a client.</p>
+<h3 id='password'>Password</h3>
+<p>The Password grant is one of the simplest OAuth grants and involves only one step: the application presents a traditional username and password login form to collect the user’s credentials and makes a POST request to the server to exchange the password for an access token.
+The POST request that the application makes looks like the example below.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl -X POST
+    -H "Cache-Control: no-cache"
+    -H "Content-Type: application/x-www-form-urlencoded"
+    "https://&lt;community_hostname&gt;/oauth/token/"
+    -d "client_id=${ID}"
+    -d "username=${username}"
+    -d "password=${password}"
+    -d "grant_type=password"
+</code></pre></div>
+<p>To start the Password Credential flow you call /token/ endpoint direct:</p>
+
+<p><code>
+curl -X POST -H &quot;Cache-Control: no-cache&quot; -H &quot;Content-Type: application/x-www-form-urlencoded&quot; &quot;https://&lt;community_hostname&gt;/oauth/token/&quot; -d &quot;grant_type=password&quot;
+</code></p>
+
+<p>The POST parameters in this request are explained below.</p>
+
+<ul>
+<li>grant_type=password - This tells the server we’re using the Password grant type</li>
+<li>username= - The user’s username that they entered in the application</li>
+<li>password= - The user’s password that they entered in the application</li>
+<li>client_id= - The public identifier of the application that the developer obtained during registration</li>
+</ul>
+
+<p>The server replies with an access token in the same format as the other grant types.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jooqrnOrNa0BrNWlg68u9sl6SkdFZg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read write"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HNvDQjjsnvDySaK0miwG4lttJEl9yD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Using an Access Token</strong></p>
+
+<p>Regardless of which grant type you used, if you have an OAuth 2.0 Bearer Token you can use with the authenticated API.
+Set the HTTP Authorization header as Bearer <TOKEN> to access the protected resources as in the example below:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl -H "Authorization: Bearer jooqrnOrNa0BrNWlg68u9sl6SkdFZg"
+    -X GET https://&lt;community_hostname&gt;/api/v2/&lt;resource&gt;
+</code></pre></div>
+<p>curl -H &quot;Authorization: Bearer jooqrnOrNa0BrNWlg68u9sl6SkdFZg&quot; -X GET https://<community_hostname>/api/v2/<resource></p>
+
+<p><strong>Refreshing an Access Token</strong></p>
+
+<p>A revoke request from a public client would omit that secret, and take the form:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl -X POST
+    -H "Cache-Control: no-cache"
+    -H "Content-Type: application/x-www-form-urlencoded"
+    "https://&lt;community_hostname&gt;/oauth/token/"
+    -d "client_id=${ID}"
+    -d "refresh_token=${REFRESH_TOKEN}"
+    -d "grant_type=refresh_token"
+</code></pre></div>
+<p><code>
+curl -X POST
+    -H &quot;Cache-Control: no-cache&quot;
+    -H &quot;Content-Type: application/x-www-form-urlencoded&quot;
+    &quot;https://&lt;community_hostname&gt;/oauth/token/&quot;
+    -d &quot;client_id=${ID}&quot;
+    -d &quot;refresh_token=${REFRESH_TOKEN}&quot;
+    -d &quot;grant_type=refresh_token&quot;
+</code></p>
+
+<p>The server will respond wih a 200 status code on successful revocation.</p>
+
+<p><strong>Revoking an Access Token</strong></p>
+
+<p>A revoke request from a public client would omit that secret, and take the form:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl -X POST
+    -H "Cache-Control: no-cache"
+    -H "Content-Type: application/x-www-form-urlencoded"
+    "https://&lt;community_hostname&gt;/oauth/revoke_token/"
+    -d "client_id=${ID}"
+    -d "token=${TOKEN}"
+</code></pre></div>
+<p><code>
+curl -X POST
+    -H &quot;Cache-Control: no-cache&quot;
+    -H &quot;Content-Type: application/x-www-form-urlencoded&quot;
+    &quot;https://&lt;community_hostname&gt;/oauth/revoke_token/&quot;
+    -d &quot;client_id=${ID}&quot;
+    -d &quot;token=${TOKEN}&quot;
+</code></p>
+
+<p>The server will respond wih a 200 status code on successful revocation.</p>
 <h1 id="selfcommunity-api-sso">SSO</h1>
 <h2 id='signin'>Signin</h2>
 <p><a id="opIdcreatesignin"></a></p>
@@ -5299,6 +5612,174 @@ curl <span class="nt">-X</span> POST /api/v2/user/<span class="o">{</span><span 
 <td>None</td>
 </tr>
 </tbody></table>
+<h2 id='check-user-hidden'>Check User Hidden</h2>
+<p><a id="opIdisHiddenUser"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/is_hidden/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/is_hidden/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Return true if the user (identified in path) is hidden by me</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/is_hidden/</code></p>
+
+<h3 id="ishiddenuser-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this user.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"is_hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="ishiddenuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='check-user-hidden-by'>Check User Hidden By</h2>
+<p><a id="opIdisHiddenUserBy"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/is_hidden_by/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/is_hidden_by/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Return true if the user (identified in path) has hidden me</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code>GET /api/v2/user/{id}/is_hidden_by/</code></p>
+
+<h3 id="ishiddenuser-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this user.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"is_hidden_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="ishiddenbyuser-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h1 id="selfcommunity-api-locality">Locality</h1>
 <h2 id='get-localities'>Get Localities</h2>
 <p><a id="opIdlistLocalitys"></a></p>
@@ -8389,7 +8870,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/upload/complete/ <span class=
 <td>MD5 hash of the original file for checksum proposal</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values'>Enumerated Values</h3>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8499,6 +8980,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 <ul>
 <li><p><em>vimeo</em> for video upload. The endpoint must receive the url of the video after the video is fully uploaded to vimeo servers by the client</p></li>
 <li><p><em>url</em> for url fetch. The endpoint retrieve metadata associated with the given url and create a preview</p></li>
+<li><p><em>share</em> for sharing a community object (<a href="#schemapost">Post</a> or <a href="#schemadiscussion">Discussion</a>)</p></li>
 <li><p><em>embed</em> for external objects. The endpoint create an association with an external object using <a href="#schemaembed">Embed</a> format</p></li>
 </ul>
 
@@ -8549,6 +9031,13 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 <td>Required for type url</td>
 </tr>
 <tr>
+<td>» shared_object</td>
+<td>body</td>
+<td>integer</td>
+<td>if <code>type</code> is <em>share</em></td>
+<td>Required for type share</td>
+</tr>
+<tr>
 <td>» embed</td>
 <td>body</td>
 <td><a href="#schemaembed">Embed</a></td>
@@ -8556,7 +9045,7 @@ curl <span class="nt">-X</span> POST /api/v2/media/ <span class="se">\</span>
 <td>none</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-2'>Enumerated Values</h3>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -23045,6 +23534,11 @@ This operation require moderation role.
 <td>type</td>
 <td>doc</td>
 <td>Media of type document (pdf)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>share</td>
+<td>Media associate to a community shared object (<a href="#schemadiscussion">Discussion</a> or <a href="#schemapost">Post</a>)</td>
 </tr>
 </tbody></table>
 <h2 id="tocS_ModerationUser">ModerationUser</h2>
