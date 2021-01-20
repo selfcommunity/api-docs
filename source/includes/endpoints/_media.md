@@ -165,7 +165,7 @@ This endpoint complete the chunk upload and create the [Media](#schemamedia).
 |» upload_id|body|string|true|Id of the chunk uploaded file|
 |» md5|body|string|true|MD5 hash of the original file for checksum proposal|
 
-### Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -254,6 +254,8 @@ This endpoint create a Media. The allowed types for this endpoint are:
 
  - *url* for url fetch. The endpoint retrieve metadata associated with the given url and create a preview
 
+ - *share* for sharing a community object ([Post](#schemapost) or [Discussion](#schemadiscussion))
+
  - *embed* for external objects. The endpoint create an association with an external object using [Embed](#schemaembed) format
 
 
@@ -285,9 +287,10 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 |---|---|---|---|---|
 |» type|body|string|true|none|
 |» url|body|string(uri)|if `type` is *url*|Required for type url|
+|» shared_object|body|integer|if `type` is *share*|Required for type share|
 |» embed|body|[Embed](#schemaembed)|if `type` is *embed*|none|
 
-### Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
