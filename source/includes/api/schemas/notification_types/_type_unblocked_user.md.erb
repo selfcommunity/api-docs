@@ -1,0 +1,28 @@
+<h3 id="tocS_NotificationTypeUnBlockedUser">NotificationTypeUnBlockedUser</h3>
+<!-- backwards compatibility -->
+<a id="schemanotificationtypeunblockeduser"></a>
+<a id="schema_NotificationTypeUnBlockedUser"></a>
+<a id="tocSnotificationtypeunblockeduser"></a>
+<a id="tocsnotificationtypeunblockeduser"></a>
+
+```json
+{
+  "is_new": true,
+  "sid": 16053709616960000000063090,
+  "type": "unblocked_user",
+  "active_at": "2020-11-14T17:52:20.967302+01:00"
+}
+```
+
+Example preview:
+
+<%= image_tag "notification_types/unblocked_user.png" %>
+
+#### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|is_new|boolean|true|read-only|True if the notification has been read, otherwise false|
+|sid|string|true|read-only|Serialization id of the notification|
+|type|string|true|read-only|Type "unblocked_user"|
+|active_at|string(date-time)|true|read-only|Time when the notification was generated|
