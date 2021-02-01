@@ -930,7 +930,7 @@ This operation require authentication
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/user/{id}/settings/ \
+curl -X PATCH /api/v2/user/{id}/settings/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json'
   -H "Authorization: Bearer <token>"
@@ -949,7 +949,7 @@ const headers = {
 
 fetch('/api/v2/user/{id}/settings/',
 {
-  method: 'POST',
+  method: 'PATCH',
   body: inputBody,
   headers: headers
 })
@@ -966,7 +966,7 @@ See [UserSettings](#schemausersettings) for the list of possible user settings.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/user/{id}/settings/`
+`PATCH /api/v2/user/{id}/settings/`
 
 > Example responses
 
