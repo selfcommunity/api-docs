@@ -89,6 +89,8 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |discussion.created|a new discussion is created|This event is triggered only if `discussion_enabled` community option is true|
 |discussion.updated|a discussion is updated|This event is triggered only if `discussion_enabled` community option is true|
 |discussion.deleted|a discussion is deleted|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.follow|a discussion is followed by the user|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.unfollow|a discussion is unfollowed by the user|This event is triggered only if `discussion_enabled` community option is true|
 |discussion.restored|a discussion is restored after deletion|This event is triggered only if `discussion_enabled` community option is true|
 |post.created|a new post is created|This event is triggered only if `post_enabled` community option is true|
 |post.updated|a post is updated|This event is triggered only if `post_enabled` community option is true|
@@ -105,3 +107,14 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |user.created|a new user is created|---|
 |user.updated|a user is updated|---|
 |user.deleted|a user is deleted|---|
+|user.settings_updated|a user changes its settings|---|
+|category.follow|a category is followed by the user|---|
+|category.unfollow|a category is unfollowed by the user|---|
+|connection_request.created|a new connection request is created|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection_request.rejected|a connection request is rejected|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection_request.restored|a connection request that has been rejected is restored|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection_request.cancelled|a connection request is cancelled by the creator|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection.created|a new connection is created|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection.deleted|a connection is deleted|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
+|connection.follow|a user follows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
+|connection.unfollow|a user unfollows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
