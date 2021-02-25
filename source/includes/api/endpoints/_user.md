@@ -1062,7 +1062,19 @@ Return the user identified by the authentication token.
   "cover": "string",
   "ext_id": 3,
   "tags": [],
-  "reputation": 39
+  "reputation": 39,
+  "permission": {
+    "upload_video": false,
+    "create_contribute": true,
+    "create_poll": true,
+    "locate_post": false,
+    "create_post": true,
+    "create_post_with_category": true,
+    "view_platform_access": false,
+    "follow_user": true,
+    "request_connection": true,
+    "accept_connection": true
+  }
 }
 ```
 
@@ -1071,6 +1083,77 @@ Return the user identified by the authentication token.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+### Permission
+
+<a id="opIdmePermissionUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/me/permission/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/me/permission/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Return a list of permissions for the user identified by the authentication token.
+
+Some of the permissions in the list depend on global community settings.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/me/permission/`
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "upload_video": false,
+    "create_contribute": true,
+    "create_poll": true,
+    "locate_post": false,
+    "create_post": true,
+    "create_post_with_category": true,
+    "view_platform_access": false,
+    "follow_user": true,
+    "request_connection": true,
+    "accept_connection": true
+}
+```
+
+<h4 id="meuser-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UserPermission](#schemauserpermission)|
 
 <aside class="notice">
 This operation requires authentication

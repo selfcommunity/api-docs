@@ -25,7 +25,19 @@
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
-  "tags": []
+  "tags": [],
+  "permission": {
+    "upload_video": false,
+    "create_contribute": true,
+    "create_poll": true,
+    "locate_post": false,
+    "create_post": true,
+    "create_post_with_category": true,
+    "view_platform_access": false,
+    "follow_user": true,
+    "request_connection": true,
+    "accept_connection": true}
+  }
 }
 
 ```
@@ -54,6 +66,7 @@
 |ext_id|integer|false|read-only|The external ID of the user. It is assigned only during signup.|
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 |reputation|integer|false|read-only|User reputation.|
+|permission|[UserPermission](#schemauserpermission)|false|read-only|List of user permission. Only for the resource [/user/me/](#opIdmeUser).|
 
 #### Enumerated Values
 
