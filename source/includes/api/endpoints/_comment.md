@@ -35,9 +35,13 @@ fetch('/api/v2/comment/',
 ```
 This endpoint retrieves all comments. 
 
-If the `object` parameter is specified the endpoint retrieve all comments of a specific object ([Discussion](#schemadiscussion), [Post](#schemapost)).
+If the `discussion` parameter is specified the endpoint retrieve all comments of a specific [Discussion](#schemadiscussion).
 
-If the `object` and `parent` parameters are specified the endpoint retrieve all comments of a specific object ([Discussion](#schemadiscussion), [Post](#schemapost)) that has the passed parent (nested comments).
+If the `post` parameter is specified the endpoint retrieve all comments of a specific [Post](#schemapost)).
+
+The `discussion` and `post` parameter cannot be used together.
+
+If the `parent` parameter is specified the endpoint retrieve all comments of a specific [Discussion](#schemadiscussion) or [Post](#schemapost) that has the passed parent (nested comments).
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -49,7 +53,8 @@ If the `object` and `parent` parameters are specified the endpoint retrieve all 
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|object|query|string|false|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
+|discussion|query|string|false|Id of the [Discussion](#schemadiscussion)|
+|post|query|string|false|Id of the [Post](#schemapost)|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to added_at|
 
@@ -65,7 +70,7 @@ If the `object` and `parent` parameters are specified the endpoint retrieve all 
   "results": [
     {
       "id": 0,
-      "object": 0,
+      "discussion": 0,
       "author": {
         "id": 0,
         "username": "string",
@@ -160,7 +165,7 @@ curl -X POST /api/v2/comment/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --raw-data '{
-    "object": 0,
+    "discussion": 0,
     "parent": 0,
     "in_reply_to": 0,
     "text": "string"
@@ -169,7 +174,7 @@ curl -X POST /api/v2/comment/ \
 
 ```javascript
 const inputBody = '{
-  "object": 0,
+  "discussion": 0,
   "parent": 0,
   "in_reply_to": 0,
   "text": "string"
@@ -196,7 +201,7 @@ fetch('/api/v2/comment/',
 
 This endpoint creates a comment.
 
-The `object` parameter is required in every request (first-level or nested comment creation).
+One of `discussion` or `post` parameter is required in every request (first-level or nested comment creation).
 
 The `parent` parameter is required only for nested comments.
 
@@ -210,7 +215,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 
 ```json
 {
-  "object": 0,
+  "discussion": 0,
   "parent": 0,
   "in_reply_to": 0,
   "text": "string"
@@ -221,7 +226,8 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» object|body|integer|true|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
+|» discussion|body|integer|true|Id of the [Discussion](#schemadiscussion)|
+|» post|body|integer|true|Id of the [Post](#schemapost)|
 |» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
 |» text|body|string|true|text for the [Comment](#schemacomment), html format|
@@ -233,7 +239,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 ```json
 {
   "id": 0,
-  "object": 0,
+  "discussion": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -356,7 +362,7 @@ This endpoint retrieves a specific comment using ID.
 ```json
 {
   "id": 0,
-  "object": 0,
+  "discussion": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -438,7 +444,7 @@ curl -X PUT /api/v2/comment/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
-    "object": 0,
+    "discussion": 0,
     "parent": 0,
     "in_reply_to": 0,
     "text": "string"
@@ -447,7 +453,7 @@ curl -X PUT /api/v2/comment/{id}/ \
 
 ```javascript
 const inputBody = '{
-  "object": 0,
+  "discussion": 0,
   "parent": 0,
   "in_reply_to": 0,
   "text": "string"
@@ -482,7 +488,7 @@ This endpoint update a specific comment.
 
 ```json
 {
-  "object": 0,
+  "discussion": 0,
   "parent": 0,
   "in_reply_to": 0,
   "text": "string"
@@ -503,7 +509,7 @@ This endpoint update a specific comment.
 ```json
 {
   "id": 0,
-  "object": 0,
+  "discussion": 0,
   "author": {
     "id": 0,
     "username": "string",
