@@ -8,7 +8,7 @@
 ```json
 {
   "id": 0,
-  "object": 0,
+  "discussion": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -37,7 +37,7 @@
   "latest_comments": [
     {
       "id": 1,
-      "object": 1,
+      "discussion": 1,
       "author": {
         "id": 0,
         "username": "string",
@@ -74,7 +74,8 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|object|integer|false|none|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
+|discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
+|post|integer¦null|false|none|Id of the [Post](#schemapost)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -100,7 +101,7 @@
 ```json
 {
   "id": 0,
-  "object": 0,
+  "discussion": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -135,7 +136,8 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|object|integer|false|none|Id of the object ([Discussion](#schemadiscussion) or [Post](#schemapost))|
+|discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
+|post|integer¦null|false|none|Id of the [Post](#schemapost)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
