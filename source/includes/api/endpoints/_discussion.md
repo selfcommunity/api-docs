@@ -1364,6 +1364,59 @@ This endpoint delete a Discussion.
 This operation require authentication. The logged user must be the discussion creator
 </aside>
 
+### Restore a Discussion
+
+<a id="opIdrestoreDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/discussion/{id}/restore/
+  -H 'Authorization: Bearer {access_token}'
+
+```
+
+```javascript
+
+fetch('/api/v2/discussion/{id}/restore/',
+{
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {access_token}'
+  }
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint restore a Discussion.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`DELETE /api/v2/discussion/{id}/restore/`
+
+<h4 id="restorediscussion-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+<h4 id="restorediscussion-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication. The logged user must be the discussion creator
+</aside>
+
 ### Get list of related Discussions
 
 <a id="opIdrelatedDiscussion"></a>

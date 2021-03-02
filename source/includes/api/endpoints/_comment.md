@@ -35,13 +35,13 @@ fetch('/api/v2/comment/',
 ```
 This endpoint retrieves all comments. 
 
-If the `discussion` parameter is specified the endpoint retrieve all comments of a specific [Discussion](#schemadiscussion).
+If the `discussion` parameter is specified the endpoint retrieve all comments of a specific [Comment](#schemadiscussion).
 
 If the `post` parameter is specified the endpoint retrieve all comments of a specific [Post](#schemapost)).
 
 The `discussion` and `post` parameter cannot be used together.
 
-If the `parent` parameter is specified the endpoint retrieve all comments of a specific [Discussion](#schemadiscussion) or [Post](#schemapost) that has the passed parent (nested comments).
+If the `parent` parameter is specified the endpoint retrieve all comments of a specific [Comment](#schemadiscussion) or [Post](#schemapost) that has the passed parent (nested comments).
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -53,7 +53,7 @@ If the `parent` parameter is specified the endpoint retrieve all comments of a s
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|discussion|query|string|false|Id of the [Discussion](#schemadiscussion)|
+|discussion|query|string|false|Id of the [Comment](#schemadiscussion)|
 |post|query|string|false|Id of the [Post](#schemapost)|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to added_at|
@@ -226,7 +226,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» discussion|body|integer|true|Id of the [Discussion](#schemadiscussion)|
+|» discussion|body|integer|true|Id of the [Comment](#schemadiscussion)|
 |» post|body|integer|true|Id of the [Post](#schemapost)|
 |» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
@@ -621,6 +621,59 @@ This endpoint delete a Comment.
 |id|path|string|true|A unique integer value identifying this post.|
 
 <h4 id="destroycomment-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication. The logged user must be the comment creator
+</aside>
+
+### Restore a Comment
+
+<a id="opIdrestoreComment"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/comment/{id}/restore/
+  -H 'Authorization: Bearer {access_token}'
+
+```
+
+```javascript
+
+fetch('/api/v2/comment/{id}/restore/',
+{
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer {access_token}'
+  }
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint restore a Comment.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`POST /api/v2/comment/{id}/restore/`
+
+<h4 id="restorecomment-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this comment.|
+
+<h4 id="restorecomment-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
