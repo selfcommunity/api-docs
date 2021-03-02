@@ -1,6 +1,6 @@
 <h2 id="selfcommunity-api-feed">Feed</h2>
 
-######## Get Main Feed
+### Get Main Feed
 
 <a id="opIdlistFeeds"></a>
 
@@ -48,6 +48,14 @@ This endpoint retrieves the main (home) feed
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|ordering|query|string|false|The ordering of the feed. Default to `home_stream_order_by` community option|
+
+###### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|» ordering|recent|Order by recent creation datetime|
+|» ordering|last_activity|Order by last activity in the [Feed](#schemafeed) object|
 
 > Example responses
 
@@ -257,7 +265,7 @@ Status Code **200**
 This operation require authentication
 </aside>
 
-######## Get Explore Feed
+### Get Explore Feed
 
 <a id="opIdlistExploreFeed"></a>
 
@@ -304,6 +312,14 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|ordering|query|string|false|The ordering of the feed. Default to `explore_stream_order_by` community option|
+
+###### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|» ordering|recent|Order by recent creation datetime|
+|» ordering|last_activity|Order by last activity in the [Feed](#schemafeed) object|
 
 > Example responses
 
@@ -474,7 +490,7 @@ Status Code **200**
 This operation require authentication only if `content_availability` community option is false
 </aside>
 
-######## Get Main Feed Unseen Count
+### Get Main Feed Unseen Count
 
 <a id="opIdsummaryFeed"></a>
 
@@ -542,7 +558,7 @@ This endpoint retrieves Main Feed unseen count
 This operation require authentication
 </aside>
 
-######## Mark a Specific Feed Object as Read
+### Mark a Specific Feed Object as Read
 
 <a id="opIdmarkReadFeed"></a>
 
@@ -612,7 +628,7 @@ This endpoint marks as read a list of objects in the feed. Usually it is called 
 This operation require authentication
 </aside>
 
-######## Like These feed objects
+### Like These feed objects
 
 <a id="opIdlikeThisFeed"></a>
 

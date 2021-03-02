@@ -851,6 +851,14 @@ This endpoint retrieves the category feed.
 |id|path|string|true|A unique integer value identifying this Category.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|ordering|query|string|false|The ordering of the feed. Default to `stream_order_by` field in [Category](#schemacategory) object|
+
+###### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|» ordering|recent|Order by recent creation datetime|
+|» ordering|last_activity|Order by last activity in the [Feed](#schemafeed) object|
 
 > Example responses
 
