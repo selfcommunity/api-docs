@@ -1070,7 +1070,6 @@ Return the user identified by the authentication token.
     "locate_post": false,
     "create_post": true,
     "create_post_with_category": true,
-    "view_platform_access": false,
     "follow_user": true,
     "request_connection": true,
     "accept_connection": true
@@ -1142,7 +1141,6 @@ Some of the permissions in the list depend on global community settings.
     "locate_post": false,
     "create_post": true,
     "create_post_with_category": true,
-    "view_platform_access": false,
     "follow_user": true,
     "request_connection": true,
     "accept_connection": true

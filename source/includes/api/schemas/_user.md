@@ -33,7 +33,6 @@
     "locate_post": false,
     "create_post": true,
     "create_post_with_category": true,
-    "view_platform_access": false,
     "follow_user": true,
     "request_connection": true,
     "accept_connection": true}

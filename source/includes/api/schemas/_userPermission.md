@@ -13,7 +13,6 @@
     "locate_post": false,
     "create_post": true,
     "create_post_with_category": true,
-    "view_platform_access": false,
     "follow_user": true,
     "request_connection": true,
     "accept_connection": true
@@ -31,7 +30,6 @@
 |locate_post|bool|true|read-only|User can locate a contribute|
 |create_post|bool|true|read-only|User can create a post|
 |create_post_with_category|bool|true|read-only|User can add categories when creating a post|
-|view_platform_access|bool|true|read-only|User can view platform access (only admin, moderator, editor)|
 |follow_user|bool|true|read-only|User can follow users|
 |request_connection|bool|true|read-only|User can accept a connection|
 |accept_connection|bool|true|read-only|User can accept a connection|
