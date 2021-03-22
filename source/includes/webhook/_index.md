@@ -8,6 +8,8 @@ Rather than requiring you to pull information via our API, webhooks will push in
 The SelfCommunity webhook module are **only available for enterprise communities**.
 Take a look at the various [plans](https://selfcommunity.com/pricing/) you can subscribe to on.
 
+As an Enterprise plan subscriber, login to [https://make.selfcommunity.com](https://make.selfcommunity.com) with your account, go to the Webhooks section on Integration menu and enable the Webhooks.
+
 
 ### Build a webhook endpoint
 *For testing purpose you can create a webhook receiver using [https://requestbin.com/](RequestBin).*
