@@ -41,13 +41,18 @@ This endpoint retrieves all available dynamic preferences.
 <h4>loyalty</h4>
 This section contains all preferences for calibration of loyalty flow.
 
-* **points_connection**: Points earned for a new connection (if connections enabled).
+* **points_make_discussion**: Points earned for a new discussion.
+* **points_make_post**: Points earned for a new post.
+* **points_make_comment**: Points earned for a comment.
+* **points_receive_vote**: Points earned for an upvote.
+* **points_connection_or_follower**: Points earned for a new connection (if connections enabled) or for a new follower (if follow enabled).
+* **points_social_share**: Points earned when starting a social share of a post or a discussion.
+* **points_app_used**: Points earned for the first usage of the app (if available).
+* **points_daily_visit**: Points earned for a daily visit.
 
 <h4>score</h4>
 This section contains all preferences for calibration of score flow.
 
-* **rep_variation_for_connection_or_follower**: Positive score variation for a new connection (if connections enabled) ar for a new follower (if follow enabled).
-* **rep_variation_for_daily_visit**: Positive score variation for a daily visit.
 * **rep_variation_for_make_discussion**: Positive score variation for a new discussion.
 * **rep_variation_for_make_post**: Positive score variation for a new post.
 * **rep_variation_for_make_a_first_level_comment**: Positive score variation for a first level comment.
@@ -57,6 +62,9 @@ This section contains all preferences for calibration of score flow.
 * **rep_variation_for_upvote_on_first_level_comment**: Positive score variation for an upvote to a first level comment.
 * **rep_variation_for_upvote_on_second_level_comment**: Positive score variation for an upvote to a second level comment.
 * **rep_variation_for_contribute_deletion_by_moderation**: Negative score variation for a contribution deleted by moderators.
+* **rep_variation_for_connection_or_follower**: Positive score variation for a new connection (if connections enabled) or for a new follower (if follow enabled).
+* **rep_variation_for_app_used**: Positive score variation for the first usage of the app (if available).
+* **rep_variation_for_daily_visit**: Positive score variation for a daily visit.
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -69,7 +77,7 @@ This section contains all preferences for calibration of score flow.
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
-|section|query|string|false|section|
+|section|query|string|false|Filter all preferences in a section|
 |ordering|query|string|false|Which field to use when ordering the results.|
 
 > Example responses
@@ -84,9 +92,9 @@ This section contains all preferences for calibration of score flow.
   "results": [
     {
       "id": 0,
-      "section": "string",
-      "name": "string",
-      "value": "string"
+      "section": "loyalty",
+      "name": "points_make_post",
+      "value": "2"
     }
   ]
 }
