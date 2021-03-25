@@ -1,6 +1,6 @@
 <h2 id="selfcommunity-api-media">Media</h2>
 
-#### Chunk Upload Media
+### Chunk Upload Media
 
 <a id="opIdcreateMediaChunk"></a>
 
@@ -100,7 +100,7 @@ Max chunk size is 204800 bytes.
 This operation require authentication
 </aside>
 
-#### Chunk Upload Media Complete
+### Chunk Upload Media Complete
 
 <a id="opIdcreateMediaChunkComplete"></a>
 
@@ -165,7 +165,7 @@ This endpoint complete the chunk upload and create the [Media](#schemamedia).
 |» upload_id|body|string|true|Id of the chunk uploaded file|
 |» md5|body|string|true|MD5 hash of the original file for checksum proposal|
 
-###### Enumerated Values
+##### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -203,7 +203,7 @@ This endpoint complete the chunk upload and create the [Media](#schemamedia).
 This operation require authentication
 </aside>
 
-#### Create a Media
+### Create a Media
 
 <a id="opIdcreateMedia"></a>
 
@@ -290,7 +290,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 |» shared_object|body|integer|if `type` is *share*|Required for type share|
 |» embed|body|[Embed](#schemaembed)|if `type` is *embed*|none|
 
-###### Enumerated Values
+##### Enumerated Values
 
 |Parameter|Value|Description|
 |---|---|---|
@@ -334,7 +334,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 This operation require authentication
 </aside>
 
-#### Get a specific Media
+### Get a specific Media
 
 <a id="opIdretrieveMedia"></a>
 
@@ -416,7 +416,7 @@ This endpoint retrieves a specific media using ID.
 This operation require authentication
 </aside>
 
-#### Update a Media
+### Update a Media
 
 <a id="opIdupdateMedia"></a>
 
@@ -515,7 +515,7 @@ This endpoint update a Media. It must be used for media of `type` *url* for set 
 This operation require authentication. The logged user must be the media creator
 </aside>
 
-#### Delete a Media
+### Delete a Media
 
 <a id="opIddestroyMedia"></a>
 
