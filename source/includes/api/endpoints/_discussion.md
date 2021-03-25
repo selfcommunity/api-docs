@@ -1166,6 +1166,7 @@ This endpoint update a specific discussion.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion|
 |» title|body|string¦null|true|The title of the discussion|
 |» text|body|string|false|The content of the discussion in html format|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
