@@ -35,7 +35,7 @@ fetch('/api/v2/webhook/endpoint/',
 
 ```
 
-Viewset for webhook endpoints
+This Endpoint retrieve all webhook endpoints.
 
 <h4 id="http-request">HTTP Request</h4>
 

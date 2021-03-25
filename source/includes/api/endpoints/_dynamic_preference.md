@@ -1,6 +1,6 @@
-<h1 id="selfcommunity-api-dynamic-preference">Dynamic Preference</h1>
+<h2 id="selfcommunity-api-dynamic-preference">Dynamic Preference</h2>
 
-## Get All Dyanamic Preferences
+### Get All Dyanamic Preferences
 
 <a id="opIdlistGlobalPreferenceModels"></a>
 
@@ -36,9 +36,9 @@ fetch('/api/v2/dynamic_preference/',
 
 This endpoint retrieves all available dynamic preferences.
 
-<h3>Available sections</h3>
+<h4>Available sections</h4>
 
-<h4>loyalty</h4>
+<h5>loyalty</h5>
 This section contains all preferences for calibration of loyalty flow.
 
 * **points_make_discussion**: Points earned for a new discussion.
@@ -50,7 +50,7 @@ This section contains all preferences for calibration of loyalty flow.
 * **points_app_used**: Points earned for the first usage of the app (if available).
 * **points_daily_visit**: Points earned for a daily visit.
 
-<h4>score</h4>
+<h5>score</h5>
 This section contains all preferences for calibration of score flow.
 
 * **rep_variation_for_make_discussion**: Positive score variation for a new discussion.
@@ -66,11 +66,11 @@ This section contains all preferences for calibration of score flow.
 * **rep_variation_for_app_used**: Positive score variation for the first usage of the app (if available).
 * **rep_variation_for_daily_visit**: Positive score variation for a daily visit.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/dynamic_preference/`
 
-<h3 id="listglobalpreferencemodels-parameters">Parameters</h3>
+<h4 id="listglobalpreferencemodels-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -100,13 +100,13 @@ This section contains all preferences for calibration of score flow.
 }
 ```
 
-<h3 id="listglobalpreferencemodels-responses">Responses</h3>
+<h4 id="listglobalpreferencemodels-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listglobalpreferencemodels-responseschema">Response Schema</h3>
+<h4 id="listglobalpreferencemodels-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -122,7 +122,7 @@ Status Code **200**
 This operation require authentication and admin role.
 </aside>
 
-## Get a Specific Dynamic Preference
+### Get a Specific Dynamic Preference
 
 <a id="opIdretrieveGlobalPreferenceModel"></a>
 
@@ -158,11 +158,11 @@ fetch('/api/v2/dynamic_preference/{id}/',
 ```
 This endpoint retrieves a specific dynamic preference.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/dynamic_preference/{id}/`
 
-<h3 id="retrieveglobalpreferencemodel-parameters">Parameters</h3>
+<h4 id="retrieveglobalpreferencemodel-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -181,7 +181,7 @@ This endpoint retrieves a specific dynamic preference.
 }
 ```
 
-<h3 id="retrieveglobalpreferencemodel-responses">Responses</h3>
+<h4 id="retrieveglobalpreferencemodel-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -191,7 +191,7 @@ This endpoint retrieves a specific dynamic preference.
 This operation requires authentication and admin role.
 </aside>
 
-## Patch a Specific Dynamic Preference
+### Patch a Specific Dynamic Preference
 
 <a id="opIdpartialUpdateGlobalPreferenceModel"></a>
 
@@ -236,7 +236,7 @@ This endpoint patch a specific dynamic preference.
 **NOTE:**
 You can use this endpoint to change the value of a single dynamic preference.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `PATCH /api/v2/dynamic_preference/{id}/`
 
@@ -249,7 +249,7 @@ You can use this endpoint to change the value of a single dynamic preference.
 }
 ```
 
-<h3 id="partialupdateglobalpreferencemodel-parameters">Parameters</h3>
+<h4 id="partialupdateglobalpreferencemodel-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -269,7 +269,7 @@ You can use this endpoint to change the value of a single dynamic preference.
 }
 ```
 
-<h3 id="partialupdateglobalpreferencemodel-responses">Responses</h3>
+<h4 id="partialupdateglobalpreferencemodel-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
