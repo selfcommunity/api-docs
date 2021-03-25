@@ -2871,3 +2871,70 @@ Return true if the user (identified in path) has hidden me
 <aside class="notice">
 This operation require authentication
 </aside>
+
+
+## Get User's Loyalty Points
+
+<a id="opIdloyaltyPointsUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/loyalty/points/ \
+  -H 'Accept: application/json'
+  -H 'Authorization: Bearer <token>'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer <token>'
+};
+
+fetch('/api/v2/user/{id}/loyalty/points/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Return loyalty points of the user
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/{id}/loyalty/points/`
+
+<h4 id="ishiddenuser-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "points": 0
+}
+```
+
+<h3 id="loyaltypointsuser-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
