@@ -9,7 +9,7 @@
 ```shell
 # You can also use wget
 curl -X GET /api/v2/tag/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 
 ```
@@ -109,8 +109,8 @@ This operation require authentication and admin role.
 # You can also use wget
 curl -X POST /api/v2/tag/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
   --DATA '{body}'
 ```
 
@@ -208,7 +208,7 @@ This operation require authentication and admin role.
 ```shell
 # You can also use wget
 curl -X GET /api/v2/tag/{id}/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
 
@@ -222,7 +222,6 @@ const headers = {
 fetch('/api/v2/tag/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -283,8 +282,8 @@ This operation requires authentication and admin role.
 # You can also use wget
 curl -X PUT /api/v2/tag/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
   --DATA '{body}'
 ```
 
@@ -383,8 +382,8 @@ This operation requires authentication and admin role.
 # You can also use wget
 curl -X PATCH /api/v2/tag/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
   --DATA '{body}'
 ```
 

@@ -1,6 +1,6 @@
-<h1 id="selfcommunity-api-loyalty">loyalty</h1>
+<h1 id="selfcommunity-api-loyalty">Loyalty</h1>
 
-## listLoyaltyPrizes
+## Get All Prizes
 
 <a id="opIdlistLoyaltyPrizes"></a>
 
@@ -9,20 +9,21 @@
 ```shell
 # You can also use wget
 curl -X GET /api/v2/loyalty/prize/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/prize/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -33,9 +34,11 @@ fetch('/api/v2/loyalty/prize/',
 
 ```
 
-`GET /api/v2/loyalty/prize/`
+This endpoint retrieves all prizes.
 
-A viewset that provides CRUD actions for the loyalty prize
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/loyalty/prize/`
 
 <h3 id="listloyaltyprizes-parameters">Parameters</h3>
 
@@ -44,7 +47,7 @@ A viewset that provides CRUD actions for the loyalty prize
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 |search|query|string|false|A search term.|
-|active|query|string|false|active|
+|active|query|string|false|Filter by active only for editor or admin users|
 |ordering|query|string|false|Which field to use when ordering the results.|
 
 > Example responses
@@ -89,22 +92,12 @@ Status Code **200**
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[LoyaltyPrize](#schemaloyaltyprize)]|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» active|boolean|false|none|none|
-|»» title|string|true|none|none|
-|»» description|string¦null|false|none|none|
-|»» points|integer(int64)|true|none|none|
-|»» link|string(uri)¦null|false|none|none|
-|»» image|string(binary)|true|none|none|
-|»» created_at|string(date-time)|false|read-only|none|
-|»» lastmod_datetime|string(date-time)|false|read-only|none|
-|»» created_by|string|false|read-only|none|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication and admin or editor role to filter active prizes.
 </aside>
 
-## createLoyaltyPrize
+## Create a Prize
 
 <a id="opIdcreateLoyaltyPrize"></a>
 
@@ -114,8 +107,9 @@ This operation does not require authentication
 # You can also use wget
 curl -X POST /api/v2/loyalty/prize/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
@@ -129,7 +123,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/prize/',
@@ -145,10 +140,11 @@ fetch('/api/v2/loyalty/prize/',
 });
 
 ```
+This endpoint creates a prize.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `POST /api/v2/loyalty/prize/`
-
-A viewset that provides CRUD actions for the loyalty prize
 
 > Body parameter
 
@@ -163,31 +159,11 @@ A viewset that provides CRUD actions for the loyalty prize
 }
 ```
 
-```yaml
-active: true
-title: string
-description: string
-points: 0
-link: http://example.com
-image: string
-
-```
-
 <h3 id="createloyaltyprize-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[LoyaltyPrize](#schemaloyaltyprize)|false|none|
-|» id|body|integer|false|none|
-|» active|body|boolean|false|none|
-|» title|body|string|true|none|
-|» description|body|string¦null|false|none|
-|» points|body|integer(int64)|true|none|
-|» link|body|string(uri)¦null|false|none|
-|» image|body|string(binary)|true|none|
-|» created_at|body|string(date-time)|false|none|
-|» lastmod_datetime|body|string(date-time)|false|none|
-|» created_by|body|string|false|none|
 
 > Example responses
 
@@ -214,11 +190,11 @@ image: string
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[LoyaltyPrize](#schemaloyaltyprize)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication and admin or editor role.
 </aside>
 
-## retrieveLoyaltyPrize
+## Get a Specific Prize
 
 <a id="opIdretrieveLoyaltyPrize"></a>
 
@@ -227,20 +203,21 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X GET /api/v2/loyalty/prize/{id}/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/prize/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -250,10 +227,11 @@ fetch('/api/v2/loyalty/prize/{id}/',
 });
 
 ```
+This endpoint retrieves a specific prize.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `GET /api/v2/loyalty/prize/{id}/`
-
-A viewset that provides CRUD actions for the loyalty prize
 
 <h3 id="retrieveloyaltyprize-parameters">Parameters</h3>
 
@@ -286,11 +264,11 @@ A viewset that provides CRUD actions for the loyalty prize
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrize](#schemaloyaltyprize)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication and admin or editor role to get a not active prize.
 </aside>
 
-## updateLoyaltyPrize
+## Update a Specific Prize
 
 <a id="opIdupdateLoyaltyPrize"></a>
 
@@ -300,8 +278,9 @@ This operation does not require authentication
 # You can also use wget
 curl -X PUT /api/v2/loyalty/prize/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
@@ -315,7 +294,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/prize/{id}/',
@@ -332,9 +312,11 @@ fetch('/api/v2/loyalty/prize/{id}/',
 
 ```
 
-`PUT /api/v2/loyalty/prize/{id}/`
+This endpoint updates a specific prize.
 
-A viewset that provides CRUD actions for the loyalty prize
+<h4 id="http-request">HTTP Request</h4>
+
+`PUT /api/v2/loyalty/prize/{id}/`
 
 > Body parameter
 
@@ -349,32 +331,12 @@ A viewset that provides CRUD actions for the loyalty prize
 }
 ```
 
-```yaml
-active: true
-title: string
-description: string
-points: 0
-link: http://example.com
-image: string
-
-```
-
 <h3 id="updateloyaltyprize-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this loyalty prize.|
 |body|body|[LoyaltyPrize](#schemaloyaltyprize)|false|none|
-|» id|body|integer|false|none|
-|» active|body|boolean|false|none|
-|» title|body|string|true|none|
-|» description|body|string¦null|false|none|
-|» points|body|integer(int64)|true|none|
-|» link|body|string(uri)¦null|false|none|
-|» image|body|string(binary)|true|none|
-|» created_at|body|string(date-time)|false|none|
-|» lastmod_datetime|body|string(date-time)|false|none|
-|» created_by|body|string|false|none|
 
 > Example responses
 
@@ -401,11 +363,11 @@ image: string
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrize](#schemaloyaltyprize)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation requires authentication and admin or editor role.
 </aside>
 
-## partialUpdateLoyaltyPrize
+## Patch a Specific Prize
 
 <a id="opIdpartialUpdateLoyaltyPrize"></a>
 
@@ -415,8 +377,9 @@ This operation does not require authentication
 # You can also use wget
 curl -X PATCH /api/v2/loyalty/prize/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
@@ -430,7 +393,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/prize/{id}/',
@@ -446,10 +410,16 @@ fetch('/api/v2/loyalty/prize/{id}/',
 });
 
 ```
+This endpoint patch a specific prize.
+ 
+**NOTE:**
+You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
+
+For example to change `active` flag in an admin list/table interface.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `PATCH /api/v2/loyalty/prize/{id}/`
-
-A viewset that provides CRUD actions for the loyalty prize
 
 > Body parameter
 
@@ -464,32 +434,12 @@ A viewset that provides CRUD actions for the loyalty prize
 }
 ```
 
-```yaml
-active: true
-title: string
-description: string
-points: 0
-link: http://example.com
-image: string
-
-```
-
 <h3 id="partialupdateloyaltyprize-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this loyalty prize.|
 |body|body|[LoyaltyPrize](#schemaloyaltyprize)|false|none|
-|» id|body|integer|false|none|
-|» active|body|boolean|false|none|
-|» title|body|string|true|none|
-|» description|body|string¦null|false|none|
-|» points|body|integer(int64)|true|none|
-|» link|body|string(uri)¦null|false|none|
-|» image|body|string(binary)|true|none|
-|» created_at|body|string(date-time)|false|none|
-|» lastmod_datetime|body|string(date-time)|false|none|
-|» created_by|body|string|false|none|
 
 > Example responses
 
@@ -516,58 +466,11 @@ image: string
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrize](#schemaloyaltyprize)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation requires authentication and admin or editor role.
 </aside>
 
-## destroyLoyaltyPrize
-
-<a id="opIddestroyLoyaltyPrize"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X DELETE /api/v2/loyalty/prize/{id}/
-
-```
-
-```javascript
-
-fetch('/api/v2/loyalty/prize/{id}/',
-{
-  method: 'DELETE'
-
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`DELETE /api/v2/loyalty/prize/{id}/`
-
-A viewset that provides CRUD actions for the loyalty prize
-
-<h3 id="destroyloyaltyprize-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this loyalty prize.|
-
-<h3 id="destroyloyaltyprize-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## listLoyaltyRequests
+## Get All Prizes Requests
 
 <a id="opIdlistLoyaltyRequests"></a>
 
@@ -576,20 +479,21 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X GET /api/v2/loyalty/request/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/request/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -600,9 +504,11 @@ fetch('/api/v2/loyalty/request/',
 
 ```
 
-`GET /api/v2/loyalty/request/`
+This endpoint retrieves all requests of loyalty prizes.
 
-A viewset that provides CRUD actions for requesting a loyalty prize
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/loyalty/request/`
 
 <h3 id="listloyaltyrequests-parameters">Parameters</h3>
 
@@ -618,11 +524,11 @@ A viewset that provides CRUD actions for requesting a loyalty prize
 
 #### Enumerated Values
 
-|Parameter|Value|
-|---|---|
-|status|0|
-|status|1|
-|status|2|
+|Parameter|Value|Description|
+|---|---|---|
+|status|0|pending|
+|status|1|refused|
+|status|2|sent|
 
 > Example responses
 
@@ -678,40 +584,12 @@ Status Code **200**
 |» next|string(uri)¦null|false|none|none|
 |» previous|string(uri)¦null|false|none|none|
 |» results|[[LoyaltyPrizeUser](#schemaloyaltyprizeuser)]|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» user|object|false|read-only|none|
-|»»» id|integer|false|read-only|none|
-|»»» username|string|false|read-only|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»»» real_name|string|false|none|none|
-|»»» email|string(email)|false|read-only|none|
-|»»» description|string|false|none|none|
-|»»» avatar|string|false|read-only|none|
-|»» pending_at|string(date-time)|false|read-only|none|
-|»» prize|object|false|read-only|none|
-|»»» id|integer|false|read-only|none|
-|»»» active|boolean|false|none|none|
-|»»» title|string|true|none|none|
-|»»» description|string¦null|false|none|none|
-|»»» points|integer(int64)|true|none|none|
-|»»» link|string(uri)¦null|false|none|none|
-|»»» image|string(binary)|true|none|none|
-|»» prize_points|integer|false|read-only|none|
-|»» status|integer|false|none|none|
-|»» status_description|string|false|read-only|none|
 
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|0|
-|status|1|
-|status|2|
-
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication to see own requests and admin or editor to see all requests.
 </aside>
 
-## createLoyaltyRequest
+## Create a Prize Request
 
 <a id="opIdcreateLoyaltyRequest"></a>
 
@@ -721,17 +599,19 @@ This operation does not require authentication
 # You can also use wget
 curl -X POST /api/v2/loyalty/request/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 ```
 
 ```javascript
 const inputBody = '{
-  "status": 0
+  "prize": 0
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/request/',
@@ -747,22 +627,18 @@ fetch('/api/v2/loyalty/request/',
 });
 
 ```
+This endpoint creates a request for a loyalty prize.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `POST /api/v2/loyalty/request/`
-
-A viewset that provides CRUD actions for requesting a loyalty prize
 
 > Body parameter
 
 ```json
 {
-  "status": 0
+  "prize": 0
 }
-```
-
-```yaml
-status: 0
-
 ```
 
 <h3 id="createloyaltyrequest-parameters">Parameters</h3>
@@ -770,34 +646,6 @@ status: 0
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |body|body|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|false|none|
-|» id|body|integer|false|none|
-|» user|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» description|body|string|false|none|
-|»» avatar|body|string|false|none|
-|» pending_at|body|string(date-time)|false|none|
-|» prize|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» active|body|boolean|false|none|
-|»» title|body|string|true|none|
-|»» description|body|string¦null|false|none|
-|»» points|body|integer(int64)|true|none|
-|»» link|body|string(uri)¦null|false|none|
-|»» image|body|string(binary)|true|none|
-|» prize_points|body|integer|false|none|
-|» status|body|integer|false|none|
-|» status_description|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» status|0|
-|» status|1|
-|» status|2|
 
 > Example responses
 
@@ -836,11 +684,11 @@ status: 0
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication
 </aside>
 
-## retrieveLoyaltyRequest
+## Get a Specific Prize Request
 
 <a id="opIdretrieveLoyaltyRequest"></a>
 
@@ -849,20 +697,21 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X GET /api/v2/loyalty/request/{id}/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/request/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -872,16 +721,17 @@ fetch('/api/v2/loyalty/request/{id}/',
 });
 
 ```
+This endpoint retrieves a specific request for a loyalty prize.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `GET /api/v2/loyalty/request/{id}/`
-
-A viewset that provides CRUD actions for requesting a loyalty prize
 
 <h3 id="retrieveloyaltyrequest-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this loyalty prize user.|
+|id|path|string|true|A unique integer value identifying this request.|
 
 > Example responses
 
@@ -920,141 +770,11 @@ A viewset that provides CRUD actions for requesting a loyalty prize
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|
 
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication to see own request and admin or editor to see all requests.
 </aside>
 
-## updateLoyaltyRequest
-
-<a id="opIdupdateLoyaltyRequest"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X PUT /api/v2/loyalty/request/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-
-```
-
-```javascript
-const inputBody = '{
-  "status": 0
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
-};
-
-fetch('/api/v2/loyalty/request/{id}/',
-{
-  method: 'PUT',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`PUT /api/v2/loyalty/request/{id}/`
-
-A viewset that provides CRUD actions for requesting a loyalty prize
-
-> Body parameter
-
-```json
-{
-  "status": 0
-}
-```
-
-```yaml
-status: 0
-
-```
-
-<h3 id="updateloyaltyrequest-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this loyalty prize user.|
-|body|body|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|false|none|
-|» id|body|integer|false|none|
-|» user|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» description|body|string|false|none|
-|»» avatar|body|string|false|none|
-|» pending_at|body|string(date-time)|false|none|
-|» prize|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» active|body|boolean|false|none|
-|»» title|body|string|true|none|
-|»» description|body|string¦null|false|none|
-|»» points|body|integer(int64)|true|none|
-|»» link|body|string(uri)¦null|false|none|
-|»» image|body|string(binary)|true|none|
-|» prize_points|body|integer|false|none|
-|» status|body|integer|false|none|
-|» status_description|body|string|false|none|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|» status|0|
-|» status|1|
-|» status|2|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "user": {
-    "id": 0,
-    "username": "string",
-    "real_name": "string",
-    "email": "user@example.com",
-    "description": "string",
-    "avatar": "string"
-  },
-  "pending_at": "2019-08-24T14:15:22Z",
-  "prize": {
-    "id": 0,
-    "active": true,
-    "title": "string",
-    "description": "string",
-    "points": 0,
-    "link": "http://example.com",
-    "image": "string"
-  },
-  "prize_points": 0,
-  "status": 0,
-  "status_description": "string"
-}
-```
-
-<h3 id="updateloyaltyrequest-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## partialUpdateLoyaltyRequest
+## Patch a Specific Prize Request
 
 <a id="opIdpartialUpdateLoyaltyRequest"></a>
 
@@ -1064,7 +784,9 @@ This operation does not require authentication
 # You can also use wget
 curl -X PATCH /api/v2/loyalty/request/{id}/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+  --DATA '{body}'
 
 ```
 
@@ -1074,7 +796,8 @@ const inputBody = '{
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json'
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
 };
 
 fetch('/api/v2/loyalty/request/{id}/',
@@ -1090,10 +813,15 @@ fetch('/api/v2/loyalty/request/{id}/',
 });
 
 ```
+This endpoint patch a specific request for a loyalty prize.
+
+**NOTE:**
+You can use this endpoint to to change `status` in an admin list/table interface.
+
+<h4 id="http-request">HTTP Request</h4>
 
 `PATCH /api/v2/loyalty/request/{id}/`
 
-A viewset that provides CRUD actions for requesting a loyalty prize
 
 > Body parameter
 
@@ -1103,45 +831,20 @@ A viewset that provides CRUD actions for requesting a loyalty prize
 }
 ```
 
-```yaml
-status: 0
-
-```
-
 <h3 id="partialupdateloyaltyrequest-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this loyalty prize user.|
 |body|body|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|false|none|
-|» id|body|integer|false|none|
-|» user|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» username|body|string|false|Required. 255 characters or fewer. Letters, numbers and -/_ characters|
-|»» real_name|body|string|false|none|
-|»» email|body|string(email)|false|none|
-|»» description|body|string|false|none|
-|»» avatar|body|string|false|none|
-|» pending_at|body|string(date-time)|false|none|
-|» prize|body|object|false|none|
-|»» id|body|integer|false|none|
-|»» active|body|boolean|false|none|
-|»» title|body|string|true|none|
-|»» description|body|string¦null|false|none|
-|»» points|body|integer(int64)|true|none|
-|»» link|body|string(uri)¦null|false|none|
-|»» image|body|string(binary)|true|none|
-|» prize_points|body|integer|false|none|
-|» status|body|integer|false|none|
-|» status_description|body|string|false|none|
 
 #### Enumerated Values
 
-|Parameter|Value|
-|---|---|
-|» status|0|
-|» status|1|
-|» status|2|
+|Parameter|Value|Description|
+|---|---|---|
+|status|0|pending|
+|status|1|refused|
+|status|2|sent|
 
 > Example responses
 
@@ -1180,53 +883,6 @@ status: 0
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|
 
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## destroyLoyaltyRequest
-
-<a id="opIddestroyLoyaltyRequest"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X DELETE /api/v2/loyalty/request/{id}/
-
-```
-
-```javascript
-
-fetch('/api/v2/loyalty/request/{id}/',
-{
-  method: 'DELETE'
-
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-`DELETE /api/v2/loyalty/request/{id}/`
-
-A viewset that provides CRUD actions for requesting a loyalty prize
-
-<h3 id="destroyloyaltyrequest-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this loyalty prize user.|
-
-<h3 id="destroyloyaltyrequest-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="success">
-This operation does not require authentication
+<aside class="notice">
+This operation require authentication and admin or editor role.
 </aside>
