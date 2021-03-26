@@ -2873,7 +2873,7 @@ This operation require authentication
 </aside>
 
 
-## Get User's Loyalty Points
+### Get User's Loyalty Points
 
 <a id="opIdloyaltyPointsUser"></a>
 
@@ -2909,11 +2909,11 @@ fetch('/api/v2/user/{id}/loyalty/points/',
 
 Return loyalty points of the user
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/user/{id}/loyalty/points/`
 
-<h4 id="ishiddenuser-parameters">Parameters</h4>
+<h5 id="ishiddenuser-parameters">Parameters</h5>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2929,7 +2929,7 @@ Return loyalty points of the user
 }
 ```
 
-<h3 id="loyaltypointsuser-responses">Responses</h3>
+<h4 id="loyaltypointsuser-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
