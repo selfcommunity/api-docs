@@ -1,4 +1,4 @@
-<h2 id="selfcommunity-api-score">score</h2>
+<h2 id="selfcommunity-api-score">Score</h2>
 
 ### Get All Scores
 
