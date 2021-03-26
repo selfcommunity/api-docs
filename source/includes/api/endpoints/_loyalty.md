@@ -1,6 +1,6 @@
-<h1 id="selfcommunity-api-loyalty">Loyalty</h1>
+<h2 id="selfcommunity-api-loyalty">Loyalty</h2>
 
-## Get All Prizes
+### Get All Prizes
 
 <a id="opIdlistLoyaltyPrizes"></a>
 
@@ -36,11 +36,11 @@ fetch('/api/v2/loyalty/prize/',
 
 This endpoint retrieves all prizes.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/loyalty/prize/`
 
-<h3 id="listloyaltyprizes-parameters">Parameters</h3>
+<h4 id="listloyaltyprizes-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -76,13 +76,13 @@ This endpoint retrieves all prizes.
 }
 ```
 
-<h3 id="listloyaltyprizes-responses">Responses</h3>
+<h4 id="listloyaltyprizes-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listloyaltyprizes-responseschema">Response Schema</h3>
+<h4 id="listloyaltyprizes-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -97,7 +97,7 @@ Status Code **200**
 This operation require authentication and admin or editor role to filter active prizes.
 </aside>
 
-## Create a Prize
+### Create a Prize
 
 <a id="opIdcreateLoyaltyPrize"></a>
 
@@ -142,7 +142,7 @@ fetch('/api/v2/loyalty/prize/',
 ```
 This endpoint creates a prize.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `POST /api/v2/loyalty/prize/`
 
@@ -159,7 +159,7 @@ This endpoint creates a prize.
 }
 ```
 
-<h3 id="createloyaltyprize-parameters">Parameters</h3>
+<h4 id="createloyaltyprize-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -184,7 +184,7 @@ This endpoint creates a prize.
 }
 ```
 
-<h3 id="createloyaltyprize-responses">Responses</h3>
+<h4 id="createloyaltyprize-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -194,7 +194,7 @@ This endpoint creates a prize.
 This operation require authentication and admin or editor role.
 </aside>
 
-## Get a Specific Prize
+### Get a Specific Prize
 
 <a id="opIdretrieveLoyaltyPrize"></a>
 
@@ -229,11 +229,11 @@ fetch('/api/v2/loyalty/prize/{id}/',
 ```
 This endpoint retrieves a specific prize.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/loyalty/prize/{id}/`
 
-<h3 id="retrieveloyaltyprize-parameters">Parameters</h3>
+<h4 id="retrieveloyaltyprize-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -258,7 +258,7 @@ This endpoint retrieves a specific prize.
 }
 ```
 
-<h3 id="retrieveloyaltyprize-responses">Responses</h3>
+<h4 id="retrieveloyaltyprize-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -268,7 +268,7 @@ This endpoint retrieves a specific prize.
 This operation require authentication and admin or editor role to get a not active prize.
 </aside>
 
-## Update a Specific Prize
+### Update a Specific Prize
 
 <a id="opIdupdateLoyaltyPrize"></a>
 
@@ -314,7 +314,7 @@ fetch('/api/v2/loyalty/prize/{id}/',
 
 This endpoint updates a specific prize.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `PUT /api/v2/loyalty/prize/{id}/`
 
@@ -331,7 +331,7 @@ This endpoint updates a specific prize.
 }
 ```
 
-<h3 id="updateloyaltyprize-parameters">Parameters</h3>
+<h4 id="updateloyaltyprize-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -357,7 +357,7 @@ This endpoint updates a specific prize.
 }
 ```
 
-<h3 id="updateloyaltyprize-responses">Responses</h3>
+<h4 id="updateloyaltyprize-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -367,7 +367,7 @@ This endpoint updates a specific prize.
 This operation requires authentication and admin or editor role.
 </aside>
 
-## Patch a Specific Prize
+### Patch a Specific Prize
 
 <a id="opIdpartialUpdateLoyaltyPrize"></a>
 
@@ -417,7 +417,7 @@ You can use this endpoint to edit a single field passing only the id and the nee
 
 For example to change `active` flag in an admin list/table interface.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `PATCH /api/v2/loyalty/prize/{id}/`
 
@@ -434,7 +434,7 @@ For example to change `active` flag in an admin list/table interface.
 }
 ```
 
-<h3 id="partialupdateloyaltyprize-parameters">Parameters</h3>
+<h4 id="partialupdateloyaltyprize-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -460,7 +460,7 @@ For example to change `active` flag in an admin list/table interface.
 }
 ```
 
-<h3 id="partialupdateloyaltyprize-responses">Responses</h3>
+<h4 id="partialupdateloyaltyprize-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -470,7 +470,7 @@ For example to change `active` flag in an admin list/table interface.
 This operation requires authentication and admin or editor role.
 </aside>
 
-## Get All Prizes Requests
+### Get All Prizes Requests
 
 <a id="opIdlistLoyaltyRequests"></a>
 
@@ -506,11 +506,11 @@ fetch('/api/v2/loyalty/request/',
 
 This endpoint retrieves all requests of loyalty prizes.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/loyalty/request/`
 
-<h3 id="listloyaltyrequests-parameters">Parameters</h3>
+<h4 id="listloyaltyrequests-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -568,13 +568,13 @@ This endpoint retrieves all requests of loyalty prizes.
 }
 ```
 
-<h3 id="listloyaltyrequests-responses">Responses</h3>
+<h4 id="listloyaltyrequests-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h3 id="listloyaltyrequests-responseschema">Response Schema</h3>
+<h4 id="listloyaltyrequests-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -589,7 +589,7 @@ Status Code **200**
 This operation require authentication to see own requests and admin or editor to see all requests.
 </aside>
 
-## Create a Prize Request
+### Create a Prize Request
 
 <a id="opIdcreateLoyaltyRequest"></a>
 
@@ -629,7 +629,7 @@ fetch('/api/v2/loyalty/request/',
 ```
 This endpoint creates a request for a loyalty prize.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `POST /api/v2/loyalty/request/`
 
@@ -641,7 +641,7 @@ This endpoint creates a request for a loyalty prize.
 }
 ```
 
-<h3 id="createloyaltyrequest-parameters">Parameters</h3>
+<h4 id="createloyaltyrequest-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -678,7 +678,7 @@ This endpoint creates a request for a loyalty prize.
 }
 ```
 
-<h3 id="createloyaltyrequest-responses">Responses</h3>
+<h4 id="createloyaltyrequest-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -688,7 +688,7 @@ This endpoint creates a request for a loyalty prize.
 This operation require authentication
 </aside>
 
-## Get a Specific Prize Request
+### Get a Specific Prize Request
 
 <a id="opIdretrieveLoyaltyRequest"></a>
 
@@ -723,11 +723,11 @@ fetch('/api/v2/loyalty/request/{id}/',
 ```
 This endpoint retrieves a specific request for a loyalty prize.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `GET /api/v2/loyalty/request/{id}/`
 
-<h3 id="retrieveloyaltyrequest-parameters">Parameters</h3>
+<h4 id="retrieveloyaltyrequest-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -764,7 +764,7 @@ This endpoint retrieves a specific request for a loyalty prize.
 }
 ```
 
-<h3 id="retrieveloyaltyrequest-responses">Responses</h3>
+<h4 id="retrieveloyaltyrequest-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -774,7 +774,7 @@ This endpoint retrieves a specific request for a loyalty prize.
 This operation require authentication to see own request and admin or editor to see all requests.
 </aside>
 
-## Patch a Specific Prize Request
+### Patch a Specific Prize Request
 
 <a id="opIdpartialUpdateLoyaltyRequest"></a>
 
@@ -818,7 +818,7 @@ This endpoint patch a specific request for a loyalty prize.
 **NOTE:**
 You can use this endpoint to to change `status` in an admin list/table interface.
 
-<h4 id="http-request">HTTP Request</h4>
+<h5 id="http-request">HTTP Request</h5>
 
 `PATCH /api/v2/loyalty/request/{id}/`
 
@@ -831,7 +831,7 @@ You can use this endpoint to to change `status` in an admin list/table interface
 }
 ```
 
-<h3 id="partialupdateloyaltyrequest-parameters">Parameters</h3>
+<h4 id="partialupdateloyaltyrequest-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -877,7 +877,7 @@ You can use this endpoint to to change `status` in an admin list/table interface
 }
 ```
 
-<h3 id="partialupdateloyaltyrequest-responses">Responses</h3>
+<h4 id="partialupdateloyaltyrequest-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
