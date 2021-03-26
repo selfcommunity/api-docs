@@ -1,4 +1,4 @@
-<h2 id="tocS_LoyaltyPrize">LoyaltyPrize</h2>
+<h3 id="tocS_LoyaltyPrize">LoyaltyPrize</h3>
 <!-- backwards compatibility -->
 <a id="schemaloyaltyprize"></a>
 <a id="schema_LoyaltyPrize"></a>
@@ -21,7 +21,7 @@
 
 ```
 
-### Properties
+#### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
@@ -36,7 +36,7 @@
 |lastmod_datetime|string(date-time)|false|read-only|Date of last modify|
 |created_by|object|false|read-only|[User](#schemauser)|
 
-<h2 id="tocS_LoyaltyPrizeUser">LoyaltyPrizeUser</h2>
+<h3 id="tocS_LoyaltyPrizeUser">LoyaltyPrizeUser</h3>
 <!-- backwards compatibility -->
 <a id="schemaloyaltyprizeuser"></a>
 <a id="schema_LoyaltyPrizeUser"></a>
@@ -55,7 +55,7 @@
 }
 ```
 
-### Properties
+#### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|

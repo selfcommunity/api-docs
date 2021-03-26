@@ -1,5 +1,4 @@
-
-<h2 id="tocS_DynamicPreference">DynamicPreference</h2>
+<h3 id="tocS_DynamicPreference">DynamicPreference</h3>
 <!-- backwards compatibility -->
 <a id="schemadynamicpreference"></a>
 <a id="schema_DynamicPreference"></a>
@@ -16,7 +15,7 @@
 
 ```
 
-### Properties
+#### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
