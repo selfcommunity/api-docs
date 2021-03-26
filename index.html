@@ -23180,7 +23180,13 @@ curl <span class="nt">-X</span> GET /api/v2/webhook/endpoint/event/ <span class=
     </span><span class="s2">"user.deleted"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user.settings_updated"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"vote.created"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vote.deleted"</span><span class="w">
+    </span><span class="s2">"vote.deleted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user.score_updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user.loyalty_points_updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loyalty.prize.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loyalty.prize.updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loyalty.prize_request.created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loyalty.prize_request.updated"</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <h4 id="eventwebhookendpoint-responses">Responses</h4>
@@ -32393,6 +32399,36 @@ Compare the signature (or signatures) in the header to the expected signature. F
 <td>connection.unfollow</td>
 <td>a user unfollows another user</td>
 <td>This event is triggered only if <code>connections_enabled</code> community option is true and <code>follow_enabled</code> community option is true</td>
+</tr>
+<tr>
+<td>user.score_updated</td>
+<td>the score of the user has been updated</td>
+<td>---</td>
+</tr>
+<tr>
+<td>user.loyalty_points_updated</td>
+<td>the loyalty points of the user has been updated</td>
+<td>---</td>
+</tr>
+<tr>
+<td>loyalty.prize.created</td>
+<td>a new prize has been created</td>
+<td>---</td>
+</tr>
+<tr>
+<td>loyalty.prize.updated</td>
+<td>a prize has been updated</td>
+<td>---</td>
+</tr>
+<tr>
+<td>loyalty.prize_request.created</td>
+<td>a new request of a prize has been created</td>
+<td>---</td>
+</tr>
+<tr>
+<td>loyalty.prize_request.updated</td>
+<td>a request of a prize has been updated (status)</td>
+<td>---</td>
 </tr>
 </tbody></table>
 
