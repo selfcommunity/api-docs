@@ -2909,11 +2909,11 @@ fetch('/api/v2/user/{id}/loyalty/points/',
 
 Return loyalty points of the user
 
-<h5 id="http-request">HTTP Request</h5>
+<h4 id="http-request">HTTP Request</h4>
 
 `GET /api/v2/user/{id}/loyalty/points/`
 
-<h5 id="ishiddenuser-parameters">Parameters</h5>
+<h4 id="ishiddenuser-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
