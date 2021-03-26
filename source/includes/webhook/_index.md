@@ -120,3 +120,9 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |connection.deleted|a connection is deleted|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
 |connection.follow|a user follows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
 |connection.unfollow|a user unfollows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
+|user.score_updated|the score of the user has been updated|---|
+|user.loyalty_points_updated|the loyalty points of the user has been updated|---|
+|loyalty.prize.created|a new prize has been created|---|
+|loyalty.prize.updated|a prize has been updated|---|
+|loyalty.prize_request.created|a new request of a prize has been created|---|
+|loyalty.prize_request.updated|a request of a prize has been updated (status)|---|

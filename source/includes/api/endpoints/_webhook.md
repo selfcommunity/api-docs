@@ -174,7 +174,13 @@ This Endpoint retrieve [webhook events](#list-of-events) that can be enabled in 
     "user.deleted",
     "user.settings_updated",
     "vote.created",
-    "vote.deleted"
+    "vote.deleted",
+    "user.score_updated",
+    "user.loyalty_points_updated",
+    "loyalty.prize.created",
+    "loyalty.prize.updated",
+    "loyalty.prize_request.created",
+    "loyalty.prize_request.updated"
 ]
 ```
 
