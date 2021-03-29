@@ -724,8 +724,6 @@ This endpoint retrieves all votes for a specific comment.
 
 `GET /api/v2/comment/{id}/vote/`
 
-List votes for this comment
-
 <h4 id="votecomment-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
