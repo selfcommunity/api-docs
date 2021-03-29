@@ -11488,7 +11488,7 @@ curl <span class="nt">-X</span> GET /api/v2/embed/feed/ <span class="se">\</span
 </tr>
 <tr>
 <td>» results</td>
-<td>list(<a href="#schemaembed">Embed</a>)</td>
+<td>list(<a href="#schemafeed">Feed</a>)</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -28263,7 +28263,7 @@ This operation require admin or moderation role.
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Type of the embed, can be any string except <code>sc_vimeo</code> or <code>sc_link</code> that are used for embedded objects auomatically created by the community</td>
+<td>Type of the embed, can be any string except <code>sc_vimeo</code>, <code>sc_link</code> or <code>sc_shared_object</code> that are used for embedded objects auomatically created by the community</td>
 </tr>
 <tr>
 <td>embed_id</td>
@@ -28285,6 +28285,30 @@ This operation require admin or moderation role.
 <td>false</td>
 <td>none</td>
 <td>Metadata associated to this embed. It mus be a valid json object</td>
+</tr>
+</tbody></table>
+<h6 id='enumerated-values'>Enumerated Values</h6>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» embed_type</td>
+<td>sc_vimeo</td>
+<td>Embed of type video uploaded on vimeo platform (when enabled). This type is used internally by the community.</td>
+</tr>
+<tr>
+<td>» embed_type</td>
+<td>sc_link</td>
+<td>Embed of type link. This type is used internally by the community.</td>
+</tr>
+<tr>
+<td>» embed_type</td>
+<td>sc_shared_object</td>
+<td>Embed of type shared object. This type is used internally by the community when the user share a <a href="#schemadiscussion">Discussion</a> or <a href="#schemapost">Post</a>.</td>
 </tr>
 </tbody></table>
 <h3 id="tocS_ChunkMedia">ChunkMedia</h3>
