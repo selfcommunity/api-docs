@@ -134,7 +134,23 @@ This endpoint retrieves all posts.
           {
             "id": 0,
             "choice": "string",
-            "user": "string"
+            "user": {
+              "id": 0,
+              "username": "string",
+              "real_name": "string",
+              "email": "user@example.com",
+              "email_isvalid": true,
+              "date_joined": "2019-08-24T14:15:22Z",
+              "bio": "string",
+              "location": "string",
+              "birthday": "string",
+              "description": "string",
+              "gender": "Male",
+              "status": "a",
+              "website": "http://example.com",
+              "avatar": "string",
+              "cover": "string"
+            }
           }
         ]
       },
@@ -405,7 +421,23 @@ This endpoint creates a post.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -579,9 +611,25 @@ This endpoint perform search operation to posts.
             ],
             "votes": [
             {
+              "id": 0,
+              "choice": "string",
+              "user": {
                 "id": 0,
-                "choice": "string",
-                "user": "string"
+                "username": "string",
+                "real_name": "string",
+                "email": "user@example.com",
+                "email_isvalid": true,
+                "date_joined": "2019-08-24T14:15:22Z",
+                "bio": "string",
+                "location": "string",
+                "birthday": "string",
+                "description": "string",
+                "gender": "Male",
+                "status": "a",
+                "website": "http://example.com",
+                "avatar": "string",
+                "cover": "string"
+              }
             }
             ]
         },
@@ -786,7 +834,23 @@ This endpoint retrieves a specific post using ID.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -1042,7 +1106,23 @@ This endpoint update a specific post.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -1250,7 +1330,23 @@ This endpoint retrieves all votes for a specific post.
   "previous": "string",
   "results": [
       {
-        "user": "string",
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        },
         "voted_at": "2019-08-24T14:15:22Z"
         }
   ]
@@ -1447,7 +1543,23 @@ If the post has no poll associated the response status code is [404](https://too
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
   ]
 }

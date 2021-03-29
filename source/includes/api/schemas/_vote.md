@@ -7,7 +7,23 @@
 
 ```json
 {
-  "user": "string",
+  "user": {
+    "id": 0,
+    "username": "string",
+    "real_name": "string",
+    "email": "user@example.com",
+    "email_isvalid": true,
+    "date_joined": "2019-08-24T14:15:22Z",
+    "bio": "string",
+    "location": "string",
+    "birthday": "string",
+    "description": "string",
+    "gender": "Male",
+    "status": "a",
+    "website": "http://example.com",
+    "avatar": "string",
+    "cover": "string"
+  },
   "voted_at": "2019-08-24T14:15:22Z"
 }
 
@@ -32,7 +48,23 @@
 {
   "id": 0,
   "choice": "string",
-  "user": "string"
+  "user": {
+    "id": 0,
+    "username": "string",
+    "real_name": "string",
+    "email": "user@example.com",
+    "email_isvalid": true,
+    "date_joined": "2019-08-24T14:15:22Z",
+    "bio": "string",
+    "location": "string",
+    "birthday": "string",
+    "description": "string",
+    "gender": "Male",
+    "status": "a",
+    "website": "http://example.com",
+    "avatar": "string",
+    "cover": "string"
+  }
 }
 
 ```

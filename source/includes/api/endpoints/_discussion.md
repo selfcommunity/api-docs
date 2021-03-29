@@ -136,7 +136,23 @@ This endpoint retrieves all discussions.
           {
             "id": 0,
             "choice": "string",
-            "user": "string"
+            "user": {
+              "id": 0,
+              "username": "string",
+              "real_name": "string",
+              "email": "user@example.com",
+              "email_isvalid": true,
+              "date_joined": "2019-08-24T14:15:22Z",
+              "bio": "string",
+              "location": "string",
+              "birthday": "string",
+              "description": "string",
+              "gender": "Male",
+              "status": "a",
+              "website": "http://example.com",
+              "avatar": "string",
+              "cover": "string"
+            }
           }
         ]
       },
@@ -332,7 +348,23 @@ This endpoint retrieves all uncommented discussions.
           {
             "id": 0,
             "choice": "string",
-            "user": "string"
+            "user": {
+              "id": 0,
+              "username": "string",
+              "real_name": "string",
+              "email": "user@example.com",
+              "email_isvalid": true,
+              "date_joined": "2019-08-24T14:15:22Z",
+              "bio": "string",
+              "location": "string",
+              "birthday": "string",
+              "description": "string",
+              "gender": "Male",
+              "status": "a",
+              "website": "http://example.com",
+              "avatar": "string",
+              "cover": "string"
+            }
           }
         ]
       },
@@ -525,9 +557,25 @@ This endpoint perform search operation to discussions.
             ],
             "votes": [
             {
+              "id": 0,
+              "choice": "string",
+              "user": {
                 "id": 0,
-                "choice": "string",
-                "user": "string"
+                "username": "string",
+                "real_name": "string",
+                "email": "user@example.com",
+                "email_isvalid": true,
+                "date_joined": "2019-08-24T14:15:22Z",
+                "bio": "string",
+                "location": "string",
+                "birthday": "string",
+                "description": "string",
+                "gender": "Male",
+                "status": "a",
+                "website": "http://example.com",
+                "avatar": "string",
+                "cover": "string"
+              }
             }
             ]
         },
@@ -826,7 +874,23 @@ This endpoint creates a discussion.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -1001,7 +1065,23 @@ This endpoint retrieves a specific discussion using ID.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -1266,7 +1346,23 @@ This endpoint update a specific discussion.
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
     ]
   },
@@ -1552,9 +1648,25 @@ This endpoint retrieve related discussions
             ],
             "votes": [
             {
+              "id": 0,
+              "choice": "string",
+              "user": {
                 "id": 0,
-                "choice": "string",
-                "user": "string"
+                "username": "string",
+                "real_name": "string",
+                "email": "user@example.com",
+                "email_isvalid": true,
+                "date_joined": "2019-08-24T14:15:22Z",
+                "bio": "string",
+                "location": "string",
+                "birthday": "string",
+                "description": "string",
+                "gender": "Male",
+                "status": "a",
+                "website": "http://example.com",
+                "avatar": "string",
+                "cover": "string"
+              }
             }
             ]
         },
@@ -1665,9 +1777,25 @@ This endpoint retrieves all votes for a specific discussion.
   "previous": "string",
   "results": [
       {
-        "user": "string",
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        },
         "voted_at": "2019-08-24T14:15:22Z"
-        }
+      }
   ]
 }
 ```
@@ -1862,7 +1990,23 @@ If the discussion has no poll associated the response status code is [404](https
       {
         "id": 0,
         "choice": "string",
-        "user": "string"
+        "user": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "birthday": "string",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string"
+        }
       }
   ]
 }
