@@ -81,7 +81,7 @@
 |status|b|Blocked|
 |status|d|Deleted|
 |status|u|Unregistered (hard deleted)|
-|connection_status|None|No connection status between the request user and this user|
+|connection_status|null|No connection status between the request user and this user|
 |connection_status|followed|This user is followed|
 |connection_status|connected|This user is connected (friend)|
 |connection_status|sent_connection_request|Connection (friendship) request sent to this user|

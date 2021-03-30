@@ -85,7 +85,8 @@ This endpoint retrieve the list of all users.
       "cover": "string",
       "ext_id": 3,
       "tags": [],
-      "reputation": 39
+      "reputation": 39,
+      "connection_status": "string"
     }
   ]
 }
@@ -201,7 +202,8 @@ This endpoint perform search users.
       "cover": "string",
       "ext_id": 3,
       "tags": [],
-      "reputation": 39
+      "reputation": 39,
+      "connection_status": "string"
     }
   ]
 }
@@ -296,7 +298,8 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "cover": "string",
   "ext_id": 3,
   "tags": [],
-  "reputation": 39
+  "reputation": 39,
+  "connection_status": "string"
 }
 ```
 
@@ -422,7 +425,8 @@ website: http://example.com
   "cover": "string",
   "ext_id": 3,
   "tags": [],
-  "reputation": 39
+  "reputation": 39,
+  "connection_status": "string"
 }
 ```
 
@@ -522,7 +526,8 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "cover": "string",
   "ext_id": 3,
   "tags": [],
-  "reputation": 39
+  "reputation": 39,
+  "connection_status": "string"
 }
 ```
 
