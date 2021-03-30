@@ -33,7 +33,7 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|user|integer|false|read-only|none|
+|user|[User](#schemauser)|false|read-only|none|
 |voted_at|string(date-time)|false|read-only|none|
 
 
@@ -75,4 +75,4 @@
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
 |choice|integer|false|read-only|Poll Choice unique id|
-|user|integer|false|read-only|none|
+|user|[User](#schemauser)|false|read-only|none|

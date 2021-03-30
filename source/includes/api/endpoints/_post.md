@@ -127,30 +127,7 @@ This endpoint retrieves all posts.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "count_votes": "string"
-          }
-        ],
-        "votes": [
-          {
-            "id": 0,
-            "choice": "string",
-            "user": {
-              "id": 0,
-              "username": "string",
-              "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
-              "date_joined": "2019-08-24T14:15:22Z",
-              "bio": "string",
-              "location": "string",
-              "birthday": "string",
-              "description": "string",
-              "gender": "Male",
-              "status": "a",
-              "website": "http://example.com",
-              "avatar": "string",
-              "cover": "string"
-            }
+            "vote_count": "string"
           }
         ]
       },
@@ -415,30 +392,7 @@ This endpoint creates a post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -602,37 +556,14 @@ This endpoint perform search operation to posts.
             "expiration_at": "2019-08-24T14:15:22Z",
             "hidden": "string",
             "choices": [
-            {
-                "id": 0,
-                "choice": "string",
-                "order": 0,
-                "added_at": "2019-08-24T14:15:22Z",
-                "deleted": "string",
-                "count_votes": "string"
-            }
-            ],
-            "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": {
-                "id": 0,
-                "username": "string",
-                "real_name": "string",
-                "email": "user@example.com",
-                "email_isvalid": true,
-                "date_joined": "2019-08-24T14:15:22Z",
-                "bio": "string",
-                "location": "string",
-                "birthday": "string",
-                "description": "string",
-                "gender": "Male",
-                "status": "a",
-                "website": "http://example.com",
-                "avatar": "string",
-                "cover": "string"
+              {
+                  "id": 0,
+                  "choice": "string",
+                  "order": 0,
+                  "added_at": "2019-08-24T14:15:22Z",
+                  "deleted": "string",
+                  "vote_count": "string"
               }
-            }
             ]
         },
         "last_activity_at": "2019-08-24T14:15:22Z",
@@ -830,30 +761,7 @@ This endpoint retrieves a specific post using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -1103,30 +1011,7 @@ This endpoint update a specific post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },

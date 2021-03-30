@@ -129,30 +129,7 @@ This endpoint retrieves all discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "count_votes": "string"
-          }
-        ],
-        "votes": [
-          {
-            "id": 0,
-            "choice": "string",
-            "user": {
-              "id": 0,
-              "username": "string",
-              "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
-              "date_joined": "2019-08-24T14:15:22Z",
-              "bio": "string",
-              "location": "string",
-              "birthday": "string",
-              "description": "string",
-              "gender": "Male",
-              "status": "a",
-              "website": "http://example.com",
-              "avatar": "string",
-              "cover": "string"
-            }
+            "vote_count": "string"
           }
         ]
       },
@@ -342,30 +319,7 @@ This endpoint retrieves all uncommented discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "count_votes": "string"
-          }
-        ],
-        "votes": [
-          {
-            "id": 0,
-            "choice": "string",
-            "user": {
-              "id": 0,
-              "username": "string",
-              "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
-              "date_joined": "2019-08-24T14:15:22Z",
-              "bio": "string",
-              "location": "string",
-              "birthday": "string",
-              "description": "string",
-              "gender": "Male",
-              "status": "a",
-              "website": "http://example.com",
-              "avatar": "string",
-              "cover": "string"
-            }
+            "vote_count": "string"
           }
         ]
       },
@@ -548,37 +502,14 @@ This endpoint perform search operation to discussions.
             "expiration_at": "2019-08-24T14:15:22Z",
             "hidden": "string",
             "choices": [
-            {
-                "id": 0,
-                "choice": "string",
-                "order": 0,
-                "added_at": "2019-08-24T14:15:22Z",
-                "deleted": "string",
-                "count_votes": "string"
-            }
-            ],
-            "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": {
-                "id": 0,
-                "username": "string",
-                "real_name": "string",
-                "email": "user@example.com",
-                "email_isvalid": true,
-                "date_joined": "2019-08-24T14:15:22Z",
-                "bio": "string",
-                "location": "string",
-                "birthday": "string",
-                "description": "string",
-                "gender": "Male",
-                "status": "a",
-                "website": "http://example.com",
-                "avatar": "string",
-                "cover": "string"
+              {
+                  "id": 0,
+                  "choice": "string",
+                  "order": 0,
+                  "added_at": "2019-08-24T14:15:22Z",
+                  "deleted": "string",
+                  "vote_count": "string"
               }
-            }
             ]
         },
         "last_activity_at": "2019-08-24T14:15:22Z",
@@ -870,30 +801,7 @@ This endpoint creates a discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -1062,30 +970,7 @@ This endpoint retrieves a specific discussion using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -1344,30 +1229,7 @@ This endpoint update a specific discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -1634,47 +1496,24 @@ This endpoint retrieve related discussions
             "lng": 0
         },
         "poll": {
-            "id": 0,
-            "title": "string",
-            "multiple_choices": true,
-            "added_at": "2019-08-24T14:15:22Z",
-            "modified_at": "2019-08-24T14:15:22Z",
-            "closed": true,
-            "expiration_at": "2019-08-24T14:15:22Z",
-            "hidden": "string",
-            "choices": [
+          "id": 0,
+          "title": "string",
+          "multiple_choices": true,
+          "added_at": "2019-08-24T14:15:22Z",
+          "modified_at": "2019-08-24T14:15:22Z",
+          "closed": true,
+          "expiration_at": "2019-08-24T14:15:22Z",
+          "hidden": "string",
+          "choices": [
             {
                 "id": 0,
                 "choice": "string",
                 "order": 0,
                 "added_at": "2019-08-24T14:15:22Z",
                 "deleted": "string",
-                "count_votes": "string"
+                "vote_count": "string"
             }
-            ],
-            "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": {
-                "id": 0,
-                "username": "string",
-                "real_name": "string",
-                "email": "user@example.com",
-                "email_isvalid": true,
-                "date_joined": "2019-08-24T14:15:22Z",
-                "bio": "string",
-                "location": "string",
-                "birthday": "string",
-                "description": "string",
-                "gender": "Male",
-                "status": "a",
-                "website": "http://example.com",
-                "avatar": "string",
-                "cover": "string"
-              }
-            }
-            ]
+          ]
         },
         "last_activity_at": "2019-08-24T14:15:22Z",
         "view_count": 0,
