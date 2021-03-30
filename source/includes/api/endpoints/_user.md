@@ -2986,7 +2986,7 @@ fetch('/api/v2/user/connection/statuses/',
 
 ```
 
-List of connection/follow statuses of a users array
+This endpoint list the connection/follow statuses of the logged user starting from a users array
 
 <h4 id="http-request">HTTP Request</h4>
 
