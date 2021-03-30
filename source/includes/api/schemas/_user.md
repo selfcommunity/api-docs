@@ -68,7 +68,6 @@
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 |reputation|integer|false|read-only|User reputation.|
 |permission|[UserPermission](#schemauserpermission)|false|read-only|List of user permission. Only for the resource [/user/me/](#opIdmeUser).|
-|reputation|integer|false|read-only|The reputation score of the user|
 |connection_status|string¦null|false|read-only|The connection status between the request user and this user|
 
 #### Enumerated Values
