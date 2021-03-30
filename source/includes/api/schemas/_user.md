@@ -35,8 +35,10 @@
     "create_post_with_category": true,
     "follow_user": true,
     "request_connection": true,
-    "accept_connection": true}
-  }
+    "accept_connection": true
+  },
+  "reputation": 0,
+  "connection_status": "string"
 }
 
 ```
@@ -66,6 +68,8 @@
 |tags|[Object]¦[]|false|none|User's tag list. List of [Tag](#schematag).|
 |reputation|integer|false|read-only|User reputation.|
 |permission|[UserPermission](#schemauserpermission)|false|read-only|List of user permission. Only for the resource [/user/me/](#opIdmeUser).|
+|reputation|integer|false|read-only|The reputation score of the user|
+|connection_status|string¦null|false|read-only|The connection status between the request user and this user|
 
 #### Enumerated Values
 
@@ -78,3 +82,8 @@
 |status|b|Blocked|
 |status|d|Deleted|
 |status|u|Unregistered (hard deleted)|
+|connection_status|None|No connection status between the request user and this user|
+|connection_status|followed|This user is followed|
+|connection_status|connected|This user is connected (friend)|
+|connection_status|sent_connection_request|Connection (friendship) request sent to this user|
+|connection_status|received_connection_request|Connection (friendship) request received from this user|
