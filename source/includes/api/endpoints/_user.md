@@ -3029,6 +3029,6 @@ This endpoint list the connection/follow statuses of the logged user starting fr
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Array of user ids and connection statuses|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
