@@ -472,6 +472,9 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#get-user-39-s-connections-statuses" class="toc-h2 toc-link" data-title="Get User's Connections Statuses">Get User's Connections Statuses</a>
+                  </li>
+                  <li>
                     <a href="#selfcommunity-api-locality" class="toc-h2 toc-link" data-title="Locality">Locality</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -676,6 +679,9 @@
                           <li>
                             <a href="#unflag-a-specific-discussion" class="toc-h3 toc-link" data-title="Unflag a Specific Discussion">Unflag a Specific Discussion</a>                            
                           </li>
+                          <li>
+                            <a href="#get-flag-status-for-a-specific-discussion" class="toc-h3 toc-link" data-title="Get Flag Status for a Specific Discussion">Get Flag Status for a Specific Discussion</a>                            
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -729,6 +735,9 @@
                           <li>
                             <a href="#unflag-a-specific-post" class="toc-h3 toc-link" data-title="Unflag a Specific Post">Unflag a Specific Post</a>                            
                           </li>
+                          <li>
+                            <a href="#get-flag-status-for-a-specific-post" class="toc-h3 toc-link" data-title="Get Flag Status for a Specific Post">Get Flag Status for a Specific Post</a>                            
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -769,6 +778,9 @@
                           </li>
                           <li>
                             <a href="#unflag-a-specific-comment" class="toc-h3 toc-link" data-title="Unflag a Specific Comment">Unflag a Specific Comment</a>                            
+                          </li>
+                          <li>
+                            <a href="#get-flag-status-for-a-specific-comment" class="toc-h3 toc-link" data-title="Get Flag Status for a Specific Comment">Get Flag Status for a Specific Comment</a>                            
                           </li>
                       </ul>
                   </li>
@@ -6447,7 +6459,7 @@ This operation require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/loyalty/points/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -6522,6 +6534,111 @@ curl <span class="nt">-X</span> GET /api/v2/user/<span class="o">{</span><span c
 </tbody></table>
 
 <aside class="notice">
+This operation require authentication
+</aside>
+<h2 id='get-user-39-s-connections-statuses'>Get User&#39;s Connections Statuses</h2>
+<p><a id="opIdconnectionStatusesUser"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/v2/user/connection/statuses/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "users": [
+    1,7,9
+  ]
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer &lt;token&gt;</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/connection/statuses/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>List of connection/follow statuses of a users array</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code>POST /api/v2/user/connection/statuses/</code></p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="connectionstatusesuser-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>Array of user ids</td>
+<td>false</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>201 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"connection_statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"7"</span><span class="p">:</span><span class="w"> </span><span class="s2">"followed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"9"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="connectionstatusesuser-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>none</td>
+<td>Array of user ids and connection statuses</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
 This operation require authentication
 </aside>
 <h2 id="selfcommunity-api-locality">Locality</h2>
@@ -9303,14 +9420,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -9542,14 +9652,7 @@ curl <span class="nt">-X</span> GET /api/v2/category/<span class="o">{</span><sp
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -11067,14 +11170,7 @@ curl <span class="nt">-X</span> GET /api/v2/embed/<span class="o">{</span><span 
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -11380,7 +11476,7 @@ curl <span class="nt">-X</span> GET /api/v2/embed/feed/ <span class="se">\</span
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -12422,30 +12518,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/ <span class="se">\</span
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -12692,30 +12765,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/uncommented/ <span class=
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -12949,37 +12999,14 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/search/ <span class="se">
             </span><span class="nl">"expiration_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"hidden"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"last_activity_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
@@ -13392,30 +13419,7 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/ <span class="se">\</spa
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -13603,30 +13607,7 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -13993,30 +13974,7 @@ curl <span class="nt">-X</span> PUT /api/v2/discussion/<span class="o">{</span><
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -14354,47 +14312,24 @@ curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><
             </span><span class="nl">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"poll"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"multiple_choices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"expiration_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"hidden"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"multiple_choices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expiration_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hidden"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+          </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"last_activity_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"view_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -15641,6 +15576,94 @@ curl <span class="nt">-X</span> POST /api/v2/discussion/<span class="o">{</span>
 <aside class="notice">
 This operation require authentication
 </aside>
+<h3 id='get-flag-status-for-a-specific-discussion'>Get Flag Status for a Specific Discussion</h3>
+<p><a id="opIdflagStatusDiscussion"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/discussion/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/flag/status/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/discussion/{id}/flag/status/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve if exists a flag for this contribute created by the user logged</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code>GET /api/v2/discussion/{id}/flag/status/</code></p>
+
+<h4 id="flagstatusdiscussion-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this discussion.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="flagstatusdiscussion-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemaflag">Flag</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h2 id="selfcommunity-api-post">Post</h2>
 <h3 id='get-all-posts'>Get All Posts</h3>
 <p><a id="opIdlistPosts"></a></p>
@@ -15790,30 +15813,7 @@ curl <span class="nt">-X</span> GET /api/v2/post/ <span class="se">\</span>
             </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -16206,30 +16206,7 @@ curl <span class="nt">-X</span> POST /api/v2/post/ <span class="se">\</span>
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -16412,37 +16389,14 @@ curl <span class="nt">-X</span> GET /api/v2/post/search/ <span class="se">\</spa
             </span><span class="nl">"expiration_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"hidden"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
               </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"last_activity_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
@@ -16679,30 +16633,7 @@ curl <span class="nt">-X</span> GET /api/v2/post/<span class="o">{</span><span c
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -17048,30 +16979,7 @@ curl <span class="nt">-X</span> PUT /api/v2/post/<span class="o">{</span><span c
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -18284,6 +18192,94 @@ curl <span class="nt">-X</span> POST /api/v2/post/<span class="o">{</span><span 
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
 <td>none</td>
 <td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
+<h3 id='get-flag-status-for-a-specific-post'>Get Flag Status for a Specific Post</h3>
+<p><a id="opIdflagStatusPost"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/post/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/flag/status/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/post/{id}/flag/status/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve if exists a flag for this contribute created by the user logged</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code>GET /api/v2/post/{id}/flag/status/</code></p>
+
+<h4 id="flagstatuspost-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this post.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="flagstatuspost-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemaflag">Flag</a></td>
 </tr>
 </tbody></table>
 
@@ -19849,6 +19845,94 @@ curl <span class="nt">-X</span> POST /api/v2/comment/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication
 </aside>
+<h3 id='get-flag-status-for-a-specific-comment'>Get Flag Status for a Specific Comment</h3>
+<p><a id="opIdflagStatusComment"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /api/v2/comment/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/flag/status/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/comment/{id}/flag/status/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+<p>Retrieve if exists a flag for this contribute created by the user logged</p>
+
+<h4 id="http-request">HTTP Request</h4>
+
+<p><code>GET /api/v2/comment/{id}/flag/status/</code></p>
+
+<h4 id="flagstatuscomment-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>A unique integer value identifying this comment.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flag_type_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="flagstatuscomment-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemaflag">Flag</a></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This operation require authentication
+</aside>
 <h2 id="selfcommunity-api-feed">Feed</h2>
 <h3 id='get-main-feed'>Get Main Feed</h3>
 <p><a id="opIdlistFeeds"></a></p>
@@ -20021,14 +20105,7 @@ curl <span class="nt">-X</span> GET /api/v2/feed/ <span class="se">\</span>
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -20361,14 +20438,7 @@ curl <span class="nt">-X</span> GET /api/v2/feed/explore/ <span class="se">\</sp
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -20818,14 +20888,7 @@ curl <span class="nt">-X</span> POST /api/v2/feed/likethis/ <span class="se">\</
               </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+              </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
@@ -25144,8 +25207,8 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/ <span class
         </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -28986,30 +29049,7 @@ This operation require admin or moderation role.
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -29226,35 +29266,7 @@ This operation require admin or moderation role.
 <td>none</td>
 </tr>
 <tr>
-<td>»» count_votes</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» votes</td>
-<td>list(object)¦null</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>integer</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» choice</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» user</td>
+<td>»» vote_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -29439,30 +29451,7 @@ This operation require admin or moderation role.
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -29713,35 +29702,7 @@ This operation require admin or moderation role.
 <td>none</td>
 </tr>
 <tr>
-<td>»» count_votes</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» votes</td>
-<td>list(object)¦null</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>integer</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» choice</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» user</td>
+<td>»» vote_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -29931,30 +29892,7 @@ This operation require admin or moderation role.
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -30162,35 +30100,7 @@ This operation require admin or moderation role.
 <td>none</td>
 </tr>
 <tr>
-<td>»» count_votes</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» votes</td>
-<td>list(object)¦null</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>integer</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» choice</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» user</td>
+<td>»» vote_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -30360,30 +30270,7 @@ This operation require admin or moderation role.
         </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -30611,35 +30498,7 @@ This operation require admin or moderation role.
 <td>none</td>
 </tr>
 <tr>
-<td>»» count_votes</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» votes</td>
-<td>list(object)¦null</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» id</td>
-<td>integer</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» choice</td>
-<td>string</td>
-<td>false</td>
-<td>read-only</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» user</td>
+<td>»» vote_count</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -31307,7 +31166,7 @@ This operation require admin or moderation role.
           </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -31400,7 +31259,7 @@ This operation require admin or moderation role.
           </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"added_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"count_votes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+          </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -31964,7 +31823,7 @@ This operation require admin or moderation role.
 </thead><tbody>
 <tr>
 <td>user</td>
-<td>integer</td>
+<td><a href="#schemauser">User</a></td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
@@ -32034,7 +31893,7 @@ This operation require admin or moderation role.
 </tr>
 <tr>
 <td>user</td>
-<td>integer</td>
+<td><a href="#schemauser">User</a></td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
