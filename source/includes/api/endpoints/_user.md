@@ -2945,7 +2945,7 @@ This operation require authentication
 </aside>
 
 
-## Get User's Connections Statuses
+## List User's Connections Statuses
 
 <a id="opIdconnectionStatusesUser"></a>
 
