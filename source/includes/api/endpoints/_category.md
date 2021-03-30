@@ -1100,9 +1100,10 @@ This endpoint retrieves the category feed.
         "html": "string",
         "summary": "string",
         "deleted": true,
-        "collapsed": "string",
+        "collapsed": false,
         "comment_count": 0,
-        "vote_count": "string",
+        "share_count": 0,
+        "vote_count": 0,
         "flag_count": 0,
         "addressing": [
           0
@@ -1263,7 +1264,7 @@ This endpoint retrieves the category trending feed.
       "html": "string",
       "summary": "string",
       "deleted": true,
-      "collapsed": "string",
+      "collapsed": false,
       "score": "string",
       "addressing": [
         0

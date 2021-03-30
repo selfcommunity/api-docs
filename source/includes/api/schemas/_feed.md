@@ -84,9 +84,10 @@
     "html": "string",
     "summary": "string",
     "deleted": true,
-    "collapsed": "string",
+    "collapsed": false,
     "comment_count": 0,
-    "vote_count": "string",
+    "share_count": 0,
+    "vote_count": 0,
     "flag_count": 0,
     "addressing": [
       0
@@ -176,9 +177,10 @@
     "html": "string",
     "summary": "string",
     "deleted": true,
-    "collapsed": "string",
+    "collapsed": false,
     "comment_count": 0,
-    "vote_count": "string",
+    "share_count": 0,
+    "vote_count": 0,
     "flag_count": 0,
     "addressing": [
       0

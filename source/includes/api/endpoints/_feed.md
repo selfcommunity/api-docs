@@ -184,9 +184,10 @@ This endpoint retrieves the main (home) feed
         "html": "string",
         "summary": "string",
         "deleted": true,
-        "collapsed": "string",
+        "collapsed": false,
         "comment_count": 0,
-        "vote_count": "string",
+        "share_count": 0,
+        "vote_count": 0,
         "flag_count": 0,
         "addressing": [
           0
@@ -448,9 +449,10 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
         "html": "string",
         "summary": "string",
         "deleted": true,
-        "collapsed": "string",
+        "collapsed": false,
         "comment_count": 0,
-        "vote_count": "string",
+        "share_count": 0,
+        "vote_count": 0,
         "flag_count": 0,
         "addressing": [
           0
@@ -817,9 +819,10 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
         "html": "string",
         "summary": "string",
         "deleted": true,
-        "collapsed": "string",
+        "collapsed": false,
         "comment_count": 0,
-        "vote_count": "string",
+        "share_count": 0,
+        "vote_count": 0,
         "flag_count": 0,
         "addressing": [
           0

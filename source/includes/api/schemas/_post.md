@@ -125,9 +125,10 @@
   "html": "string",
   "summary": "string",
   "deleted": true,
-  "collapsed": "string",
+  "collapsed": false,
   "comment_count": 0,
-  "vote_count": "string",
+  "share_count": 0,
+  "vote_count": 0,
   "flag_count": 0,
   "addressing": [
     0
@@ -176,6 +177,7 @@
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
 |comment_count|integer|false|read-only|none|
+|share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
@@ -307,9 +309,10 @@
   "html": "string",
   "summary": "string",
   "deleted": true,
-  "collapsed": "string",
+  "collapsed": false,
   "comment_count": 0,
-  "vote_count": "string",
+  "share_count": 0,
+  "vote_count": 0,
   "flag_count": 0,
   "addressing": [
     0
@@ -384,6 +387,7 @@
 |deleted|boolean|false|read-only|none|
 |collapsed|string|false|read-only|none|
 |comment_count|integer|false|read-only|none|
+|share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
