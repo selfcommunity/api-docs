@@ -39,7 +39,7 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "count_votes": "string"
+          "vote_count": "string"
         }
       ],
       "votes": [
@@ -132,7 +132,7 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "count_votes": "string"
+          "vote_count": "string"
         }
       ],
       "votes": [

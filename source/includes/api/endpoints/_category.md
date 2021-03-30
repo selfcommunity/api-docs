@@ -1055,14 +1055,7 @@ This endpoint retrieves the category feed.
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
-            }
-          ],
-          "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": "string"
+              "vote_count": "string"
             }
           ]
         },
@@ -1231,14 +1224,7 @@ This endpoint retrieves the category trending feed.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "count_votes": "string"
-          }
-        ],
-        "votes": [
-          {
-            "id": 0,
-            "choice": "string",
-            "user": "string"
+            "vote_count": "string"
           }
         ]
       },

@@ -139,14 +139,7 @@ This endpoint retrieves the main (home) feed
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
-            }
-          ],
-          "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": "string"
+              "vote_count": "string"
             }
           ]
         },
@@ -404,14 +397,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
-            }
-          ],
-          "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": "string"
+              "vote_count": "string"
             }
           ]
         },
@@ -774,14 +760,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
-            }
-          ],
-          "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": "string"
+              "vote_count": "string"
             }
           ]
         },

@@ -669,14 +669,7 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
-            }
-          ],
-          "votes": [
-            {
-              "id": 0,
-              "choice": "string",
-              "user": "string"
+              "vote_count": "string"
             }
           ]
         },
@@ -895,7 +888,7 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
+              "vote_count": "string"
             }
           ],
           "votes": [

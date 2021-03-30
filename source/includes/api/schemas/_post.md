@@ -76,30 +76,7 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -164,11 +141,7 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» count_votes|string|false|read-only|none|
-|» votes|list(object)¦null|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» choice|string|false|read-only|none|
-|»» user|string|false|read-only|none|
+|»» vote_count|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
@@ -260,30 +233,7 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "count_votes": "string"
-      }
-    ],
-    "votes": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "birthday": "string",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "http://example.com",
-          "avatar": "string",
-          "cover": "string"
-        }
+        "vote_count": "string"
       }
     ]
   },
@@ -374,11 +324,7 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» count_votes|string|false|read-only|none|
-|» votes|list(object)¦null|false|none|none|
-|»» id|integer|false|read-only|none|
-|»» choice|string|false|read-only|none|
-|»» user|string|false|read-only|none|
+|»» vote_count|string|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
