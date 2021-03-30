@@ -2887,7 +2887,7 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X GET /api/v2/user/{id}/loyalty/points/ \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' \
   -H 'Authorization: Bearer <token>'
 
 ```
@@ -2941,5 +2941,94 @@ Return loyalty points of the user
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
+This operation require authentication
+</aside>
+
+
+## Get User's Connections Statuses
+
+<a id="opIdconnectionStatusesUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST /api/v2/user/connection/statuses/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer <token>'
+
+```
+
+```javascript
+const inputBody = '{
+  "users": [
+    1,7,9
+  ]
+}';
+const headers = {
+  'Content-Type':'application/x-www-form-urlencoded',
+  'Accept':'application/json',
+  'Authorization': 'Bearer <token>'
+};
+
+fetch('/api/v2/user/connection/statuses/',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+List of connection/follow statuses of a users array
+
+<h4 id="http-request">HTTP Request</h4>
+
+`POST /api/v2/user/connection/statuses/`
+
+> Body parameter
+
+```json
+{
+  "users": [
+    1,7,9
+  ]
+}
+```
+
+
+<h4 id="connectionstatusesuser-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|Array of user ids|false|none|
+
+> Example responses
+
+> 201 Response
+
+```json
+{
+    "connection_statuses": {
+        "1": null,
+        "7": "followed",
+        "9": null
+    }
+}
+```
+
+<h4 id="connectionstatusesuser-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Array of user ids and connection statuses|
+
+<aside class="success">
 This operation require authentication
 </aside>

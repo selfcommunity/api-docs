@@ -2538,3 +2538,72 @@ flag_type|body|integer|true|A integer from 0 to 4|
 <aside class="notice">
 This operation require authentication
 </aside>
+
+### Get Flag Status for a Specific Discussion
+
+<a id="opIdflagStatusDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/{id}/flag/status/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/flag/status/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+Retrieve if exists a flag for this contribute created by the user logged
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/discussion/{id}/flag/status/`
+
+<h4 id="flagstatusdiscussion-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "added_at": "2019-08-24T14:15:22Z",
+  "flag_type": 0,
+  "flag_type_description": "string"
+}
+```
+
+<h4 id="flagstatusdiscussion-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
