@@ -226,7 +226,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» discussion|body|integer|true|Id of the [Comment](#schemadiscussion)|
+|» discussion|body|integer|true|Id of the [Discussion](#schemadiscussion)|
 |» post|body|integer|true|Id of the [Post](#schemapost)|
 |» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
