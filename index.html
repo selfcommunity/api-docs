@@ -1993,32 +1993,8 @@ This operation requires authentication and admin role.
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PATCH /api/v2/dynamic_preference/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span>
-  <span class="nt">--DATA</span> <span class="s1">'{body}'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "value": "string"
-}</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer {access_token}</span><span class="dl">'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/dynamic_preference/{id}/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'value="5"'</span> <span class="se">\</span>
 </code></pre></div>
 <p>This endpoint patch a specific dynamic preference.</p>
 
@@ -2029,13 +2005,6 @@ You can use this endpoint to change the value of a single dynamic preference.</p
 
 <p><code>PATCH /api/v2/dynamic_preference/{id}/</code></p>
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
 <h4 id="partialupdateglobalpreferencemodel-parameters">Parameters</h4>
 
 <table><thead>
@@ -2055,11 +2024,11 @@ You can use this endpoint to change the value of a single dynamic preference.</p
 <td>A unique integer value identifying this Dynamic preference.</td>
 </tr>
 <tr>
+<td>value</td>
 <td>body</td>
-<td>body</td>
-<td><a href="#schemadynamicpreference">DynamicPreference</a></td>
-<td>false</td>
-<td>none</td>
+<td>string</td>
+<td>true</td>
+<td>The new value to be assigned</td>
 </tr>
 </tbody></table>
 
@@ -2082,7 +2051,7 @@ You can use this endpoint to change the value of a single dynamic preference.</p
 </tbody></table>
 
 <aside class="notice">
-This operation requires authentication and admin role.
+This operation requires admin role.
 </aside>
 <h2 id="selfcommunity-api-sso">SSO</h2>
 <h3 id='signin'>Signin</h3>
