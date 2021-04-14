@@ -201,7 +201,7 @@ This operation requires authentication and admin role.
 # You can also use wget
 curl -X PATCH /api/v2/dynamic_preference/{id}/ \
   -H 'Authorization: Bearer {access_token}' \
-  --form 'value="5"' \
+  --form 'value="5"' 
 ```
 
 This endpoint patch a specific dynamic preference.
