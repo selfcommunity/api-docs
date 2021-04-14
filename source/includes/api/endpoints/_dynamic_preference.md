@@ -256,24 +256,11 @@ You can use this endpoint to change the value of a single dynamic preference.
 |id|path|string|true|A unique integer value identifying this Dynamic preference.|
 |body|body|[DynamicPreference](#schemadynamicpreference)|false|none|
 
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "section": "string",
-  "name": "string",
-  "value": "string"
-}
-```
-
-<h4 id="partialupdateglobalpreferencemodel-responses">Responses</h4>
+<h4 id="unfollowcategory-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[DynamicPreference](#schemadynamicpreference)|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
 This operation requires authentication and admin role.
