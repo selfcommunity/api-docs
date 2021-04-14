@@ -200,35 +200,8 @@ This operation requires authentication and admin role.
 ```shell
 # You can also use wget
 curl -X PATCH /api/v2/dynamic_preference/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
-  --DATA '{body}'
-
-```
-
-```javascript
-const inputBody = '{
-  "value": "string"
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/dynamic_preference/{id}/',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
+  -H 'Authorization: Bearer {access_token}' \
+  --form 'value="5"' \
 ```
 
 This endpoint patch a specific dynamic preference.
@@ -240,21 +213,12 @@ You can use this endpoint to change the value of a single dynamic preference.
 
 `PATCH /api/v2/dynamic_preference/{id}/`
 
-
-> Body parameter
-
-```json
-{
-  "value": "string"
-}
-```
-
 <h4 id="partialupdateglobalpreferencemodel-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this Dynamic preference.|
-|body|body|[DynamicPreference](#schemadynamicpreference)|false|none|
+|value|body|string|true|The new value to be assigned|
 
 <h4 id="unfollowcategory-responses">Responses</h4>
 
@@ -263,5 +227,5 @@ You can use this endpoint to change the value of a single dynamic preference.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation requires authentication and admin role.
+This operation requires admin role.
 </aside>
