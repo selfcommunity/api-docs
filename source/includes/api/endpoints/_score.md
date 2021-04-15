@@ -109,9 +109,14 @@ This operation require admin or moderation role.
 ```shell
 # You can also use wget
 curl -X POST /api/v2/score/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
+  --data-raw '{
+    "comment": "Comment",
+    "user": "1",
+    "score": "20"
+  }'
 ```
 
 ```javascript
@@ -159,7 +164,9 @@ This endpoint adds/removes score to a user.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Score](#schemascore)|false|none|
+|user|body|integer|true|A unique integer value identifying the user.|
+|score|body|integer|true|Positive or negative integer value.|
+|comment|body|string|false|A comment about this operation (only for internal usage).|
 
 > Example responses
 
