@@ -25708,9 +25708,14 @@ This operation require admin or moderation role.
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST /api/v2/score/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+    "comment": "Comment",
+    "user": "1",
+    "score": "20"
+  }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "user": "integer",
   "score": "integer",
@@ -25762,11 +25767,25 @@ curl <span class="nt">-X</span> POST /api/v2/score/ <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
+<td>user</td>
 <td>body</td>
+<td>integer</td>
+<td>true</td>
+<td>A unique integer value identifying the user.</td>
+</tr>
+<tr>
+<td>score</td>
 <td>body</td>
-<td><a href="#schemascore">Score</a></td>
+<td>integer</td>
+<td>true</td>
+<td>Positive or negative integer value.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>body</td>
+<td>string</td>
 <td>false</td>
-<td>none</td>
+<td>A comment about this operation (only for internal usage).</td>
 </tr>
 </tbody></table>
 
@@ -30969,6 +30988,94 @@ This operation require admin or moderation role.
 <td>false</td>
 <td>none</td>
 <td>Custom comment for this score variation</td>
+</tr>
+</tbody></table>
+<h4 id='reputation-types'>Reputation Types</h4>
+<table><thead>
+<tr>
+<th>reputation_type</th>
+<th>reputation_type_description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>gain_by_upvoted</td>
+</tr>
+<tr>
+<td>9</td>
+<td>assigned_by_api</td>
+</tr>
+<tr>
+<td>10</td>
+<td>assigned_by_moderator</td>
+</tr>
+<tr>
+<td>11</td>
+<td>gain_by_cancelling_contribute_moderation</td>
+</tr>
+<tr>
+<td>12</td>
+<td>gain_by_make_post</td>
+</tr>
+<tr>
+<td>13</td>
+<td>gain_by_make_first_level_comment</td>
+</tr>
+<tr>
+<td>14</td>
+<td>gain_by_make_second_level_comment</td>
+</tr>
+<tr>
+<td>15</td>
+<td>gain_by_connection</td>
+</tr>
+<tr>
+<td>17</td>
+<td>gain_by_app_used</td>
+</tr>
+<tr>
+<td>18</td>
+<td>gain_by_daily_visit</td>
+</tr>
+<tr>
+<td>19</td>
+<td>gain_by_follower</td>
+</tr>
+<tr>
+<td>20</td>
+<td>gain_by_unblock_account</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>lose_by_upvote_canceled</td>
+</tr>
+<tr>
+<td>-11</td>
+<td>lose_by_contribute_moderation</td>
+</tr>
+<tr>
+<td>-12</td>
+<td>lose_by_delete_post</td>
+</tr>
+<tr>
+<td>-13</td>
+<td>lose_by_delete_first_level_comment</td>
+</tr>
+<tr>
+<td>-14</td>
+<td>lose_by_delete_second_level_comment</td>
+</tr>
+<tr>
+<td>-15</td>
+<td>lose_by_connection</td>
+</tr>
+<tr>
+<td>-19</td>
+<td>lose_by_follower</td>
+</tr>
+<tr>
+<td>-20</td>
+<td>lose_by_block_account</td>
 </tr>
 </tbody></table>
 <h3 id="tocS_SearchMatch">SearchMatch</h3>
