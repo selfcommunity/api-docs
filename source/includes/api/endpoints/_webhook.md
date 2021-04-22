@@ -721,6 +721,8 @@ This Endpoint retrieve attempts related to this endpoint
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this endpoint.|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
 |ordering|query|string|false|Which field to use when ordering the results. For sorting desc use - in front of the field name. Default to -created_at. Available values are created_at, sent_at|
 
 > Example responses
