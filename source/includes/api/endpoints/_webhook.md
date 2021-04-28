@@ -803,7 +803,7 @@ fetch('/api/v2/webhook/endpoint/{id}/secret/expire/',
 
 ```
 
-This Endpoint expire the secret associated with this endpoint and return a new one
+This Endpoint expire the secret associated with this endpoint
 
 <h4 id="http-request">HTTP Request</h4>
 
