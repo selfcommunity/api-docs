@@ -1935,3 +1935,185 @@ Retrieve if exists a flag for this contribute created by the user logged
 <aside class="notice">
 This operation require authentication
 </aside>
+
+
+### Hide a Specific Post
+
+<a id="opIdhidePost"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/post/{id}/hide/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/post/{id}/hide/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint hide the [Post](#schemapost) for the logged user. The post must be in show state.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/post/{id}/hide/`
+
+<h4 id="hidepost-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this post.|
+
+
+<h4 id="hidepost-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+### Show a Specific Post
+
+<a id="opIdshowPost"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/post/{id}/hide/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/post/{id}/hide/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint show the [Post](#schemapost) for the logged user. The post must be in hidden state.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/post/{id}/hide/`
+
+<h4 id="showpost-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this post.|
+
+
+<h4 id="showpost-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+### Get Hide Status for a Specific Post
+
+<a id="opIdhideStatusPost"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/post/{id}/hide/status/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/post/{id}/hide/status/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint retrieve if the logged user has hidden the [Post](#schemapost).
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/post/{id}/hide/status/`
+
+<h4 id="hidestatuspost-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this post.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "hidden": false
+}
+```
+
+<h4 id="hidestatuspost-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
