@@ -2446,3 +2446,183 @@ Retrieve if exists a flag for this contribute created by the user logged
 <aside class="notice">
 This operation require authentication
 </aside>
+
+### Hide a Specific Discussion
+
+<a id="opIdhideDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/{id}/hide/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/hide/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint hide the [Discussion](#schemadiscussion) for the logged user. The discussion must be in show state.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/discussion/{id}/hide/`
+
+<h4 id="hidediscussion-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+
+<h4 id="hidediscussion-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+### Show a Specific Discussion
+
+<a id="opIdshowDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/{id}/hide/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/hide/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint show the [Discussion](#schemadiscussion) for the logged user. The discussion must be in hidden state.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/discussion/{id}/hide/`
+
+<h4 id="showdiscussion-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+
+<h4 id="showdiscussion-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+
+<aside class="notice">
+This operation require authentication
+</aside>
+
+### Get Hide Status for a Specific Discussion
+
+<a id="opIdhideStatusDiscussion"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/discussion/{id}/hide/status/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}' \
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/discussion/{id}/hide/status/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This Endpoint retrieve if the logged user has hidden the [Discussion](#schemadiscussion).
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/discussion/{id}/hide/status/`
+
+<h4 id="hidestatusdiscussion-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this discussion.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "hidden": false
+}
+```
+
+<h4 id="hidestatusdiscussion-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+
+<aside class="notice">
+This operation require authentication
+</aside>
