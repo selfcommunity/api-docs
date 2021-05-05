@@ -1072,6 +1072,7 @@ Return the user identified by the authentication token.
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
+  "connection_status": null,
   "permission": {
     "upload_video": false,
     "create_contribute": true,
@@ -1316,8 +1317,9 @@ This endpoint retrive the list of user's post of the user identified by {id}.
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -1336,7 +1338,8 @@ This endpoint retrive the list of user's post of the user identified by {id}.
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1346,18 +1349,13 @@ This endpoint retrive the list of user's post of the user identified by {id}.
         "comment_count": 0,
         "vote_count": "string",
         "flag_count": 0,
-        "addressing": [
-          0
-        ],
+        "share_count": 0,
+        "addressing": [0],
         "title": "string",
         "slug": "string",
         "view_count": 0,
         "follower_count": "string"
-      },
-      "seen_by_id": [
-        0
-      ],
-      "has_boost": false,
+      }
     }
   ]
 }
@@ -3015,7 +3013,7 @@ This endpoint list the connection/follow statuses of the logged user starting fr
 
 > Example responses
 
-> 201 Response
+> 200 Response
 
 ```json
 {
@@ -3031,7 +3029,7 @@ This endpoint list the connection/follow statuses of the logged user starting fr
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Array of user ids and connection statuses|
+|200|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|Array of user ids and connection statuses|
 
 <aside class="notice">
 This operation require authentication
