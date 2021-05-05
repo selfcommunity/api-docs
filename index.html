@@ -2989,9 +2989,9 @@ This operation does not require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PUT /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type'</span>:<span class="s1">'multipart/form-data'</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "real_name": "string",
   "bio": "string",
@@ -3000,11 +3000,13 @@ curl <span class="nt">-X</span> PUT /api/v2/user/<span class="o">{</span><span c
   "position_lat_lng": "string",
   "date_of_birth": "string",
   "description": "string",
+  "avatar": "blob",
+  "cover": "blob",
   "gender": "Male",
   "website": "http://example.com"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">multipart/form-data</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
 <span class="p">};</span>
@@ -3040,18 +3042,11 @@ curl <span class="nt">-X</span> PUT /api/v2/user/<span class="o">{</span><span c
   </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blob"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blob"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">real_name</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">bio</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">location</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">location_lat_lng</span><span class="pi">:</span> <span class="s">string,</span>
-<span class="na">position_lat_lng</span><span class="pi">:</span> <span class="s">string,</span>
-<span class="na">date_of_birth</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">gender</span><span class="pi">:</span> <span class="s">Male</span>
-<span class="na">website</span><span class="pi">:</span> <span class="s">http://example.com</span>
-</code></pre></div>
+</span></code></pre></div>
 <h4 id="updateuser-parameters">Parameters</h4>
 
 <table><thead>
@@ -3127,6 +3122,10 @@ curl <span class="nt">-X</span> PUT /api/v2/user/<span class="o">{</span><span c
 </tbody></table>
 
 <aside class="notice">
+If the request will update the avatar or the cover the 'Content-Type' request header must be set as 'multipart/form-data', otherwise it can be 'application/x-www-form-urlencoded'. 
+</aside>
+
+<aside class="notice">
 This operation require authentication
 </aside>
 <h3 id='patch-a-specific-user'>Patch a Specific User</h3>
@@ -3137,10 +3136,10 @@ This operation require authentication
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type'</span>: <span class="s1">'multipart/form-data'</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;token&gt;'
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">real_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">bio</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
@@ -3148,12 +3147,14 @@ curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span
   <span class="dl">"</span><span class="s2">position_lat_lng</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">date_of_birth</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">avatar</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">blob</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">cover</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">blob</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">gender</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Male</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">website</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://example.com</span><span class="dl">"</span>
 <span class="p">};</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">multipart/form-data</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Authorization: Bearer &lt;token&gt;</span><span class="dl">'</span>
 <span class="p">};</span>
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/v2/user/{id}/</span><span class="dl">'</span><span class="p">,</span>
@@ -3250,6 +3251,10 @@ curl <span class="nt">-X</span> PATCH /api/v2/user/<span class="o">{</span><span
 <td><a href="#schemauser">User</a></td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+If the request will update the avatar or the cover the 'Content-Type' request header must be set as 'multipart/form-data', otherwise it can be 'application/x-www-form-urlencoded'. 
+</aside>
 
 <aside class="notice">
 This operation require authentication
