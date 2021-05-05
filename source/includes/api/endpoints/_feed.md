@@ -151,8 +151,9 @@ This endpoint retrieves the main (home) feed
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -171,7 +172,8 @@ This endpoint retrieves the main (home) feed
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -205,8 +207,9 @@ This endpoint retrieves the main (home) feed
             "date_joined": "2019-08-24T14:15:22Z",
             "bio": "string",
             "location": "string",
-            "position": "string",
-            "birthday": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
             "website": "http://example.com",
@@ -225,7 +228,8 @@ This endpoint retrieves the main (home) feed
                 "deleted": true,
                 "created_at": "2019-08-24T14:15:22Z"
               }
-            ]
+            ],
+          "reputation": 111,
           },
           "active_at": "2019-08-24T14:15:22Z",
           "seen_by_id": [
@@ -409,8 +413,9 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -429,7 +434,8 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -772,8 +778,9 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -792,7 +799,8 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",

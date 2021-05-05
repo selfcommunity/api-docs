@@ -136,18 +136,20 @@ This endpoint retrieves all posts.
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [],
+        "reputation": 111,
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -401,18 +403,20 @@ This endpoint creates a post.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -571,18 +575,20 @@ This endpoint perform search operation to posts.
             "id": 0,
             "username": "string",
             "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
             "date_joined": "2019-08-24T14:15:22Z",
             "bio": "string",
             "location": "string",
-            "birthday": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "status": "a",
             "website": "http://example.com",
             "avatar": "string",
-            "cover": "string"
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -606,18 +612,20 @@ This endpoint perform search operation to posts.
               "id": 0,
               "username": "string",
               "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
               "date_joined": "2019-08-24T14:15:22Z",
               "bio": "string",
               "location": "string",
-              "birthday": "string",
+              "location_lat_lng": "string",
+              "position_lat_lng": "string",
+              "date_of_birth": "string",
               "description": "string",
               "gender": "Male",
-              "status": "a",
               "website": "http://example.com",
               "avatar": "string",
-              "cover": "string"
+              "cover": "string",
+              "ext_id": "string",
+              "tags": [],
+              "reputation": 111,
             }
           }
         ]
@@ -770,18 +778,20 @@ This endpoint retrieves a specific post using ID.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1020,18 +1030,20 @@ This endpoint update a specific post.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1945,7 +1957,7 @@ This operation require authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/hide/ \
+curl -X POST /api/v2/post/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -1960,7 +1972,7 @@ const headers = {
 
 fetch('/api/v2/post/{id}/hide/',
 {
-  method: 'GET',
+  method: 'POST',
   headers: headers
 })
 .then(function(res) {
@@ -1975,7 +1987,7 @@ This Endpoint hide the [Post](#schemapost) for the logged user. The post must be
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/hide/`
+`POST /api/v2/post/{id}/hide/`
 
 <h4 id="hidepost-parameters">Parameters</h4>
 
@@ -2002,7 +2014,7 @@ This operation require authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/hide/ \
+curl -X POST /api/v2/post/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2017,7 +2029,7 @@ const headers = {
 
 fetch('/api/v2/post/{id}/hide/',
 {
-  method: 'GET',
+  method: 'POST',
   headers: headers
 })
 .then(function(res) {
@@ -2032,7 +2044,7 @@ This Endpoint show the [Post](#schemapost) for the logged user. The post must be
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/hide/`
+`POST/api/v2/post/{id}/hide/`
 
 <h4 id="showpost-parameters">Parameters</h4>
 

@@ -681,8 +681,9 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -701,7 +702,8 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -907,8 +909,9 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -927,7 +930,8 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+        "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",

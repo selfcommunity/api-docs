@@ -139,18 +139,20 @@ This endpoint retrieves all discussions.
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [],
+        "reputation": 111,
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -250,11 +252,10 @@ This endpoint retrieves all uncommented discussions.
   "results": [
     {
       "id": 0,
-      "title": "string",
-      "slug": "string",
       "categories": [
         {
           "id": 0,
+          "tags": [],
           "order": 1,
           "name": "name",
           "name_synonyms": "synonyms",
@@ -329,18 +330,20 @@ This endpoint retrieves all uncommented discussions.
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "status": "a",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [],
+        "reputation": 111,
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -348,13 +351,14 @@ This endpoint retrieves all uncommented discussions.
       "deleted": true,
       "collapsed": false,
       "comment_count": 0,
-      "share_count": 0,
       "vote_count": 0,
       "flag_count": 0,
-      "addressing": [
-        0
-      ],
-      "follower_count": "string"
+      "share_count": 0,
+      "addressing": [0],
+      "title": "string",
+      "slug": "string",
+      "view_count": 0,
+      "follower_count": 0
     }
   ]
 }
@@ -518,18 +522,20 @@ This endpoint perform search operation to discussions.
             "id": 0,
             "username": "string",
             "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
             "date_joined": "2019-08-24T14:15:22Z",
             "bio": "string",
             "location": "string",
-            "birthday": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "status": "a",
             "website": "http://example.com",
             "avatar": "string",
-            "cover": "string"
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -554,18 +560,20 @@ This endpoint perform search operation to discussions.
               "id": 0,
               "username": "string",
               "real_name": "string",
-              "email": "user@example.com",
-              "email_isvalid": true,
               "date_joined": "2019-08-24T14:15:22Z",
               "bio": "string",
               "location": "string",
-              "birthday": "string",
+              "location_lat_lng": "string",
+              "position_lat_lng": "string",
+              "date_of_birth": "string",
               "description": "string",
               "gender": "Male",
-              "status": "a",
               "website": "http://example.com",
               "avatar": "string",
-              "cover": "string"
+              "cover": "string",
+              "ext_id": "string",
+              "tags": [],
+              "reputation": 111,
             }
           }
         ]
@@ -811,18 +819,20 @@ This endpoint creates a discussion.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -980,18 +990,20 @@ This endpoint retrieves a specific discussion using ID.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1239,18 +1251,20 @@ This endpoint update a specific discussion.
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1521,18 +1535,20 @@ This endpoint retrieve related discussions
             "id": 0,
             "username": "string",
             "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
             "date_joined": "2019-08-24T14:15:22Z",
             "bio": "string",
             "location": "string",
-            "birthday": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "status": "a",
             "website": "http://example.com",
             "avatar": "string",
-            "cover": "string"
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -2455,7 +2471,7 @@ This operation require authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/{id}/hide/ \
+curl -X POST /api/v2/discussion/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2470,7 +2486,7 @@ const headers = {
 
 fetch('/api/v2/discussion/{id}/hide/',
 {
-  method: 'GET',
+  method: 'POST',
   headers: headers
 })
 .then(function(res) {
@@ -2485,7 +2501,7 @@ This Endpoint hide the [Discussion](#schemadiscussion) for the logged user. The 
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/discussion/{id}/hide/`
+`POST /api/v2/discussion/{id}/hide/`
 
 <h4 id="hidediscussion-parameters">Parameters</h4>
 
@@ -2512,7 +2528,7 @@ This operation require authentication
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/discussion/{id}/hide/ \
+curl -X POST/api/v2/discussion/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2527,7 +2543,7 @@ const headers = {
 
 fetch('/api/v2/discussion/{id}/hide/',
 {
-  method: 'GET',
+  method: 'POST',
   headers: headers
 })
 .then(function(res) {
@@ -2542,7 +2558,7 @@ This Endpoint show the [Discussion](#schemadiscussion) for the logged user. The 
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/discussion/{id}/hide/`
+`POST /api/v2/discussion/{id}/hide/`
 
 <h4 id="showdiscussion-parameters">Parameters</h4>
 

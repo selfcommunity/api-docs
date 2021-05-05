@@ -890,20 +890,24 @@ This endpoint returns all followers of a specific category.
   "previous": "string(uri)",
   "results": [
     {
+      "id": 1,
       "username": "string",
       "real_name": "string",
-      "email": "user@example.com",
-      "email_isvalid": true,
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": "string",
+      "tags": [],
+      "reputation": 1,
+      "connection_status": "followed"
     }
   ]
 }
@@ -1067,8 +1071,9 @@ This endpoint retrieves the category feed.
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "position": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
           "website": "http://example.com",
@@ -1087,7 +1092,8 @@ This endpoint retrieves the category feed.
               "deleted": true,
               "created_at": "2019-08-24T14:15:22Z"
             }
-          ]
+          ],
+          "reputation": 1
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1095,9 +1101,9 @@ This endpoint retrieves the category feed.
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
         "vote_count": 0,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [
           0
         ],
@@ -1193,12 +1199,35 @@ This endpoint retrieves the category trending feed.
   "previous": "string(uri)",
   "results": [
     {
-      "id": 0,
-      "title": "string",
-      "slug": "string",
-      "tags": [
-        0
-      ],
+      "type": "discussion",
+      "discussion": {
+          "id": 1,
+          "categories": [ 
+              {
+                    "id": 0,
+                    "order": 123,
+                    "name": "string",
+                    "name_synonyms": "string",
+                    "slug": "string",
+                    "slogan": "string",
+                    "html_info": "string",
+                    "seo_title": "string",
+                    "seo_description": "string",
+                    "auto_follow": "none",
+                    "active": true,
+                    "deleted": false,
+                    "image_original": "string",
+                    "image_bigger": "string",
+                    "image_big": "string",
+                    "image_medium": "string",
+                    "image_small": "string",
+                    "emotional_image_original": "string",
+                    "emotional_image_position": 123,
+                    "lastmod_datetime": "2019-08-24T14:15:22Z",
+                    "stream_order_by": "recent",
+                    "tags": []
+              }
+                    ],
       "media_type": "images",
       "medias": [
         0
@@ -1229,35 +1258,57 @@ This endpoint retrieves the category trending feed.
         ]
       },
       "last_activity_at": "2019-08-24T14:15:22Z",
-      "view_count": 0,
-      "author": {
-        "username": "string",
-        "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
-        "date_joined": "2019-08-24T14:15:22Z",
-        "bio": "string",
-        "location": "string",
-        "birthday": "string",
-        "description": "string",
-        "gender": "Male",
-        "status": "a",
-        "website": "http://example.com",
-        "avatar": "string",
-        "cover": "string"
-      },
-      "added_at": "2019-08-24T14:15:22Z",
-      "html": "string",
-      "summary": "string",
-      "deleted": true,
-      "collapsed": false,
-      "score": "string",
-      "addressing": [
-        0
-      ],
-      "followers": "string"
-    }
-  ]
+        "author": {
+          "id": 0,
+          "username": "string",
+          "real_name": "string",
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "string",
+          "description": "string",
+          "gender": "Male",
+          "website": "http://example.com",
+          "avatar": "string",
+          "cover": "string",
+          "ext_id": "string",
+          "tags": [
+            {
+              "id": 0,
+              "active": true,
+              "type": "user",
+              "name": "string",
+              "description": "string",
+              "color": "string",
+              "visible": true,
+              "deleted": true,
+              "created_at": "2019-08-24T14:15:22Z"
+            }
+          ],
+        "reputation": 111,
+        },
+        "added_at": "2019-08-24T14:15:22Z",
+        "html": "string",
+        "summary": "string",
+        "deleted": true,
+        "collapsed": false,
+        "comment_count": 1,
+        "vote_count": 0,
+        "flag_count": 0,
+        "share_count": 0,
+        "addressing": [0],
+        "title": "string",
+        "slug": "string",
+        "view_count": 0,
+        "follower_count": 0
+    },
+    "seen_by_id": [
+        170,
+        115
+    ],
+    "has_boost": false
 }
 ```
 
@@ -1341,20 +1392,24 @@ This endpoint returns all trending followers of a specific category during last 
   "previous": "string(uri)",
   "results": [
     {
+      "id": 0,
       "username": "string",
       "real_name": "string",
-      "email": "user@example.com",
-      "email_isvalid": true,
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "status": "a",
       "website": "http://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": "string",
+      "tags": [],
+      "reputation": 111,
+      "connection_status": "followed"
     }
   ]
 }
