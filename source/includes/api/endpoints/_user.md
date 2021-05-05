@@ -322,9 +322,9 @@ This operation does not require authentication
 ```shell
 # You can also use wget
 curl -X PUT /api/v2/user/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type':'multipart/form-data'
   -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
+  -H 'Authorization: Bearer <token>'
 ```
 
 ```javascript
@@ -336,11 +336,13 @@ const inputBody = '{
   "position_lat_lng": "string",
   "date_of_birth": "string",
   "description": "string",
+  "avatar": "blob",
+  "cover": "blob",
   "gender": "Male",
   "website": "http://example.com"
 }';
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
+  'Content-Type': 'multipart/form-data',
   'Accept':'application/json',
   'Authorization: Bearer <token>'
 };
@@ -377,20 +379,10 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "date_of_birth": "string",
   "description": "string",
   "gender": "Male",
+  "avatar": "blob",
+  "cover": "blob",
   "website": "http://example.com"
 }
-```
-
-```yaml
-real_name: string
-bio: string
-location: string
-location_lat_lng: string,
-position_lat_lng: string,
-date_of_birth: string
-description: string
-gender: Male
-website: http://example.com
 ```
 
 <h4 id="updateuser-parameters">Parameters</h4>
@@ -437,6 +429,10 @@ website: http://example.com
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
+If the request will update the avatar or the cover the 'Content-Type' request header must be set as 'multipart/form-data', otherwise it can be 'application/x-www-form-urlencoded'. 
+</aside>
+
+<aside class="notice">
 This operation require authentication
 </aside>
 
@@ -449,9 +445,9 @@ This operation require authentication
 ```shell
 # You can also use wget
 curl -X PATCH /api/v2/user/{id}/ \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Content-Type': 'multipart/form-data'
   -H 'Accept: application/json'
-  -H "Authorization: Bearer <token>"
+  -H "Authorization: Bearer <token>'
 ```
 
 ```javascript
@@ -463,12 +459,14 @@ const inputBody = {
   "position_lat_lng": "string",
   "date_of_birth": "string",
   "description": "string",
+  "avatar": "blob",
+  "cover": "blob",
   "gender": "Male",
   "website": "http://example.com"
 };
 const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Accept':'application/json',
+  'Content-Type': 'multipart/form-data',
+  'Accept': 'application/json',
   'Authorization: Bearer <token>'
 };
 fetch('/api/v2/user/{id}/',
@@ -538,8 +536,14 @@ This endpoint patch a specific user identified by {id}. A user can only update t
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[User](#schemauser)|
 
 <aside class="notice">
+If the request will update the avatar or the cover the 'Content-Type' request header must be set as 'multipart/form-data', otherwise it can be 'application/x-www-form-urlencoded'. 
+</aside>
+
+<aside class="notice">
 This operation require authentication
 </aside>
+
+
 
 ### Delete a Specific User
 
