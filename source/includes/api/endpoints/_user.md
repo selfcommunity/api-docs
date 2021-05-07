@@ -3111,7 +3111,7 @@ This endpoint return user's tags to address a contribution
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
 
-<aside class="success">
+<aside class="notice">
 This operation require authentication
 </aside>
 
