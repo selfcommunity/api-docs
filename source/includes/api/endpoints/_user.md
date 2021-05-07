@@ -3034,3 +3034,89 @@ This endpoint list the connection/follow statuses of the logged user starting fr
 <aside class="notice">
 This operation require authentication
 </aside>
+
+### Get User's Tags to Address a Contribution
+
+<a id="opIdtagsToAddressAContributionUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/tag/tags_to_address_a_contribution/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer <token>'
+
+```
+
+```javascript
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer <token>'
+};
+
+fetch('/api/v2/user/tag/tags_to_address_a_contribution/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint return user's tags to address a contribution
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/tag/tags_to_address_a_contribution/`
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+    {
+      "id": 0,
+      "active": true,
+      "type": "user",
+      "name": "string",
+      "description": "string",
+      "color": "string",
+      "visible": true,
+      "deleted": true,
+      "created_at": "2019-08-24T14:15:22Z"
+    },
+    {
+      "id": 0,
+      "active": true,
+      "type": "user",
+      "name": "string",
+      "description": "string",
+      "color": "string",
+      "visible": true,
+      "deleted": true,
+      "created_at": "2019-08-24T14:15:22Z"
+    }
+]
+```
+
+<h4 id="tagstoaddressacontributionuser-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Tag](#schematag)|
+
+<aside class="success">
+This operation require authentication
+</aside>
+
+
+
+
+
+
