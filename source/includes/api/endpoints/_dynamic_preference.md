@@ -1,6 +1,6 @@
 <h2 id="selfcommunity-api-dynamic-preference">Dynamic Preference</h2>
 
-### Get All Dyanamic Preferences
+### Get All Dynamic Preferences
 
 <a id="opIdlistGlobalPreferenceModels"></a>
 
@@ -49,22 +49,6 @@ This section contains all preferences for calibration of loyalty flow.
 * **points_social_share**: Points earned when starting a social share of a post or a discussion.
 * **points_app_used**: Points earned for the first usage of the app (if available).
 * **points_daily_visit**: Points earned for a daily visit.
-
-<h5>score</h5>
-This section contains all preferences for calibration of score flow.
-
-* **rep_variation_for_make_discussion**: Positive score variation for a new discussion.
-* **rep_variation_for_make_post**: Positive score variation for a new post.
-* **rep_variation_for_make_a_first_level_comment**: Positive score variation for a first level comment.
-* **rep_variation_for_make_a_second_level_comment**: Positive score variation for a second level comment.  
-* **rep_variation_for_upvote_a_discussion**: Positive score variation for an upvote to a discussion.
-* **rep_variation_for_upvote_a_post**: Positive score variation for an upvote to a post.
-* **rep_variation_for_upvote_on_first_level_comment**: Positive score variation for an upvote to a first level comment.
-* **rep_variation_for_upvote_on_second_level_comment**: Positive score variation for an upvote to a second level comment.
-* **rep_variation_for_contribute_deletion_by_moderation**: Negative score variation for a contribution deleted by moderators.
-* **rep_variation_for_connection_or_follower**: Positive score variation for a new connection (if connections enabled) or for a new follower (if follow enabled).
-* **rep_variation_for_app_used**: Positive score variation for the first usage of the app (if available).
-* **rep_variation_for_daily_visit**: Positive score variation for a daily visit.
 
 <h5 id="http-request">HTTP Request</h5>
 
@@ -119,7 +103,7 @@ Status Code **200**
 
 
 <aside class="notice">
-This operation require authentication and admin role.
+This operation does not require authentication
 </aside>
 
 ### Get a Specific Dynamic Preference
@@ -188,44 +172,5 @@ This endpoint retrieves a specific dynamic preference.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[DynamicPreference](#schemadynamicpreference)|
 
 <aside class="notice">
-This operation requires authentication and admin role.
-</aside>
-
-### Patch a Specific Dynamic Preference
-
-<a id="opIdpartialUpdateGlobalPreferenceModel"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X PATCH /api/v2/dynamic_preference/{id}/ \
-  -H 'Authorization: Bearer {access_token}' \
-  --form 'value="5"' 
-```
-
-This endpoint patch a specific dynamic preference.
-
-**NOTE:**
-You can use this endpoint to change the value of a single dynamic preference.
-
-<h5 id="http-request">HTTP Request</h5>
-
-`PATCH /api/v2/dynamic_preference/{id}/`
-
-<h4 id="partialupdateglobalpreferencemodel-parameters">Parameters</h4>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this Dynamic preference.|
-|value|body|string|true|The new value to be assigned|
-
-<h4 id="unfollowcategory-responses">Responses</h4>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation requires admin role.
+This operation does not require authentication
 </aside>
