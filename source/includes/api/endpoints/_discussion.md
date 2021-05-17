@@ -1648,13 +1648,30 @@ This endpoint retrieves all votes for a specific discussion.
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "2019-08-24",
           "description": "string",
           "gender": "Male",
           "status": "a",
           "website": "http://example.com",
           "avatar": "string",
-          "cover": "string"
+          "cover": "string",
+          "ext_id": "string",
+          "tags": [
+            {
+              "id": 0,
+              "active": true,
+              "type": "user",
+              "name": "string",
+              "description": "string",
+              "color": "string",
+              "visible": true,
+              "deleted": true,
+              "created_at": "2019-08-24T14:15:22Z"
+            }
+          ],
+          "reputation":111
         },
         "voted_at": "2019-08-24T14:15:22Z"
       }
@@ -1861,14 +1878,31 @@ If the discussion has no poll associated the response status code is [404](https
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "2019-08-24",
           "description": "string",
           "gender": "Male",
           "status": "a",
           "website": "http://example.com",
           "avatar": "string",
-          "cover": "string"
-        }
+          "cover": "string",
+          "ext_id": "string",
+          "tags": [
+            {
+              "id": 0,
+              "active": true,
+              "type": "user",
+              "name": "string",
+              "description": "string",
+              "color": "string",
+              "visible": true,
+              "deleted": true,
+              "created_at": "2019-08-24T14:15:22Z"
+            }
+          ],
+          "reputation":111
+        },
       }
   ]
 }
