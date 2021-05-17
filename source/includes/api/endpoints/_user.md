@@ -1482,7 +1482,7 @@ Status Code **200**
 |» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
 ### Get User's Following
@@ -1585,7 +1585,7 @@ Status Code **200**
 |» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
 ### Follow User
@@ -1892,7 +1892,7 @@ Status Code **200**
 |» results|list([User](#schemauser))|false|none|none|
 
 <aside class="notice">
-This operation does not require authentication
+This operation require authentication only if `content_availability` community option is false
 </aside>
 
 <aside class="notice">
