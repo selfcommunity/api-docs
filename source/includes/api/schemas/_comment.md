@@ -16,12 +16,29 @@
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [
+      {
+        "id": 0,
+        "active": true,
+        "type": "user",
+        "name": "string",
+        "description": "string",
+        "color": "string",
+        "visible": true,
+        "deleted": true,
+        "created_at": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "reputation":111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -45,12 +62,29 @@
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "website": "http://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [
+          {
+            "id": 0,
+            "active": true,
+            "type": "user",
+            "name": "string",
+            "description": "string",
+            "color": "string",
+            "visible": true,
+            "deleted": true,
+            "created_at": "2019-08-24T14:15:22Z"
+          }
+        ],
+        "reputation":111
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -76,6 +110,7 @@
 |id|integer|false|read-only|none|
 |discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
 |post|integer¦null|false|none|Id of the [Post](#schemapost)|
+|status|integer¦null|false|none|Id of the [Status](#schemastatus)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -109,12 +144,29 @@
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
     "website": "http://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [
+      {
+        "id": 0,
+        "active": true,
+        "type": "user",
+        "name": "string",
+        "description": "string",
+        "color": "string",
+        "visible": true,
+        "deleted": true,
+        "created_at": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "reputation":111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -138,6 +190,7 @@
 |id|integer|false|read-only|none|
 |discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
 |post|integer¦null|false|none|Id of the [Post](#schemapost)|
+|status|integer¦null|false|none|Id of the [Status](#schemastatus)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|

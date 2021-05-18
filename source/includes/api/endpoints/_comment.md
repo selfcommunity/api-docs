@@ -35,13 +35,15 @@ fetch('/api/v2/comment/',
 ```
 This endpoint retrieves all comments. 
 
-If the `discussion` parameter is specified the endpoint retrieve all comments of a specific [Comment](#schemadiscussion).
+If the `discussion` parameter is specified the endpoint retrieves all comments of a specific [Comment](#schemadiscussion).
 
-If the `post` parameter is specified the endpoint retrieve all comments of a specific [Post](#schemapost)).
+If the `post` parameter is specified the endpoint retrieves all comments of a specific [Post](#schemapost).
 
-The `discussion` and `post` parameter cannot be used together.
+If the `status` parameter is specified the endpoint retrieves all comments of a specific [Status](#schemastatus).
 
-If the `parent` parameter is specified the endpoint retrieve all comments of a specific [Comment](#schemadiscussion) or [Post](#schemapost) that has the passed parent (nested comments).
+The `discussion` , `post` and `status` parameters cannot be used together.
+
+If the `parent` parameter is specified the endpoint retrieves all comments of a specific [Discussion](#schemadiscussion) , [Post](#schemapost) or [Status](#schemastatus) that has the passed parent (nested comments).
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -55,6 +57,7 @@ If the `parent` parameter is specified the endpoint retrieve all comments of a s
 |offset|query|integer|false|The initial index from which to return the results.|
 |discussion|query|string|false|Id of the [Comment](#schemadiscussion)|
 |post|query|string|false|Id of the [Post](#schemapost)|
+|status|query|string|false|Id of the [Status](#schemastatus)|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to added_at|
 
@@ -183,7 +186,7 @@ Status Code **200**
 |» results|[[Comment](#schemacomment)]|false|none|none|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
 ### Create a Comment
@@ -235,7 +238,7 @@ fetch('/api/v2/comment/',
 
 This endpoint creates a comment.
 
-One of `discussion` or `post` parameter is required in every request (first-level or nested comment creation).
+One of `discussion` , `post` or `status` parameter is required in every request (first-level or nested comment creation).
 
 The `parent` parameter is required only for nested comments.
 
@@ -262,6 +265,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 |---|---|---|---|---|
 |» discussion|body|integer|true|Id of the [Discussion](#schemadiscussion)|
 |» post|body|integer|true|Id of the [Post](#schemapost)|
+|» status|body|integer|true|Id of the [Status](#schemastatus)|
 |» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
 |» text|body|string|true|text for the [Comment](#schemacomment), html format|
@@ -373,7 +377,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Comment](#schemacomment)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 ### Get a specific Comment
@@ -530,7 +534,7 @@ This endpoint retrieves a specific comment using ID.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Comment](#schemacomment)|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
 ### Update a specific Comment
@@ -711,7 +715,7 @@ This endpoint update a specific comment.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Comment](#schemacomment)|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the comment creator
+This operation requires authentication. The logged user must be the comment creator
 </aside>
 
 ### Delete a Comment
@@ -744,7 +748,7 @@ fetch('/api/v2/comment/{id}/',
 });
 
 ```
-This endpoint delete a Comment.
+This endpoint deletes a Comment.
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -763,7 +767,7 @@ This endpoint delete a Comment.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the comment creator
+This operation requires authentication. The logged user must be the comment creator
 </aside>
 
 ### Restore a Comment
@@ -797,7 +801,7 @@ fetch('/api/v2/comment/{id}/restore/',
 
 ```
 
-This endpoint restore a Comment.
+This endpoint restores a Comment.
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -816,7 +820,7 @@ This endpoint restore a Comment.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the comment creator
+This operation requires authentication. The logged user must be the comment creator
 </aside>
 
 ### Get List of Votes for a Specific Comment
@@ -909,7 +913,7 @@ This endpoint retrieves all votes for a specific comment.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Vote](#schemavote)|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
 ### Upvote for a Specific Comment
@@ -968,7 +972,7 @@ This endpoint upvotes a specific comment.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 ### Remove an Upvote for a Specific Comment
@@ -1027,7 +1031,7 @@ This endpoint removes an upvote for a specific comment.
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 ### Get List of Flags for a Specific Comment
@@ -1131,7 +1135,7 @@ This endpoint retrieves a List of Flags for a Specific Comment.
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require moderation role.
+This operation requires moderation role.
 </aside>
 
 ### Flag a Specific Comment
@@ -1175,7 +1179,7 @@ fetch('/api/v2/comment/{id}/flag/',
 
 ```
 
-This endpoint flag a specific comment.
+This endpoint flags a specific comment.
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -1213,7 +1217,7 @@ flag_type|body|integer|true|A integer from 0 to 4|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 ### Unflag a Specific Comment
@@ -1295,7 +1299,7 @@ flag_type|body|integer|true|A integer from 0 to 4|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 
@@ -1365,5 +1369,5 @@ Retrieve if exists a flag for this contribute created by the user logged
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
