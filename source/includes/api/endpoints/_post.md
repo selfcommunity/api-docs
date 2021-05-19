@@ -127,7 +127,7 @@ This endpoint retrieves all posts.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            : 0
           }
         ]
       },
@@ -159,6 +159,7 @@ This endpoint retrieves all posts.
       "comment_count": 0,
       "share_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "addressing": [
         0
@@ -394,7 +395,7 @@ This endpoint creates a post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -426,6 +427,7 @@ This endpoint creates a post.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -566,7 +568,7 @@ This endpoint perform search operation to posts.
                   "order": 0,
                   "added_at": "2019-08-24T14:15:22Z",
                   "deleted": "string",
-                  "vote_count": "string"
+                  "vote_count": 0
               }
             ]
         },
@@ -598,6 +600,7 @@ This endpoint perform search operation to posts.
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "matches": [
@@ -769,7 +772,7 @@ This endpoint retrieves a specific post using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -801,6 +804,7 @@ This endpoint retrieves a specific post using ID.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -1021,7 +1025,7 @@ This endpoint update a specific post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -1053,6 +1057,7 @@ This endpoint update a specific post.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }

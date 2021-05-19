@@ -129,7 +129,7 @@ This endpoint retrieves all discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            "vote_count": 0
           }
         ]
       },
@@ -162,6 +162,7 @@ This endpoint retrieves all discussions.
       "comment_count": 0,
       "share_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "addressing": [
         0
@@ -320,7 +321,7 @@ This endpoint retrieves all uncommented discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            "vote_count": 0
           }
         ]
       },
@@ -352,6 +353,7 @@ This endpoint retrieves all uncommented discussions.
       "collapsed": false,
       "comment_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "share_count": 0,
       "addressing": [0],
@@ -512,7 +514,7 @@ This endpoint perform search operation to discussions.
                   "order": 0,
                   "added_at": "2019-08-24T14:15:22Z",
                   "deleted": "string",
-                  "vote_count": "string"
+                  "vote_count": 0
               }
             ]
         },
@@ -545,6 +547,7 @@ This endpoint perform search operation to discussions.
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "follower_count": "string",
@@ -809,7 +812,7 @@ This endpoint creates a discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -842,6 +845,7 @@ This endpoint creates a discussion.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -980,7 +984,7 @@ This endpoint retrieves a specific discussion using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -1013,6 +1017,7 @@ This endpoint retrieves a specific discussion using ID.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -1241,7 +1246,7 @@ This endpoint update a specific discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -1274,6 +1279,7 @@ This endpoint update a specific discussion.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -1525,7 +1531,7 @@ This endpoint retrieve related discussions
                 "order": 0,
                 "added_at": "2019-08-24T14:15:22Z",
                 "deleted": "string",
-                "vote_count": "string"
+                "vote_count": 0
             }
           ]
         },
@@ -1558,6 +1564,7 @@ This endpoint retrieve related discussions
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "follower_count": "string"

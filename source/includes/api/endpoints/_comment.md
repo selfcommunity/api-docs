@@ -120,6 +120,7 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
       "parent": 0,
       "in_reply_to": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 1,
       "latest_comments": [
@@ -166,6 +167,7 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
           "in_reply_to": 0,
           "comments_count": 0,
           "vote_count": 0,
+          "voted": false,
           "flag_count": 0,
           "comment_count": 0
         }
@@ -324,6 +326,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -370,6 +373,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -481,6 +485,7 @@ This endpoint retrieves a specific comment using ID.
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -527,6 +532,7 @@ This endpoint retrieves a specific comment using ID.
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -662,6 +668,7 @@ This endpoint update a specific comment.
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -708,6 +715,7 @@ This endpoint update a specific comment.
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
