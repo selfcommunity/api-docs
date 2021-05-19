@@ -1440,6 +1440,7 @@ fetch('/api/v2/post/{id}/poll/vote/',
 
 ```
 This endpoint retrieves all poll votes for a specific post.
+The `choice` parameter is used to filter the votes by a given poll choice of the poll.
 If the post has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
 
 <h4 id="http-request">HTTP Request</h4>
@@ -1453,6 +1454,7 @@ If the post has no poll associated the response status code is [404](https://too
 |id|path|string|true|A unique integer value identifying this post.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|choice|query|integer|false|The `choice` id of the poll. If is specified the endpoint retrieves the votes of only that choice|
 
 > Example responses
 
