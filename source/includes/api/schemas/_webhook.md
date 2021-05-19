@@ -11,7 +11,7 @@
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {

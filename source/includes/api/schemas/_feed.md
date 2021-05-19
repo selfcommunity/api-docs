@@ -39,7 +39,8 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "vote_count": "string"
+          "vote_count": 0,
+          "voted": true
         }
       ],
       "votes": [
@@ -62,7 +63,7 @@
       "birthday": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",
@@ -132,7 +133,8 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "vote_count": "string"
+          "vote_count": 0,
+          "voted": true
         }
       ],
       "votes": [
@@ -156,7 +158,7 @@
       "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",
@@ -206,7 +208,7 @@
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
@@ -270,7 +272,7 @@
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",

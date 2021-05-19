@@ -13,7 +13,7 @@
     "id": 0,
     "embed_type": "string",
     "embed_id": "string",
-    "url": "http://example.com",
+    "url": "https://example.com",
     "metadata": "{}"
   },
   "title": "string",

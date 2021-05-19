@@ -64,7 +64,7 @@ This Endpoint retrieve all webhook endpoints.
       "created_at": "2019-08-24T14:15:22Z",
       "updated_at": "2019-08-24T14:15:22Z",
       "is_active": true,
-      "target": "http://example.com",
+      "target": "https://example.com",
       "description": "string",
       "events": [
         {
@@ -208,7 +208,7 @@ curl -X POST /api/v2/webhook/endpoint/ \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
     "is_active": true,
-    "target": "http://example.com",
+    "target": "https://example.com",
     "description": "string",
     "events": [
       {
@@ -221,7 +221,7 @@ curl -X POST /api/v2/webhook/endpoint/ \
 ```javascript
 const inputBody = '{
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -260,7 +260,7 @@ This endpoint create a Webhook Endpoint and connect it to the given [webhook eve
 ```json
 {
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -290,7 +290,7 @@ This endpoint create a Webhook Endpoint and connect it to the given [webhook eve
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -367,7 +367,7 @@ This endpoint retrieves a specific webhook endpoint using ID.
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -402,7 +402,7 @@ curl -X PUT /api/v2/webhook/endpoint/{id}/ \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
     "is_active": true,
-    "target": "http://example.com",
+    "target": "https://example.com",
     "description": "string",
     "events": [
       {
@@ -415,7 +415,7 @@ curl -X PUT /api/v2/webhook/endpoint/{id}/ \
 ```javascript
 const inputBody = '{
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -455,7 +455,7 @@ This endpoint update a specific webhook endpoint.
 ```json
 {
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -486,7 +486,7 @@ This endpoint update a specific webhook endpoint.
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -521,7 +521,7 @@ curl -X PATCH /api/v2/webhook/endpoint/{id}/ \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
     "is_active": true,
-    "target": "http://example.com",
+    "target": "https://example.com",
     "description": "string",
     "events": [
       {
@@ -534,7 +534,7 @@ curl -X PATCH /api/v2/webhook/endpoint/{id}/ \
 ```javascript
 const inputBody = '{
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -573,7 +573,7 @@ This endpoint update a specific field of a specific webhook endpoint.
 ```json
 {
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -604,7 +604,7 @@ This endpoint update a specific field of a specific webhook endpoint.
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {
@@ -834,7 +834,7 @@ This Endpoint expire the secret associated with this endpoint
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_active": true,
-  "target": "http://example.com",
+  "target": "https://example.com",
   "description": "string",
   "events": [
     {

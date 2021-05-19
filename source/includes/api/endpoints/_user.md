@@ -80,7 +80,7 @@ This endpoint retrieve the list of all users.
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -197,7 +197,7 @@ This endpoint perform search users.
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -293,7 +293,7 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -339,7 +339,7 @@ const inputBody = '{
   "avatar": "blob",
   "cover": "blob",
   "gender": "Male",
-  "website": "http://example.com"
+  "website": "https://example.com"
 }';
 const headers = {
   'Content-Type': 'multipart/form-data',
@@ -381,7 +381,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "gender": "Male",
   "avatar": "blob",
   "cover": "blob",
-  "website": "http://example.com"
+  "website": "https://example.com"
 }
 ```
 
@@ -412,7 +412,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -462,7 +462,7 @@ const inputBody = {
   "avatar": "blob",
   "cover": "blob",
   "gender": "Male",
-  "website": "http://example.com"
+  "website": "https://example.com"
 };
 const headers = {
   'Content-Type': 'multipart/form-data',
@@ -519,7 +519,7 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -1066,7 +1066,7 @@ Return the user identified by the authentication token.
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -1263,7 +1263,7 @@ This endpoint retrive the list of user's post of the user identified by {id}.
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -1298,7 +1298,8 @@ This endpoint retrive the list of user's post of the user identified by {id}.
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ],
           "votes": [
@@ -1322,7 +1323,7 @@ This endpoint retrive the list of user's post of the user identified by {id}.
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1454,7 +1455,7 @@ This endpoint retrieve the list of followers of a specific user identified by {i
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -1557,7 +1558,7 @@ This endpoint retrieve the list of following of a specific user identified by {i
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -1864,7 +1865,7 @@ This endpoint retrieve the list of connections of a specific user identified by 
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -2040,7 +2041,7 @@ This endpoint retrieve the list of connection requests received of a specific us
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
@@ -2062,7 +2063,7 @@ This endpoint retrieve the list of connection requests received of a specific us
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,
@@ -2176,7 +2177,7 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
@@ -2198,7 +2199,7 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,

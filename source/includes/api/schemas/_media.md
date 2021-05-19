@@ -36,7 +36,7 @@
   "type": "url",
   "title": "string",
   "description": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "image": "string",
   "image_width": 0,
   "image_height": 0,

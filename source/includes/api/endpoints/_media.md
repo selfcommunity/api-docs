@@ -217,7 +217,7 @@ curl -X POST /api/v2/media/ \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
     "type": "url",
-    "url": "http://example.com"
+    "url": "https://example.com"
   }'
 
 ```
@@ -225,7 +225,7 @@ curl -X POST /api/v2/media/ \
 ```javascript
 const inputBody = '{
   "type": "url",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "embed": null
 }';
 const headers = {
@@ -270,12 +270,12 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
 ```json
 {
   "type": "url",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "embed": {
     "id": 0,
     "embed_type": "string",
     "embed_id": "string",
-    "url": "http://example.com",
+    "url": "https://example.com",
     "metadata": {}
   }
 }
@@ -309,7 +309,7 @@ If *embed* parameter are set and no [Embed](#schemaembed) with `embed_type` - `e
   "type": "vimeo",
   "title": "string",
   "description": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "image": "string",
   "image_width": 0,
   "image_height": 0,
@@ -391,7 +391,7 @@ This endpoint retrieves a specific media using ID.
   "type": "vimeo",
   "title": "string",
   "description": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "image": "string",
   "image_width": 0,
   "image_height": 0,
@@ -429,14 +429,14 @@ curl -X PUT /api/v2/media/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
-    "image": "http://example.com"
+    "image": "https://example.com"
   }'
 
 ```
 
 ```javascript
 const inputBody = '{
-  "image": "http://example.com"
+  "image": "https://example.com"
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -468,7 +468,7 @@ This endpoint update a Media. It must be used for media of `type` *url* for set 
 
 ```json
 {
-  "image": "http://example.com"
+  "image": "https://example.com"
 }
 ```
 
@@ -490,7 +490,7 @@ This endpoint update a Media. It must be used for media of `type` *url* for set 
   "type": "vimeo",
   "title": "string",
   "description": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "image": "string",
   "image_width": 0,
   "image_height": 0,
