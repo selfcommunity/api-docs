@@ -139,7 +139,7 @@ This endpoint retrieves the main (home) feed
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0
             }
           ]
         },
@@ -183,6 +183,7 @@ This endpoint retrieves the main (home) feed
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0
@@ -401,7 +402,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0
             }
           ]
         },
@@ -445,6 +446,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0
@@ -766,7 +768,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0
             }
           ]
         },
@@ -810,6 +812,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0

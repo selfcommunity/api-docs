@@ -59,7 +59,14 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
 |post|query|string|false|Id of the [Post](#schemapost)|
 |status|query|string|false|Id of the [Status](#schemastatus)|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
-|ordering|query|string|false|The field for sorting use - for order desc. Default to added_at|
+|ordering|query|string|false|The field for sorting use - for order desc. Default to `added_at`|
+
+###### Enumerated Values
+
+|Parameter|Value|Description|
+|---|---|---|
+|» ordering|added_at|Order by added_at comment field|
+|» ordering|connection|Order giving pripority to user connections (friends or followers) and then by added_at as second field|
 
 > Example responses
 
@@ -113,6 +120,7 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
       "parent": 0,
       "in_reply_to": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 1,
       "latest_comments": [
@@ -159,6 +167,7 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
           "in_reply_to": 0,
           "comments_count": 0,
           "vote_count": 0,
+          "voted": false,
           "flag_count": 0,
           "comment_count": 0
         }
@@ -317,6 +326,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -363,6 +373,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -474,6 +485,7 @@ This endpoint retrieves a specific comment using ID.
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -520,6 +532,7 @@ This endpoint retrieves a specific comment using ID.
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -655,6 +668,7 @@ This endpoint update a specific comment.
   "parent": 0,
   "in_reply_to": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -701,6 +715,7 @@ This endpoint update a specific comment.
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }

@@ -1102,6 +1102,7 @@ This endpoint retrieves the category feed.
         "collapsed": false,
         "comment_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "share_count": 0,
         "addressing": [
@@ -1296,6 +1297,7 @@ This endpoint retrieves the category trending feed.
         "collapsed": false,
         "comment_count": 1,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "share_count": 0,
         "addressing": [0],

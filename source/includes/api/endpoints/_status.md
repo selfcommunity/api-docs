@@ -139,6 +139,7 @@ This endpoint retrieves all statuses.
       "comment_count": 0,
       "share_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "addressing": [
         0
@@ -352,6 +353,7 @@ This endpoint creates a status.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -504,6 +506,7 @@ This endpoint performs search operation to statuses.
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "matches": [
@@ -687,6 +690,7 @@ This endpoint retrieves a specific status using ID.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -885,6 +889,7 @@ This endpoint update a specific status.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }

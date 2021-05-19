@@ -49,6 +49,7 @@
   "in_reply_to": 0,
   "comments_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -95,6 +96,7 @@
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -177,6 +179,7 @@
   "in_reply_to": 0,
   "comments_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 0,
 }

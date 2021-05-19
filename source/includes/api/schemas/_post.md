@@ -76,7 +76,7 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -108,6 +108,7 @@
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [
     0
@@ -143,7 +144,7 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» vote_count|string|false|read-only|none|
+|»» vote_count|integer|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
@@ -154,6 +155,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already been voted the post|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 
@@ -235,7 +237,7 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -267,6 +269,7 @@
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [
     0
@@ -330,7 +333,7 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» vote_count|string|false|read-only|none|
+|»» vote_count|integer|false|read-only|none|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
@@ -341,6 +344,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already been voted the post|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 |matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|

@@ -127,7 +127,7 @@ This endpoint retrieves all posts.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            : 0
           }
         ]
       },
@@ -159,6 +159,7 @@ This endpoint retrieves all posts.
       "comment_count": 0,
       "share_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "addressing": [
         0
@@ -394,7 +395,7 @@ This endpoint creates a post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -426,6 +427,7 @@ This endpoint creates a post.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -566,7 +568,7 @@ This endpoint perform search operation to posts.
                   "order": 0,
                   "added_at": "2019-08-24T14:15:22Z",
                   "deleted": "string",
-                  "vote_count": "string"
+                  "vote_count": 0
               }
             ]
         },
@@ -598,6 +600,7 @@ This endpoint perform search operation to posts.
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "matches": [
@@ -769,7 +772,7 @@ This endpoint retrieves a specific post using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -801,6 +804,7 @@ This endpoint retrieves a specific post using ID.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -1021,7 +1025,7 @@ This endpoint update a specific post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0
       }
     ]
   },
@@ -1053,6 +1057,7 @@ This endpoint update a specific post.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": []
 }
@@ -1435,6 +1440,7 @@ fetch('/api/v2/post/{id}/poll/vote/',
 
 ```
 This endpoint retrieves all poll votes for a specific post.
+The `choice` parameter is used to filter the votes by a given poll choice of the poll.
 If the post has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
 
 <h4 id="http-request">HTTP Request</h4>
@@ -1448,6 +1454,7 @@ If the post has no poll associated the response status code is [404](https://too
 |id|path|string|true|A unique integer value identifying this post.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|choice|query|integer|false|The `choice` id of the poll. If is specified the endpoint retrieves the votes of only that choice|
 
 > Example responses
 
