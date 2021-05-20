@@ -114,7 +114,6 @@ This sections contains colors preferences for  application elements.
 This section contains general configurations.
 
 * **manual_categories_order_enabled**: Enables manual categories order.
-* **connections_enabled**: Enables Connections.
 * **follow_enabled**: Enables Follow.
 * **people_search_enabled**: Enables people search.
 * **people_card_with_cover_enabled**: Enables people card with cover.
