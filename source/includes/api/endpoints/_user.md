@@ -46,7 +46,7 @@ This endpoint retrieve the list of all users.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|search|query|string|false|A search term.|
+|search|query|string|false|A search term. Search in fields: username, real_name.|
 |username|query|string|false|Filter using field username.|
 |gender|query|string|false|Filter using field gender type.|
 |real_name|query|string|false|Filter using field real_name.|
