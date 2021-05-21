@@ -313,6 +313,87 @@ This endpoint retrieve a specific user's profile identified by {id}.
 This operation does not require authentication
 </aside>
 
+### Get Counters of a Specific User
+
+<a id="opIdcountersUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/counters/ \
+  -H 'Accept: application/json'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/user/{id}/counters/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieve the counters of a specific user identified by {id}.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/{id}/counters/`
+
+<h4 id="retrieveuser-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "discussions": 11,
+    "polls": 10,
+    "posts": 2,
+    "statuses": 3,
+    "followings": 2,
+    "followers": 1
+}
+```
+
+<h4 id="retrieveuser-responses">Responses</h4>
+
+|Status|Meaning|
+|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|
+
+|Field|Description||
+|---|---|---|
+|discussions|Number of discussions created by the user|Always returned|
+|polls|Number of polls created by the user|Always returned|
+|posts|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
+|statuses|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
+|followings|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|followers|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|connection_requests_sent|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connection_requests_received|Number of connection requests received by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connections|Number of connections of the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+
+<aside class="notice">
+This operation does not require authentication if `configurations.content_availability` is true else this operation require authentication
+</aside>
+
+
 ### Update a Specific User
 
 <a id="opIdupdateUser"></a>
