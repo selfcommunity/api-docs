@@ -645,7 +645,7 @@ This endpoint creates a request for a loyalty prize.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|false|none|
+|prize|body|integer|true|A unique integer value identifying the requested prize.|
 
 > Example responses
 
