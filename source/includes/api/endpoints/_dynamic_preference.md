@@ -10,15 +10,13 @@
 # You can also use wget
 curl -X GET /api/v2/dynamic_preference/ \
   -H 'Accept: application/json'
-  -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
+  'Accept':'application/json'
 };
 
 fetch('/api/v2/dynamic_preference/',
@@ -38,46 +36,41 @@ This endpoint retrieves all available dynamic preferences.
 
 <h4>Available sections</h4>
 
-
 <h5>Addons</h5>
 This section contains a collection of modules which can be added as an extra feature.
 
 * **loyalty_points_collection**: This feature allows to enable loyalty points collection.
 * **polls_enabled**: This feature allows to enable polls.
 * **registration_wizard**: This feature enables registration wizard.
-* **invite_code**: Invitation code.
+* **invite_code**: This feature enables invitation code.
 * **closed_community**: This feature allows to make community closed.
-* **archetypes_enabled**: This feature enables archetypes.
-* **affinity_enabled**: This feature enables affinity.
-* **incubator_enabled**: This feature  enables incubator.
-* **incubator_subscribers**: Incubator subscribers number.
-* **incubator_suggestions**: Incubator suggestions number.
-* **post_geolocation_enabled**: This feature enables geolocation for posts.
+* **incubator_enabled**: This feature enables incubator for categories.
+* **incubator_subscribers**: Incubator subscribers number to reach.
+* **incubator_suggestions**: Number of incubators suggested.
+* **post_geolocation_enabled**: This feature enables geolocation for contributions.
 * **cookie_policy_enabled**: This feature enables Cookie Policy.
 * **tutorial_enabled**: This feature enables tutorial.
-* **gdpr_signup_step_enabled**: This feature  enables gdpr signup in steps????
+* **gdpr_signup_step_enabled**: This feature enables gdpr signup in steps.
 * **share_post_on_facebook_enabled**: This feature allows users to share posts on Facebook.
 * **share_post_on_twitter_enabled**: This feature allows users to share posts on Twitter.
 * **share_post_on_linkedin_enabled**: This feature allows users to share posts on Linkedin.
-* **video_upload_enabled**: This feature  enables video upload.
-* **vimeo_token_upload**: This feature  uploads vimeo token.
-* **vimeo_token_delete**:  This feature deletes vimeo token.
-* **video_upload_only_for_staff**: This feature  enables video upload only for staff members.
-* **zapier_enabled**: This feature  enables Zapier.
-* **custom_code_head**: First part of the custom code.
-* **custom_code_body**: Second part of the custom code.
-
-
+* **video_upload_enabled**: This feature enables video upload via vimeo.
+* **vimeo_token_upload**: This feature uploads vimeo token.
+* **vimeo_token_delete**: This feature deletes vimeo token.
+* **video_upload_only_for_staff**: This feature enables video upload only for staff members.
+* **zapier_enabled**: This feature enables Zapier.
+* **custom_code_head**: Custom code printed in the <head> section.
+* **custom_code_body**: Custom code printed in the <body> section.
 
 <h5>Advertising</h5>
 This section provides the settings for advertising management.
 
 * **custom_adv_enabled**: Enables custom advertising.
 * **custom_adv_only_for_anonymous_users_enabled**: Enables custom advertising only for anonymous users.
-* **ads_enabled**: Enables advertising.
-* **ads_verification_code**: Verification code for advertinsing.
-* **ads_manual_enabled**: Enables advertising manually.
-* **ads_only_for_anonymous_users_enabled**: Enables  advertising only for anonymous users.
+* **ads_enabled**: Enables Google advertising.
+* **ads_verification_code**: Verification code for Google advertinsing.
+* **ads_manual_enabled**: Enables Google advertising with manual positioning.
+* **ads_only_for_anonymous_users_enabled**: Enables Google advertising only for anonymous users.
 * **ads_below_topbar_code**: Code for showing ads below top bar.
 * **ads_in_post_comments_code**: Code for showing ads in post comments.
 * **ads_related_posts_column_code**:Code for showing ads in related posts.
@@ -85,8 +78,6 @@ This section provides the settings for advertising management.
 * **ads_footer_sticky_code**: Code for showing ads in the footer.
 * **ads_tools_column_code**: Code for showing ads in the tools column.
 * **ads_in_stream_code**: Code for showing ads in stream.
-
-
 
 <h5>Analytics</h5>
 This section the settings to manage Google Analytics.
@@ -97,18 +88,14 @@ This section the settings to manage Google Analytics.
 * **hotjar_stats_enabled**: Enables Hotjar.
 * **hotjar_stats_tracking_code**: Hotjar Tracking Code(every account will have its own unique Tracking Code to install.)
 
-
-
 <h5>Colors</h5>
 This sections contains colors preferences for  application elements.
 
-* **colorprimary**: Main color for the app buttons.
-* **colorsecondary**: Secondary branding color for the app buttons.
+* **colorprimary**: Main color.
+* **colorsecondary**: Secondary color.
 * **colorback**: Main background color.
-* **navbarback**:  Navbar background color .
-* **submenuback**: Submenu background color .
-
-
+* **navbarback**: Navbar background color.
+* **submenuback**: Submenu background color.
 
 <h5>Configurations</h5>
 This section contains general configurations.
@@ -128,8 +115,6 @@ This section contains general configurations.
 * **discussion_type_enabled**: Enables discussion type.
 * **post_type_enabled**: Enables post type.
 * **status_type_enabled**: Enables status type.
-
-
 
 <h5>Covers</h5>
 This section contains covers settings for homepage.
@@ -152,8 +137,6 @@ This section contains covers settings for homepage.
 * **cover_4_hp_767**: Image n.4 in 767 hp.
 * **cover_4_hp_m1920**: Image n.4 in 1920 hp.
 
-
-
 <h5>Images</h5>
 This section contains image preferences.
 
@@ -163,17 +146,13 @@ This section contains image preferences.
 * **errorpages_image**: Image for error pages.
 * **user_default_cover**: Default cover for user.
 
-
-
 <h5>Logo</h5>
-This section contains logo style settings.
+This section contains logo preferences.
 
 * **logo_dark**: Dark version of the logo.
 * **logo_light**: Light version of the logo.
 * **navbar_logo**: Appearance of the navbar logo.
 * **navbar_logo_mobile**: Mobile view of the navbar logo .
-
-
 
 <h5>Loyalty</h5>
 This section contains all preferences for calibration of loyalty flow.
@@ -187,13 +166,11 @@ This section contains all preferences for calibration of loyalty flow.
 * **points_app_used**: Points earned for the first usage of the app (if available).
 * **points_daily_visit**: Points earned for a daily visit.
 
-
-
 <h5>Providers</h5>
 This section contains providers settings.
 
 * **fidelitycard_signin_enabled**: Enables fidelity card signin.
-* **facebook_signin_enabled**: Enables Facebook  signin.
+* **facebook_signin_enabled**: Enables Facebook signin.
 * **facebook_app_key**: Facebook app key.
 * **facebook_app_secret**: Secret key for Facebook.
 * **twitter_signin_enabled**: Enables Twitter signin.
@@ -216,23 +193,17 @@ This section contains providers settings.
 * **app_ios_membership_team_id**: Ios membership team ID
 * **app_ios_bundle_id**: Ios bundle ID.
 
-
-
 <h5>Staff</h5>
 This section allows to customize staff status section.
 
 * **staff_badge_label**: Label for staff badge.
 * **staff_badge_icon**: Icon for staff badge.
 
-
-
 <h5>Style</h5>
 This section contains style settings for Community customization.
 
 * **font_family**: List of available fonts.
 * **custom_css**: Section where to insert custom css.
-
-
 
 <h5>Text</h5>
 This section contains text preferences.
@@ -244,35 +215,13 @@ This section contains text preferences.
 * **errorpages_title**: Main text used for error pages.
 * **errorpages_subtitle**: Secondary text used for error pages.
 
-
 <h5>Webmaster</h5>
 This section contains the settings for checking the status of indexing and to optimize the visibility of the website.
 
-* **google_sitemap_code**: Creates sitemap code.
-* **meta_robots**: Allow to decide how the page should be indexed and served to users in Google Search results.
-* **meta_title_home_not_logged**: Title visibile on the Homepage (if not logged in).
-* **meta_description**: Short text that sums up the content on the page.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* **google_sitemap_code**: Google code for sitemap.
+* **meta_robots**: Content of the meta tag robots.
+* **meta_title_home_not_logged**: Content of the meta tag title for the Homepage (if not logged in).
+* **meta_description**: Content of the meta tag description.
 
 <h5 id="http-request">HTTP Request</h5>
 
@@ -329,6 +278,100 @@ Status Code **200**
 <aside class="notice">
 This operation does not require authentication
 </aside>
+
+
+
+### Search Dynamic Preferences
+
+<a id="opIdsearchGlobalPreferenceModels"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/dynamic_preference/search/ \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/dynamic_preference/search/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint searches dynamic preferences.
+
+<h5 id="http-request">HTTP Request</h5>
+
+`GET /api/v2/dynamic_preference/`
+
+<h4 id="searchglobalpreferencemodels-parameters">Parameters</h4>
+
+| Name     | In    | Type    | Required | Description                                         |
+|----------|-------|---------|----------|-----------------------------------------------------|
+| limit    | query | integer | false    | Number of results to return per page.               |
+| offset   | query | integer | false    | The initial index from which to return the results. |
+| search   | query | string  | false    | A search term.                                      |
+| section  | query | string  | false    | Filter all preferences in a section                 |
+| ordering | query | string  | false    | Which field to use when ordering the results.       |
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "section": "loyalty",
+      "name": "points_make_post",
+      "value": "2"
+    }
+  ]
+}
+```
+
+<h4 id="searchglobalpreferencemodels-responses">Responses</h4>
+
+| Status | Meaning                                                 | Description | Schema |
+|--------|---------------------------------------------------------|-------------|--------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | Inline |
+
+<h4 id="searchglobalpreferencemodels-responseschema">Response Schema</h4>
+
+Status Code **200**
+
+| Name       | Type                                            | Required | Restrictions | Description         |
+|------------|-------------------------------------------------|----------|--------------|---------------------|
+| » count    | integer                                         | false    | none         | Total results count |
+| » next     | string(uri)¦null                                | false    | none         | Next page url       |
+| » previous | string(uri)¦null                                | false    | none         | Previous page url   |
+| » results  | [[DynamicPreference](#schemadynamicpreference)] | false    | none         | List of results     |
+
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
+
+
 
 ### Get a Specific Dynamic Preference
 

@@ -410,6 +410,7 @@ curl -X PUT /api/v2/user/{id}/ \
 
 ```javascript
 const inputBody = '{
+  "username": "string",
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -442,7 +443,8 @@ fetch('/api/v2/user/{id}/',
 
 ```
 
-This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   
+This endpoint update the profile of a user identified by {id}. A user can only update their personal data.
+`username` field must be unique and valid (valid characters are: a-z A-Z 0-9 _\-).
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -452,6 +454,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
 
 ```json
 {
+  "username": "string",
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -533,6 +536,7 @@ curl -X PATCH /api/v2/user/{id}/ \
 
 ```javascript
 const inputBody = {
+  "username": "string",    
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -566,6 +570,7 @@ fetch('/api/v2/user/{id}/',
 
 
 This endpoint patch a specific user identified by {id}. A user can only update their personal data.
+`username` field must be unique and valid (valid characters are: a-z A-Z 0-9 _\-).
 
 **NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
 
