@@ -113,6 +113,107 @@ Status Code **200**
 This operation requires authentication
 </aside>
 
+### Users Autocomplete
+
+<a id="opIdAutocompleteUsers"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/autocomplete/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/autocomplete/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieve the list of all users that meet the search criteria. 
+The user object returned will contain only the following attributes: id, username, real_name, ext_id and avatar.
+
+This endpoint is recommended for implementing an autocomplete input field.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/autocomplete/`
+
+<h4 id="listusers-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|search|query|string|false|A search term. Search in fields: username, real_name.|
+|username|query|string|false|Filter using field username.|
+|gender|query|string|false|Filter using field gender type.|
+|real_name|query|string|false|Filter using field real_name.|
+|location|query|string|false|Filter using field location.|
+|description|query|string|false|Filter using field description.|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=username`). Minus char is used for descending ordering, eg. `-username`|
+
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "http://api.example.org/accounts/?offset=400&limit=100",
+  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "avatar": "string",
+      "ext_id": 3
+    }
+  ]
+}
+```
+
+<h4 id="listusers-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h4 id="listusers-responseschema">Response Schema</h4>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|list([User](#schemauser))|false|none|List of results. Every items will contain only the following attributes: id, username, real_name, ext_id and avatar.|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
+
 ### Search Users
 
 <a id="opIdSearchUsers"></a>
@@ -159,9 +260,10 @@ This endpoint perform search users.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|user|query|string|false|A search term. Search in fields: username, real_name. If this parameter is used username & real_name will be ignored.|
 |username|query|string|false|Filter using field username.|
-|gender|query|string|false|Filter using field gender type. Possible values: Male, Female, Unspecified.|
 |real_name|query|string|false|Filter using field real_name.|
+|gender|query|string|false|Filter using field gender type. Possible values: Male, Female, Unspecified.|
 |location|query|string|false|Filter using field location.|
 |age|query|string|false|Filter using age ranges. Possible values: -30, 30-45, 45+. The value 45+ must be encoded in the request url: 45%2B.|
 |lat_lng|query|string|false|Filter using coordinates lat,lng.|
