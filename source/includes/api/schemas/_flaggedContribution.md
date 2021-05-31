@@ -22,7 +22,7 @@
       "date_of_birth": "2019-08-24",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",

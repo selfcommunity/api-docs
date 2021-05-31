@@ -41,7 +41,7 @@
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -73,7 +73,7 @@
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -119,7 +119,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
-|voted|boolean|false|read-only|true if the logged user has already been voted the status|
+|voted|boolean|false|read-only|true if the logged user has already voted the status|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 
@@ -166,7 +166,7 @@
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -198,7 +198,7 @@
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -238,7 +238,7 @@
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
@@ -272,7 +272,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
-|voted|boolean|false|read-only|true if the logged user has already been voted the status|
+|voted|boolean|false|read-only|true if the logged user has already voted the status|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 |matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|

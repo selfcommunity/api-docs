@@ -12,7 +12,7 @@
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string",
   "created_at": "2019-08-24T14:15:22Z",
   "lastmod_datetime": "2019-08-24T14:15:22Z",

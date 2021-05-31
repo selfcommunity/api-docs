@@ -20,7 +20,7 @@
     "description": "string",
     "gender": "Male",
     "status": "a",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string"
   },
@@ -61,7 +61,7 @@
     "description": "string",
     "gender": "Male",
     "status": "a",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string"
   }

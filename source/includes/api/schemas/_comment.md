@@ -21,7 +21,7 @@
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -68,7 +68,7 @@
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
@@ -122,6 +122,7 @@
 |parent|integer¦null|false|none|Id of the parent [Comment](#schemacomment)|
 |in_reply_to|integer¦null|false|none|Id of the reply [Comment](#schemacomment), it must have the same `parent` and `object`|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the comment|
 |flag_count|integer|false|read-only|none|
 |comment_count|integer|false|read-only|none|
 |text|string|true|write-only|none|
@@ -151,7 +152,7 @@
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -181,7 +182,7 @@
   "vote_count": 0,
   "voted": false,
   "flag_count": 0,
-  "comment_count": 0,
+  "comment_count": 0
 }
 
 ```
@@ -203,5 +204,6 @@
 |parent|integer¦null|false|none|Id of the parent [Comment](#schemacomment)|
 |in_reply_to|integer¦null|false|none|Id of the reply [Comment](#schemacomment), it must have the same `parent` and `object`|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the comment|
 |flag_count|integer|false|read-only|none|
 |comment_count|integer|false|read-only|none|

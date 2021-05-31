@@ -92,7 +92,7 @@ This endpoint retrieves all posts.
           "type": "url",
           "title": "string",
           "description": "string",
-          "url": "http://example.com",
+          "url": "https://example.com",
           "image": "string",
           "image_width": 0,
           "image_height": 0,
@@ -127,7 +127,8 @@ This endpoint retrieves all posts.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            : 0
+            "vote_count": 0,
+            "voted": true
           }
         ]
       },
@@ -144,7 +145,7 @@ This endpoint retrieves all posts.
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
@@ -360,7 +361,7 @@ This endpoint creates a post.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -395,7 +396,8 @@ This endpoint creates a post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": 0
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -412,7 +414,7 @@ This endpoint creates a post.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -533,7 +535,7 @@ This endpoint perform search operation to posts.
             "type": "url",
             "title": "string",
             "description": "string",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "image": "string",
             "image_width": 0,
             "image_height": 0,
@@ -568,7 +570,8 @@ This endpoint perform search operation to posts.
                   "order": 0,
                   "added_at": "2019-08-24T14:15:22Z",
                   "deleted": "string",
-                  "vote_count": 0
+                  "vote_count": 0,
+                  "voted": true
               }
             ]
         },
@@ -585,7 +588,7 @@ This endpoint perform search operation to posts.
             "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",
@@ -623,7 +626,7 @@ This endpoint perform search operation to posts.
               "date_of_birth": "string",
               "description": "string",
               "gender": "Male",
-              "website": "http://example.com",
+              "website": "https://example.com",
               "avatar": "string",
               "cover": "string",
               "ext_id": "string",
@@ -737,7 +740,7 @@ This endpoint retrieves a specific post using ID.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -772,7 +775,8 @@ This endpoint retrieves a specific post using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": 0
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -789,7 +793,7 @@ This endpoint retrieves a specific post using ID.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -990,7 +994,7 @@ This endpoint update a specific post.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -1025,7 +1029,8 @@ This endpoint update a specific post.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": 0
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -1042,7 +1047,7 @@ This endpoint update a specific post.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -1252,7 +1257,7 @@ This endpoint retrieves all votes for a specific post.
           "description": "string",
           "gender": "Male",
           "status": "a",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1484,7 +1489,7 @@ If the post has no poll associated the response status code is [404](https://too
           "description": "string",
           "gender": "Male",
           "status": "a",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1720,7 +1725,7 @@ This endpoint retrieves a List of Flags for a Specific Post.
             "date_of_birth": "2019-08-24",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",
