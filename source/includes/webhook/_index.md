@@ -112,17 +112,51 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |user.settings_updated|a user changes its settings|---|
 |category.follow|a category is followed by the user|---|
 |category.unfollow|a category is unfollowed by the user|---|
-|connection_request.created|a new connection request is created|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection_request.rejected|a connection request is rejected|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection_request.restored|a connection request that has been rejected is restored|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection_request.cancelled|a connection request is cancelled by the creator|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection.created|a new connection is created|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection.deleted|a connection is deleted|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is false|
-|connection.follow|a user follows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
-|connection.unfollow|a user unfollows another user|This event is triggered only if `connections_enabled` community option is true and `follow_enabled` community option is true|
+|connection_request.created|a new connection request is created|This event is triggered only if `follow_enabled` community option is false|
+|connection_request.rejected|a connection request is rejected|This event is triggered only if `follow_enabled` community option is false|
+|connection_request.restored|a connection request that has been rejected is restored|This event is triggered only if `follow_enabled` community option is false|
+|connection_request.cancelled|a connection request is cancelled by the creator|This event is triggered only if `follow_enabled` community option is false|
+|connection.created|a new connection is created|This event is triggered only if `follow_enabled` community option is false|
+|connection.deleted|a connection is deleted|This event is triggered only if `follow_enabled` community option is false|
+|connection.follow|a user follows another user|This event is triggered only if `follow_enabled` community option is true|
+|connection.unfollow|a user unfollows another user|This event is triggered only if `follow_enabled` community option is true|
 |user.score_updated|the score of the user has been updated|---|
 |user.loyalty_points_updated|the loyalty points of the user has been updated|---|
 |loyalty.prize.created|a new prize has been created|---|
 |loyalty.prize.updated|a prize has been updated|---|
 |loyalty.prize_request.created|a new request of a prize has been created|---|
 |loyalty.prize_request.updated|a request of a prize has been updated (status)|---|
+|notification.comment|a new comment of first level is created|---|
+|notification.nested_comment|a new comment of second level is created|---|
+|notification.mention|a user is mentioned|---|
+|notification.vote_up|a user vote up a post/discussion/comment|---|
+|notification.follow|a user follow a post/discussion|---|
+|notification.private_message|a user send a private message|---|
+|notification.deleted_for_advertising|deleted content by moderators with motivation the content is advertising|---|
+|notification.deleted_for_aggressive|deleted content by moderators with motivation the content is aggressive|---|
+|notification.deleted_for_vulgar|deleted content by moderators with motivation the content is vulgar|---|
+|notification.deleted_for_poor|deleted content by moderators with motivation the content is poor|---|
+|notification.deleted_for_offtopic|deleted content by moderators with motivation the content is offtopic|---|
+|notification.undeleted_for|the content has been rehabilitated by the moderators	|---|
+|notification.collapsed_for_advertising|only for comments, hidden content by moderator with motivation the content is advertising|---|
+|notification.collapsed_for_aggressive|only for comments, hidden content by moderator with motivation the content is aggressive|---|
+|notification.collapsed_for_vulgar|only for comments, hidden content by moderator with motivation the content is vulgar|---|
+|notification.collapsed_for_poor|only for comments, hidden content by moderator with motivation the content is poor|---|
+|notification.collapsed_for_offtopic|only for comments, hidden content by moderator with motivation the content is offtopic|---|
+|notification.connection_request|a user send a connection request|This event is triggered only if `follow_enabled` community option is false|
+|notification.connection_accept|a user accept a connection request|This event is triggered only if `follow_enabled` community option is false|
+|notification.user_follow|a user follow another user|This event is triggered only if `follow_enabled` community option is true|
+|notification.kindly_notice_advertising|content author notified for advertising content (via moderation)|---|
+|notification.kindly_notice_aggressive|content author notified for advertising content (via moderation)|---|
+|notification.kindly_notice_vulgar|content author notified for advertising content (via moderation)|---|
+|notification.kindly_notice_poor|content author notified for advertising content (via moderation)|---|
+|notification.kindly_notice_offtopic|content author notified for advertising content (via moderation)|---|
+|notification.blocked_user|a user is blocked|---|
+|notification.unblocked_user|a user is unblocked|---|
+|notification.custom_notification|a custom notification is created|---|
+|notification.banner.sent|a notification banner is sent and addressed to users|---|
+
+<aside class="notice">
+All events with prefix notification.* include in the payload a field "recipients" specifying the list of recipients of the notification
+</aside>
+

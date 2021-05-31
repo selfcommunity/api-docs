@@ -104,7 +104,7 @@ This endpoint retrieves the main (home) feed
             "type": "url",
             "title": "string",
             "description": "string",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "image": "string",
             "image_width": 0,
             "image_height": 0,
@@ -139,7 +139,8 @@ This endpoint retrieves the main (home) feed
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ]
         },
@@ -156,7 +157,7 @@ This endpoint retrieves the main (home) feed
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -183,6 +184,7 @@ This endpoint retrieves the main (home) feed
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0
@@ -212,7 +214,7 @@ This endpoint retrieves the main (home) feed
             "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",
@@ -366,7 +368,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -401,7 +403,8 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ]
         },
@@ -418,7 +421,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -445,6 +448,7 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0
@@ -731,7 +735,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
             "type": "url",
             "title": "string",
             "description": "string",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "image": "string",
             "image_width": 0,
             "image_height": 0,
@@ -766,7 +770,8 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ]
         },
@@ -783,7 +788,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -810,6 +815,7 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0

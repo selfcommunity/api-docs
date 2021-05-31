@@ -169,7 +169,7 @@ This endpoint retrieves a list of users suggested to the current user.
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string"
     }

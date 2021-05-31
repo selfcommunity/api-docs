@@ -94,7 +94,7 @@ This endpoint retrieves all discussions.
           "type": "url",
           "title": "string",
           "description": "string",
-          "url": "http://example.com",
+          "url": "https://example.com",
           "image": "string",
           "image_width": 0,
           "image_height": 0,
@@ -129,7 +129,8 @@ This endpoint retrieves all discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            "vote_count": 0,
+            "voted": true
           }
         ]
       },
@@ -147,12 +148,12 @@ This endpoint retrieves all discussions.
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
         "tags": [],
-        "reputation": 111,
+        "reputation": 111
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -162,6 +163,7 @@ This endpoint retrieves all discussions.
       "comment_count": 0,
       "share_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "addressing": [
         0
@@ -285,7 +287,7 @@ This endpoint retrieves all uncommented discussions.
           "type": "url",
           "title": "string",
           "description": "string",
-          "url": "http://example.com",
+          "url": "https://example.com",
           "image": "string",
           "image_width": 0,
           "image_height": 0,
@@ -320,12 +322,12 @@ This endpoint retrieves all uncommented discussions.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            "vote_count": 0,
+            "voted": true
           }
         ]
       },
       "last_activity_at": "2019-08-24T14:15:22Z",
-      "view_count": 0,
       "author": {
         "id": 0,
         "username": "string",
@@ -338,12 +340,12 @@ This endpoint retrieves all uncommented discussions.
         "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
         "tags": [],
-        "reputation": 111,
+        "reputation": 111
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -352,6 +354,7 @@ This endpoint retrieves all uncommented discussions.
       "collapsed": false,
       "comment_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "share_count": 0,
       "addressing": [0],
@@ -477,7 +480,7 @@ This endpoint perform search operation to discussions.
             "type": "url",
             "title": "string",
             "description": "string",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "image": "string",
             "image_width": 0,
             "image_height": 0,
@@ -512,7 +515,8 @@ This endpoint perform search operation to discussions.
                   "order": 0,
                   "added_at": "2019-08-24T14:15:22Z",
                   "deleted": "string",
-                  "vote_count": "string"
+                  "vote_count": 0,
+                  "voted": true
               }
             ]
         },
@@ -530,12 +534,12 @@ This endpoint perform search operation to discussions.
             "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 111,
+            "reputation": 111
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -545,6 +549,7 @@ This endpoint perform search operation to discussions.
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "follower_count": "string",
@@ -568,12 +573,12 @@ This endpoint perform search operation to discussions.
               "date_of_birth": "string",
               "description": "string",
               "gender": "Male",
-              "website": "http://example.com",
+              "website": "https://example.com",
               "avatar": "string",
               "cover": "string",
               "ext_id": "string",
               "tags": [],
-              "reputation": 111,
+              "reputation": 111
             }
           }
         ]
@@ -774,7 +779,7 @@ This endpoint creates a discussion.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -809,7 +814,8 @@ This endpoint creates a discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -827,12 +833,12 @@ This endpoint creates a discussion.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111,
+    "reputation": 111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -842,6 +848,7 @@ This endpoint creates a discussion.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -945,7 +952,7 @@ This endpoint retrieves a specific discussion using ID.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -980,7 +987,8 @@ This endpoint retrieves a specific discussion using ID.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -998,12 +1006,12 @@ This endpoint retrieves a specific discussion using ID.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111,
+    "reputation": 111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1013,6 +1021,7 @@ This endpoint retrieves a specific discussion using ID.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -1206,7 +1215,7 @@ This endpoint update a specific discussion.
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -1241,7 +1250,8 @@ This endpoint update a specific discussion.
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -1259,12 +1269,12 @@ This endpoint update a specific discussion.
     "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111,
+    "reputation": 111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1274,6 +1284,7 @@ This endpoint update a specific discussion.
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [],
   "follower_count": "string"
@@ -1490,7 +1501,7 @@ This endpoint retrieve related discussions
             "type": "url",
             "title": "string",
             "description": "string",
-            "url": "http://example.com",
+            "url": "https://example.com",
             "image": "string",
             "image_width": 0,
             "image_height": 0,
@@ -1525,7 +1536,8 @@ This endpoint retrieve related discussions
                 "order": 0,
                 "added_at": "2019-08-24T14:15:22Z",
                 "deleted": "string",
-                "vote_count": "string"
+                "vote_count": 0,
+                "voted": true
             }
           ]
         },
@@ -1543,12 +1555,12 @@ This endpoint retrieve related discussions
             "date_of_birth": "string",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 111,
+            "reputation": 111
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1558,6 +1570,7 @@ This endpoint retrieve related discussions
         "comment_count": 0,
         "share_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [],
         "follower_count": "string"
@@ -1648,13 +1661,30 @@ This endpoint retrieves all votes for a specific discussion.
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "2019-08-24",
           "description": "string",
           "gender": "Male",
           "status": "a",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
-          "cover": "string"
+          "cover": "string",
+          "ext_id": "string",
+          "tags": [
+            {
+              "id": 0,
+              "active": true,
+              "type": "user",
+              "name": "string",
+              "description": "string",
+              "color": "string",
+              "visible": true,
+              "deleted": true,
+              "created_at": "2019-08-24T14:15:22Z"
+            }
+          ],
+          "reputation":111
         },
         "voted_at": "2019-08-24T14:15:22Z"
       }
@@ -1825,6 +1855,7 @@ fetch('/api/v2/discussion/{id}/poll/vote/',
 
 ```
 This endpoint retrieves all poll votes for a specific discussion.
+The `choice` parameter is used to filter the votes by a given poll choice of the poll.
 If the discussion has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
 
 <h4 id="http-request">HTTP Request</h4>
@@ -1838,6 +1869,7 @@ If the discussion has no poll associated the response status code is [404](https
 |id|path|string|true|A unique integer value identifying this discussion.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|choice|query|integer|false|The `choice` id of the poll. If is specified the endpoint retrieves the votes of only that choice|
 
 > Example responses
 
@@ -1861,13 +1893,30 @@ If the discussion has no poll associated the response status code is [404](https
           "date_joined": "2019-08-24T14:15:22Z",
           "bio": "string",
           "location": "string",
-          "birthday": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "2019-08-24",
           "description": "string",
           "gender": "Male",
           "status": "a",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
-          "cover": "string"
+          "cover": "string",
+          "ext_id": "string",
+          "tags": [
+            {
+              "id": 0,
+              "active": true,
+              "type": "user",
+              "name": "string",
+              "description": "string",
+              "color": "string",
+              "visible": true,
+              "deleted": true,
+              "created_at": "2019-08-24T14:15:22Z"
+            }
+          ],
+          "reputation":111
         }
       }
   ]
@@ -2200,7 +2249,7 @@ This endpoint retrieves a List of Flags for a Specific Discussion.
             "date_of_birth": "2019-08-24",
             "description": "string",
             "gender": "Male",
-            "website": "http://example.com",
+            "website": "https://example.com",
             "avatar": "string",
             "cover": "string",
             "ext_id": "string",

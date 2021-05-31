@@ -1,14 +1,14 @@
-<h2 id="selfcommunity-api-post">Post</h2>
+<h2 id="selfcommunity-api-status">Status</h2>
 
-### Get All Posts
+### Get All Statuses
 
-<a id="opIdlistPosts"></a>
+<a id="opIdlistStatuses"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/ \
+curl -X GET /api/v2/status/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -20,7 +20,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/',
+fetch('/api/v2/status/',
 {
   method: 'GET',
 
@@ -34,13 +34,13 @@ fetch('/api/v2/post/',
 
 ```
 
-This endpoint retrieves all posts.
+This endpoint retrieves all statuses.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/`
+`GET /api/v2/status/`
 
-<h4 id="listposts-parameters">Parameters</h4>
+<h4 id="liststatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -111,27 +111,6 @@ This endpoint retrieves all posts.
         "lat": 0,
         "lng": 0
       },
-      "poll": {
-        "id": 0,
-        "title": "string",
-        "multiple_choices": true,
-        "added_at": "2019-08-24T14:15:22Z",
-        "modified_at": "2019-08-24T14:15:22Z",
-        "closed": true,
-        "expiration_at": "2019-08-24T14:15:22Z",
-        "hidden": "string",
-        "choices": [
-          {
-            "id": 0,
-            "choice": "string",
-            "order": 0,
-            "added_at": "2019-08-24T14:15:22Z",
-            "deleted": "string",
-            "vote_count": 0,
-            "voted": true
-          }
-        ]
-      },
       "last_activity_at": "2019-08-24T14:15:22Z",
       "author": {
         "id": 0,
@@ -170,13 +149,13 @@ This endpoint retrieves all posts.
 }
 ```
 
-<h4 id="listposts-responses">Responses</h4>
+<h4 id="liststatuses-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-<h4 id="listposts-responseschema">Response Schema</h4>
+<h4 id="liststatus-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -185,21 +164,21 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|list([Post](#schemapost))|true|none|List of results|
+|» results|list([Status](#schemastatus))|true|none|List of results|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
-### Create a Post
+### Create a Status
 
-<a id="opIdcreatePost"></a>
+<a id="opIdcreateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/ \
+curl -X POST /api/v2/status/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -211,17 +190,6 @@ curl -X POST /api/v2/post/ \
       "location": "string",
       "lat": 0,
       "lng": 0
-    },
-    "poll": {
-      "title": "string",
-      "multiple_choices": true,
-      "closed": true,
-      "expiration_at": "2019-08-24T14:15:22Z",
-      "choices": [
-        {
-          "choice": "string"
-        }
-      ]
     },
     "addressing": []
   }'
@@ -237,17 +205,6 @@ const inputBody = '{
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
   "addressing": []
 }';
 const headers = {
@@ -256,7 +213,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/',
+fetch('/api/v2/status/',
 {
   method: 'POST',
   body: inputBody,
@@ -270,11 +227,11 @@ fetch('/api/v2/post/',
 
 ```
 
-This endpoint creates a post.
+This endpoint creates a status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/`
+`POST /api/v2/status/`
 
 > Body parameter
 
@@ -288,33 +245,21 @@ This endpoint creates a post.
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
   "addressing": []
 }
 ```
 
-<h4 id="createpost-parameters">Parameters</h4>
+<h4 id="createstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» text|body|string|false|The content of the post in html format|
+|» text|body|string|false|The content of the status in html format|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
-|» location|body|object¦null|false|The Location object to associate at the post|
+|» location|body|object¦null|false|The Location object to associate with the status|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|The poll object to associate at the post|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
@@ -380,27 +325,6 @@ This endpoint creates a post.
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "vote_count": 0,
-        "voted": true
-      }
-    ]
-  },
   "last_activity_at": "2019-08-24T14:15:22Z",
   "author": {
     "id": 0,
@@ -435,25 +359,25 @@ This endpoint creates a post.
 }
 ```
 
-<h4 id="createpost-responses">Responses</h4>
+<h4 id="createstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Post](#schemapost)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Status](#schemastatus)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Search a Post
+### Search a Status
 
-<a id="opIdsearchPost"></a>
+<a id="opIdsearchStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/search/ \
+curl -X GET /api/v2/status/search/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -465,7 +389,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/search/',
+fetch('/api/v2/status/search/',
 {
   method: 'GET',
 
@@ -479,13 +403,13 @@ fetch('/api/v2/post/search/',
 
 ```
 
-This endpoint perform search operation to posts.
+This endpoint performs search operation to statuses.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/search/`
+`GET /api/v2/status/search/`
 
-<h4 id="searchpost-parameters">Parameters</h4>
+<h4 id="searchstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -554,27 +478,6 @@ This endpoint perform search operation to posts.
             "lat": 0,
             "lng": 0
         },
-        "poll": {
-            "id": 0,
-            "title": "string",
-            "multiple_choices": true,
-            "added_at": "2019-08-24T14:15:22Z",
-            "modified_at": "2019-08-24T14:15:22Z",
-            "closed": true,
-            "expiration_at": "2019-08-24T14:15:22Z",
-            "hidden": "string",
-            "choices": [
-              {
-                  "id": 0,
-                  "choice": "string",
-                  "order": 0,
-                  "added_at": "2019-08-24T14:15:22Z",
-                  "deleted": "string",
-                  "vote_count": 0,
-                  "voted": true
-              }
-            ]
-        },
         "last_activity_at": "2019-08-24T14:15:22Z",
         "author": {
             "id": 0,
@@ -640,7 +543,7 @@ This endpoint perform search operation to posts.
 }
 ```
 
-<h4 id="searchpost-responses">Responses</h4>
+<h4 id="searchstatus-responses">Responses</h4>
 
 Status Code **200**
 
@@ -649,21 +552,21 @@ Status Code **200**
 |» count|integer|true|none|Total results count|
 |» next|string¦null|false|none|Next page url|
 |» previous|string¦null|false|none|Previous page url|
-|» results|list([SearchPost](#schemasearchpost))|true|none|List of results|
+|» results|list([SearchStatus](#schemasearchstatus))|true|none|List of results|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
-### Get a specific Post
+### Get a specific Status
 
-<a id="opIdretrievePost"></a>
+<a id="opIdretrieveStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/ \
+curl -X GET /api/v2/status/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -675,7 +578,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/',
+fetch('/api/v2/status/{id}/',
 {
   method: 'GET',
 
@@ -689,17 +592,17 @@ fetch('/api/v2/post/{id}/',
 
 ```
 
-This endpoint retrieves a specific post using ID.
+This endpoint retrieves a specific status using ID.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/`
+`GET /api/v2/status/{id}/`
 
-<h4 id="retrievepost-parameters">Parameters</h4>
+<h4 id="retrievestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 > Example responses
 
@@ -759,27 +662,6 @@ This endpoint retrieves a specific post using ID.
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "vote_count": 0,
-        "voted": true
-      }
-    ]
-  },
   "last_activity_at": "2019-08-24T14:15:22Z",
   "author": {
     "id": 0,
@@ -814,25 +696,25 @@ This endpoint retrieves a specific post using ID.
 }
 ```
 
-<h4 id="retrievepost-responses">Responses</h4>
+<h4 id="retrievestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Post](#schemapost)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Status](#schemastatus)|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
-### Update a specific Post
+### Update a specific Status
 
-<a id="opIdupdatePost"></a>
+<a id="opIdupdateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X PUT /api/v2/post/{id}/ \
+curl -X PUT /api/v2/status/{id}/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -844,17 +726,6 @@ curl -X PUT /api/v2/post/{id}/ \
       "location": "string",
       "lat": 0,
       "lng": 0
-    },
-    "poll": {
-      "title": "string",
-      "multiple_choices": true,
-      "closed": true,
-      "expiration_at": "2019-08-24T14:15:22Z",
-      "choices": [
-        {
-          "choice": "string"
-        }
-      ]
     },
     "addressing": []
   }'
@@ -870,17 +741,6 @@ const inputBody = '{
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
   "addressing": []
 }';
 const headers = {
@@ -889,7 +749,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/',
+fetch('/api/v2/status/{id}/',
 {
   method: 'PUT',
   body: inputBody,
@@ -903,11 +763,11 @@ fetch('/api/v2/post/{id}/',
 
 ```
 
-This endpoint update a specific post.
+This endpoint update a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`PUT /api/v2/post/{id}/`
+`PUT /api/v2/status/{id}/`
 
 > Body parameter
 
@@ -921,33 +781,21 @@ This endpoint update a specific post.
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "title": "string",
-    "multiple_choices": true,
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "choices": [
-      {
-        "choice": "string"
-      }
-    ]
-  },
   "addressing": []
 }
 ```
 
-<h4 id="updatepost-parameters">Parameters</h4>
+<h4 id="updatestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» text|body|string|false|The content of the post in html format|
+|» text|body|string|false|The content of the status in html format|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
-|» location|body|object¦null|false|The Location object to associate at the post|
+|» location|body|object¦null|false|The Location object to associate with the status|
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|» poll|body|object¦null|false|The poll object to associate at the post|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
 |»» expiration_at|body|string(date-time)|true|none|
@@ -1013,27 +861,6 @@ This endpoint update a specific post.
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "vote_count": 0,
-        "voted": true
-      }
-    ]
-  },
   "last_activity_at": "2019-08-24T14:15:22Z",
   "author": {
     "id": 0,
@@ -1068,32 +895,32 @@ This endpoint update a specific post.
 }
 ```
 
-<h4 id="updatepost-responses">Responses</h4>
+<h4 id="updatestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdatePost](#schemaupdatepost)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateStatus](#schemaupdatestatus)|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the post creator
+This operation requires authentication. The logged user must be the status creator
 </aside>
 
-### Delete a Post
+### Delete a Status
 
-<a id="opIddestroyPost"></a>
+<a id="opIddestroyStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X DELETE /api/v2/post/{id}/
+curl -X DELETE /api/v2/status/{id}/
   -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
-fetch('/api/v2/post/{id}/',
+fetch('/api/v2/status/{id}/',
 {
   method: 'DELETE',
   headers: {
@@ -1109,44 +936,44 @@ fetch('/api/v2/post/{id}/',
 
 ```
 
-This endpoint delete a Post.
+This endpoint deletes a Status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`DELETE /api/v2/post/{id}/`
+`DELETE /api/v2/status/{id}/`
 
-<h4 id="destroypost-parameters">Parameters</h4>
+<h4 id="destroystatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
-<h4 id="destroypost-responses">Responses</h4>
+<h4 id="destroystatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the post creator
+This operation requires authentication. The logged user must be the status creator
 </aside>
 
-### Restore a Post
+### Restore a Status
 
-<a id="opIdrestorePost"></a>
+<a id="opIdrestoreStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/restore/
+curl -X POST /api/v2/status/{id}/restore/
   -H 'Authorization: Bearer {access_token}'
 
 ```
 
 ```javascript
 
-fetch('/api/v2/post/{id}/restore/',
+fetch('/api/v2/status/{id}/restore/',
 {
   method: 'POST',
   headers: {
@@ -1162,37 +989,37 @@ fetch('/api/v2/post/{id}/restore/',
 
 ```
 
-This endpoint restore a Post.
+This endpoint restores a Status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/restore/`
+`POST /api/v2/status/{id}/restore/`
 
-<h4 id="restorepost-parameters">Parameters</h4>
+<h4 id="restorestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
-<h4 id="restorepost-responses">Responses</h4>
+<h4 id="restorestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication. The logged user must be the post creator
+This operation requires authentication. The logged user must be the status creator
 </aside>
 
-### Get List of Votes for a Specific Post
+### Get List of Votes for a Specific Status
 
-<a id="opIdvotePost"></a>
+<a id="opIdvoteStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/vote/ \
+curl -X GET /api/v2/status/{id}/vote/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -1204,7 +1031,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/vote/',
+fetch('/api/v2/status/{id}/vote/',
 {
   method: 'GET',
 
@@ -1217,17 +1044,17 @@ fetch('/api/v2/post/{id}/vote/',
 });
 
 ```
-This endpoint retrieves all votes for a specific post.
+This endpoint retrieves all votes for a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/vote/`
+`GET /api/v2/status/{id}/vote/`
 
-<h4 id="votepost-parameters">Parameters</h4>
+<h4 id="votestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
 
@@ -1282,7 +1109,7 @@ This endpoint retrieves all votes for a specific post.
 }
 ```
 
-<h4 id="votepost-responseschema">Response Schema</h4>
+<h4 id="votestatus-responseschema">Response Schema</h4>
 
 Status Code **200**
 
@@ -1294,18 +1121,18 @@ Status Code **200**
 |» results|list([Vote](#schemavote))|true|none|List of results|
 
 <aside class="notice">
-This operation require authentication only if `content_availability` community option is false
+This operation requires authentication only if `content_availability` community option is false
 </aside>
 
-### Upvote for a Specific Post
+### Upvote for a Specific Status
 
-<a id="opIdvoteCreatePost"></a>
+<a id="opIdvoteCreateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/vote/ \
+curl -X POST /api/v2/status/{id}/vote/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
@@ -1319,7 +1146,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/vote/',
+fetch('/api/v2/status/{id}/vote/',
 {
   method: 'POST',
   headers: headers
@@ -1332,37 +1159,37 @@ fetch('/api/v2/post/{id}/vote/',
 
 ```
 
-This endpoint upvotes a specific post.
+This endpoint upvotes a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/vote/`
+`POST /api/v2/status/{id}/vote/`
 
-<h4 id="votecreatepost-parameters">Parameters</h4>
+<h4 id="votecreatestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
-<h4 id="votecreatepost-responses">Responses</h4>
+<h4 id="votecreatestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Remove an Upvote for a Specific Post
+### Remove an Upvote for a Specific Status
 
-<a id="opIdvoteCreatePost"></a>
+<a id="opIdvoteCreateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/vote/ \
+curl -X POST /api/v2/status/{id}/vote/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
@@ -1376,7 +1203,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/vote/',
+fetch('/api/v2/status/{id}/vote/',
 {
   method: 'POST',
   headers: headers
@@ -1389,284 +1216,38 @@ fetch('/api/v2/post/{id}/vote/',
 
 ```
 
-This endpoint removes an upvote for a specific post.
+This endpoint removes an upvote for a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/vote/`
+`POST /api/v2/status/{id}/vote/`
 
-<h4 id="votecreatepost-parameters">Parameters</h4>
+<h4 id="votecreatestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
-<h4 id="voteremovepost-responses">Responses</h4>
+<h4 id="voteremovestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Get List of Poll Votes for a Specific Post
 
-<a id="opIdpollvotePost"></a>
+### Get List of Flags for a Specific Status
+
+<a id="opIdflagStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/poll/vote/ \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/post/{id}/poll/vote/',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-This endpoint retrieves all poll votes for a specific post.
-The `choice` parameter is used to filter the votes by a given poll choice of the poll.
-If the post has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
-
-<h4 id="http-request">HTTP Request</h4>
-
-`GET /api/v2/post/{id}/poll/vote/`
-
-<h4 id="pollvotepost-parameters">Parameters</h4>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
-|limit|query|integer|false|Number of results to return per page.|
-|offset|query|integer|false|The initial index from which to return the results.|
-|choice|query|integer|false|The `choice` id of the poll. If is specified the endpoint retrieves the votes of only that choice|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "count": 123,
-  "next": "string",
-  "previous": "string",
-  "results": [
-      {
-        "id": 0,
-        "choice": "string",
-        "user": {
-          "id": 0,
-          "username": "string",
-          "real_name": "string",
-          "email": "user@example.com",
-          "email_isvalid": true,
-          "date_joined": "2019-08-24T14:15:22Z",
-          "bio": "string",
-          "location": "string",
-          "location_lat_lng": "string",
-          "position_lat_lng": "string",
-          "date_of_birth": "2019-08-24",
-          "description": "string",
-          "gender": "Male",
-          "status": "a",
-          "website": "https://example.com",
-          "avatar": "string",
-          "cover": "string",
-          "ext_id": "string",
-          "tags": [
-            {
-              "id": 0,
-              "active": true,
-              "type": "user",
-              "name": "string",
-              "description": "string",
-              "color": "string",
-              "visible": true,
-              "deleted": true,
-              "created_at": "2019-08-24T14:15:22Z"
-            }
-          ],
-          "reputation":111
-        },
-      }
-  ]
-}
-```
-
-<h4 id="pollvotepost-responseschema">Response Schema</h4>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|list([PollVote](#schemapollvote))|true|none|List of results|
-
-<aside class="notice">
-This operation require authentication only if `content_availability` community option is false
-</aside>
-
-### Upvote for a Specific Poll Choice
-
-<a id="opIdpollvoteCreatePost"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/post/{id}/poll/vote/ \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-  --data-raw '{
-    "choice": 0
-  }'
-```
-
-```javascript
-const inputBody = {
-  "choice": 0
-};
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/post/{id}/poll/vote/',
-{
-  method: 'POST',
-  headers: headers,
-  body: inputBody
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-This endpoint upvotes a specific poll choice in a post.
-If the post has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
-
-<h4 id="http-request">HTTP Request</h4>
-
-`POST /api/v2/post/{id}/poll/vote/`
-
-<h4 id="pollvotecreatepost-parameters">Parameters</h4>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
-|choice|body|integer|true|A unique integer value identifying the choice to be upvoted.|
-
-<h4 id="pollvotecreatepost-responses">Responses</h4>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require authentication
-</aside>
-
-### Remove an Upvote for a Specific Poll Choice
-
-<a id="opIdpollvoteRemovePost"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST /api/v2/post/{id}/poll/vote/ \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access_token}'
-  --data-raw '{
-    "choice": 0
-  }'
-```
-
-```javascript
-const inputBody = {
-  "choice": 0
-};
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'Authorization': 'Bearer {access_token}'
-};
-
-fetch('/api/v2/post/{id}/poll/vote/',
-{
-  method: 'POST',
-  headers: headers,
-  body: inputBody
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-This endpoint remove an upvote from a specific poll choice in a post.
-If the post has no poll associated the response status code is [404](https://tools.ietf.org/html/rfc7231#section-6.5.4).
-
-<h4 id="http-request">HTTP Request</h4>
-
-`POST /api/v2/post/{id}/poll/vote/`
-
-<h4 id="pollvoteremovepost-parameters">Parameters</h4>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
-|choice|body|integer|true|A unique integer value identifying the choice to be upvoted.|
-
-<h4 id="pollvoteremovepost-responses">Responses</h4>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
-
-<aside class="notice">
-This operation require authentication
-</aside>
-
-### Get List of Flags for a Specific Post
-
-<a id="opIdflagPost"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET /api/v2/post/{id}/flag/ \
+curl -X GET /api/v2/status/{id}/flag/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}'
 ```
@@ -1677,7 +1258,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/flag/',
+fetch('/api/v2/status/{id}/flag/',
 {
   method: 'GET',
   headers: headers
@@ -1690,17 +1271,17 @@ fetch('/api/v2/post/{id}/flag/',
 
 ```
 
-This endpoint retrieves a List of Flags for a Specific Post.
+This endpoint retrieves a List of Flags for a Specific Status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/flag/`
+`GET /api/v2/status/{id}/flag/`
 
-<h4 id="flagpost-parameters">Parameters</h4>
+<h4 id="flagstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 > Example responses
 
@@ -1752,25 +1333,25 @@ This endpoint retrieves a List of Flags for a Specific Post.
 }
 ```
 
-<h4 id="flagpost-responses">Responses</h4>
+<h4 id="flagstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require moderation role.
+This operation requires moderation role.
 </aside>
 
-### Flag a Specific Post
+### Flag a Specific Status
 
-<a id="opIdflagCreatePost"></a>
+<a id="opIdflagCreateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/flag/ \
+curl -X POST /api/v2/status/{id}/flag/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -1789,7 +1370,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/flag/',
+fetch('/api/v2/status/{id}/flag/',
 {
   method: 'POST',
   body: inputBody,
@@ -1803,11 +1384,11 @@ fetch('/api/v2/post/{id}/flag/',
 
 ```
 
-This endpoint flag a specific post.
+This endpoint flag a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/flag/`
+`POST /api/v2/status/{id}/flag/`
 
 > Body parameter
 
@@ -1817,11 +1398,11 @@ This endpoint flag a specific post.
 }
 ```
 
-<h4 id="flagcreatepost-parameters">Parameters</h4>
+<h4 id="flagcreatestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 flag_type|body|integer|true|A integer from 0 to 4|
 
 #### Enumerated Values
@@ -1834,25 +1415,25 @@ flag_type|body|integer|true|A integer from 0 to 4|
 |flag_type|3|poor|
 |flag_type|4|offtopic|
 
-<h4 id="flagcreatepost-responses">Responses</h4>
+<h4 id="flagcreatestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Unflag a Specific Post
+### Unflag a Specific Status
 
-<a id="opIdunflagCreatePost"></a>
+<a id="opIdunflagCreateStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/flag/ \
+curl -X POST /api/v2/status/{id}/flag/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
@@ -1871,7 +1452,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/flag/',
+fetch('/api/v2/status/{id}/flag/',
 {
   method: 'POST',
   body: inputBody,
@@ -1885,11 +1466,11 @@ fetch('/api/v2/post/{id}/flag/',
 
 ```
 
-This endpoint removes a flag for a specific post.
+This endpoint removes a flag for a specific status.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/flag/`
+`POST /api/v2/status/{id}/flag/`
 
 > Body parameter
 
@@ -1899,11 +1480,11 @@ This endpoint removes a flag for a specific post.
 }
 ```
 
-<h4 id="unflagcreatepost-parameters">Parameters</h4>
+<h4 id="unflagcreatestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 flag_type|body|integer|true|A integer from 0 to 4|
 
 #### Enumerated Values
@@ -1916,25 +1497,25 @@ flag_type|body|integer|true|A integer from 0 to 4|
 |flag_type|3|poor|
 |flag_type|4|offtopic|
 
-<h4 id="unflagcreatepost-responses">Responses</h4>
+<h4 id="unflagcreatestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Get Flag Status for a Specific Post
+### Get Flag Status for a Specific Status
 
-<a id="opIdflagStatusPost"></a>
+<a id="opIdflagStatusStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/flag/status/ \
+curl -X GET /api/v2/status/{id}/flag/status/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -1947,7 +1528,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/flag/status/',
+fetch('/api/v2/status/{id}/flag/status/',
 {
   method: 'GET',
 
@@ -1965,13 +1546,13 @@ Retrieve if exists a flag for this contribute created by the user logged
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/flag/status/`
+`GET /api/v2/status/{id}/flag/status/`
 
-<h4 id="flagstatuspost-parameters">Parameters</h4>
+<h4 id="flagstatusstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 > Example responses
 
@@ -1985,26 +1566,26 @@ Retrieve if exists a flag for this contribute created by the user logged
 }
 ```
 
-<h4 id="flagstatuspost-responses">Responses</h4>
+<h4 id="flagstatusstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
 
-### Hide a Specific Post
+### Hide a Specific Status
 
-<a id="opIdhidePost"></a>
+<a id="opIdhideStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/hide/ \
+curl -X POST /api/v2/status/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2017,7 +1598,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/hide/',
+fetch('/api/v2/status/{id}/hide/',
 {
   method: 'POST',
   headers: headers
@@ -2030,38 +1611,38 @@ fetch('/api/v2/post/{id}/hide/',
 
 ```
 
-This Endpoint hide the [Post](#schemapost) for the logged user. The post must be in show state.
+This Endpoint hide the [Status](#schemastatus) for the logged user. The status must be in show state.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST /api/v2/post/{id}/hide/`
+`POST /api/v2/status/{id}/hide/`
 
-<h4 id="hidepost-parameters">Parameters</h4>
+<h4 id="hidestatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 
-<h4 id="hidepost-responses">Responses</h4>
+<h4 id="hidestatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Show a Specific Post
+### Show a Specific Status
 
-<a id="opIdshowPost"></a>
+<a id="opIdshowStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST /api/v2/post/{id}/hide/ \
+curl -X POST /api/v2/status/{id}/hide/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2074,7 +1655,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/hide/',
+fetch('/api/v2/status/{id}/hide/',
 {
   method: 'POST',
   headers: headers
@@ -2087,38 +1668,38 @@ fetch('/api/v2/post/{id}/hide/',
 
 ```
 
-This Endpoint show the [Post](#schemapost) for the logged user. The post must be in hidden state.
+This Endpoint show the [Status](#schemastatus) for the logged user. The status must be in hidden state.
 
 <h4 id="http-request">HTTP Request</h4>
 
-`POST/api/v2/post/{id}/hide/`
+`POST/api/v2/status/{id}/hide/`
 
-<h4 id="showpost-parameters">Parameters</h4>
+<h4 id="showstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 
-<h4 id="showpost-responses">Responses</h4>
+<h4 id="showstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 
-### Get Hide Status for a Specific Post
+### Get Hide Status for a Specific Status
 
-<a id="opIdhideStatusPost"></a>
+<a id="opIdhideStatusStatus"></a>
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET /api/v2/post/{id}/hide/status/ \
+curl -X GET /api/v2/status/{id}/hide/status/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
 
@@ -2131,7 +1712,7 @@ const headers = {
   'Authorization': 'Bearer {access_token}'
 };
 
-fetch('/api/v2/post/{id}/hide/status/',
+fetch('/api/v2/status/{id}/hide/status/',
 {
   method: 'GET',
   headers: headers
@@ -2144,17 +1725,17 @@ fetch('/api/v2/post/{id}/hide/status/',
 
 ```
 
-This Endpoint retrieve if the logged user has hidden the [Post](#schemapost).
+This Endpoint retrieve if the logged user has hidden the [Status](#schemastatus).
 
 <h4 id="http-request">HTTP Request</h4>
 
-`GET /api/v2/post/{id}/hide/status/`
+`GET /api/v2/status/{id}/hide/status/`
 
-<h4 id="hidestatuspost-parameters">Parameters</h4>
+<h4 id="hidestatusstatus-parameters">Parameters</h4>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this post.|
+|id|path|string|true|A unique integer value identifying this status.|
 
 > Example responses
 
@@ -2166,13 +1747,13 @@ This Endpoint retrieve if the logged user has hidden the [Post](#schemapost).
 }
 ```
 
-<h4 id="hidestatuspost-responses">Responses</h4>
+<h4 id="hidestatusstatus-responses">Responses</h4>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
 
 <aside class="notice">
-This operation require authentication
+This operation requires authentication
 </aside>
 

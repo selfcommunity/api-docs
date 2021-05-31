@@ -21,7 +21,7 @@
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,

@@ -46,7 +46,7 @@ This endpoint retrieve the list of all users.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|search|query|string|false|A search term.|
+|search|query|string|false|A search term. Search in fields: username, real_name.|
 |username|query|string|false|Filter using field username.|
 |gender|query|string|false|Filter using field gender type.|
 |real_name|query|string|false|Filter using field real_name.|
@@ -80,7 +80,7 @@ This endpoint retrieve the list of all users.
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -112,6 +112,107 @@ Status Code **200**
 <aside class="notice">
 This operation requires authentication
 </aside>
+
+### Users Autocomplete
+
+<a id="opIdAutocompleteUsers"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/autocomplete/ \
+  -H 'Accept: application/json'
+  -H "Authorization: Bearer <token>"
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization: Bearer <token>'
+};
+
+fetch('/api/v2/user/autocomplete/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieve the list of all users that meet the search criteria. 
+The user object returned will contain only the following attributes: id, username, real_name, ext_id and avatar.
+
+This endpoint is recommended for implementing an autocomplete input field.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/autocomplete/`
+
+<h4 id="listusers-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|search|query|string|false|A search term. Search in fields: username, real_name.|
+|username|query|string|false|Filter using field username.|
+|gender|query|string|false|Filter using field gender type.|
+|real_name|query|string|false|Filter using field real_name.|
+|location|query|string|false|Filter using field location.|
+|description|query|string|false|Filter using field description.|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=username`). Minus char is used for descending ordering, eg. `-username`|
+
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "http://api.example.org/accounts/?offset=400&limit=100",
+  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
+  "results": [
+    {
+      "id": 0,
+      "username": "string",
+      "real_name": "string",
+      "avatar": "string",
+      "ext_id": 3
+    }
+  ]
+}
+```
+
+<h4 id="listusers-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h4 id="listusers-responseschema">Response Schema</h4>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|list([User](#schemauser))|false|none|List of results. Every items will contain only the following attributes: id, username, real_name, ext_id and avatar.|
+
+<aside class="notice">
+This operation requires authentication
+</aside>
+
 
 ### Search Users
 
@@ -159,9 +260,10 @@ This endpoint perform search users.
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
+|user|query|string|false|A search term. Search in fields: username, real_name. If this parameter is used username & real_name will be ignored.|
 |username|query|string|false|Filter using field username.|
-|gender|query|string|false|Filter using field gender type. Possible values: Male, Female, Unspecified.|
 |real_name|query|string|false|Filter using field real_name.|
+|gender|query|string|false|Filter using field gender type. Possible values: Male, Female, Unspecified.|
 |location|query|string|false|Filter using field location.|
 |age|query|string|false|Filter using age ranges. Possible values: -30, 30-45, 45+. The value 45+ must be encoded in the request url: 45%2B.|
 |lat_lng|query|string|false|Filter using coordinates lat,lng.|
@@ -197,7 +299,7 @@ This endpoint perform search users.
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -293,7 +395,7 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -313,6 +415,87 @@ This endpoint retrieve a specific user's profile identified by {id}.
 This operation does not require authentication
 </aside>
 
+### Get Counters of a Specific User
+
+<a id="opIdcountersUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/counters/ \
+  -H 'Accept: application/json'
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/user/{id}/counters/',
+{
+  method: 'GET',
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint retrieve the counters of a specific user identified by {id}.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/{id}/counters/`
+
+<h4 id="countersUser-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+    "discussions": 11,
+    "polls": 10,
+    "posts": 2,
+    "statuses": 3,
+    "followings": 2,
+    "followers": 1
+}
+```
+
+<h4 id="countersUser-responses">Responses</h4>
+
+|Status|Meaning|
+|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|
+
+|Field|Description||
+|---|---|---|
+|discussions|Number of discussions created by the user|Always returned|
+|posts|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
+|statuses|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
+|polls|Number of polls created by the user|Only if dynamic preference `configurations.polls_enabled` is `true`|
+|followings|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|followers|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|connection_requests_sent|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connection_requests_received|Number of connection requests received by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connections|Number of connections of the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+
+<aside class="notice">
+This operation does not require authentication if `configurations.content_availability` is true else this operation require authentication
+</aside>
+
+
 ### Update a Specific User
 
 <a id="opIdupdateUser"></a>
@@ -329,6 +512,7 @@ curl -X PUT /api/v2/user/{id}/ \
 
 ```javascript
 const inputBody = '{
+  "username": "string",
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -339,7 +523,7 @@ const inputBody = '{
   "avatar": "blob",
   "cover": "blob",
   "gender": "Male",
-  "website": "http://example.com"
+  "website": "https://example.com"
 }';
 const headers = {
   'Content-Type': 'multipart/form-data',
@@ -361,7 +545,8 @@ fetch('/api/v2/user/{id}/',
 
 ```
 
-This endpoint update the profile of a user identified by {id}. A user can only update their personal data.   
+This endpoint update the profile of a user identified by {id}. A user can only update their personal data.
+`username` field must be unique and valid (valid characters are: a-z A-Z 0-9 _\-).
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -371,6 +556,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
 
 ```json
 {
+  "username": "string",
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -381,7 +567,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "gender": "Male",
   "avatar": "blob",
   "cover": "blob",
-  "website": "http://example.com"
+  "website": "https://example.com"
 }
 ```
 
@@ -412,7 +598,7 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -452,6 +638,7 @@ curl -X PATCH /api/v2/user/{id}/ \
 
 ```javascript
 const inputBody = {
+  "username": "string",    
   "real_name": "string",
   "bio": "string",
   "location": "string",
@@ -462,7 +649,7 @@ const inputBody = {
   "avatar": "blob",
   "cover": "blob",
   "gender": "Male",
-  "website": "http://example.com"
+  "website": "https://example.com"
 };
 const headers = {
   'Content-Type': 'multipart/form-data',
@@ -485,6 +672,7 @@ fetch('/api/v2/user/{id}/',
 
 
 This endpoint patch a specific user identified by {id}. A user can only update their personal data.
+`username` field must be unique and valid (valid characters are: a-z A-Z 0-9 _\-).
 
 **NOTE**: You can use this endpoint to edit a single field passing only the id and the needed field (without mandatory fields).
 
@@ -519,7 +707,7 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -1066,7 +1254,7 @@ Return the user identified by the authentication token.
   "description": "string",
   "gender": "Male",
   "status": "a",
-  "website": "http://example.com",
+  "website": "https://example.com",
   "avatar": "string",
   "cover": "string",
   "ext_id": 3,
@@ -1263,7 +1451,7 @@ This endpoint retrive the list of user's post of the user identified by {id}.
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -1298,7 +1486,8 @@ This endpoint retrive the list of user's post of the user identified by {id}.
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "count_votes": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ],
           "votes": [
@@ -1322,7 +1511,7 @@ This endpoint retrive the list of user's post of the user identified by {id}.
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1347,7 +1536,8 @@ This endpoint retrive the list of user's post of the user identified by {id}.
         "deleted": true,
         "collapsed": "string",
         "comment_count": 0,
-        "vote_count": "string",
+        "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "share_count": 0,
         "addressing": [0],
@@ -1453,7 +1643,7 @@ This endpoint retrieve the list of followers of a specific user identified by {i
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -1556,7 +1746,7 @@ This endpoint retrieve the list of following of a specific user identified by {i
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -1863,7 +2053,7 @@ This endpoint retrieve the list of connections of a specific user identified by 
       "description": "string",
       "gender": "Male",
       "status": "a",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": 3,
@@ -2039,7 +2229,7 @@ This endpoint retrieve the list of connection requests received of a specific us
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
@@ -2061,7 +2251,7 @@ This endpoint retrieve the list of connection requests received of a specific us
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,
@@ -2175,7 +2365,7 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 1,
@@ -2197,7 +2387,7 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "description": "string",
         "gender": "Male",
         "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": 3,

@@ -66,7 +66,7 @@ This endpoint retrieves all prizes.
       "title": "string",
       "description": "string",
       "points": 0,
-      "link": "http://example.com",
+      "link": "https://example.com",
       "image": "string",
       "created_at": "2019-08-24T14:15:22Z",
       "lastmod_datetime": "2019-08-24T14:15:22Z",
@@ -118,7 +118,7 @@ const inputBody = '{
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }';
 const headers = {
@@ -154,7 +154,7 @@ This endpoint creates a prize.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }
 ```
@@ -176,7 +176,7 @@ This endpoint creates a prize.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string",
   "created_at": "2019-08-24T14:15:22Z",
   "lastmod_datetime": "2019-08-24T14:15:22Z",
@@ -250,7 +250,7 @@ This endpoint retrieves a specific prize.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string",
   "created_at": "2019-08-24T14:15:22Z",
   "lastmod_datetime": "2019-08-24T14:15:22Z",
@@ -289,7 +289,7 @@ const inputBody = '{
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }';
 const headers = {
@@ -326,7 +326,7 @@ This endpoint updates a specific prize.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }
 ```
@@ -349,7 +349,7 @@ This endpoint updates a specific prize.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string",
   "created_at": "2019-08-24T14:15:22Z",
   "lastmod_datetime": "2019-08-24T14:15:22Z",
@@ -388,7 +388,7 @@ const inputBody = '{
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }';
 const headers = {
@@ -429,7 +429,7 @@ For example to change `active` flag in an admin list/table interface.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string"
 }
 ```
@@ -452,7 +452,7 @@ For example to change `active` flag in an admin list/table interface.
   "title": "string",
   "description": "string",
   "points": 0,
-  "link": "http://example.com",
+  "link": "https://example.com",
   "image": "string",
   "created_at": "2019-08-24T14:15:22Z",
   "lastmod_datetime": "2019-08-24T14:15:22Z",
@@ -557,7 +557,7 @@ This endpoint retrieves all requests of loyalty prizes.
         "title": "string",
         "description": "string",
         "points": 0,
-        "link": "http://example.com",
+        "link": "https://example.com",
         "image": "string"
       },
       "prize_points": 0,
@@ -645,7 +645,7 @@ This endpoint creates a request for a loyalty prize.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[LoyaltyPrizeUser](#schemaloyaltyprizeuser)|false|none|
+|prize|body|integer|true|A unique integer value identifying the requested prize.|
 
 > Example responses
 
@@ -669,7 +669,7 @@ This endpoint creates a request for a loyalty prize.
     "title": "string",
     "description": "string",
     "points": 0,
-    "link": "http://example.com",
+    "link": "https://example.com",
     "image": "string"
   },
   "prize_points": 0,
@@ -755,7 +755,7 @@ This endpoint retrieves a specific request for a loyalty prize.
     "title": "string",
     "description": "string",
     "points": 0,
-    "link": "http://example.com",
+    "link": "https://example.com",
     "image": "string"
   },
   "prize_points": 0,
@@ -868,7 +868,7 @@ You can use this endpoint to to change `status` in an admin list/table interface
     "title": "string",
     "description": "string",
     "points": 0,
-    "link": "http://example.com",
+    "link": "https://example.com",
     "image": "string"
   },
   "prize_points": 0,

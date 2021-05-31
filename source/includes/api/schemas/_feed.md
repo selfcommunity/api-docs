@@ -39,7 +39,8 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "vote_count": "string"
+          "vote_count": 0,
+          "voted": true
         }
       ],
       "votes": [
@@ -62,7 +63,7 @@
       "birthday": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",
@@ -132,7 +133,8 @@
           "order": 0,
           "added_at": "2019-08-24T14:15:22Z",
           "deleted": "string",
-          "vote_count": "string"
+          "vote_count": 0,
+          "voted": true
         }
       ],
       "votes": [
@@ -151,11 +153,12 @@
       "date_joined": "2019-08-24T14:15:22Z",
       "bio": "string",
       "location": "string",
-      "position": "string",
-      "birthday": "string",
+      "location_lat_lng": "string",
+      "position_lat_lng": "string",
+      "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",
@@ -171,7 +174,8 @@
           "deleted": true,
           "created_at": "2019-08-24T14:15:22Z"
         }
-      ]
+      ],
+      "reputation":111
     },
     "added_at": "2019-08-24T14:15:22Z",
     "html": "string",
@@ -199,11 +203,12 @@
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "position": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
         "cover": "string",
         "ext_id": "string",
@@ -219,7 +224,8 @@
             "deleted": true,
             "created_at": "2019-08-24T14:15:22Z"
           }
-        ]
+        ],
+        "reputation":111
       },
       "active_at": "2019-08-24T14:15:22Z",
       "seen_by_id": [
@@ -235,9 +241,10 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|type|string|false|read-only|The type of the object, can be `discussion` or `post`|
+|type|string|false|read-only|The type of the object, can be `discussion` , `post` or `status` |
 |discussion|[Discussion](#schemadiscussion)¦null|false|read-only|none|
 |post|[Post](#schemapost)¦undefined|false|read-only|none|
+|status|[Status](#schemastatus)¦undefined|false|read-only|none|
 |seen_by_id|list(integer)¦undefined|false|read-only|Id of [User](#schemauser) that have seen this object|
 |has_boost|¦undefined|false|read-only|True if this object has the visibility boost|
 |activities|list([FeedActivity](#schemafeedactivity))¦undefined|false|read-only|List of feed acitivity. This field is returned only for relevance feed|
@@ -260,11 +267,12 @@
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "position": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
     "cover": "string",
     "ext_id": "string",
@@ -272,7 +280,7 @@
       {
         "id": 0,
         "active": true,
-        "type": "string",
+        "type": "user",
         "name": "string",
         "description": "string",
         "color": "string",
@@ -280,7 +288,8 @@
         "deleted": true,
         "created_at": "2019-08-24T14:15:22Z"
       }
-    ]
+    ],
+    "reputation":111
   },
   "active_at": "2019-08-24T14:15:22Z",
   "seen_by_id": [

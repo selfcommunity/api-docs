@@ -62,7 +62,7 @@ This endpoint retrieves all embeds.
       "id": 0,
       "embed_type": "string",
       "embed_id": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "metadata": {}
     }
   ]
@@ -105,7 +105,7 @@ curl -X POST /api/v2/embed/ \
   --data-raw '{
     "embed_type": "string",
     "embed_id": "string",
-    "url": "http://example.com",
+    "url": "https://example.com",
     "metadata": {}
 }'
 
@@ -115,7 +115,7 @@ curl -X POST /api/v2/embed/ \
 const inputBody = '{
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }';
 const headers = {
@@ -150,7 +150,7 @@ This endpoint create an Embed.
 {
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -174,7 +174,7 @@ This endpoint create an Embed.
   "id": 0,
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -253,7 +253,7 @@ This endpoint perform search to Embeds
       "id": 0,
       "embed_type": "string",
       "embed_id": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "metadata": {}
     }
   ]
@@ -336,7 +336,7 @@ This endpoint retrieves a specific embed using ID.
   "id": 0,
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -364,7 +364,7 @@ curl -X PUT /api/v2/embed/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
-    "url": "http://example.com",
+    "url": "https://example.com",
     "metadata": {}
   }'
 
@@ -372,7 +372,7 @@ curl -X PUT /api/v2/embed/{id}/ \
 
 ```javascript
 const inputBody = '{
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }';
 const headers = {
@@ -405,7 +405,7 @@ This endpoint update a specific Embed.
 
 ```json
 {
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -427,7 +427,7 @@ This endpoint update a specific Embed.
   "id": 0,
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -455,14 +455,14 @@ curl -X PATCH /api/v2/embed/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
-    "url": "http://example.com"
+    "url": "https://example.com"
   }'
 
 ```
 
 ```javascript
 const inputBody = '{
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }';
 const headers = {
@@ -496,7 +496,7 @@ This endpoint patch a specific endpoint.
 
 ```json
 {
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -518,7 +518,7 @@ This endpoint patch a specific endpoint.
   "id": 0,
   "embed_type": "string",
   "embed_id": "string",
-  "url": "http://example.com",
+  "url": "https://example.com",
   "metadata": {}
 }
 ```
@@ -634,7 +634,7 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -669,7 +669,8 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ]
         },
@@ -686,7 +687,7 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -855,7 +856,7 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -889,8 +890,9 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
               "choice": "string",
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
-              "deleted": "string",
-              "vote_count": "string"
+              "deleted": false,
+              "vote_count": 0,
+              "voted": true
             }
           ],
           "votes": [
@@ -914,7 +916,7 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -939,7 +941,8 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "vote_count": "string",
+        "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "addressing": [
           0

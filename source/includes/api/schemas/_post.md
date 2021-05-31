@@ -41,7 +41,7 @@
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -76,7 +76,8 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -85,18 +86,20 @@
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -106,6 +109,7 @@
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [
     0
@@ -141,7 +145,8 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» vote_count|string|false|read-only|none|
+|»» vote_count|integer|false|read-only|none|
+|»» voted|boolean|false|read-only|true if the logged user has already voted the choice|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
@@ -152,6 +157,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the post|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 
@@ -198,7 +204,7 @@
       "type": "url",
       "title": "string",
       "description": "string",
-      "url": "http://example.com",
+      "url": "https://example.com",
       "image": "string",
       "image_width": 0,
       "image_height": 0,
@@ -233,7 +239,8 @@
         "order": 0,
         "added_at": "2019-08-24T14:15:22Z",
         "deleted": "string",
-        "vote_count": "string"
+        "vote_count": 0,
+        "voted": true
       }
     ]
   },
@@ -242,18 +249,20 @@
     "id": 0,
     "username": "string",
     "real_name": "string",
-    "email": "user@example.com",
-    "email_isvalid": true,
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "status": "a",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [],
+    "reputation": 111,
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -263,6 +272,7 @@
   "comment_count": 0,
   "share_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "addressing": [
     0
@@ -279,18 +289,20 @@
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "status": "a",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [],
+        "reputation": 111,
       }
     }
   ]
@@ -324,7 +336,8 @@
 |»» order|integer|false|read-only|none|
 |»» added_at|string(date-time)|false|read-only|none|
 |»» deleted|string|false|read-only|none|
-|»» vote_count|string|false|read-only|none|
+|»» vote_count|integer|false|read-only|none|
+|»» voted|boolean|false|read-only|true if the logged user has already voted the choice|
 |last_activity_at|string(date-time)|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
@@ -335,6 +348,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the post|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
 |matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|

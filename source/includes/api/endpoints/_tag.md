@@ -199,6 +199,105 @@ This endpoint creates a tag.
 This operation require authentication and admin role.
 </aside>
 
+### Search a Tag
+
+<a id="opIdsearchTag"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/tag/search/ \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access_token}'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization': 'Bearer {access_token}'
+};
+
+fetch('/api/v2/tag/search/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+This endpoint performs search to Tags.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/tag/search/`
+
+<h4 id="searchtag-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|limit|query|integer|false|Number of results to return per page.|
+|offset|query|integer|false|The initial index from which to return the results.|
+|search|query|string|false|A search term.|
+|active|query|string|false|Is the tag active?|
+|deleted|query|string|false|Is the tag deleted?|
+|visible|query|string|false|Is this tag publicly visible?|
+|ordering|query|string|false|Ordering fields (eg: `?ordering=name,created_at`), default is `-created_at` (minus char is used for descending ordering)|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 123,
+  "next": "string(uri)",
+  "previous": "string(uri)",
+  "results": [
+    {
+      "id": 0,
+      "type": "string",      
+      "name": "string",      
+      "description": "string",
+      "color": "string",
+      "visible": true,
+      "created_at": "2019-08-24T14:15:22Z",
+      "active": true,
+      "deleted": false
+    }
+  ]
+}
+```
+
+<h4 id="searchtag-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h4 id="searchtag-responseschema">Response Schema</h4>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|false|none|Total results count|
+|» next|string(uri)¦null|false|none|Next page url|
+|» previous|string(uri)¦null|false|none|Previous page url|
+|» results|list([Tag](#schematag))|false|none|List of results|
+
+<aside class="notice">
+This operation require authentication and admin role.
+</aside>
+
 ### Get a Specific Tag
 
 <a id="opIdretrieveTag"></a>

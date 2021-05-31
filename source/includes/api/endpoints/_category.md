@@ -901,7 +901,7 @@ This endpoint returns all followers of a specific category.
       "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",
@@ -1024,7 +1024,7 @@ This endpoint retrieves the category feed.
                 "type": "url",
                 "title": "string",
                 "description": "string",
-                "url": "http://example.com",
+                "url": "https://example.com",
                 "image": "string",
                 "image_width": 0,
                 "image_height": 0,
@@ -1059,7 +1059,8 @@ This endpoint retrieves the category feed.
               "order": 0,
               "added_at": "2019-08-24T14:15:22Z",
               "deleted": "string",
-              "vote_count": "string"
+              "vote_count": 0,
+              "voted": true
             }
           ]
         },
@@ -1076,7 +1077,7 @@ This endpoint retrieves the category feed.
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1102,6 +1103,7 @@ This endpoint retrieves the category feed.
         "collapsed": false,
         "comment_count": 0,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "share_count": 0,
         "addressing": [
@@ -1253,7 +1255,8 @@ This endpoint retrieves the category trending feed.
             "order": 0,
             "added_at": "2019-08-24T14:15:22Z",
             "deleted": "string",
-            "vote_count": "string"
+            "vote_count": 0,
+            "voted": true
           }
         ]
       },
@@ -1270,7 +1273,7 @@ This endpoint retrieves the category trending feed.
           "date_of_birth": "string",
           "description": "string",
           "gender": "Male",
-          "website": "http://example.com",
+          "website": "https://example.com",
           "avatar": "string",
           "cover": "string",
           "ext_id": "string",
@@ -1296,6 +1299,7 @@ This endpoint retrieves the category trending feed.
         "collapsed": false,
         "comment_count": 1,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
         "share_count": 0,
         "addressing": [0],
@@ -1403,7 +1407,7 @@ This endpoint returns all trending followers of a specific category during last 
       "date_of_birth": "string",
       "description": "string",
       "gender": "Male",
-      "website": "http://example.com",
+      "website": "https://example.com",
       "avatar": "string",
       "cover": "string",
       "ext_id": "string",

@@ -16,12 +16,29 @@
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [
+      {
+        "id": 0,
+        "active": true,
+        "type": "user",
+        "name": "string",
+        "description": "string",
+        "color": "string",
+        "visible": true,
+        "deleted": true,
+        "created_at": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "reputation":111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -32,6 +49,7 @@
   "in_reply_to": 0,
   "comments_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
   "comment_count": 1,
   "latest_comments": [
@@ -45,12 +63,29 @@
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
-        "website": "http://example.com",
+        "website": "https://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [
+          {
+            "id": 0,
+            "active": true,
+            "type": "user",
+            "name": "string",
+            "description": "string",
+            "color": "string",
+            "visible": true,
+            "deleted": true,
+            "created_at": "2019-08-24T14:15:22Z"
+          }
+        ],
+        "reputation":111
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -61,6 +96,7 @@
       "in_reply_to": 0,
       "comments_count": 0,
       "vote_count": 0,
+      "voted": false,
       "flag_count": 0,
       "comment_count": 0
     }
@@ -76,6 +112,7 @@
 |id|integer|false|read-only|none|
 |discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
 |post|integer¦null|false|none|Id of the [Post](#schemapost)|
+|status|integer¦null|false|none|Id of the [Status](#schemastatus)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -85,6 +122,7 @@
 |parent|integer¦null|false|none|Id of the parent [Comment](#schemacomment)|
 |in_reply_to|integer¦null|false|none|Id of the reply [Comment](#schemacomment), it must have the same `parent` and `object`|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the comment|
 |flag_count|integer|false|read-only|none|
 |comment_count|integer|false|read-only|none|
 |text|string|true|write-only|none|
@@ -109,12 +147,29 @@
     "date_joined": "2019-08-24T14:15:22Z",
     "bio": "string",
     "location": "string",
-    "birthday": "string",
+    "location_lat_lng": "string",
+    "position_lat_lng": "string",
+    "date_of_birth": "string",
     "description": "string",
     "gender": "Male",
-    "website": "http://example.com",
+    "website": "https://example.com",
     "avatar": "string",
-    "cover": "string"
+    "cover": "string",
+    "ext_id": "string",
+    "tags": [
+      {
+        "id": 0,
+        "active": true,
+        "type": "user",
+        "name": "string",
+        "description": "string",
+        "color": "string",
+        "visible": true,
+        "deleted": true,
+        "created_at": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "reputation":111
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -125,8 +180,9 @@
   "in_reply_to": 0,
   "comments_count": 0,
   "vote_count": 0,
+  "voted": false,
   "flag_count": 0,
-  "comment_count": 0,
+  "comment_count": 0
 }
 
 ```
@@ -138,6 +194,7 @@
 |id|integer|false|read-only|none|
 |discussion|integer¦null|false|none|Id of the [Discussion](#schemadiscussion)|
 |post|integer¦null|false|none|Id of the [Post](#schemapost)|
+|status|integer¦null|false|none|Id of the [Status](#schemastatus)|
 |author|[User](#schemauser)|true|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -147,5 +204,6 @@
 |parent|integer¦null|false|none|Id of the parent [Comment](#schemacomment)|
 |in_reply_to|integer¦null|false|none|Id of the reply [Comment](#schemacomment), it must have the same `parent` and `object`|
 |vote_count|integer|false|read-only|none|
+|voted|boolean|false|read-only|true if the logged user has already voted the comment|
 |flag_count|integer|false|read-only|none|
 |comment_count|integer|false|read-only|none|

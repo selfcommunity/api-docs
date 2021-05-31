@@ -147,7 +147,7 @@ fetch('/api/v2/sso/signup/',
 
 `POST /api/v2/sso/signup/`
 
-Create a new account.
+Create a new account. `username` field must be unique and valid (valid characters are: a-z A-Z 0-9 _\-).
 
 **Note:** only users with the admin role can register new users.
 

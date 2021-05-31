@@ -1,16 +1,13 @@
-<h3 id="tocS_Discussion">Discussion</h3>
+<h3 id="tocS_Status">Status</h3>
 <!-- backwards compatibility -->
-<a id="schemadiscussion"></a>
-<a id="schema_Discussion"></a>
-<a id="tocSdiscussion"></a>
-<a id="tocsdiscussion"></a>
+<a id="schemastatus"></a>
+<a id="schema_Status"></a>
+<a id="tocSstatus"></a>
+<a id="tocsstatus"></a>
 
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
-  "text": "string",
   "categories": [
     {
       "id": 0,
@@ -36,6 +33,7 @@
       "stream_order_by": "recent"
     }
   ],
+  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -49,11 +47,11 @@
       "image_height": 0,
       "order": 0,
       "embed": {
-        "id": 0,
-        "embed_type": "string",
-        "embed_id": "string",
-        "url": "string",
-        "metadata": {}
+          "id": 0,
+          "embed_type": "string",
+          "embed_id": "string",
+          "url": "string",
+          "metadata": {}
       }
     }
   ],
@@ -62,29 +60,7 @@
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "vote_count": 0,
-        "voted": true
-      }
-    ]
-  },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -116,8 +92,7 @@
   "flag_count": 0,
   "addressing": [
     0
-  ],
-  "follower_count": "string"
+  ]
 }
 
 ```
@@ -127,33 +102,14 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|title|string|true|none|none|
-|slug|string|false|read-only|none|
-|categories|list([Category](#schemacategory))|true|none|At least one category is required|
+|categories|list([Category](#schemacategory))|true|none|none|
+|media_type|string|false|read-only|none|
 |medias|list([Media](#schemamedia))|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
 |» lng|number¦null|true|none|none|
-|poll|object¦null|false|none|none|
-|» id|integer|false|read-only|none|
-|» title|string|true|none|none|
-|» multiple_choices|boolean|false|none|none|
-|» added_at|string(date-time)|false|read-only|none|
-|» modified_at|string(date-time)|false|read-only|none|
-|» closed|boolean|false|none|none|
-|» expiration_at|string(date-time)|true|none|none|
-|» hidden|string|false|read-only|none|
-|» choices|list(object)|true|none|none|
-|»» id|integer|false|read-only|none|
-|»» choice|string|true|none|none|
-|»» order|integer|false|read-only|none|
-|»» added_at|string(date-time)|false|read-only|none|
-|»» deleted|string|false|read-only|none|
-|»» vote_count|integer|false|read-only|none|
-|»» voted|boolean|false|read-only|true if the logged user has already voted the choice|
 |last_activity_at|string(date-time)|false|read-only|none|
-|view_count|integer|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -163,23 +119,20 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
-|voted|boolean|false|read-only|true if the logged user has already voted the discussion|
+|voted|boolean|false|read-only|true if the logged user has already voted the status|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
-|follower_count|string|false|read-only|none|
 
-<h3 id="tocS_SearchDiscussion">SearchDiscussion</h3>
+<h3 id="tocS_SearchStatus">SearchStatus</h3>
 <!-- backwards compatibility -->
-<a id="schemasearchdiscussion"></a>
-<a id="schema_SearchDiscussion"></a>
-<a id="tocSsearchdiscussion"></a>
-<a id="tocssearchdiscussion"></a>
+<a id="schemasearchstatus"></a>
+<a id="schema_SearchStatus"></a>
+<a id="tocSsearchstatus"></a>
+<a id="tocssearchstatus"></a>
 
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
     {
       "id": 0,
@@ -205,6 +158,7 @@
       "stream_order_by": "recent"
     }
   ],
+  "media_type": "images",
   "medias": [
     {
       "id": 0,
@@ -231,29 +185,7 @@
     "lat": 0,
     "lng": 0
   },
-  "poll": {
-    "id": 0,
-    "title": "string",
-    "multiple_choices": true,
-    "added_at": "2019-08-24T14:15:22Z",
-    "modified_at": "2019-08-24T14:15:22Z",
-    "closed": true,
-    "expiration_at": "2019-08-24T14:15:22Z",
-    "hidden": "string",
-    "choices": [
-      {
-        "id": 0,
-        "choice": "string",
-        "order": 0,
-        "added_at": "2019-08-24T14:15:22Z",
-        "deleted": "string",
-        "vote_count": 0,
-        "voted": true
-      }
-    ]
-  },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -286,7 +218,6 @@
   "addressing": [
     0
   ],
-  "follower_count": "string",
   "matches": [
     {
       "object": {
@@ -325,34 +256,13 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
-|title|string|true|none|none|
-|slug|string|false|read-only|none|
-|text|string|true|write-only|none|
 |categories|list([Category](#schemacategory))|true|none|none|
 |medias|list([Media](#schemamedia))|false|none|none|
 |location|object¦null|false|none|none|
 |» location|string¦null|true|none|none|
 |» lat|number¦null|true|none|none|
 |» lng|number¦null|true|none|none|
-|poll|object¦null|false|none|none|
-|» id|integer|false|read-only|none|
-|» title|string|true|none|none|
-|» multiple_choices|boolean|false|none|none|
-|» added_at|string(date-time)|false|read-only|none|
-|» modified_at|string(date-time)|false|read-only|none|
-|» closed|boolean|false|none|none|
-|» expiration_at|string(date-time)|true|none|none|
-|» hidden|string|false|read-only|none|
-|» choices|list(object)|true|none|none|
-|»» id|integer|false|read-only|none|
-|»» choice|string|true|none|none|
-|»» order|integer|false|read-only|none|
-|»» added_at|string(date-time)|false|read-only|none|
-|»» deleted|string|false|read-only|none|
-|»» vote_count|integer|false|read-only|none|
-|»» voted|boolean|false|read-only|true if the logged user has already voted the choice|
 |last_activity_at|string(date-time)|false|read-only|none|
-|view_count|integer|false|read-only|none|
 |author|[User](#schemauser)|false|read-only|none|
 |added_at|string(date-time)|false|read-only|none|
 |html|string|false|read-only|none|
@@ -362,8 +272,7 @@
 |comment_count|integer|false|read-only|none|
 |share_count|integer|false|read-only|none|
 |vote_count|integer|false|read-only|none|
-|voted|boolean|false|read-only|true if the logged user has already voted the discussion|
+|voted|boolean|false|read-only|true if the logged user has already voted the status|
 |flag_count|integer|false|read-only|none|
 |addressing|[integer]|false|none|none|
-|follower_count|string|false|read-only|none|
 |matches|list([SearchMatch](#schemasearchmatch))|false|read-only|none|
