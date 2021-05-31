@@ -126,7 +126,6 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |loyalty.prize.updated|a prize has been updated|---|
 |loyalty.prize_request.created|a new request of a prize has been created|---|
 |loyalty.prize_request.updated|a request of a prize has been updated (status)|---|
-<!--
 |notification.comment|a new comment of first level is created|---|
 |notification.nested_comment|a new comment of second level is created|---|
 |notification.mention|a user is mentioned|---|
@@ -160,5 +159,4 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 <aside class="notice">
 All events with prefix notification.* include in the payload a field "recipients" specifying the list of recipients of the notification
 </aside>
--->
 
