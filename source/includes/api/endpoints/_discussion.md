@@ -733,7 +733,7 @@ This endpoint creates a discussion.
 |» poll|body|object¦null|false|The poll object to associate at the discussion|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
+|»» expiration_at|body|string(date-time)|false|none|
 |»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
@@ -1169,7 +1169,7 @@ This endpoint update a specific discussion.
 |» poll|body|object¦null|false|The poll object to associate at the discussion|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
+|»» expiration_at|body|string(date-time)|false|none|
 |»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|

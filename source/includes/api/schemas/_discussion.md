@@ -142,7 +142,7 @@
 |» added_at|string(date-time)|false|read-only|none|
 |» modified_at|string(date-time)|false|read-only|none|
 |» closed|boolean|false|none|none|
-|» expiration_at|string(date-time)|true|none|none|
+|» expiration_at|string(date-time)|false|none|none|
 |» hidden|string|false|read-only|none|
 |» choices|list(object)|true|none|none|
 |»» id|integer|false|read-only|none|
@@ -341,7 +341,7 @@
 |» added_at|string(date-time)|false|read-only|none|
 |» modified_at|string(date-time)|false|read-only|none|
 |» closed|boolean|false|none|none|
-|» expiration_at|string(date-time)|true|none|none|
+|» expiration_at|string(date-time)|false|none|none|
 |» hidden|string|false|read-only|none|
 |» choices|list(object)|true|none|none|
 |»» id|integer|false|read-only|none|
