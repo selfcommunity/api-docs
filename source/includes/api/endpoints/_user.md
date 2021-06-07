@@ -484,7 +484,7 @@ This endpoint retrieve the counters of a specific user identified by {id}.
 |discussions|Number of discussions created by the user|Always returned|
 |posts|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
 |statuses|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
-|polls|Number of polls created by the user|Only if dynamic preference `addons.polls_enabled` is `true`|
+|polls|Number of polls created by the user|Only if dynamic preference `addons.polls_enabled` is `true` or if the user has a staff role|
 |followings|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
 |followers|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
 |connection_requests_sent|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
