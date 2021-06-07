@@ -85,33 +85,1492 @@ To protect against timing attacks, use a constant-time string comparison to comp
 ### Adding Webhooks
 If your community is Enterprise login to [https://make.selfcommunity.com](https://make.selfcommunity.com/) with your account and go to Webhook panel under Integration menu and check that you have **enabled** the **Webhook** and register and endpoint for subscribing to events.
 
+### Webhook Payload
+
+The body of a webhook payload is a JSON object that describes the target that triggered the webhook, as well as the event that has been triggered.
+
+#### Properties
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {}
+}
+
+```
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|type|string|true|The name of the event that triggered the webhook|
+|created|string|true|The time or date that the event was triggered at|
+|data|object|true|Object that contains information about the event associated with the webhook.|
+
+
+
+
 ### List of Events
-|Event|Triggered When|Note|
+
+
+
+> **Events Payload**
+
+>Category:
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "category": {
+            "id": 1,
+            "tags": [],
+            "order": 123,
+            "name": "string",
+            "name_synonyms": "string",
+            "slug": "string",
+            "slogan": "string",
+            "html_info": "string",
+            "seo_title": "string",
+            "seo_description": "string",
+            "auto_follow": "none",
+            "active": true,
+            "deleted": true,
+            "image_original": "string",
+            "image_bigger": "string",
+            "image_big": "string",
+            "image_medium": "string",
+            "image_small": "string",
+            "emotional_image_original": "string",
+            "emotional_image_position": 0,
+            "lastmod_datetime": "2019-08-24T14:15:22Z",
+            "stream_order_by": "recent",
+        },
+        "user": {
+            "id": 100,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        },
+        "added_at": "2021-05-28T11:15:10.126738+02:00"
+    }
+}
+```
+
+>Comment:
+
+```json
+{
+    "type": "comment.created",
+    "created": "string",
+    "data": {
+        "id": 0,
+        "discussion": 11,
+        "author": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "description": "string",
+            "avatar": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 24
+        },
+        "added_at": "2021-06-07T10:14:52.772383+02:00",
+        "html":  "string",
+        "summary":  "string",
+        "deleted": true,
+        "collapsed": false,
+        "parent": "string",
+        "in_reply_to": "string",
+        "comment_count": 0,
+        "vote_count": 0,
+        "flag_count": 0
+    }
+}
+```
+
+>Connection:<br>
+-connection_request.created<br>
+-connection_request.rejected<br>
+-connection_request.cancelled<br>
+-connection.created<br>
+-connection.deleted
+
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "to_user": {
+            "id": 33,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        },
+        "from_user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+>-connection.follow<br>
+ -connection.unfollow
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "to_user": {
+            "id": 114,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 14,
+        },
+        "from_user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 81,
+        }
+    }
+}
+```
+
+
+>Discussion: <br>
+-discussion.created<br>
+-discussion.updated<br>
+-discussion.deleted<br>
+-discussion.restored
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "categories": [],
+        "medias": [],
+        "location": [],
+        "poll": [],
+        "last_activity_at": "2021-05-28T11:37:25.178645+02:00",
+        "author": {
+            "id": 100,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
+        },
+        "added_at": "2021-05-28T11:37:25.178645+02:00",
+        "html":  "string",
+        "summary":  "string",
+        "deleted": true,
+        "collapsed": false,
+        "comment_count": 0,
+        "vote_count": 0,
+        "flag_count": 0,
+        "share_count": 0,
+        "addressing": [],
+        "title": "string",
+        "slug": "string",
+        "view_count": 0,
+        "follower_count": 0
+    }
+}
+```
+
+>-discussion.follow<br>
+ -discussion.unfollow
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "added_at": "2021-06-07T09:46:39.536844+02:00",
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        },
+        "discussion": {
+            "id": 1,
+            "categories": [],
+            "medias": [],
+            "location": "string",
+            "poll": [],
+            "last_activity_at": "2021-06-07T09:44:59.016173+02:00",
+            "author": {
+                "id": 100,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-06-07T09:44:59.016173+02:00",
+            "html":  "string",
+            "summary":  "string",
+            "deleted": true,
+            "collapsed": false,
+            "comment_count": 0,
+            "vote_count": 0,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 0,
+            "follower_count": 0
+        }
+    }
+}
+```
+>Loyalty:<br>
+-loyalty.prize.created<br>
+-loyalty.prize.updated
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "active": true,
+        "created_by": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "description": "string",
+            "avatar": "string"
+        },
+        "title": "string",
+        "description": "string",
+        "points": 200,
+        "link": "https://example.com",
+        "image": "string",
+        "created_at": "2021-06-07T10:36:29.850060+02:00",
+        "lastmod_datetime": "2021-06-07T10:36:29.850136+02:00"
+    }
+}
+```
+
+>loyalty.prize_request.created<br>
+-loyalty.prize_request.updated
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "description": "string",
+            "avatar": "string"
+        },
+        "pending_at": "2021-06-07T11:11:06.148633+02:00",
+        "prize": {
+            "id": 2,
+            "active": true,
+            "title": "string",
+            "description": "string",
+            "points": 1,
+            "link": "https://example.com",
+            "image": "string"
+        },
+        "prize_points": 1,
+        "status": 0,
+        "status_description": "string"
+    }
+}
+```
+
+
+
+>Poll:
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "choice": {
+            "id": 3,
+            "choice": "string",
+            "order": 0,
+            "added_at": "2021-06-07T10:23:02.074940+02:00",
+            "deleted": false,
+            "vote_count": 0,
+            "poll": {
+                "id": 2,
+                "title": "string",
+                "multiple_choices": true,
+                "added_at": "2021-06-07T10:23:02.036315+02:00",
+                "modified_at": "2021-06-07T10:23:02.036371+02:00",
+                "closed": false,
+                "expiration_at": "2021-06-27T00:00:00+02:00",
+                "hidden": false,
+                "choices": [
+                    {
+                        "id": 3,
+                        "choice": "string",
+                        "order": 0,
+                        "added_at": "2021-06-07T10:23:02.074940+02:00",
+                        "deleted": false,
+                        "vote_count": 1
+                    },
+                    {
+                        "id": 4,
+                        "choice": "string",
+                        "order": 1,
+                        "added_at": "2021-06-07T10:23:02.081369+02:00",
+                        "deleted": false,
+                        "vote_count": 0
+                    }
+                ]
+            }
+        },
+        "user": {
+            "id": 100,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+>Post:
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "categories": [],
+        "medias": [],
+        "location": [],
+        "poll": [],
+        "last_activity_at": "2021-05-28T11:37:25.178645+02:00",
+        "author": {
+            "id": 100,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
+        },
+        "added_at": "2021-05-28T11:37:25.178645+02:00",
+        "html":  "string",
+        "summary":  "string",
+        "deleted": true,
+        "collapsed": false,
+        "comment_count": 0,
+        "vote_count": 0,
+        "flag_count": 0,
+        "share_count": 0,
+        "addressing": [],
+    }
+}
+```
+
+>Status:
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "categories": [],
+        "medias": [],
+        "location": [],
+        "last_activity_at": "2021-05-28T11:37:25.178645+02:00",
+        "author": {
+            "id": 100,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
+        },
+        "added_at": "2021-05-28T11:37:25.178645+02:00",
+        "html":  "string",
+        "summary":  "string",
+        "deleted": true,
+        "collapsed": false,
+        "comment_count": 0,
+        "vote_count": 0,
+        "flag_count": 0,
+        "share_count": 0,
+        "addressing": [],
+    }
+}
+```
+
+<!--
+
+>Notification:<br>
+
+notification.comment
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            1
+        ],
+        "discussion": {
+            "id": 2,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-06-07T12:30:44.509122+02:00",
+            "author": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-27T14:58:04.334631+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 3,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-07T12:30:44.509122+02:00",
+        "comment": {
+            "id": 71,
+            "discussion": 2,
+            "author": {
+                "id": 7,
+                "username": "string",
+                "real_name": "string",
+                "description": "string",
+                "avatar": "string",
+                "ext_id": null,
+                "tags": [],
+                "reputation": 86
+            },
+            "added_at": "2021-06-07T12:30:44.509122+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "parent": null,
+            "in_reply_to": null,
+            "comment_count": 1,
+            "vote_count": 0,
+            "flag_count": 0
+        }
+    }
+}
+```
+>notification.custom_notification
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4,
+            7
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T12:58:19.079810+02:00",
+        "custom_notification": {
+            "id": 1,
+            "type": "string",
+            "embed": [],
+            "title": "string",
+            "description": "blablabla"
+        },
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+>notification.blocked_user
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            122
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:48:25.594550+02:00",
+        "block_settings": {
+            "blocked_at": "2021-06-07T13:48:25.543115+02:00",
+            "days_blocked": 1,
+            "expire_at": "2021-06-08T13:48:25.543115+02:00"
+        }
+    }
+}
+```
+>notification.unblocked_user
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            122
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:50:38.541768+02:00"
+    }
+}
+```
+
+>notification.deleted_for_advertising<br>
+notification.deleted_for_aggressive<br>
+notification.deleted_for_vulgar<br>
+notification.deleted_for_poor<br>
+notification.deleted_for_offtopic<br>
+notification.kindly_notice_advertising<br>
+notification.kindly_notice_aggressive<br>
+notification.kindly_notice_vulgar<br>
+notification.kindly_notice_poor<br>
+notification.kindly_notice_offtopic<br>
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            110
+        ],
+        "discussion": {
+            "id": 5,
+            "categories":[],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T21:41:00+02:00",
+            "author": {
+                "id": 110,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-28T09:16:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 6,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 7,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-07T13:21:51.814550+02:00"
+    }
+}
+```
+
+
+
+
+>notification.follow
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            32
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:09:13.163550+02:00",
+        "discussion": {
+            "id": 14,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T11:05:00+02:00",
+            "author": {
+                "id": 32,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-28T22:56:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 3,
+            "follower_count": 0
+        },
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+>notification.connection_request
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:12:57.827680+02:00",
+        "request_user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 88
+        }
+    }
+}
+```
+>notification.connection_accept
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:12:57.827680+02:00",
+        "accept_user": {
+            "id": 33,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 17
+        }
+    }
+}
+```
+
+>notification.private_message
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            7
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:30:43.555649+02:00",
+        "message": {
+            "id": 1,
+            "headline": "string",
+            "sender": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "html": "string",
+            "sent_at": "2021-06-07T14:30:43.555649+02:00",
+            "status": 0
+        }
+    }
+}
+```
+
+
+
+>notification.mention
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            7
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T12:39:24.373244+02:00",
+        "post": {
+            "id": 24,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-06-07T12:39:24.373244+02:00",
+            "author": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-06-07T12:39:24.373244+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+        }
+    }
+}
+```
+
+
+>notification.nested_comment
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            1
+        ],
+        "discussion": {
+            "id": 2,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-06-07T12:24:23.830573+02:00",
+            "author": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-27T14:58:04.334631+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 3,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-07T12:24:23.830573+02:00",
+        "comment": {
+            "id": 70,
+            "discussion": 2,
+            "author": {
+                "id": 7,
+                "username": "string",
+                "real_name": "string",
+                "description": "string",
+                "avatar": "string",
+                "ext_id": 3,
+                "tags": [],
+                "reputation": 13
+            },
+            "added_at": "2021-06-07T12:24:23.830573+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "parent": {
+                "id": 69,
+                "discussion": 2,
+                "author": {
+                    "id": 1,
+                    "username": "string",
+                    "real_name": "string",
+                    "description": "string",
+                    "avatar": "string",
+                    "ext_id": null,
+                    "tags": [],
+                    "reputation": 86
+                },
+                "added_at": "2021-06-07T12:30:44.50912+02:00",
+                "html": "string",
+                "summary": "string",
+                "deleted": false,
+                "collapsed": false,
+                "parent": null,
+                "in_reply_to": null,
+                "comment_count": 1,
+                "vote_count": 0,
+                "flag_count": 0
+            },
+            "in_reply_to": null,
+            "comment_count": 0,
+            "vote_count": 0,
+            "flag_count": 0
+        }
+    }
+}
+```
+
+
+
+>notification.user_follow
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            114
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T11:23:39.055083+02:00",
+        "follower": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+>notification.vote_up
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            48
+        ],
+        "discussion": {
+            "id": 4,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T17:35:00+02:00",
+            "author": {
+                "id": 48,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-28T19:25:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 3,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-07T12:07:01.701850+02:00"
+    }
+}
+```
+-->
+
+>User:<br>
+user.created<br>
+user.updated<br>
+user.deleted
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 1,
+        "username": "string",
+        "real_name": "string",
+        "email": "user@example.com",
+        "email_isvalid": true,
+        "date_joined": "2019-08-24T14:15:22Z",
+        "bio": "string",
+        "location": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "2019-09-23",
+        "description": "string",
+        "gender": "Male",
+        "status": "a",
+        "website": "https://example.com",
+        "avatar": "string",
+        "cover": "string",
+        "ext_id": 3,
+        "tags": [],
+        "reputation": 111,
+    }
+}
+```
+
+>user.settings_updated
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "qa_frequency": 0,
+        "email_notification_not_qa": 0,
+        "interests_frequency": 0,
+        "engagement_frequency": 1,
+        "mobile_notifications_scmty": 1,
+        "toast_notifications_emit_sound": 1,
+        "show_toast_notifications": 0,
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+
+>user.score_updated
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "id": 271,
+        "user": {
+            "id": 114,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "description": "string",
+            "avatar": "string",
+            "reputation": 12
+        },
+        "score": -2,
+        "reputation_type": -19,
+        "reputation_type_description": "string",
+        "comment": "string"
+    }
+}
+```
+
+>user.loyalty_points_updated
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "description": "string",
+            "avatar": "string"
+        },
+        "action": "string",
+        "points": 1,
+        "added_at": "2021-06-07T11:23:39.105234+02:00",
+        "total_points": 13
+    }
+}
+```
+
+>Vote:
+
+```json
+{
+    "type": "vote.created",
+    "created": 1623060368.026038,
+    "data": {
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        },
+        "voted_at": "2021-06-07T12:06:07.849533+02:00",
+        "object_type": "discussion",
+        "discussion": {
+            "id": 3,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T02:41:00+02:00",
+            "author": {
+                "id": 92,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "string",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 6,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 7,
+            "follower_count": 0
+        }
+    }
+}
+```
+
+|Category|Triggered When|Note|
 |---|---|---|
-|discussion.created|a new discussion is created|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.updated|a discussion is updated|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.deleted|a discussion is deleted|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.follow|a discussion is followed by the user|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.unfollow|a discussion is unfollowed by the user|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.restored|a discussion is restored after deletion|This event is triggered only if `discussion_enabled` community option is true|
-|post.created|a new post is created|This event is triggered only if `post_enabled` community option is true|
-|post.updated|a post is updated|This event is triggered only if `post_enabled` community option is true|
-|post.deleted|a post is deleted|This event is triggered only if `post_enabled` community option is true|
-|post.restored|a post is restored after deletion|This event is triggered only if `post_enabled` community option is true|
+|category.follow|a category is followed by the user|---|
+|category.unfollow|a category is unfollowed by the user|---|
+
+|Comment|Triggered When|Note|
+|---|---|---|
 |comment.created|a new comment is created|---|
 |comment.updated|a comment is updated|---|
 |comment.deleted|a comment is deleted|---|
 |comment.restored|a comment is restored after deletion|---|
-|poll_vote.created|a user votes a poll|---|
-|poll_vote.deleted|a user remove the vote from a poll|---|
-|vote.created|a user votes a contribute ([Discussion](#schemadiscussion), [Post](#scehmapost) or [Comment](#schemacomment))|---|
-|vote.deleted|a user remove the vote from a contribute ([Discussion](#schemadiscussion), [Post](#scehmapost) or [Comment](#schemacomment)|---|
-|user.created|a new user is created|---|
-|user.updated|a user is updated|---|
-|user.deleted|a user is deleted|---|
-|user.settings_updated|a user changes its settings|---|
-|category.follow|a category is followed by the user|---|
-|category.unfollow|a category is unfollowed by the user|---|
+
+|Connection|Triggered When|Note|
+|---|---|---|
 |connection_request.created|a new connection request is created|This event is triggered only if `follow_enabled` community option is false|
 |connection_request.rejected|a connection request is rejected|This event is triggered only if `follow_enabled` community option is false|
 |connection_request.restored|a connection request that has been rejected is restored|This event is triggered only if `follow_enabled` community option is false|
@@ -120,13 +1579,66 @@ If your community is Enterprise login to [https://make.selfcommunity.com](https:
 |connection.deleted|a connection is deleted|This event is triggered only if `follow_enabled` community option is false|
 |connection.follow|a user follows another user|This event is triggered only if `follow_enabled` community option is true|
 |connection.unfollow|a user unfollows another user|This event is triggered only if `follow_enabled` community option is true|
-|user.score_updated|the score of the user has been updated|---|
-|user.loyalty_points_updated|the loyalty points of the user has been updated|---|
+
+|Discussion|Triggered When|Note|
+|---|---|---|
+|discussion.created|a new discussion is created|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.updated|a discussion is updated|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.deleted|a discussion is deleted|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.restored|a discussion is restored after deletion|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.follow|a discussion is followed by the user|This event is triggered only if `discussion_enabled` community option is true|
+|discussion.unfollow|a discussion is unfollowed by the user|This event is triggered only if `discussion_enabled` community option is true|
+
+
+|Loyalty|Triggered When|Note|
+|---|---|---|
 |loyalty.prize.created|a new prize has been created|---|
 |loyalty.prize.updated|a prize has been updated|---|
 |loyalty.prize_request.created|a new request of a prize has been created|---|
 |loyalty.prize_request.updated|a request of a prize has been updated (status)|---|
+
+|Poll|Triggered When|Note|
+|---|---|---|
+|poll_vote.created|a user votes a poll|---|
+|poll_vote.deleted|a user remove the vote from a poll|---|
+
+|Post|Triggered When|Note|
+|---|---|---|
+|post.created|a new post is created|This event is triggered only if `post_enabled` community option is true|
+|post.updated|a post is updated|This event is triggered only if `post_enabled` community option is true|
+|post.deleted|a post is deleted|This event is triggered only if `post_enabled` community option is true|
+|post.restored|a post is restored after deletion|This event is triggered only if `post_enabled` community option is true|
+
+|Status|Triggered When|Note|
+|---|---|---|
+|status.created|a new status is created|This event is triggered only if `status_enabled` community option is true|
+|status.updated|a status is updated|This event is triggered only if `status_enabled` community option is true|
+|status.deleted|a status is deleted|This event is triggered only if `status_enabled` community option is true|
+|status.restored|a status is restored after deletion|This event is triggered only if `status_enabled` community option is true|
+
+|User|Triggered When|Note|
+|---|---|---|
+|user.created|a new user is created|---|
+|user.updated|a user is updated|---|
+|user.deleted|a user is deleted|---|
+|user.settings_updated|a user changes its settings|---|
+|user.score_updated|the score of the user has been updated|---|
+|user.loyalty_points_updated|the loyalty points of the user has been updated|---|
+
+
+
+|Vote|Triggered When|Note|
+|---|---|---|
+|vote.created|a user votes a contribute ([Discussion](#schemadiscussion), [Post](#schemapost),  [Status](#schemastatus) or [Comment](#schemacomment))|---|
+|vote.deleted|a user remove the vote from a contribute ([Discussion](#schemadiscussion), [Post](#schemapost), [Status](#schemastatus) or [Comment](#schemacomment)|---|
+
+
+
+
+
 <!--
+|Notification|Triggered When|Note|
+|---|---|---|
 |notification.comment|a new comment of first level is created|---|
 |notification.nested_comment|a new comment of second level is created|---|
 |notification.mention|a user is mentioned|---|
