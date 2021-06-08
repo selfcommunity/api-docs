@@ -262,7 +262,7 @@ This endpoint creates a status.
 |»» lng|body|number¦null|true|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
+|»» expiration_at|body|string(date-time)|false|none|
 |»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
@@ -798,7 +798,7 @@ This endpoint update a specific status.
 |»» lng|body|number¦null|true|none|
 |»» title|body|string|true|none|
 |»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|true|none|
+|»» expiration_at|body|string(date-time)|false|none|
 |»» choices|body|list(object)|true|none|
 |»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
