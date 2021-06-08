@@ -100,11 +100,11 @@ The body of a webhook payload is a JSON object that describes the target that tr
 
 ```
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|type|string|true|The name of the event that triggered the webhook|
-|created|string|true|The time or date that the event was triggered at|
-|data|object|true|Object that contains information about the event associated with the webhook.|
+| Name    | Type   | Required | Description                                                                   |
+|---------|--------|----------|-------------------------------------------------------------------------------|
+| type    | string | true     | The name of the event that triggered the webhook                              |
+| created | string | true     | The time or date that the event was triggered at                              |
+| data    | object | true     | Object that contains information about the event associated with the webhook. |
 
 
 
@@ -115,7 +115,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 
 > **Events Payload**
 
->Category:
+> Category:
 
 ```json
 {
@@ -173,7 +173,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->Comment:
+> Comment:
 
 ```json
 {
@@ -206,12 +206,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->Connection:<br>
--connection_request.created<br>
--connection_request.rejected<br>
--connection_request.cancelled<br>
--connection.created<br>
--connection.deleted
+> Connection:<br>
+
+>* connection_request.created<br>
+>* connection_request.rejected<br>
+>* connection_request.cancelled<br>
+>* connection.created<br>
+>* connection.deleted
 
 
 ```json
@@ -266,8 +267,9 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
->-connection.follow<br>
- -connection.unfollow
+
+>* connection.follow<br> 
+>* connection.unfollow 
 
 ```json
 {
@@ -323,11 +325,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```
 
 
->Discussion: <br>
--discussion.created<br>
--discussion.updated<br>
--discussion.deleted<br>
--discussion.restored
+> Discussion: <br>
+
+>* discussion.created<br>
+>* discussion.updated<br>
+>* discussion.deleted<br>
+>* discussion.restored
 
 ```json
 {
@@ -377,8 +380,9 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->-discussion.follow<br>
- -discussion.unfollow
+
+>* discussion.follow<br>
+>* discussion.unfollow
 
 ```json
 {
@@ -452,9 +456,10 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
->Loyalty:<br>
--loyalty.prize.created<br>
--loyalty.prize.updated
+> Loyalty:<br>
+
+>* loyalty.prize.created<br>
+>* loyalty.prize.updated
 
 ```json
 {
@@ -482,8 +487,8 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->loyalty.prize_request.created<br>
--loyalty.prize_request.updated
+>* loyalty.prize_request.created<br>
+>* loyalty.prize_request.updated
 
 ```json
 {
@@ -518,7 +523,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 
 
 
->Poll:
+> Poll:
 
 ```json
 {
@@ -588,7 +593,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->Post:
+> Post:
 
 ```json
 {
@@ -634,7 +639,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->Status:
+> Status:
 
 ```json
 {
@@ -679,11 +684,9 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-<!--
+> Notification:<br>
 
->Notification:<br>
-
-notification.comment
+>* notification.comment
 
 ```json
 {
@@ -763,403 +766,7 @@ notification.comment
     }
 }
 ```
->notification.custom_notification
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            4,
-            7
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T12:58:19.079810+02:00",
-        "custom_notification": {
-            "id": 1,
-            "type": "string",
-            "embed": [],
-            "title": "string",
-            "description": "blablabla"
-        },
-        "user": {
-            "id": 1,
-            "username": "string",
-            "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
-            "date_joined": "2019-08-24T14:15:22Z",
-            "bio": "string",
-            "location": "string",
-            "location_lat_lng": "string",
-            "position_lat_lng": "string",
-            "date_of_birth": "2019-09-23",
-            "description": "string",
-            "gender": "Male",
-            "status": "a",
-            "website": "https://example.com",
-            "avatar": "string",
-            "cover": "string",
-            "ext_id": 3,
-            "tags": [],
-            "reputation": 111,
-        }
-    }
-}
-```
->notification.blocked_user
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            122
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T13:48:25.594550+02:00",
-        "block_settings": {
-            "blocked_at": "2021-06-07T13:48:25.543115+02:00",
-            "days_blocked": 1,
-            "expire_at": "2021-06-08T13:48:25.543115+02:00"
-        }
-    }
-}
-```
->notification.unblocked_user
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            122
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T13:50:38.541768+02:00"
-    }
-}
-```
-
->notification.deleted_for_advertising<br>
-notification.deleted_for_aggressive<br>
-notification.deleted_for_vulgar<br>
-notification.deleted_for_poor<br>
-notification.deleted_for_offtopic<br>
-notification.kindly_notice_advertising<br>
-notification.kindly_notice_aggressive<br>
-notification.kindly_notice_vulgar<br>
-notification.kindly_notice_poor<br>
-notification.kindly_notice_offtopic<br>
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            110
-        ],
-        "discussion": {
-            "id": 5,
-            "categories":[],
-            "medias": [],
-            "location": [],
-            "poll": [],
-            "last_activity_at": "2021-05-28T21:41:00+02:00",
-            "author": {
-                "id": 110,
-                "username": "string",
-                "real_name": "string",
-                "date_joined": "2021-05-28T10:33:52.269304+02:00",
-                "bio":  "string",
-                "location": "string",
-                "location_lat_lng":  "string",
-                "position_lat_lng":  "string",
-                "date_of_birth": "string",
-                "description": "string",
-                "gender": "Male",
-                "website": "https://example.com",
-                "avatar": "string",
-                "cover": "string",
-                "ext_id": "string",
-                "tags": [],
-                "reputation": 111,
-            },
-            "added_at": "2021-05-28T09:16:00+02:00",
-            "html": "string",
-            "summary": "string",
-            "deleted": false,
-            "collapsed": false,
-            "comment_count": 6,
-            "vote_count": 2,
-            "flag_count": 0,
-            "share_count": 0,
-            "addressing": [],
-            "title": "string",
-            "slug": "string",
-            "view_count": 7,
-            "follower_count": 0
-        },
-        "type": "string",
-        "active_at": "2021-06-07T13:21:51.814550+02:00"
-    }
-}
-```
-
-
-
-
->notification.follow
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            32
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T13:09:13.163550+02:00",
-        "discussion": {
-            "id": 14,
-            "categories": [],
-            "medias": [],
-            "location": [],
-            "poll": [],
-            "last_activity_at": "2021-05-28T11:05:00+02:00",
-            "author": {
-                "id": 32,
-                "username": "string",
-                "real_name": "string",
-                "date_joined": "2021-05-28T10:33:52.269304+02:00",
-                "bio":  "string",
-                "location": "string",
-                "location_lat_lng":  "string",
-                "position_lat_lng":  "string",
-                "date_of_birth": "string",
-                "description": "string",
-                "gender": "Male",
-                "website": "https://example.com",
-                "avatar": "string",
-                "cover": "string",
-                "ext_id": "string",
-                "tags": [],
-                "reputation": 111,
-            },
-            "added_at": "2021-05-28T22:56:00+02:00",
-            "html": "string",
-            "summary": "string",
-            "deleted": false,
-            "collapsed": false,
-            "comment_count": 2,
-            "vote_count": 2,
-            "flag_count": 0,
-            "share_count": 0,
-            "addressing": [],
-            "title": "string",
-            "slug": "string",
-            "view_count": 3,
-            "follower_count": 0
-        },
-        "user": {
-            "id": 1,
-            "username": "string",
-            "real_name": "string",
-            "email": "user@example.com",
-            "email_isvalid": true,
-            "date_joined": "2019-08-24T14:15:22Z",
-            "bio": "string",
-            "location": "string",
-            "location_lat_lng": "string",
-            "position_lat_lng": "string",
-            "date_of_birth": "2019-09-23",
-            "description": "string",
-            "gender": "Male",
-            "status": "a",
-            "website": "https://example.com",
-            "avatar": "string",
-            "cover": "string",
-            "ext_id": 3,
-            "tags": [],
-            "reputation": 111,
-        }
-    }
-}
-```
-
->notification.connection_request
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            4
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T14:12:57.827680+02:00",
-        "request_user": {
-            "id": 1,
-            "username": "string",
-            "real_name": "string",
-            "date_joined": "2021-05-28T10:33:52.269304+02:00",
-            "bio":  "string",
-            "location": "string",
-            "location_lat_lng":  "string",
-            "position_lat_lng":  "string",
-            "date_of_birth": "string",
-            "description": "string",
-            "gender": "Male",
-            "website": "https://example.com",
-            "avatar": "string",
-            "cover": "string",
-            "ext_id": "string",
-            "tags": [],
-            "reputation": 88
-        }
-    }
-}
-```
->notification.connection_accept
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            4
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T14:12:57.827680+02:00",
-        "accept_user": {
-            "id": 33,
-            "username": "string",
-            "real_name": "string",
-            "date_joined": "2021-05-28T10:33:52.269304+02:00",
-            "bio":  "string",
-            "location": "string",
-            "location_lat_lng":  "string",
-            "position_lat_lng":  "string",
-            "date_of_birth": "string",
-            "description": "string",
-            "gender": "Male",
-            "website": "https://example.com",
-            "avatar": "string",
-            "cover": "string",
-            "ext_id": "string",
-            "tags": [],
-            "reputation": 17
-        }
-    }
-}
-```
-
->notification.private_message
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            7
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T14:30:43.555649+02:00",
-        "message": {
-            "id": 1,
-            "headline": "string",
-            "sender": {
-                "id": 1,
-                "username": "string",
-                "real_name": "string",
-                "date_joined": "2021-05-28T10:33:52.269304+02:00",
-                "bio":  "string",
-                "location": "string",
-                "location_lat_lng":  "string",
-                "position_lat_lng":  "string",
-                "date_of_birth": "string",
-                "description": "string",
-                "gender": "Male",
-                "website": "https://example.com",
-                "avatar": "string",
-                "cover": "string",
-                "ext_id": "string",
-                "tags": [],
-                "reputation": 111,
-            },
-            "html": "string",
-            "sent_at": "2021-06-07T14:30:43.555649+02:00",
-            "status": 0
-        }
-    }
-}
-```
-
-
-
->notification.mention
-
-```json
-{
-    "type": "string",
-    "created": "string",
-    "data": {
-        "recipients": [
-            7
-        ],
-        "type": "string",
-        "active_at": "2021-06-07T12:39:24.373244+02:00",
-        "post": {
-            "id": 24,
-            "categories": [],
-            "medias": [],
-            "location": [],
-            "poll": [],
-            "last_activity_at": "2021-06-07T12:39:24.373244+02:00",
-            "author": {
-                "id": 1,
-                "username": "string",
-                "real_name": "string",
-                "date_joined": "2021-05-28T10:33:52.269304+02:00",
-                "bio":  "string",
-                "location": "string",
-                "location_lat_lng":  "string",
-                "position_lat_lng":  "string",
-                "date_of_birth": "string",
-                "description": "string",
-                "gender": "Male",
-                "website": "https://example.com",
-                "avatar": "string",
-                "cover": "string",
-                "ext_id": "string",
-                "tags": [],
-                "reputation": 111,
-            },
-            "added_at": "2021-06-07T12:39:24.373244+02:00",
-            "html": "string",
-            "summary": "string",
-            "deleted": false,
-            "collapsed": false,
-            "comment_count": 2,
-            "vote_count": 2,
-            "flag_count": 0,
-            "share_count": 0,
-            "addressing": [],
-        }
-    }
-}
-```
-
-
->notification.nested_comment
+>* notification.nested_comment
 
 ```json
 {
@@ -1239,7 +846,7 @@ notification.kindly_notice_offtopic<br>
                     "real_name": "string",
                     "description": "string",
                     "avatar": "string",
-                    "ext_id": null,
+                    "ext_id": "string",
                     "tags": [],
                     "reputation": 86
                 },
@@ -1248,13 +855,13 @@ notification.kindly_notice_offtopic<br>
                 "summary": "string",
                 "deleted": false,
                 "collapsed": false,
-                "parent": null,
-                "in_reply_to": null,
+                "parent": [],
+                "in_reply_to": [],
                 "comment_count": 1,
                 "vote_count": 0,
                 "flag_count": 0
             },
-            "in_reply_to": null,
+            "in_reply_to": [],
             "comment_count": 0,
             "vote_count": 0,
             "flag_count": 0
@@ -1262,10 +869,7 @@ notification.kindly_notice_offtopic<br>
     }
 }
 ```
-
-
-
->notification.user_follow
+>* notification.mention
 
 ```json
 {
@@ -1273,34 +877,52 @@ notification.kindly_notice_offtopic<br>
     "created": "string",
     "data": {
         "recipients": [
-            114
+            7
         ],
         "type": "string",
-        "active_at": "2021-06-07T11:23:39.055083+02:00",
-        "follower": {
-            "id": 1,
-            "username": "string",
-            "real_name": "string",
-            "date_joined": "2021-05-28T10:33:52.269304+02:00",
-            "bio":  "string",
-            "location": "string",
-            "location_lat_lng":  "string",
-            "position_lat_lng":  "string",
-            "date_of_birth": "string",
-            "description": "string",
-            "gender": "Male",
-            "website": "https://example.com",
-            "avatar": "string",
-            "cover": "string",
-            "ext_id": "string",
-            "tags": [],
-            "reputation": 111,
+        "active_at": "2021-06-07T12:39:24.373244+02:00",
+        "post": {
+            "id": 24,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-06-07T12:39:24.373244+02:00",
+            "author": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-06-07T12:39:24.373244+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
         }
     }
 }
 ```
 
->notification.vote_up
+>* notification.vote_up
 
 ```json
 {
@@ -1356,12 +978,543 @@ notification.kindly_notice_offtopic<br>
     }
 }
 ```
--->
+>* notification.follow
 
->User:<br>
-user.created<br>
-user.updated<br>
-user.deleted
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            32
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:09:13.163550+02:00",
+        "discussion": {
+            "id": 14,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T11:05:00+02:00",
+            "author": {
+                "id": 32,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-28T22:56:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 2,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 3,
+            "follower_count": 0
+        },
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+>* notification.private_message
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            7
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:30:43.555649+02:00",
+        "message": {
+            "id": 1,
+            "headline": "string",
+            "sender": {
+                "id": 1,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "html": "string",
+            "sent_at": "2021-06-07T14:30:43.555649+02:00",
+            "status": 0
+        }
+    }
+}
+```
+
+>* notification.deleted_for_advertising<br>
+* notification.deleted_for_aggressive<br>
+* notification.deleted_for_vulgar<br>
+* notification.deleted_for_poor<br>
+* notification.deleted_for_offtopic<br>
+* notification.undeleted_for<br>
+* notification.kindly_notice_advertising<br>
+* notification.kindly_notice_aggressive<br>
+* notification.kindly_notice_vulgar<br>
+* notification.kindly_notice_poor<br>
+* notification.kindly_notice_offtopic<br>
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            110
+        ],
+        "discussion": {
+            "id": 5,
+            "categories":[],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T21:41:00+02:00",
+            "author": {
+                "id": 110,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 111,
+            },
+            "added_at": "2021-05-28T09:16:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 6,
+            "vote_count": 2,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 7,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-07T13:21:51.814550+02:00"
+    }
+}
+```
+
+>* notification.collapsed_for_advertising<br>
+* notification.collapsed_for_aggressive<br>
+* notification.collapsed_for_vulgar<br>
+* notification.collapsed_for_poor<br>
+* notification.collapsed_for_offtopic
+
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            110
+        ],
+        "discussion": {
+            "id": 9,
+            "categories": [],
+            "medias": [],
+            "location": [],
+            "poll": [],
+            "last_activity_at": "2021-05-28T11:31:00+02:00",
+            "author": {
+                "id": 32,
+                "username": "string",
+                "real_name": "string",
+                "date_joined": "2021-05-28T10:33:52.269304+02:00",
+                "bio":  "string",
+                "location": "string",
+                "location_lat_lng":  "string",
+                "position_lat_lng":  "string",
+                "date_of_birth": "string",
+                "description": "string",
+                "gender": "Male",
+                "website": "https://example.com",
+                "avatar": "string",
+                "cover": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 37
+            },
+            "added_at": "2021-05-28T07:11:00+02:00",
+            "html": "string",
+            "summary": "string",
+            "deleted": false,
+            "collapsed": false,
+            "comment_count": 5,
+            "vote_count": 1,
+            "flag_count": 0,
+            "share_count": 0,
+            "addressing": [],
+            "title": "string",
+            "slug": "string",
+            "view_count": 7,
+            "follower_count": 0
+        },
+        "type": "string",
+        "active_at": "2021-06-08T09:14:51.464044+02:00",
+        "comment": {
+            "id": 31,
+            "discussion": 9,
+            "author": {
+                "id": 110,
+                "username": "string",
+                "real_name": "string",
+                "description": "string",
+                "avatar": "string",
+                "ext_id": "string",
+                "tags": [],
+                "reputation": 23
+            },
+            "added_at": "2021-05-28T14:16:00+02:00",
+            "html": "string",
+            "deleted": false,
+            "collapsed": true,
+            "parent": {
+                "id": 30,
+                "discussion": 9,
+                "author": {
+                    "id": 56,
+                    "username": "string",
+                    "real_name": "string",
+                    "description": "string",
+                    "avatar": "string",
+                    "ext_id": "string",
+                    "tags": [],
+                    "reputation": 39
+                },
+                "added_at": "2021-05-28T09:34:00+02:00",
+                "html": "string",
+                "deleted": false,
+                "collapsed": false,
+                "parent": [],
+                "in_reply_to": [],
+                "comment_count": 1,
+                "vote_count": 0,
+                "flag_count": 0
+            },
+            "in_reply_to": {
+                "id": 30,
+                "discussion": 9,
+                "author": {
+                    "id": 56,
+                    "username": "string",
+                    "real_name": "string",
+                    "description": "string",
+                    "avatar": "string",
+                    "ext_id": "string",
+                    "tags": [],
+                    "reputation": 39
+                },
+                "added_at": "2021-05-28T09:34:00+02:00",
+                "html": "string",
+                "summary": "string",
+                "deleted": false,
+                "collapsed": false,
+                "parent": [],
+                "in_reply_to": [],
+                "comment_count": 1,
+                "vote_count": 0,
+                "flag_count": 0
+            },
+            "comment_count": 0,
+            "vote_count": 0,
+            "flag_count": 1
+        }
+    }
+}
+```
+
+>* notification.connection_request
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:12:57.827680+02:00",
+        "request_user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 88
+        }
+    }
+}
+```
+>* notification.connection_accept
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T14:12:57.827680+02:00",
+        "accept_user": {
+            "id": 33,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 17
+        }
+    }
+}
+```
+
+
+>* notification.user_follow
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            114
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T11:23:39.055083+02:00",
+        "follower": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "date_joined": "2021-05-28T10:33:52.269304+02:00",
+            "bio":  "string",
+            "location": "string",
+            "location_lat_lng":  "string",
+            "position_lat_lng":  "string",
+            "date_of_birth": "string",
+            "description": "string",
+            "gender": "Male",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": "string",
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+
+
+>* notification.blocked_user
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            122
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:48:25.594550+02:00",
+        "block_settings": {
+            "blocked_at": "2021-06-07T13:48:25.543115+02:00",
+            "days_blocked": 1,
+            "expire_at": "2021-06-08T13:48:25.543115+02:00"
+        }
+    }
+}
+```
+>* notification.unblocked_user
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            122
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T13:50:38.541768+02:00"
+    }
+}
+```
+
+>* notification.custom_notification
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "recipients": [
+            4,
+            7
+        ],
+        "type": "string",
+        "active_at": "2021-06-07T12:58:19.079810+02:00",
+        "custom_notification": {
+            "id": 1,
+            "type": "string",
+            "embed": [],
+            "title": "string",
+            "description": "blablabla"
+        },
+        "user": {
+            "id": 1,
+            "username": "string",
+            "real_name": "string",
+            "email": "user@example.com",
+            "email_isvalid": true,
+            "date_joined": "2019-08-24T14:15:22Z",
+            "bio": "string",
+            "location": "string",
+            "location_lat_lng": "string",
+            "position_lat_lng": "string",
+            "date_of_birth": "2019-09-23",
+            "description": "string",
+            "gender": "Male",
+            "status": "a",
+            "website": "https://example.com",
+            "avatar": "string",
+            "cover": "string",
+            "ext_id": 3,
+            "tags": [],
+            "reputation": 111,
+        }
+    }
+}
+```
+>* notification.banner.sent
+
+```json
+{
+    "type": "string",
+    "created": "string",
+    "data": {
+        "banner": {
+            "title": "string",
+            "body_text": "string",
+            "link_text": "string",
+            "link": "https://example.com",
+            "open_in_new_tab": false,
+            "image": "string",
+            "added_at": "2021-06-08T09:56:48.540278+02:00",
+            "type_banner": "string"
+        },
+        "recipients": [
+            1,
+            2,
+            3,
+        ]
+    }
+}
+```
+
+
+> User:<br>
+
+>* user.created<br>
+>* user.updated<br>
+>* user.deleted
 
 ```json
 {
@@ -1392,7 +1545,7 @@ user.deleted
 }
 ```
 
->user.settings_updated
+>* user.settings_updated
 
 ```json
 {
@@ -1433,7 +1586,7 @@ user.deleted
 ```
 
 
->user.score_updated
+>* user.score_updated
 
 ```json
 {
@@ -1458,7 +1611,7 @@ user.deleted
 }
 ```
 
->user.loyalty_points_updated
+>* user.loyalty_points_updated
 
 ```json
 {
@@ -1557,120 +1710,122 @@ user.deleted
 }
 ```
 
-|Category|Triggered When|Note|
-|---|---|---|
-|category.follow|a category is followed by the user|---|
-|category.unfollow|a category is unfollowed by the user|---|
+| Category          | Triggered When                       | Note |
+|-------------------|--------------------------------------|------|
+| category.follow   | a category is followed by the user   | ---  |
+| category.unfollow | a category is unfollowed by the user | ---  |
 
-|Comment|Triggered When|Note|
-|---|---|---|
-|comment.created|a new comment is created|---|
-|comment.updated|a comment is updated|---|
-|comment.deleted|a comment is deleted|---|
-|comment.restored|a comment is restored after deletion|---|
+| Comment          | Triggered When                       | Note |
+|------------------|--------------------------------------|------|
+| comment.created  | a new comment is created             | ---  |
+| comment.updated  | a comment is updated                 | ---  |
+| comment.deleted  | a comment is deleted                 | ---  |
+| comment.restored | a comment is restored after deletion | ---  |
 
-|Connection|Triggered When|Note|
-|---|---|---|
-|connection_request.created|a new connection request is created|This event is triggered only if `follow_enabled` community option is false|
-|connection_request.rejected|a connection request is rejected|This event is triggered only if `follow_enabled` community option is false|
-|connection_request.restored|a connection request that has been rejected is restored|This event is triggered only if `follow_enabled` community option is false|
-|connection_request.cancelled|a connection request is cancelled by the creator|This event is triggered only if `follow_enabled` community option is false|
-|connection.created|a new connection is created|This event is triggered only if `follow_enabled` community option is false|
-|connection.deleted|a connection is deleted|This event is triggered only if `follow_enabled` community option is false|
-|connection.follow|a user follows another user|This event is triggered only if `follow_enabled` community option is true|
-|connection.unfollow|a user unfollows another user|This event is triggered only if `follow_enabled` community option is true|
+| Connection                   | Triggered When                                          | Note                                                                       |
+|------------------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
+| connection_request.created   | a new connection request is created                     | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.rejected  | a connection request is rejected                        | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.restored  | a connection request that has been rejected is restored | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.cancelled | a connection request is cancelled by the creator        | This event is triggered only if `follow_enabled` community option is false |
+| connection.created           | a new connection is created                             | This event is triggered only if `follow_enabled` community option is false |
+| connection.deleted           | a connection is deleted                                 | This event is triggered only if `follow_enabled` community option is false |
+| connection.follow            | a user follows another user                             | This event is triggered only if `follow_enabled` community option is true  |
+| connection.unfollow          | a user unfollows another user                           | This event is triggered only if `follow_enabled` community option is true  |
 
-|Discussion|Triggered When|Note|
-|---|---|---|
-|discussion.created|a new discussion is created|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.updated|a discussion is updated|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.deleted|a discussion is deleted|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.restored|a discussion is restored after deletion|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.follow|a discussion is followed by the user|This event is triggered only if `discussion_enabled` community option is true|
-|discussion.unfollow|a discussion is unfollowed by the user|This event is triggered only if `discussion_enabled` community option is true|
-
-
-|Loyalty|Triggered When|Note|
-|---|---|---|
-|loyalty.prize.created|a new prize has been created|---|
-|loyalty.prize.updated|a prize has been updated|---|
-|loyalty.prize_request.created|a new request of a prize has been created|---|
-|loyalty.prize_request.updated|a request of a prize has been updated (status)|---|
-
-|Poll|Triggered When|Note|
-|---|---|---|
-|poll_vote.created|a user votes a poll|---|
-|poll_vote.deleted|a user remove the vote from a poll|---|
-
-|Post|Triggered When|Note|
-|---|---|---|
-|post.created|a new post is created|This event is triggered only if `post_enabled` community option is true|
-|post.updated|a post is updated|This event is triggered only if `post_enabled` community option is true|
-|post.deleted|a post is deleted|This event is triggered only if `post_enabled` community option is true|
-|post.restored|a post is restored after deletion|This event is triggered only if `post_enabled` community option is true|
-
-|Status|Triggered When|Note|
-|---|---|---|
-|status.created|a new status is created|This event is triggered only if `status_enabled` community option is true|
-|status.updated|a status is updated|This event is triggered only if `status_enabled` community option is true|
-|status.deleted|a status is deleted|This event is triggered only if `status_enabled` community option is true|
-|status.restored|a status is restored after deletion|This event is triggered only if `status_enabled` community option is true|
-
-|User|Triggered When|Note|
-|---|---|---|
-|user.created|a new user is created|---|
-|user.updated|a user is updated|---|
-|user.deleted|a user is deleted|---|
-|user.settings_updated|a user changes its settings|---|
-|user.score_updated|the score of the user has been updated|---|
-|user.loyalty_points_updated|the loyalty points of the user has been updated|---|
+| Discussion          | Triggered When                          | Note                                                                          |
+|---------------------|-----------------------------------------|-------------------------------------------------------------------------------|
+| discussion.created  | a new discussion is created             | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.updated  | a discussion is updated                 | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.deleted  | a discussion is deleted                 | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.restored | a discussion is restored after deletion | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.follow   | a discussion is followed by the user    | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.unfollow | a discussion is unfollowed by the user  | This event is triggered only if `discussion_enabled` community option is true |
 
 
-
-|Vote|Triggered When|Note|
-|---|---|---|
-|vote.created|a user votes a contribute ([Discussion](#schemadiscussion), [Post](#schemapost),  [Status](#schemastatus) or [Comment](#schemacomment))|---|
-|vote.deleted|a user remove the vote from a contribute ([Discussion](#schemadiscussion), [Post](#schemapost), [Status](#schemastatus) or [Comment](#schemacomment)|---|
-
-
-
+| Loyalty                       | Triggered When                                 | Note |
+|-------------------------------|------------------------------------------------|------|
+| loyalty.prize.created         | a new prize has been created                   | ---  |
+| loyalty.prize.updated         | a prize has been updated                       | ---  |
+| loyalty.prize_request.created | a new request of a prize has been created      | ---  |
+| loyalty.prize_request.updated | a request of a prize has been updated (status) | ---  |
 
 
-<!--
-|Notification|Triggered When|Note|
-|---|---|---|
-|notification.comment|a new comment of first level is created|---|
-|notification.nested_comment|a new comment of second level is created|---|
-|notification.mention|a user is mentioned|---|
-|notification.vote_up|a user vote up a post/discussion/comment|---|
-|notification.follow|a user follow a post/discussion|---|
-|notification.private_message|a user send a private message|---|
-|notification.deleted_for_advertising|deleted content by moderators with motivation the content is advertising|---|
-|notification.deleted_for_aggressive|deleted content by moderators with motivation the content is aggressive|---|
-|notification.deleted_for_vulgar|deleted content by moderators with motivation the content is vulgar|---|
-|notification.deleted_for_poor|deleted content by moderators with motivation the content is poor|---|
-|notification.deleted_for_offtopic|deleted content by moderators with motivation the content is offtopic|---|
-|notification.undeleted_for|the content has been rehabilitated by the moderators	|---|
-|notification.collapsed_for_advertising|only for comments, hidden content by moderator with motivation the content is advertising|---|
-|notification.collapsed_for_aggressive|only for comments, hidden content by moderator with motivation the content is aggressive|---|
-|notification.collapsed_for_vulgar|only for comments, hidden content by moderator with motivation the content is vulgar|---|
-|notification.collapsed_for_poor|only for comments, hidden content by moderator with motivation the content is poor|---|
-|notification.collapsed_for_offtopic|only for comments, hidden content by moderator with motivation the content is offtopic|---|
-|notification.connection_request|a user send a connection request|This event is triggered only if `follow_enabled` community option is false|
-|notification.connection_accept|a user accept a connection request|This event is triggered only if `follow_enabled` community option is false|
-|notification.user_follow|a user follow another user|This event is triggered only if `follow_enabled` community option is true|
-|notification.kindly_notice_advertising|content author notified for advertising content (via moderation)|---|
-|notification.kindly_notice_aggressive|content author notified for advertising content (via moderation)|---|
-|notification.kindly_notice_vulgar|content author notified for advertising content (via moderation)|---|
-|notification.kindly_notice_poor|content author notified for advertising content (via moderation)|---|
-|notification.kindly_notice_offtopic|content author notified for advertising content (via moderation)|---|
-|notification.blocked_user|a user is blocked|---|
-|notification.unblocked_user|a user is unblocked|---|
-|notification.custom_notification|a custom notification is created|---|
-|notification.banner.sent|a notification banner is sent and addressed to users|---|
+| Notification                           | Triggered When                                                                            | Note                                                                       |
+|----------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| notification.comment                   | a new comment of first level is created                                                   | ---                                                                        |
+| notification.nested_comment            | a new comment of second level is created                                                  | ---                                                                        |
+| notification.mention                   | a user is mentioned                                                                       | ---                                                                        |
+| notification.vote_up                   | a user vote up a post/discussion/comment                                                  | ---                                                                        |
+| notification.follow                    | a user follow a post/discussion                                                           | ---                                                                        |
+| notification.private_message           | a user send a private message                                                             | ---                                                                        |
+| notification.deleted_for_advertising   | deleted content by moderators with motivation the content is advertising                  | ---                                                                        |
+| notification.deleted_for_aggressive    | deleted content by moderators with motivation the content is aggressive                   | ---                                                                        |
+| notification.deleted_for_vulgar        | deleted content by moderators with motivation the content is vulgar                       | ---                                                                        |
+| notification.deleted_for_poor          | deleted content by moderators with motivation the content is poor                         | ---                                                                        |
+| notification.deleted_for_offtopic      | deleted content by moderators with motivation the content is offtopic                     | ---                                                                        |
+| notification.undeleted_for             | the content has been rehabilitated by the moderators                                      | ---                                                                        |
+| notification.collapsed_for_advertising | only for comments, hidden content by moderator with motivation the content is advertising | ---                                                                        |
+| notification.collapsed_for_aggressive  | only for comments, hidden content by moderator with motivation the content is aggressive  | ---                                                                        |
+| notification.collapsed_for_vulgar      | only for comments, hidden content by moderator with motivation the content is vulgar      | ---                                                                        |
+| notification.collapsed_for_poor        | only for comments, hidden content by moderator with motivation the content is poor        | ---                                                                        |
+| notification.collapsed_for_offtopic    | only for comments, hidden content by moderator with motivation the content is offtopic    | ---                                                                        |
+| notification.connection_request        | a user send a connection request                                                          | This event is triggered only if `follow_enabled` community option is false |
+| notification.connection_accept         | a user accept a connection request                                                        | This event is triggered only if `follow_enabled` community option is false |
+| notification.user_follow               | a user follow another user                                                                | This event is triggered only if `follow_enabled` community option is true  |
+| notification.kindly_notice_advertising | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_aggressive  | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_vulgar      | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_poor        | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_offtopic    | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.blocked_user              | a user is blocked                                                                         | ---                                                                        |
+| notification.unblocked_user            | a user is unblocked                                                                       | ---                                                                        |
+| notification.custom_notification       | a custom notification is created                                                          | ---                                                                        |
+| notification.banner.sent               | a notification banner is sent and addressed to users                                      | ---                                                                        |
 
 <aside class="notice">
 All events with prefix notification.* include in the payload a field "recipients" specifying the list of recipients of the notification
 </aside>
--->
+
+
+| Poll              | Triggered When                     | Note |
+|-------------------|------------------------------------|------|
+| poll_vote.created | a user votes a poll                | ---  |
+| poll_vote.deleted | a user remove the vote from a poll | ---  |
+
+| Post          | Triggered When                    | Note                                                                    |
+|---------------|-----------------------------------|-------------------------------------------------------------------------|
+| post.created  | a new post is created             | This event is triggered only if `post_enabled` community option is true |
+| post.updated  | a post is updated                 | This event is triggered only if `post_enabled` community option is true |
+| post.deleted  | a post is deleted                 | This event is triggered only if `post_enabled` community option is true |
+| post.restored | a post is restored after deletion | This event is triggered only if `post_enabled` community option is true |
+
+| Status          | Triggered When                      | Note                                                                      |
+|-----------------|-------------------------------------|---------------------------------------------------------------------------|
+| status.created  | a new status is created             | This event is triggered only if `status_enabled` community option is true |
+| status.updated  | a status is updated                 | This event is triggered only if `status_enabled` community option is true |
+| status.deleted  | a status is deleted                 | This event is triggered only if `status_enabled` community option is true |
+| status.restored | a status is restored after deletion | This event is triggered only if `status_enabled` community option is true |
+
+| User                        | Triggered When                                  | Note |
+|-----------------------------|-------------------------------------------------|------|
+| user.created                | a new user is created                           | ---  |
+| user.updated                | a user is updated                               | ---  |
+| user.deleted                | a user is deleted                               | ---  |
+| user.settings_updated       | a user changes its settings                     | ---  |
+| user.score_updated          | the score of the user has been updated          | ---  |
+| user.loyalty_points_updated | the loyalty points of the user has been updated | ---  |
+
+
+
+| Vote         | Triggered When                                                                                                                                       | Note |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------|
+| vote.created | a user votes a contribute ([Discussion](#schemadiscussion), [Post](#schemapost),  [Status](#schemastatus) or [Comment](#schemacomment))              | ---  |
+| vote.deleted | a user remove the vote from a contribute ([Discussion](#schemadiscussion), [Post](#schemapost), [Status](#schemastatus) or [Comment](#schemacomment) | ---  |
+
+
+
+
+
+
 
