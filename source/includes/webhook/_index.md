@@ -106,16 +106,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 | created | string | true     | The time or date that the event was triggered at                              |
 | data    | object | true     | Object that contains information about the event associated with the webhook. |
 
-
-
-
-### List of Events
-
-
-
-> **Events Payload**
-
-> Category:
+### List of Category events
 
 ```json
 {
@@ -173,11 +164,16 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-> Comment:
+| Category          | Triggered When                       | Note |
+|-------------------|--------------------------------------|------|
+| category.follow   | a category is followed by the user   | ---  |
+| category.unfollow | a category is unfollowed by the user | ---  |
+
+### List of Comment events
 
 ```json
 {
-    "type": "comment.created",
+    "type": "string",
     "created": "string",
     "data": {
         "id": 0,
@@ -205,8 +201,14 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
+| Comment          | Triggered When                       | Note |
+|------------------|--------------------------------------|------|
+| comment.created  | a new comment is created             | ---  |
+| comment.updated  | a comment is updated                 | ---  |
+| comment.deleted  | a comment is deleted                 | ---  |
+| comment.restored | a comment is restored after deletion | ---  |
 
-> Connection:<br>
+### List of Connection events
 
 >* connection_request.created<br>
 >* connection_request.rejected<br>
@@ -323,9 +325,18 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
+| Connection                   | Triggered When                                          | Note                                                                       |
+|------------------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
+| connection_request.created   | a new connection request is created                     | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.rejected  | a connection request is rejected                        | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.restored  | a connection request that has been rejected is restored | This event is triggered only if `follow_enabled` community option is false |
+| connection_request.cancelled | a connection request is cancelled by the creator        | This event is triggered only if `follow_enabled` community option is false |
+| connection.created           | a new connection is created                             | This event is triggered only if `follow_enabled` community option is false |
+| connection.deleted           | a connection is deleted                                 | This event is triggered only if `follow_enabled` community option is false |
+| connection.follow            | a user follows another user                             | This event is triggered only if `follow_enabled` community option is true  |
+| connection.unfollow          | a user unfollows another user                           | This event is triggered only if `follow_enabled` community option is true  |
 
-
-> Discussion: <br>
+### List of Discussion events
 
 >* discussion.created<br>
 >* discussion.updated<br>
@@ -456,7 +467,17 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
-> Loyalty:<br>
+
+| Discussion          | Triggered When                          | Note                                                                          |
+|---------------------|-----------------------------------------|-------------------------------------------------------------------------------|
+| discussion.created  | a new discussion is created             | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.updated  | a discussion is updated                 | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.deleted  | a discussion is deleted                 | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.restored | a discussion is restored after deletion | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.follow   | a discussion is followed by the user    | This event is triggered only if `discussion_enabled` community option is true |
+| discussion.unfollow | a discussion is unfollowed by the user  | This event is triggered only if `discussion_enabled` community option is true |
+
+### List of Loyalty events
 
 >* loyalty.prize.created<br>
 >* loyalty.prize.updated
@@ -521,9 +542,14 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
+| Loyalty                       | Triggered When                                 | Note |
+|-------------------------------|------------------------------------------------|------|
+| loyalty.prize.created         | a new prize has been created                   | ---  |
+| loyalty.prize.updated         | a prize has been updated                       | ---  |
+| loyalty.prize_request.created | a new request of a prize has been created      | ---  |
+| loyalty.prize_request.updated | a request of a prize has been updated (status) | ---  |
 
-
-> Poll:
+### List of Poll events
 
 ```json
 {
@@ -593,7 +619,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-> Post:
+| Poll              | Triggered When                     | Note |
+|-------------------|------------------------------------|------|
+| poll_vote.created | a user votes a poll                | ---  |
+| poll_vote.deleted | a user remove the vote from a poll | ---  |
+
+### List of Post events
 
 ```json
 {
@@ -639,7 +670,14 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-> Status:
+| Post          | Triggered When                    | Note                                                                    |
+|---------------|-----------------------------------|-------------------------------------------------------------------------|
+| post.created  | a new post is created             | This event is triggered only if `post_enabled` community option is true |
+| post.updated  | a post is updated                 | This event is triggered only if `post_enabled` community option is true |
+| post.deleted  | a post is deleted                 | This event is triggered only if `post_enabled` community option is true |
+| post.restored | a post is restored after deletion | This event is triggered only if `post_enabled` community option is true |
+
+### List of Status events
 
 ```json
 {
@@ -684,7 +722,14 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-> Notification:<br>
+| Status          | Triggered When                      | Note                                                                      |
+|-----------------|-------------------------------------|---------------------------------------------------------------------------|
+| status.created  | a new status is created             | This event is triggered only if `status_enabled` community option is true |
+| status.updated  | a status is updated                 | This event is triggered only if `status_enabled` community option is true |
+| status.deleted  | a status is deleted                 | This event is triggered only if `status_enabled` community option is true |
+| status.restored | a status is restored after deletion | This event is triggered only if `status_enabled` community option is true |
+
+### List of Notification events
 
 >* notification.comment
 
@@ -1509,8 +1554,45 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
+| Notification                           | Triggered When                                                                            | Note                                                                       |
+|----------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| notification.comment                   | a new comment of first level is created                                                   | ---                                                                        |
+| notification.nested_comment            | a new comment of second level is created                                                  | ---                                                                        |
+| notification.mention                   | a user is mentioned                                                                       | ---                                                                        |
+| notification.vote_up                   | a user vote up a post/discussion/comment                                                  | ---                                                                        |
+| notification.follow                    | a user follow a post/discussion                                                           | ---                                                                        |
+| notification.private_message           | a user send a private message                                                             | ---                                                                        |
+| notification.deleted_for_advertising   | deleted content by moderators with motivation the content is advertising                  | ---                                                                        |
+| notification.deleted_for_aggressive    | deleted content by moderators with motivation the content is aggressive                   | ---                                                                        |
+| notification.deleted_for_vulgar        | deleted content by moderators with motivation the content is vulgar                       | ---                                                                        |
+| notification.deleted_for_poor          | deleted content by moderators with motivation the content is poor                         | ---                                                                        |
+| notification.deleted_for_offtopic      | deleted content by moderators with motivation the content is offtopic                     | ---                                                                        |
+| notification.undeleted_for             | the content has been rehabilitated by the moderators                                      | ---                                                                        |
+| notification.collapsed_for_advertising | only for comments, hidden content by moderator with motivation the content is advertising | ---                                                                        |
+| notification.collapsed_for_aggressive  | only for comments, hidden content by moderator with motivation the content is aggressive  | ---                                                                        |
+| notification.collapsed_for_vulgar      | only for comments, hidden content by moderator with motivation the content is vulgar      | ---                                                                        |
+| notification.collapsed_for_poor        | only for comments, hidden content by moderator with motivation the content is poor        | ---                                                                        |
+| notification.collapsed_for_offtopic    | only for comments, hidden content by moderator with motivation the content is offtopic    | ---                                                                        |
+| notification.connection_request        | a user send a connection request                                                          | This event is triggered only if `follow_enabled` community option is false |
+| notification.connection_accept         | a user accept a connection request                                                        | This event is triggered only if `follow_enabled` community option is false |
+| notification.user_follow               | a user follow another user                                                                | This event is triggered only if `follow_enabled` community option is true  |
+| notification.kindly_notice_advertising | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_aggressive  | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_vulgar      | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_poor        | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.kindly_notice_offtopic    | content author notified for advertising content (via moderation)                          | ---                                                                        |
+| notification.blocked_user              | a user is blocked                                                                         | ---                                                                        |
+| notification.unblocked_user            | a user is unblocked                                                                       | ---                                                                        |
+| notification.custom_notification       | a custom notification is created                                                          | ---                                                                        |
+| notification.banner.sent               | a notification banner is sent and addressed to users                                      | ---                                                                        |
 
-> User:<br>
+<aside class="notice">
+All events with prefix notification.* include in the payload a field "recipients" specifying the list of recipients of the notification
+</aside>
+
+
+
+### List of User events
 
 >* user.created<br>
 >* user.updated<br>
@@ -1634,7 +1716,16 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
->Vote:
+
+| User                        | Triggered When                                  | Note |
+|-----------------------------|-------------------------------------------------|------|
+| user.created                | a new user is created                           | ---  |
+| user.updated                | a user is updated                               | ---  |
+| user.deleted                | a user is deleted                               | ---  |
+| user.settings_updated       | a user changes its settings                     | ---  |
+| user.score_updated          | the score of the user has been updated          | ---  |
+| user.loyalty_points_updated | the loyalty points of the user has been updated | ---  |
+### List of Vote events
 
 ```json
 {
@@ -1709,115 +1800,6 @@ The body of a webhook payload is a JSON object that describes the target that tr
     }
 }
 ```
-
-| Category          | Triggered When                       | Note |
-|-------------------|--------------------------------------|------|
-| category.follow   | a category is followed by the user   | ---  |
-| category.unfollow | a category is unfollowed by the user | ---  |
-
-| Comment          | Triggered When                       | Note |
-|------------------|--------------------------------------|------|
-| comment.created  | a new comment is created             | ---  |
-| comment.updated  | a comment is updated                 | ---  |
-| comment.deleted  | a comment is deleted                 | ---  |
-| comment.restored | a comment is restored after deletion | ---  |
-
-| Connection                   | Triggered When                                          | Note                                                                       |
-|------------------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
-| connection_request.created   | a new connection request is created                     | This event is triggered only if `follow_enabled` community option is false |
-| connection_request.rejected  | a connection request is rejected                        | This event is triggered only if `follow_enabled` community option is false |
-| connection_request.restored  | a connection request that has been rejected is restored | This event is triggered only if `follow_enabled` community option is false |
-| connection_request.cancelled | a connection request is cancelled by the creator        | This event is triggered only if `follow_enabled` community option is false |
-| connection.created           | a new connection is created                             | This event is triggered only if `follow_enabled` community option is false |
-| connection.deleted           | a connection is deleted                                 | This event is triggered only if `follow_enabled` community option is false |
-| connection.follow            | a user follows another user                             | This event is triggered only if `follow_enabled` community option is true  |
-| connection.unfollow          | a user unfollows another user                           | This event is triggered only if `follow_enabled` community option is true  |
-
-| Discussion          | Triggered When                          | Note                                                                          |
-|---------------------|-----------------------------------------|-------------------------------------------------------------------------------|
-| discussion.created  | a new discussion is created             | This event is triggered only if `discussion_enabled` community option is true |
-| discussion.updated  | a discussion is updated                 | This event is triggered only if `discussion_enabled` community option is true |
-| discussion.deleted  | a discussion is deleted                 | This event is triggered only if `discussion_enabled` community option is true |
-| discussion.restored | a discussion is restored after deletion | This event is triggered only if `discussion_enabled` community option is true |
-| discussion.follow   | a discussion is followed by the user    | This event is triggered only if `discussion_enabled` community option is true |
-| discussion.unfollow | a discussion is unfollowed by the user  | This event is triggered only if `discussion_enabled` community option is true |
-
-
-| Loyalty                       | Triggered When                                 | Note |
-|-------------------------------|------------------------------------------------|------|
-| loyalty.prize.created         | a new prize has been created                   | ---  |
-| loyalty.prize.updated         | a prize has been updated                       | ---  |
-| loyalty.prize_request.created | a new request of a prize has been created      | ---  |
-| loyalty.prize_request.updated | a request of a prize has been updated (status) | ---  |
-
-
-| Notification                           | Triggered When                                                                            | Note                                                                       |
-|----------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| notification.comment                   | a new comment of first level is created                                                   | ---                                                                        |
-| notification.nested_comment            | a new comment of second level is created                                                  | ---                                                                        |
-| notification.mention                   | a user is mentioned                                                                       | ---                                                                        |
-| notification.vote_up                   | a user vote up a post/discussion/comment                                                  | ---                                                                        |
-| notification.follow                    | a user follow a post/discussion                                                           | ---                                                                        |
-| notification.private_message           | a user send a private message                                                             | ---                                                                        |
-| notification.deleted_for_advertising   | deleted content by moderators with motivation the content is advertising                  | ---                                                                        |
-| notification.deleted_for_aggressive    | deleted content by moderators with motivation the content is aggressive                   | ---                                                                        |
-| notification.deleted_for_vulgar        | deleted content by moderators with motivation the content is vulgar                       | ---                                                                        |
-| notification.deleted_for_poor          | deleted content by moderators with motivation the content is poor                         | ---                                                                        |
-| notification.deleted_for_offtopic      | deleted content by moderators with motivation the content is offtopic                     | ---                                                                        |
-| notification.undeleted_for             | the content has been rehabilitated by the moderators                                      | ---                                                                        |
-| notification.collapsed_for_advertising | only for comments, hidden content by moderator with motivation the content is advertising | ---                                                                        |
-| notification.collapsed_for_aggressive  | only for comments, hidden content by moderator with motivation the content is aggressive  | ---                                                                        |
-| notification.collapsed_for_vulgar      | only for comments, hidden content by moderator with motivation the content is vulgar      | ---                                                                        |
-| notification.collapsed_for_poor        | only for comments, hidden content by moderator with motivation the content is poor        | ---                                                                        |
-| notification.collapsed_for_offtopic    | only for comments, hidden content by moderator with motivation the content is offtopic    | ---                                                                        |
-| notification.connection_request        | a user send a connection request                                                          | This event is triggered only if `follow_enabled` community option is false |
-| notification.connection_accept         | a user accept a connection request                                                        | This event is triggered only if `follow_enabled` community option is false |
-| notification.user_follow               | a user follow another user                                                                | This event is triggered only if `follow_enabled` community option is true  |
-| notification.kindly_notice_advertising | content author notified for advertising content (via moderation)                          | ---                                                                        |
-| notification.kindly_notice_aggressive  | content author notified for advertising content (via moderation)                          | ---                                                                        |
-| notification.kindly_notice_vulgar      | content author notified for advertising content (via moderation)                          | ---                                                                        |
-| notification.kindly_notice_poor        | content author notified for advertising content (via moderation)                          | ---                                                                        |
-| notification.kindly_notice_offtopic    | content author notified for advertising content (via moderation)                          | ---                                                                        |
-| notification.blocked_user              | a user is blocked                                                                         | ---                                                                        |
-| notification.unblocked_user            | a user is unblocked                                                                       | ---                                                                        |
-| notification.custom_notification       | a custom notification is created                                                          | ---                                                                        |
-| notification.banner.sent               | a notification banner is sent and addressed to users                                      | ---                                                                        |
-
-<aside class="notice">
-All events with prefix notification.* include in the payload a field "recipients" specifying the list of recipients of the notification
-</aside>
-
-
-| Poll              | Triggered When                     | Note |
-|-------------------|------------------------------------|------|
-| poll_vote.created | a user votes a poll                | ---  |
-| poll_vote.deleted | a user remove the vote from a poll | ---  |
-
-| Post          | Triggered When                    | Note                                                                    |
-|---------------|-----------------------------------|-------------------------------------------------------------------------|
-| post.created  | a new post is created             | This event is triggered only if `post_enabled` community option is true |
-| post.updated  | a post is updated                 | This event is triggered only if `post_enabled` community option is true |
-| post.deleted  | a post is deleted                 | This event is triggered only if `post_enabled` community option is true |
-| post.restored | a post is restored after deletion | This event is triggered only if `post_enabled` community option is true |
-
-| Status          | Triggered When                      | Note                                                                      |
-|-----------------|-------------------------------------|---------------------------------------------------------------------------|
-| status.created  | a new status is created             | This event is triggered only if `status_enabled` community option is true |
-| status.updated  | a status is updated                 | This event is triggered only if `status_enabled` community option is true |
-| status.deleted  | a status is deleted                 | This event is triggered only if `status_enabled` community option is true |
-| status.restored | a status is restored after deletion | This event is triggered only if `status_enabled` community option is true |
-
-| User                        | Triggered When                                  | Note |
-|-----------------------------|-------------------------------------------------|------|
-| user.created                | a new user is created                           | ---  |
-| user.updated                | a user is updated                               | ---  |
-| user.deleted                | a user is deleted                               | ---  |
-| user.settings_updated       | a user changes its settings                     | ---  |
-| user.score_updated          | the score of the user has been updated          | ---  |
-| user.loyalty_points_updated | the loyalty points of the user has been updated | ---  |
-
-
-
 | Vote         | Triggered When                                                                                                                                       | Note |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------|
 | vote.created | a user votes a contribute ([Discussion](#schemadiscussion), [Post](#schemapost),  [Status](#schemastatus) or [Comment](#schemacomment))              | ---  |
