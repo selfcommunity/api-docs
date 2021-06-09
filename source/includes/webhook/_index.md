@@ -549,6 +549,10 @@ The body of a webhook payload is a JSON object that describes the target that tr
 | loyalty.prize_request.created | a new request of a prize has been created      | ---  |
 | loyalty.prize_request.updated | a request of a prize has been updated (status) | ---  |
 
+<aside class="notice">
+All events with prefix loyalty.* are sent only if loyalty_points_collection configuration is enabled
+</aside>
+
 ### List of Poll events
 
 ```json
