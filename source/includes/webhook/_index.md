@@ -542,16 +542,14 @@ The body of a webhook payload is a JSON object that describes the target that tr
 }
 ```
 
-| Loyalty                       | Triggered When                                 | Note |
-|-------------------------------|------------------------------------------------|------|
-| loyalty.prize.created         | a new prize has been created                   | ---  |
-| loyalty.prize.updated         | a prize has been updated                       | ---  |
-| loyalty.prize_request.created | a new request of a prize has been created      | ---  |
-| loyalty.prize_request.updated | a request of a prize has been updated (status) | ---  |
+| Loyalty                       | Triggered When                                 | Note                                                                                 |
+|-------------------------------|------------------------------------------------|--------------------------------------------------------------------------------------|
+| loyalty.prize.created         | a new prize has been created                   | This event is triggered only if `loyalty_points_collection` community option is true |
+| loyalty.prize.updated         | a prize has been updated                       | This event is triggered only if `loyalty_points_collection` community option is true |
+| loyalty.prize_request.created | a new request of a prize has been created      | This event is triggered only if `loyalty_points_collection` community option is true |
+| loyalty.prize_request.updated | a request of a prize has been updated (status) | This event is triggered only if `loyalty_points_collection` community option is true |
 
-<aside class="notice">
-All events with prefix loyalty.* are sent only if loyalty_points_collection configuration is enabled
-</aside>
+
 
 ### List of Poll events
 
