@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/selfcommunity/img/main/logo-selfcommunity.png" alt="SelfCommunity API Docs" width="226">
+  <img src="https://avatars.githubusercontent.com/u/72084256?s=400&u=5b45ecbdddfa294f73c7d96058eccd10e68ebae8&v=4" alt="SelfCommunity API Docs" width="226">
   <br>
   <a href="https://github.com/slatedocs/slate/actions?query=workflow%3ABuild+branch%3Amain"><img src="https://github.com/selfcommunity/api-docs/workflows/Build/badge.svg?branch=main" alt="Build Status"></a>
 </p>
