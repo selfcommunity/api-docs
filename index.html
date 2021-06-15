@@ -629,6 +629,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#selfcommunity-api-mention" class="toc-h2 toc-link" data-title="Mention">Mention</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#how-it-works" class="toc-h3 toc-link" data-title="How it works">How it works</a>                            
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#selfcommunity-api-discussion" class="toc-h2 toc-link" data-title="Discussion">Discussion</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -13403,6 +13411,27 @@ curl <span class="nt">-X</span> DELETE /api/v2/media/<span class="o">{</span><sp
 <aside class="notice">
 This operation require authentication. The logged user must be the media creator.
 </aside>
+<h2 id="selfcommunity-api-mention">Mention</h2>
+<h3 id='how-it-works'>How it works</h3>
+<p><a id="opIdMention"></a></p>
+
+<p>The mentions mechanism is used to allow users to mention some other users within the content they write (posts, discussions, status, comments, etc.). The presence of a mention within a contribution causes a <code>notification</code> to be sent to the mentioned user.</p>
+<h4 id='when-creating-or-editing-a-contribution'>When creating or editing a contribution</h4>
+<p>To mention another user, one or more usernames preceded by the special character @ must be present in the text field when creating or updating a contribution, for example:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify @username1 and @username2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><em>Note that usernames may need to be auto-completed searchable in the contribution creation or editing interface (starting typing after the @ special character).</em></p>
+<h4 id='while-reading-a-contribution'>While reading a contribution</h4>
+<p>Retrieving a contribution that contains a mention to one or more users you will find in the text field one or more html tags that indicate the position and details (user ids) of the mention and which must be made as links pointing to the user profiles mentioned, to example:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify &lt;mention extid=</span><span class="se">\"</span><span class="s2">301</span><span class="se">\"</span><span class="s2"> id=</span><span class="se">\"</span><span class="s2">15</span><span class="se">\"</span><span class="s2">&gt;@username1&lt;/mention&gt; and &lt;mention extid=</span><span class="se">\"</span><span class="s2">302</span><span class="se">\"</span><span class="s2"> id=</span><span class="se">\"</span><span class="s2">16</span><span class="se">\"</span><span class="s2">&gt;@username2&lt;/mention&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify @username1 and @username2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><em>Note that the summary field also contains information about the mention.</em></p>
 <h2 id="selfcommunity-api-discussion">Discussion</h2>
 <h3 id='get-all-discussions'>Get All Discussions</h3>
 <p><a id="opIdlistDiscussions"></a></p>
@@ -17385,7 +17414,7 @@ curl <span class="nt">-X</span> POST /api/v2/post/ <span class="se">\</span>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>The content of the post in html format</td>
+<td>The content of the post in html format, it can contain some <a href="#selfcommunity-api-mention">mentions</a></td>
 </tr>
 <tr>
 <td>» categories</td>
