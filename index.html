@@ -13418,19 +13418,25 @@ This operation require authentication. The logged user must be the media creator
 <p>The mentions mechanism is used to allow users to mention some other users within the content they write (posts, discussions, status, comments, etc.). The presence of a mention within a contribution causes a <code>notification</code> to be sent to the mentioned user.</p>
 <h4 id='when-creating-or-editing-a-contribution'>When creating or editing a contribution</h4>
 <p>To mention another user, one or more usernames preceded by the special character @ must be present in the text field when creating or updating a contribution, for example:</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"post"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> 
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify @username1 and @username2"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+
+<p><code>
+{
+  &quot;post&quot;: 20, 
+  &quot;text&quot;: &quot;This is a comment with some mentions to notify @username1 and @username2&quot;
+}
+</code></p>
+
 <p><em>Note that usernames may need to be auto-completed searchable in the contribution creation or editing interface (starting typing after the @ special character).</em></p>
 <h4 id='while-reading-a-contribution'>While reading a contribution</h4>
 <p>Retrieving a contribution that contains a mention to one or more users you will find in the text field one or more html tags that indicate the position and details (user ids) of the mention and which must be made as links pointing to the user profiles mentioned, to example:</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify &lt;mention extid=</span><span class="se">\"</span><span class="s2">301</span><span class="se">\"</span><span class="s2"> id=</span><span class="se">\"</span><span class="s2">15</span><span class="se">\"</span><span class="s2">&gt;@username1&lt;/mention&gt; and &lt;mention extid=</span><span class="se">\"</span><span class="s2">302</span><span class="se">\"</span><span class="s2"> id=</span><span class="se">\"</span><span class="s2">16</span><span class="se">\"</span><span class="s2">&gt;@username2&lt;/mention&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment with some mentions to notify @username1 and @username2"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+
+<p><code>
+{
+    &quot;html&quot;: &quot;This is a comment with some mentions to notify &lt;mention extid=\&quot;301\&quot; id=\&quot;15\&quot;&gt;@username1&lt;/mention&gt; and &lt;mention extid=\&quot;302\&quot; id=\&quot;16\&quot;&gt;@username2&lt;/mention&gt;&quot;,
+    &quot;summary&quot;: &quot;This is a comment with some mentions to notify @username1 and @username2&quot;
+}
+</code></p>
+
 <p><em>Note that the summary field also contains information about the mention.</em></p>
 <h2 id="selfcommunity-api-discussion">Discussion</h2>
 <h3 id='get-all-discussions'>Get All Discussions</h3>
