@@ -624,7 +624,6 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
                 "emotional_image_original": "string",
                 "emotional_image_position": 123,
                 "lastmod_datetime": "2019-08-24T14:15:22Z",
-                "quality_score": 1,
                 "stream_order_by": "string",
             }
         ],
@@ -854,7 +853,6 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
                 "emotional_image_original": "string",
                 "emotional_image_position": 123,
                 "lastmod_datetime": "2019-08-24T14:15:22Z",
-                "quality_score": 1,
                 "stream_order_by": "string",
             }
         ],

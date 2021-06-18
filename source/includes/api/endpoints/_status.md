@@ -83,7 +83,6 @@ This endpoint retrieves all statuses.
           "emotional_image_original": "string",
           "emotional_image_position": 123,
           "lastmod_datetime": "2019-08-24T14:15:22Z",
-          "quality_score": 1,
           "stream_order_by": "string",
         }
       ],
@@ -305,7 +304,6 @@ This endpoint creates a status.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -466,7 +464,6 @@ This endpoint performs search operation to statuses.
             "emotional_image_original": "string",
             "emotional_image_position": 123,
             "lastmod_datetime": "2019-08-24T14:15:22Z",
-            "quality_score": 1,
             "stream_order_by": "string",
           }
         ],
@@ -664,7 +661,6 @@ This endpoint retrieves a specific status using ID.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -871,7 +867,6 @@ This endpoint update a specific status.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -1147,7 +1142,7 @@ This endpoint retrieves all votes for a specific status.
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
         },
         "voted_at": "2019-08-24T14:15:22Z"
         }

@@ -94,7 +94,6 @@ This endpoint retrieves the main (home) feed
             "emotional_image_original": "string",
             "emotional_image_position": 123,
             "lastmod_datetime": "2019-08-24T14:15:22Z",
-            "quality_score": 1,
             "stream_order_by": "string",
             }
         ],
@@ -370,7 +369,6 @@ This endpoint retrieves the explore feed. This endpoint can be disabled by setti
                 "emotional_image_original": "string",
                 "emotional_image_position": 123,
                 "lastmod_datetime": "2019-08-24T14:15:22Z",
-                "quality_score": 1,
                 "stream_order_by": "string",
             }
         ],
@@ -743,7 +741,6 @@ This endpoint retrieve a list of [Feed](#schemafeed) objects similar to the id o
             "emotional_image_original": "string",
             "emotional_image_position": 123,
             "lastmod_datetime": "2019-08-24T14:15:22Z",
-            "quality_score": 1,
             "stream_order_by": "string",
             }
         ],

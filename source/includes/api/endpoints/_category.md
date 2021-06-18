@@ -82,7 +82,6 @@ This endpoint retrieves all categories.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ]
@@ -192,7 +191,6 @@ This endpoint perform search of a Category
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
 
     }
@@ -422,7 +420,6 @@ This endpoint retrieves a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "quality_score":1,
   "stream_order_by": "recent",
 
 }
@@ -557,7 +554,6 @@ This endpoint updates a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "quality_score": 1,
   "stream_order_by": "string",
 }
 ```
@@ -694,7 +690,6 @@ For example to change `active` or `deleted` flags in an admin list/table interfa
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "quality_score": 1,
   "stream_order_by": "string",
 }
 ```
@@ -914,6 +909,7 @@ This endpoint returns all followers of a specific category.
       "ext_id": "string",
       "tags": [],
       "reputation": 1,
+      "connection_status": "followed",
       "followings_counter": 0,
       "followers_counter": 0,
       "posts_counter": 0,
@@ -1026,7 +1022,6 @@ This endpoint retrieves the category feed.
                 "emotional_image_original": "string",
                 "emotional_image_position": 123,
                 "lastmod_datetime": "2019-08-24T14:15:22Z",
-                "quality_score": 1,
                 "stream_order_by": "string",
             }
         ],
@@ -1245,7 +1240,6 @@ This endpoint retrieves the category trending feed.
                     "emotional_image_original": "string",
                     "emotional_image_position": 123,
                     "lastmod_datetime": "2019-08-24T14:15:22Z",
-                    "quality_score": 1,
                     "stream_order_by": "string",
               }
                     ],
@@ -1310,6 +1304,7 @@ This endpoint retrieves the category trending feed.
             }
           ],
         "reputation": 111,
+        "connection_status": "followed",
         "followings_counter": 1,
         "followers_counter": 1,
         "posts_counter": 2,
@@ -1438,6 +1433,7 @@ This endpoint returns all trending followers of a specific category during last 
       "ext_id": "string",
       "tags": [],
       "reputation": 111,
+      "connection_status": "followed",
       "followings_counter": 1,
       "followers_counter": 1,
       "posts_counter": 2,
@@ -1654,7 +1650,6 @@ This endpoint retrieves all followed categories by the user.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ]

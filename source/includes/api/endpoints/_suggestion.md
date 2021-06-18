@@ -76,7 +76,6 @@ This endpoint retrieves a list of categories suggested to the current user.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ]
@@ -177,6 +176,7 @@ This endpoint retrieves a list of users suggested to the current user.
       "ext_id": "string",
       "tags": [],
       "reputation": 14,
+      "connection_status": "string",
       "followings_counter": 1,
       "followers_counter": 0,
       "posts_counter": 0,

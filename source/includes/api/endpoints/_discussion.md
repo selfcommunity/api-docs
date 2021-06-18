@@ -83,7 +83,6 @@ This endpoint retrieves all discussions.
           "emotional_image_original": "string",
           "emotional_image_position": 123,
           "lastmod_datetime": "2019-08-24T14:15:22Z",
-          "quality_score": 1,
           "stream_order_by": "string",
         }
       ],
@@ -284,7 +283,6 @@ This endpoint retrieves all uncommented discussions.
           "emotional_image_original": "string",
           "emotional_image_position": 123,
           "lastmod_datetime": "2019-08-24T14:15:22Z",
-          "quality_score": 1,
           "stream_order_by": "string",
         }
       ],
@@ -483,7 +481,6 @@ This endpoint perform search operation to discussions.
             "emotional_image_original": "string",
             "emotional_image_position": 123,
             "lastmod_datetime": "2019-08-24T14:15:22Z",
-            "quality_score": 1,
             "stream_order_by": "string",
           }
         ],
@@ -797,7 +794,6 @@ This endpoint creates a discussion.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -978,7 +974,6 @@ This endpoint retrieves a specific discussion using ID.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -1249,7 +1244,6 @@ This endpoint update a specific discussion.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -1543,7 +1537,6 @@ This endpoint retrieve related discussions
               "emotional_image_original": "string",
               "emotional_image_position": 123,
               "lastmod_datetime": "2019-08-24T14:15:22Z",
-              "quality_score": 1,
               "stream_order_by": "string",
           }
         ],

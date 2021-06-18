@@ -83,7 +83,6 @@ This endpoint retrieves all posts.
           "emotional_image_original": "string",
           "emotional_image_position": 123,
           "lastmod_datetime": "2019-08-24T14:15:22Z",
-          "quality_score": 1,
           "stream_order_by": "string",
         }
       ],
@@ -358,7 +357,6 @@ This endpoint creates a post.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -539,7 +537,6 @@ This endpoint perform search operation to posts.
             "emotional_image_original": "string",
             "emotional_image_position": 123,
             "lastmod_datetime": "2019-08-24T14:15:22Z",
-            "quality_score": 1,
             "stream_order_by": "string",
           }
         ],
@@ -758,7 +755,6 @@ This endpoint retrieves a specific post using ID.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
@@ -1020,7 +1016,6 @@ This endpoint update a specific post.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "quality_score": 1,
       "stream_order_by": "string",
     }
   ],
