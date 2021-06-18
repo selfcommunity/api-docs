@@ -1304,7 +1304,6 @@ This endpoint retrieves the category trending feed.
             }
           ],
         "reputation": 111,
-        "connection_status": "followed",
         "followings_counter": 1,
         "followers_counter": 1,
         "posts_counter": 2,
