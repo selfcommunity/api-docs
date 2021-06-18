@@ -313,7 +313,7 @@ This endpoint creates a post.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» text|body|string|false|The content of the post in html format|
+|» text|body|string|false|The content of the post in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the post|
@@ -975,7 +975,7 @@ This endpoint update a specific post.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|» text|body|string|false|The content of the post in html format|
+|» text|body|string|false|The content of the post in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the post|

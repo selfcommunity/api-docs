@@ -283,7 +283,7 @@ The `in_reply_to` parameter is required only for create a reference in the neste
 |» status|body|integer|true|Id of the [Status](#schemastatus)|
 |» parent|body|integer¦null|false|Id of a [Comment](#schemacomment), used for creating nested comments|
 |» in_reply_to|body|integer¦null|false|Id of a [Comment](#schemacomment), used for reply in nested comments|
-|» text|body|string|true|text for the [Comment](#schemacomment), html format|
+|» text|body|string|true|text for the [Comment](#schemacomment), html format, it can contain some [mentions](#selfcommunity-api-mention)|
 
 > Example responses
 
@@ -649,7 +649,7 @@ This endpoint update a specific comment.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this post.|
-|» text|body|string|true|text for the [Comment](#schemacomment), html format|
+|» text|body|string|true|text for the [Comment](#schemacomment), html format, it can contain some [mentions](#selfcommunity-api-mention)|
 
 > Example responses
 

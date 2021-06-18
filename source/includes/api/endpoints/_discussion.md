@@ -752,7 +752,7 @@ This endpoint creates a discussion.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |» title|body|string¦null|true|The title of the discussion|
-|» text|body|string|false|The content of the discussion in html format|
+|» text|body|string|false|The content of the discussion in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
@@ -1204,7 +1204,7 @@ This endpoint update a specific discussion.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this discussion|
 |» title|body|string¦null|true|The title of the discussion|
-|» text|body|string|false|The content of the discussion in html format|
+|» text|body|string|false|The content of the discussion in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
 |» location|body|object¦null|false|The Location object to associate at the discussion|
