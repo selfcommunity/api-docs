@@ -56,6 +56,7 @@ This endpoint retrieves a list of categories suggested to the current user.
   "results": [
     {
       "id": 0,
+      "tags": [],
       "order": 123,
       "name": "string",
       "name_synonyms": "string",
@@ -64,7 +65,7 @@ This endpoint retrieves a list of categories suggested to the current user.
       "html_info": "string",
       "seo_title": "string",
       "seo_description": "string",
-      "auto_follow": "none",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -75,7 +76,8 @@ This endpoint retrieves a list of categories suggested to the current user.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent"
+      "quality_score": 1,
+      "stream_order_by": "string",
     }
   ]
 }
@@ -171,7 +173,16 @@ This endpoint retrieves a list of users suggested to the current user.
       "status": "a",
       "website": "https://example.com",
       "avatar": "string",
-      "cover": "string"
+      "cover": "string",
+      "ext_id": "string",
+      "tags": [],
+      "reputation": 14,
+      "followings_counter": 1,
+      "followers_counter": 0,
+      "posts_counter": 0,
+      "discussions_counter": 0,
+      "statuses_counter": 0,
+      "polls_counter": 0
     }
   ]
 }

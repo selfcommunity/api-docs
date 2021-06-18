@@ -86,7 +86,12 @@ This endpoint retrieve the list of all users.
       "ext_id": 3,
       "tags": [],
       "reputation": 39,
-      "connection_status": "string"
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
     }
   ]
 }
@@ -305,7 +310,12 @@ This endpoint perform search users.
       "ext_id": 3,
       "tags": [],
       "reputation": 39,
-      "connection_status": "string"
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
     }
   ]
 }
@@ -401,7 +411,12 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
-  "connection_status": "string"
+  "followings_counter": 7,
+  "followers_counter": 2,
+  "posts_counter": 4,
+  "discussions_counter": 3,
+  "statuses_counter": 0,
+  "polls_counter": 1
 }
 ```
 

@@ -62,6 +62,7 @@ This endpoint retrieves all categories.
   "results": [
     {
       "id": 0,
+      "tags": [],
       "order": 123,
       "name": "string",
       "name_synonyms": "string",
@@ -70,7 +71,7 @@ This endpoint retrieves all categories.
       "html_info": "string",
       "seo_title": "string",
       "seo_description": "string",
-      "auto_follow": "none",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -81,8 +82,8 @@ This endpoint retrieves all categories.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent",
-      "tags": []
+      "quality_score": 1,
+      "stream_order_by": "string",
     }
   ]
 }
@@ -171,6 +172,7 @@ This endpoint perform search of a Category
   "results": [
     {
       "id": 0,
+      "tags": [],
       "order": 123,
       "name": "string",
       "name_synonyms": "string",
@@ -179,7 +181,7 @@ This endpoint perform search of a Category
       "html_info": "string",
       "seo_title": "string",
       "seo_description": "string",
-      "auto_follow": "none",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -190,8 +192,9 @@ This endpoint perform search of a Category
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent",
-      "tags": []
+      "quality_score": 1,
+      "stream_order_by": "string",
+
     }
   ]
 }
@@ -399,6 +402,7 @@ This endpoint retrieves a specific category.
 ```json
 {
   "id": 0,
+  "tags": [],
   "order": 123,
   "name": "string",
   "name_synonyms": "string",
@@ -418,8 +422,9 @@ This endpoint retrieves a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
+  "quality_score":1,
   "stream_order_by": "recent",
-  "tags": []
+
 }
 ```
 
@@ -532,6 +537,7 @@ This endpoint updates a specific category.
 ```json
 {
   "id": 0,
+  "tags": [],
   "order": 123,
   "name": "string",
   "name_synonyms": "string",
@@ -540,7 +546,7 @@ This endpoint updates a specific category.
   "html_info": "string",
   "seo_title": "string",
   "seo_description": "string",
-  "auto_follow": "none",
+  "auto_follow": "string",
   "active": true,
   "deleted": false,
   "image_original": "string",
@@ -551,8 +557,8 @@ This endpoint updates a specific category.
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent",
-  "tags": []
+  "quality_score": 1,
+  "stream_order_by": "string",
 }
 ```
 
@@ -668,6 +674,7 @@ For example to change `active` or `deleted` flags in an admin list/table interfa
 ```json
 {
   "id": 0,
+  "tags": [],
   "order": 123,
   "name": "string",
   "name_synonyms": "string",
@@ -676,7 +683,7 @@ For example to change `active` or `deleted` flags in an admin list/table interfa
   "html_info": "string",
   "seo_title": "string",
   "seo_description": "string",
-  "auto_follow": "none",
+  "auto_follow": "string",
   "active": true,
   "deleted": false,
   "image_original": "string",
@@ -687,8 +694,8 @@ For example to change `active` or `deleted` flags in an admin list/table interfa
   "emotional_image_original": "string",
   "emotional_image_position": 123,
   "lastmod_datetime": "2019-08-24T14:15:22Z",
-  "stream_order_by": "recent",
-  "tags": []
+  "quality_score": 1,
+  "stream_order_by": "string",
 }
 ```
 
@@ -907,7 +914,12 @@ This endpoint returns all followers of a specific category.
       "ext_id": "string",
       "tags": [],
       "reputation": 1,
-      "connection_status": "followed"
+      "followings_counter": 0,
+      "followers_counter": 0,
+      "posts_counter": 0,
+      "discussions_counter": 0,
+      "statuses_counter": 0,
+      "polls_counter": 0
     }
   ]
 }
@@ -994,15 +1006,16 @@ This endpoint retrieves the category feed.
         "categories": [
             {
                 "id": 0,
-                "order": 1,
-                "name": "name",
-                "name_synonyms": "synonyms",
-                "slug": "name",
-                "slogan": "Slogan",
-                "html_info": null,
-                "seo_title": null,
-                "seo_description": null,
-                "auto_follow": "None",
+                "tags": [],
+                "order": 123,
+                "name": "string",
+                "name_synonyms": "string",
+                "slug": "string",
+                "slogan": "string",
+                "html_info": "string",
+                "seo_title": "string",
+                "seo_description": "string",
+                "auto_follow": "string",
                 "active": true,
                 "deleted": false,
                 "image_original": "string",
@@ -1011,9 +1024,10 @@ This endpoint retrieves the category feed.
                 "image_medium": "string",
                 "image_small": "string",
                 "emotional_image_original": "string",
-                "emotional_image_position": 50,
-                "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                "stream_order_by": "recent"
+                "emotional_image_position": 123,
+                "lastmod_datetime": "2019-08-24T14:15:22Z",
+                "quality_score": 1,
+                "stream_order_by": "string",
             }
         ],
         "media_type": "images",
@@ -1094,7 +1108,13 @@ This endpoint retrieves the category feed.
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation": 1
+          "reputation": 1,
+          "followings_counter": 1,
+          "followers_counter": 1,
+          "posts_counter": 2,
+          "discussions_counter": 5,
+          "statuses_counter": 1,
+          "polls_counter": 7
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1106,9 +1126,7 @@ This endpoint retrieves the category feed.
         "voted": false,
         "flag_count": 0,
         "share_count": 0,
-        "addressing": [
-          0
-        ],
+        "addressing": [],
         "title": "string",
         "slug": "string",
         "view_count": 0,
@@ -1207,6 +1225,7 @@ This endpoint retrieves the category trending feed.
           "categories": [ 
               {
                     "id": 0,
+                    "tags": [],
                     "order": 123,
                     "name": "string",
                     "name_synonyms": "string",
@@ -1215,7 +1234,7 @@ This endpoint retrieves the category trending feed.
                     "html_info": "string",
                     "seo_title": "string",
                     "seo_description": "string",
-                    "auto_follow": "none",
+                    "auto_follow": "string",
                     "active": true,
                     "deleted": false,
                     "image_original": "string",
@@ -1226,8 +1245,8 @@ This endpoint retrieves the category trending feed.
                     "emotional_image_original": "string",
                     "emotional_image_position": 123,
                     "lastmod_datetime": "2019-08-24T14:15:22Z",
-                    "stream_order_by": "recent",
-                    "tags": []
+                    "quality_score": 1,
+                    "stream_order_by": "string",
               }
                     ],
       "media_type": "images",
@@ -1291,6 +1310,12 @@ This endpoint retrieves the category trending feed.
             }
           ],
         "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 1,
+        "posts_counter": 2,
+        "discussions_counter": 5,
+        "statuses_counter": 1,
+        "polls_counter": 7
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1413,7 +1438,12 @@ This endpoint returns all trending followers of a specific category during last 
       "ext_id": "string",
       "tags": [],
       "reputation": 111,
-      "connection_status": "followed"
+      "followings_counter": 1,
+      "followers_counter": 1,
+      "posts_counter": 2,
+      "discussions_counter": 5,
+      "statuses_counter": 1,
+      "polls_counter": 7
     }
   ]
 }
@@ -1604,6 +1634,7 @@ This endpoint retrieves all followed categories by the user.
   "results": [
     {
       "id": 0,
+      "tags": [],
       "order": 123,
       "name": "string",
       "name_synonyms": "string",
@@ -1612,7 +1643,7 @@ This endpoint retrieves all followed categories by the user.
       "html_info": "string",
       "seo_title": "string",
       "seo_description": "string",
-      "auto_follow": "none",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -1623,8 +1654,8 @@ This endpoint retrieves all followed categories by the user.
       "emotional_image_original": "string",
       "emotional_image_position": 123,
       "lastmod_datetime": "2019-08-24T14:15:22Z",
-      "stream_order_by": "recent",
-      "tags": []
+      "quality_score": 1,
+      "stream_order_by": "string",
     }
   ]
 }

@@ -158,6 +158,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 1,
+            "followers_counter": 1,
+            "posts_counter": 3,
+            "discussions_counter": 5,
+            "statuses_counter": 1,
+            "polls_counter": 8
         },
         "added_at": "2021-05-28T11:15:10.126738+02:00"
     }
@@ -186,7 +192,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "avatar": "string",
             "ext_id": 3,
             "tags": [],
-            "reputation": 24
+            "reputation": 24,
+            "followings_counter": 1,
+            "followers_counter": 1,
+            "posts_counter": 3,
+            "discussions_counter": 5,
+            "statuses_counter": 1,
+            "polls_counter": 8
         },
         "added_at": "2021-06-07T10:14:52.772383+02:00",
         "html":  "string",
@@ -243,6 +255,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "connection_requests_sent_counter": 1,
+            "connection_requests_received_counter": 0,
+            "connections_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         },
         "from_user": {
             "id": 1,
@@ -265,6 +284,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "connection_requests_sent_counter": 1,
+            "connection_requests_received_counter": 0,
+            "connections_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         }
     }
 }
@@ -299,6 +325,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 14,
+            "connection_requests_sent_counter": 1,
+            "connection_requests_received_counter": 0,
+            "connections_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         },
         "from_user": {
             "id": 1,
@@ -321,6 +354,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 81,
+            "connection_requests_sent_counter": 1,
+            "connection_requests_received_counter": 0,
+            "connections_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         }
     }
 }
@@ -372,6 +412,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         },
         "added_at": "2021-05-28T11:37:25.178645+02:00",
         "html":  "string",
@@ -422,6 +468,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         },
         "discussion": {
             "id": 1,
@@ -448,6 +500,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-06-07T09:44:59.016173+02:00",
             "html":  "string",
@@ -616,6 +674,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -657,6 +721,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         },
         "added_at": "2021-05-28T11:37:25.178645+02:00",
         "html":  "string",
@@ -709,6 +779,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         },
         "added_at": "2021-05-28T11:37:25.178645+02:00",
         "html":  "string",
@@ -768,6 +844,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-27T14:58:04.334631+02:00",
             "html": "string",
@@ -797,7 +879,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "avatar": "string",
                 "ext_id": null,
                 "tags": [],
-                "reputation": 86
+                "reputation": 86,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-06-07T12:30:44.509122+02:00",
             "html": "string",
@@ -848,6 +936,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-27T14:58:04.334631+02:00",
             "html": "string",
@@ -877,7 +971,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "avatar": "string",
                 "ext_id": 3,
                 "tags": [],
-                "reputation": 13
+                "reputation": 13,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-06-07T12:24:23.830573+02:00",
             "html": "string",
@@ -895,7 +995,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                     "avatar": "string",
                     "ext_id": "string",
                     "tags": [],
-                    "reputation": 86
+                    "reputation": 86,
+                    "followings_counter": 7,
+                    "followers_counter": 2,
+                    "posts_counter": 4,
+                    "discussions_counter": 3,
+                    "statuses_counter": 0,
+                    "polls_counter": 1
                 },
                 "added_at": "2021-06-07T12:30:44.50912+02:00",
                 "html": "string",
@@ -953,6 +1059,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-06-07T12:39:24.373244+02:00",
             "html": "string",
@@ -1004,6 +1116,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-28T19:25:00+02:00",
             "html": "string",
@@ -1062,6 +1180,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-28T22:56:00+02:00",
             "html": "string",
@@ -1099,6 +1223,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1137,6 +1267,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "html": "string",
             "sent_at": "2021-06-07T14:30:43.555649+02:00",
@@ -1191,6 +1327,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-28T09:16:00+02:00",
             "html": "string",
@@ -1252,7 +1394,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "cover": "string",
                 "ext_id": "string",
                 "tags": [],
-                "reputation": 37
+                "reputation": 37,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-28T07:11:00+02:00",
             "html": "string",
@@ -1282,7 +1430,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                 "avatar": "string",
                 "ext_id": "string",
                 "tags": [],
-                "reputation": 23
+                "reputation": 23,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "2021-05-28T14:16:00+02:00",
             "html": "string",
@@ -1299,7 +1453,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                     "avatar": "string",
                     "ext_id": "string",
                     "tags": [],
-                    "reputation": 39
+                    "reputation": 39,
+                    "followings_counter": 7,
+                    "followers_counter": 2,
+                    "posts_counter": 4,
+                    "discussions_counter": 3,
+                    "statuses_counter": 0,
+                    "polls_counter": 1
                 },
                 "added_at": "2021-05-28T09:34:00+02:00",
                 "html": "string",
@@ -1322,7 +1482,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
                     "avatar": "string",
                     "ext_id": "string",
                     "tags": [],
-                    "reputation": 39
+                    "reputation": 39,
+                    "followings_counter": 7,
+                    "followers_counter": 2,
+                    "posts_counter": 4,
+                    "discussions_counter": 3,
+                    "statuses_counter": 0,
+                    "polls_counter": 1
                 },
                 "added_at": "2021-05-28T09:34:00+02:00",
                 "html": "string",
@@ -1372,7 +1538,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 88
+            "reputation": 88,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1406,7 +1578,13 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 17
+            "reputation": 17,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1443,6 +1621,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1526,6 +1710,12 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1625,6 +1815,12 @@ All events with prefix notification.* include in the payload a field "recipients
         "ext_id": 3,
         "tags": [],
         "reputation": 111,
+        "followings_counter": 7,
+        "followers_counter": 2,
+        "posts_counter": 4,
+        "discussions_counter": 3,
+        "statuses_counter": 0,
+        "polls_counter": 1
     }
 }
 ```
@@ -1664,6 +1860,12 @@ All events with prefix notification.* include in the payload a field "recipients
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         }
     }
 }
@@ -1755,6 +1957,12 @@ All events with prefix notification.* include in the payload a field "recipients
             "ext_id": 3,
             "tags": [],
             "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
         },
         "voted_at": "2021-06-07T12:06:07.849533+02:00",
         "object_type": "discussion",
@@ -1783,6 +1991,12 @@ All events with prefix notification.* include in the payload a field "recipients
                 "ext_id": "string",
                 "tags": [],
                 "reputation": 111,
+                "followings_counter": 7,
+                "followers_counter": 2,
+                "posts_counter": 4,
+                "discussions_counter": 3,
+                "statuses_counter": 0,
+                "polls_counter": 1
             },
             "added_at": "string",
             "html": "string",

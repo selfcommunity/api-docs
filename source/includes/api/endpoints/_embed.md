@@ -604,15 +604,16 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
         "categories": [
             {
                 "id": 0,
-                "order": 1,
-                "name": "name",
-                "name_synonyms": "synonyms",
-                "slug": "name",
-                "slogan": "Slogan",
-                "html_info": null,
-                "seo_title": null,
-                "seo_description": null,
-                "auto_follow": "None",
+                "tags": [],
+                "order": 123,
+                "name": "string",
+                "name_synonyms": "string",
+                "slug": "string",
+                "slogan": "string",
+                "html_info": "string",
+                "seo_title": "string",
+                "seo_description": "string",
+                "auto_follow": "string",
                 "active": true,
                 "deleted": false,
                 "image_original": "string",
@@ -621,9 +622,10 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
                 "image_medium": "string",
                 "image_small": "string",
                 "emotional_image_original": "string",
-                "emotional_image_position": 50,
-                "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                "stream_order_by": "recent"
+                "emotional_image_position": 123,
+                "lastmod_datetime": "2019-08-24T14:15:22Z",
+                "quality_score": 1,
+                "stream_order_by": "string",
             }
         ],
         "media_type": "images",
@@ -705,23 +707,29 @@ This endpoint retrieves the embed's feed witch contains [Feed](#schemafeed) that
             }
           ],
         "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 1,
+        "posts_counter": 2,
+        "discussions_counter": 5,
+        "statuses_counter": 1,
+        "polls_counter": 7
+        
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
         "summary": "string",
         "deleted": true,
         "collapsed": false,
-        "comment_count": 0,
-        "share_count": 0,
+        "comment_count": 1,
         "vote_count": 0,
+        "voted": false,
         "flag_count": 0,
-        "addressing": [
-          0
-        ],
+        "share_count": 0,
+        "addressing": [0],
         "title": "string",
         "slug": "string",
         "view_count": 0,
-        "follower_count": "string"
+        "follower_count": 0
       }
     }
   ]
@@ -826,15 +834,16 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
         "categories": [
             {
                 "id": 0,
-                "order": 1,
-                "name": "name",
-                "name_synonyms": "synonyms",
-                "slug": "name",
-                "slogan": "Slogan",
-                "html_info": null,
-                "seo_title": null,
-                "seo_description": null,
-                "auto_follow": "None",
+                "tags": [],
+                "order": 123,
+                "name": "string",
+                "name_synonyms": "string",
+                "slug": "string",
+                "slogan": "string",
+                "html_info": "string",
+                "seo_title": "string",
+                "seo_description": "string",
+                "auto_follow": "string",
                 "active": true,
                 "deleted": false,
                 "image_original": "string",
@@ -843,9 +852,10 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
                 "image_medium": "string",
                 "image_small": "string",
                 "emotional_image_original": "string",
-                "emotional_image_position": 50,
-                "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-                "stream_order_by": "recent"
+                "emotional_image_position": 123,
+                "lastmod_datetime": "2019-08-24T14:15:22Z",
+                "quality_score": 1,
+                "stream_order_by": "string",
             }
         ],
         "media_type": "images",
@@ -934,23 +944,28 @@ If the tuple `embed_type` `embed_id` is passed as parameter retrieves a list of 
             }
           ],
         "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 1,
+        "posts_counter": 2,
+        "discussions_counter": 5,
+        "statuses_counter": 1,
+        "polls_counter": 7
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
         "summary": "string",
         "deleted": true,
         "collapsed": false,
-        "comment_count": 0,
+        "comment_count": 1,
         "vote_count": 0,
         "voted": false,
         "flag_count": 0,
-        "addressing": [
-          0
-        ],
+        "share_count": 0,
+        "addressing": [0],
         "title": "string",
         "slug": "string",
         "view_count": 0,
-        "follower_count": "string"
+        "follower_count": 0
       }
     }
   ]
