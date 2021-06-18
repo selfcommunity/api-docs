@@ -38,15 +38,21 @@
     "accept_connection": true
   },
   "reputation": 0,
-  "connection_status": "string"
+  "connection_status": "string",
+  "followings_counter": 1,
+  "followers_counter": 0,
+  "posts_counter": 2,
+  "discussions_counter": 4,
+  "statuses_counter": 1,
+  "polls_counter": 6
 }
 
 ```
 
 #### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
+|Name|Type|Required|Restrictions|Description|Note|
+|---|---|---|---|---|---|
 |id|integer|false|read-only|The ID of the user.|
 |username|string|false|read-only|The username of the user. Max 255 characters. Letters, numbers and -/_ characters.|
 |real_name|string|false|none|Real name. Max 255 characters.|
@@ -69,6 +75,16 @@
 |reputation|integer|false|read-only|User reputation.|
 |permission|[UserPermission](#schemauserpermission)|false|read-only|List of user permission. Only for the resource [/user/me/](#opIdmeUser).|
 |connection_status|string¦null|false|read-only|The connection status between the request user and this user|
+|connection_requests_sent_counter|integer¦null|false|read-only|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connection_requests_received_counter|integer¦null|false|read-only|Number of connection requests received by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connections_counter|integer¦null|false|read-only|Number of connections of the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|followings_counter|integer¦null|false|read-only|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|followers_counter|integer¦null|false|read-only|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|posts_counter|integer¦null|false|read-only|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
+|discussions_counter|integer¦null|false|read-only|Number of discussions created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
+|statuses_counter|integer¦null|false|read-only|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
+|polls_counter|integer¦null|false|read-only|Number of polls created by the user|Only if dynamic preference `addons.polls_enabled` is `true` or if the user has a staff role|
+
 
 #### Enumerated Values
 

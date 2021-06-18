@@ -63,15 +63,16 @@ This endpoint retrieves all posts.
       "categories": [
         {
           "id": 0,
-          "order": 1,
-          "name": "name",
-          "name_synonyms": "synonyms",
-          "slug": "name",
-          "slogan": "Slogan",
-          "html_info": null,
-          "seo_title": null,
-          "seo_description": null,
-          "auto_follow": "None",
+          "tags": [],
+          "order": 123,
+          "name": "string",
+          "name_synonyms": "string",
+          "slug": "string",
+          "slogan": "string",
+          "html_info": "string",
+          "seo_title": "string",
+          "seo_description": "string",
+          "auto_follow": "string",
           "active": true,
           "deleted": false,
           "image_original": "string",
@@ -80,9 +81,9 @@ This endpoint retrieves all posts.
           "image_medium": "string",
           "image_small": "string",
           "emotional_image_original": "string",
-          "emotional_image_position": 50,
-          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-          "stream_order_by": "recent"
+          "emotional_image_position": 123,
+          "lastmod_datetime": "2019-08-24T14:15:22Z",
+          "stream_order_by": "string",
         }
       ],
       "medias": [
@@ -151,6 +152,12 @@ This endpoint retrieves all posts.
         "ext_id": "string",
         "tags": [],
         "reputation": 111,
+        "followings_counter": 0,
+        "followers_counter": 0,
+        "posts_counter": 0,
+        "discussions_counter": 0,
+        "statuses_counter": 0,
+        "polls_counter": 0
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -158,13 +165,11 @@ This endpoint retrieves all posts.
       "deleted": true,
       "collapsed": false,
       "comment_count": 0,
-      "share_count": 0,
       "vote_count": 0,
       "voted": false,
       "flag_count": 0,
-      "addressing": [
-        0
-      ]
+      "share_count": 0,
+      "addressing": []
     }
   ]
 }
@@ -332,15 +337,16 @@ This endpoint creates a post.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -349,9 +355,9 @@ This endpoint creates a post.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -420,17 +426,22 @@ This endpoint creates a post.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
-  "html": "string",
   "summary": "string",
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
@@ -506,15 +517,16 @@ This endpoint perform search operation to posts.
         "categories": [
           {
             "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
+            "tags": [],
+            "order": 123,
+            "name": "string",
+            "name_synonyms": "string",
+            "slug": "string",
+            "slogan": "string",
+            "html_info": "string",
+            "seo_title": "string",
+            "seo_description": "string",
+            "auto_follow": "string",
             "active": true,
             "deleted": false,
             "image_original": "string",
@@ -523,9 +535,9 @@ This endpoint perform search operation to posts.
             "image_medium": "string",
             "image_small": "string",
             "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
+            "emotional_image_position": 123,
+            "lastmod_datetime": "2019-08-24T14:15:22Z",
+            "stream_order_by": "string",
           }
         ],
         "medias": [
@@ -594,6 +606,12 @@ This endpoint perform search operation to posts.
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 0,
+            "followers_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -601,10 +619,10 @@ This endpoint perform search operation to posts.
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
         "vote_count": 0,
         "voted": false,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [],
         "matches": [
           {
@@ -632,6 +650,12 @@ This endpoint perform search operation to posts.
               "ext_id": "string",
               "tags": [],
               "reputation": 111,
+              "followings_counter": 0,
+              "followers_counter": 0,
+              "posts_counter": 0,
+              "discussions_counter": 0,
+              "statuses_counter": 0,
+              "polls_counter": 0
             }
           }
         ]
@@ -711,15 +735,16 @@ This endpoint retrieves a specific post using ID.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -728,9 +753,9 @@ This endpoint retrieves a specific post using ID.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -799,6 +824,12 @@ This endpoint retrieves a specific post using ID.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -806,10 +837,10 @@ This endpoint retrieves a specific post using ID.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
@@ -965,15 +996,16 @@ This endpoint update a specific post.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -982,9 +1014,9 @@ This endpoint update a specific post.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -1053,6 +1085,12 @@ This endpoint update a specific post.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1060,10 +1098,10 @@ This endpoint update a specific post.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
@@ -1274,7 +1312,13 @@ This endpoint retrieves all votes for a specific post.
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
+          "followings_counter": 0,
+          "followers_counter": 0,
+          "posts_counter": 0,
+          "discussions_counter": 0,
+          "statuses_counter": 0,
+          "polls_counter": 0
         },
         "voted_at": "2019-08-24T14:15:22Z"
         }
@@ -1506,7 +1550,13 @@ If the post has no poll associated the response status code is [404](https://too
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
+          "followings_counter": 0,
+          "followers_counter": 0,
+          "posts_counter": 0,
+          "discussions_counter": 0,
+          "statuses_counter": 0,
+          "polls_counter": 0
         },
       }
   ]
@@ -1742,7 +1792,13 @@ This endpoint retrieves a List of Flags for a Specific Post.
                 "created_at": "2019-08-24T14:15:22Z"
               }
             ],
-            "reputation":111
+            "reputation":111,
+            "followings_counter": 0,
+            "followers_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
           },
           "added_at": "2019-08-24T14:15:22Z",
           "flag_type": 0,

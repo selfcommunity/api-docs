@@ -63,15 +63,16 @@ This endpoint retrieves all statuses.
       "categories": [
         {
           "id": 0,
-          "order": 1,
-          "name": "name",
-          "name_synonyms": "synonyms",
-          "slug": "name",
-          "slogan": "Slogan",
-          "html_info": null,
-          "seo_title": null,
-          "seo_description": null,
-          "auto_follow": "None",
+          "tags": [],
+          "order": 123,
+          "name": "string",
+          "name_synonyms": "string",
+          "slug": "string",
+          "slogan": "string",
+          "html_info": "string",
+          "seo_title": "string",
+          "seo_description": "string",
+          "auto_follow": "string",
           "active": true,
           "deleted": false,
           "image_original": "string",
@@ -80,9 +81,9 @@ This endpoint retrieves all statuses.
           "image_medium": "string",
           "image_small": "string",
           "emotional_image_original": "string",
-          "emotional_image_position": 50,
-          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-          "stream_order_by": "recent"
+          "emotional_image_position": 123,
+          "lastmod_datetime": "2019-08-24T14:15:22Z",
+          "stream_order_by": "string",
         }
       ],
       "medias": [
@@ -130,6 +131,12 @@ This endpoint retrieves all statuses.
         "ext_id": "string",
         "tags": [],
         "reputation": 111,
+        "followings_counter": 0,
+        "followers_counter": 0,
+        "posts_counter": 0,
+        "discussions_counter": 0,
+        "statuses_counter": 0,
+        "polls_counter": 0
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -277,15 +284,16 @@ This endpoint creates a status.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -294,9 +302,9 @@ This endpoint creates a status.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -344,6 +352,12 @@ This endpoint creates a status.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -430,15 +444,16 @@ This endpoint performs search operation to statuses.
         "categories": [
           {
             "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
+            "tags": [],
+            "order": 123,
+            "name": "string",
+            "name_synonyms": "string",
+            "slug": "string",
+            "slogan": "string",
+            "html_info": "string",
+            "seo_title": "string",
+            "seo_description": "string",
+            "auto_follow": "string",
             "active": true,
             "deleted": false,
             "image_original": "string",
@@ -447,9 +462,9 @@ This endpoint performs search operation to statuses.
             "image_medium": "string",
             "image_small": "string",
             "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
+            "emotional_image_position": 123,
+            "lastmod_datetime": "2019-08-24T14:15:22Z",
+            "stream_order_by": "string",
           }
         ],
         "medias": [
@@ -497,6 +512,12 @@ This endpoint performs search operation to statuses.
             "ext_id": "string",
             "tags": [],
             "reputation": 111,
+            "followings_counter": 0,
+            "followers_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -535,6 +556,12 @@ This endpoint performs search operation to statuses.
               "ext_id": "string",
               "tags": [],
               "reputation": 111,
+              "followings_counter": 0,
+              "followers_counter": 0,
+              "posts_counter": 0,
+              "discussions_counter": 0,
+              "statuses_counter": 0,
+              "polls_counter": 0
             }
           }
         ]
@@ -614,15 +641,16 @@ This endpoint retrieves a specific status using ID.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -631,9 +659,9 @@ This endpoint retrieves a specific status using ID.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -681,6 +709,12 @@ This endpoint retrieves a specific status using ID.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -813,15 +847,16 @@ This endpoint update a specific status.
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -830,9 +865,9 @@ This endpoint update a specific status.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -880,6 +915,12 @@ This endpoint update a specific status.
     "ext_id": "string",
     "tags": [],
     "reputation": 111,
+    "followings_counter": 0,
+    "followers_counter": 0,
+    "posts_counter": 0,
+    "discussions_counter": 0,
+    "statuses_counter": 0,
+    "polls_counter": 0
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1101,7 +1142,7 @@ This endpoint retrieves all votes for a specific status.
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
         },
         "voted_at": "2019-08-24T14:15:22Z"
         }
@@ -1323,7 +1364,13 @@ This endpoint retrieves a List of Flags for a Specific Status.
                 "created_at": "2019-08-24T14:15:22Z"
               }
             ],
-            "reputation":111
+            "reputation":111,
+            "followings_counter": 0,
+            "followers_counter": 0,
+            "posts_counter": 0,
+            "discussions_counter": 0,
+            "statuses_counter": 0,
+            "polls_counter": 0
           },
           "added_at": "2019-08-24T14:15:22Z",
           "flag_type": 0,

@@ -86,7 +86,13 @@ This endpoint retrieve the list of all users.
       "ext_id": 3,
       "tags": [],
       "reputation": 39,
-      "connection_status": "string"
+      "connection_status": "string",
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
     }
   ]
 }
@@ -305,7 +311,13 @@ This endpoint perform search users.
       "ext_id": 3,
       "tags": [],
       "reputation": 39,
-      "connection_status": "string"
+      "connection_status": "string",
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
     }
   ]
 }
@@ -401,7 +413,13 @@ This endpoint retrieve a specific user's profile identified by {id}.
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
-  "connection_status": "string"
+  "connection_status": "string",
+  "followings_counter": 7,
+  "followers_counter": 2,
+  "posts_counter": 4,
+  "discussions_counter": 3,
+  "statuses_counter": 0,
+  "polls_counter": 1
 }
 ```
 
@@ -479,17 +497,17 @@ This endpoint retrieve the counters of a specific user identified by {id}.
 |---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|
 
-|Field|Description||
+|Field|Description|Note|
 |---|---|---|
-|discussions|Number of discussions created by the user|Always returned|
-|posts|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
-|statuses|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
-|polls|Number of polls created by the user|Only if dynamic preference `addons.polls_enabled` is `true` or if the user has a staff role|
-|followings|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
-|followers|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
-|connection_requests_sent|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
-|connection_requests_received|Number of connection requests received by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
-|connections|Number of connections of the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|discussions_counter|Number of discussions created by the user|Only if dynamic preference `configurations.discussion_type_enabled` is `true`|
+|posts_counter|Number of posts created by the user|Only if dynamic preference `configurations.post_type_enabled` is `true`|
+|statuses_counter|Number of statuses created by the user|Only if dynamic preference `configurations.status_type_enabled` is `true`|
+|polls_counter|Number of polls created by the user|Only if dynamic preference `addons.polls_enabled` is `true` or if the user has a staff role|
+|followings_counter|Number of followings of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|followers_counter|Number of followers of the user|Only if dynamic preference `configurations.follow_enabled` is `true`|
+|connection_requests_sent_counter|Number of connection requests sent by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connection_requests_received_counter|Number of connection requests received by the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
+|connections_counter|Number of connections of the user|Only if dynamic preference `configurations.follow_enabled` is `false`|
 
 <aside class="notice">
 This operation does not require authentication if `configurations.content_availability` is true else this operation require authentication
@@ -604,7 +622,13 @@ This endpoint update the profile of a user identified by {id}. A user can only u
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
-  "connection_status": "string"
+  "connection_status": "string",
+  "followings_counter": 1,
+  "followers_counter": 0,
+  "posts_counter": 2,
+  "discussions_counter": 4,
+  "statuses_counter": 1,
+  "polls_counter": 6
 }
 ```
 
@@ -713,7 +737,13 @@ This endpoint patch a specific user identified by {id}. A user can only update t
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
-  "connection_status": "string"
+  "connection_status": "string",
+  "followings_counter": 1,
+  "followers_counter": 0,
+  "posts_counter": 2,
+  "discussions_counter": 4,
+  "statuses_counter": 1,
+  "polls_counter": 6
 }
 ```
 
@@ -1260,7 +1290,13 @@ Return the user identified by the authentication token.
   "ext_id": 3,
   "tags": [],
   "reputation": 39,
-  "connection_status": null,
+  "connection_status": "string",
+  "followings_counter": 1,
+  "followers_counter": 0,
+  "posts_counter": 2,
+  "discussions_counter": 4,
+  "statuses_counter": 1,
+  "polls_counter": 6,
   "permission": {
     "upload_video": false,
     "create_contribute": true,
@@ -1529,6 +1565,12 @@ This endpoint retrive the list of user's post of the user identified by {id}.
             }
           ],
         "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 0,
+        "posts_counter": 2,
+        "discussions_counter": 4,
+        "statuses_counter": 1,
+        "polls_counter": 6
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1648,7 +1690,14 @@ This endpoint retrieve the list of followers of a specific user identified by {i
       "cover": "string",
       "ext_id": 3,
       "tags": [],
-      "reputation": 39
+      "reputation": 39,
+      "connection_status": "string",
+      "followings_counter": 1,
+      "followers_counter": 0,
+      "posts_counter": 2,
+      "discussions_counter": 4,
+      "statuses_counter": 1,
+      "polls_counter": 6
     }
   ]
 }
@@ -1751,7 +1800,14 @@ This endpoint retrieve the list of following of a specific user identified by {i
       "cover": "string",
       "ext_id": 3,
       "tags": [],
-      "reputation": 39
+      "reputation": 39,
+      "connection_status": "string",
+      "followings_counter": 1,
+      "followers_counter": 0,
+      "posts_counter": 2,
+      "discussions_counter": 4,
+      "statuses_counter": 1,
+      "polls_counter": 6
     }
   ]
 }
@@ -2058,7 +2114,15 @@ This endpoint retrieve the list of connections of a specific user identified by 
       "cover": "string",
       "ext_id": 3,
       "tags": [],
-      "reputation": 39
+      "reputation": 39,
+      "connection_status": "string",
+      "connection_requests_sent_counter": 0,
+      "connection_requests_received_counter": 1,
+      "connections_counter": 0,
+      "posts_counter": 2,
+      "discussions_counter": 4,
+      "statuses_counter": 1,
+      "polls_counter": 6
     }
   ]
 }
@@ -2213,13 +2277,10 @@ This endpoint retrieve the list of connection requests received of a specific us
   "previous": "string(uri)",
   "results": [
     {
-      "id": 0,
-      "from_user": {
+        "from_user": {
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
@@ -2234,29 +2295,15 @@ This endpoint retrieve the list of connection requests received of a specific us
         "cover": "string",
         "ext_id": 1,
         "tags": [],
-        "reputation": 39
-      },
-      "to_user": {
-        "id": 3,
-        "username": "string",
-        "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
-        "date_joined": "2019-08-24T14:15:22Z",
-        "bio": "string",
-        "location": "string",
-        "location_lat_lng": "string",
-        "position_lat_lng": "string",
-        "date_of_birth": "string",
-        "description": "string",
-        "gender": "Male",
-        "status": "a",
-        "website": "https://example.com",
-        "avatar": "string",
-        "cover": "string",
-        "ext_id": 3,
-        "tags": [],
-        "reputation": 39
+        "reputation": 39,
+        "connection_status": "string",
+        "connection_requests_sent_counter": 1,
+        "connection_requests_received_counter": 0,
+        "connections_counter": 0,
+        "posts_counter": 0,
+        "discussions_counter": 0,
+        "statuses_counter": 0,
+        "polls_counter": 0
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",
@@ -2349,35 +2396,10 @@ This endpoint retrieve a specific user's list of connection requests sent by use
   "previous": "string(uri)",
   "results": [
     {
-      "id": 0,
-      "from_user": {
-        "id": 0,
-        "username": "string",
-        "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
-        "date_joined": "2019-08-24T14:15:22Z",
-        "bio": "string",
-        "location": "string",
-        "location_lat_lng": "string",
-        "position_lat_lng": "string",
-        "date_of_birth": "string",
-        "description": "string",
-        "gender": "Male",
-        "status": "a",
-        "website": "https://example.com",
-        "avatar": "string",
-        "cover": "string",
-        "ext_id": 1,
-        "tags": [],
-        "reputation": 39
-      },
       "to_user": {
         "id": 0,
         "username": "string",
         "real_name": "string",
-        "email": "user@example.com",
-        "email_isvalid": true,
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
@@ -2392,7 +2414,15 @@ This endpoint retrieve a specific user's list of connection requests sent by use
         "cover": "string",
         "ext_id": 3,
         "tags": [],
-        "reputation": 39
+        "reputation": 39,
+        "connection_status": "string",
+        "connection_requests_sent_counter": 0,
+        "connection_requests_received_counter": 1,
+        "connections_counter": 0,
+        "posts_counter": 2,
+        "discussions_counter": 4,
+        "statuses_counter": 1,
+        "polls_counter": 6
       },
       "created": "2019-08-24T14:15:22Z",
       "rejected": "2019-08-24T14:15:22Z",

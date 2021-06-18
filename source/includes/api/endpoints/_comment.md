@@ -111,6 +111,12 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
           }
         ],
       "reputation": 111,
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -317,6 +323,12 @@ The `in_reply_to` parameter is required only for create a reference in the neste
       }
     ],
   "reputation": 111,
+  "followings_counter": 7,
+  "followers_counter": 2,
+  "posts_counter": 4,
+  "discussions_counter": 3,
+  "statuses_counter": 0,
+  "polls_counter": 1
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -363,6 +375,12 @@ The `in_reply_to` parameter is required only for create a reference in the neste
           }
         ],
       "reputation": 111,
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -476,6 +494,12 @@ This endpoint retrieves a specific comment using ID.
       }
     ],
   "reputation": 111,
+  "followings_counter": 7,
+  "followers_counter": 2,
+  "posts_counter": 4,
+  "discussions_counter": 3,
+  "statuses_counter": 0,
+  "polls_counter": 1
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -522,6 +546,12 @@ This endpoint retrieves a specific comment using ID.
           }
         ],
       "reputation": 111,
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -659,6 +689,12 @@ This endpoint update a specific comment.
       }
     ],
   "reputation": 111,
+  "followings_counter": 7,
+  "followers_counter": 2,
+  "posts_counter": 4,
+  "discussions_counter": 3,
+  "statuses_counter": 0,
+  "polls_counter": 1
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -705,6 +741,12 @@ This endpoint update a specific comment.
           }
         ],
       "reputation": 111,
+      "followings_counter": 7,
+      "followers_counter": 2,
+      "posts_counter": 4,
+      "discussions_counter": 3,
+      "statuses_counter": 0,
+      "polls_counter": 1
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -907,13 +949,24 @@ This endpoint retrieves all votes for a specific comment.
         "date_joined": "2019-08-24T14:15:22Z",
         "bio": "string",
         "location": "string",
-        "birthday": "string",
+        "location_lat_lng": "string",
+        "position_lat_lng": "string",
+        "date_of_birth": "string",
         "description": "string",
         "gender": "Male",
         "status": "a",
         "website": "https://example.com",
         "avatar": "string",
-        "cover": "string"
+        "cover": "string",
+        "ext_id": "string",
+        "tags": [],
+        "reputation": 111,
+        "followings_counter": 7,
+        "followers_counter": 2,
+        "posts_counter": 4,
+        "discussions_counter": 3,
+        "statuses_counter": 0,
+        "polls_counter": 1
       },
       "voted_at": "2019-08-24T14:15:22Z"
     }
@@ -1133,7 +1186,14 @@ This endpoint retrieves a List of Flags for a Specific Comment.
                 "deleted": true,
                 "created_at": "2019-08-24T14:15:22Z"
               }
-            ]
+            ],
+            "reputation": 111,
+            "followings_counter": 7,
+            "followers_counter": 2,
+            "posts_counter": 4,
+            "discussions_counter": 3,
+            "statuses_counter": 0,
+            "polls_counter": 1
           },
           "added_at": "2019-08-24T14:15:22Z",
           "flag_type": 0,

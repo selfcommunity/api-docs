@@ -60,20 +60,19 @@ This endpoint retrieves all discussions.
   "results": [
     {
       "id": 0,
-      "title": "string",
-      "slug": "string",
       "categories": [
         {
           "id": 0,
-          "order": 1,
-          "name": "name",
-          "name_synonyms": "synonyms",
-          "slug": "name",
-          "slogan": "Slogan",
-          "html_info": null,
-          "seo_title": null,
-          "seo_description": null,
-          "auto_follow": "None",
+          "tags": [],
+          "order": 123,
+          "name": "string",
+          "name_synonyms": "string",
+          "slug": "string",
+          "slogan": "string",
+          "html_info": "string",
+          "seo_title": "string",
+          "seo_description": "string",
+          "auto_follow": "string",
           "active": true,
           "deleted": false,
           "image_original": "string",
@@ -82,9 +81,9 @@ This endpoint retrieves all discussions.
           "image_medium": "string",
           "image_small": "string",
           "emotional_image_original": "string",
-          "emotional_image_position": 50,
-          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-          "stream_order_by": "recent"
+          "emotional_image_position": 123,
+          "lastmod_datetime": "2019-08-24T14:15:22Z",
+          "stream_order_by": "string",
         }
       ],
       "medias": [
@@ -121,7 +120,7 @@ This endpoint retrieves all discussions.
         "modified_at": "2019-08-24T14:15:22Z",
         "closed": true,
         "expiration_at": "2019-08-24T14:15:22Z",
-        "hidden": "string",
+        "hidden": false,
         "choices": [
           {
             "id": 0,
@@ -135,7 +134,6 @@ This endpoint retrieves all discussions.
         ]
       },
       "last_activity_at": "2019-08-24T14:15:22Z",
-      "view_count": 0,
       "author": {
         "id": 0,
         "username": "string",
@@ -153,7 +151,13 @@ This endpoint retrieves all discussions.
         "cover": "string",
         "ext_id": "string",
         "tags": [],
-        "reputation": 111
+        "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 1,
+        "posts_counter": 2,
+        "discussions_counter": 4,
+        "statuses_counter": 1,
+        "polls_counter": 6
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -161,13 +165,14 @@ This endpoint retrieves all discussions.
       "deleted": true,
       "collapsed": false,
       "comment_count": 0,
-      "share_count": 0,
-      "vote_count": 0,
+      "vote_count": "string",
       "voted": false,
       "flag_count": 0,
-      "addressing": [
-        0
-      ],
+      "share_count": 0,
+      "addressing": [],
+      "title": "string",
+      "slug": "string",
+      "view_count": 1,
       "follower_count": "string"
     }
   ]
@@ -248,6 +253,7 @@ This endpoint retrieves all uncommented discussions.
 
 ```json
 {
+{
   "count": 123,
   "next": "string",
   "previous": "string",
@@ -258,15 +264,15 @@ This endpoint retrieves all uncommented discussions.
         {
           "id": 0,
           "tags": [],
-          "order": 1,
-          "name": "name",
-          "name_synonyms": "synonyms",
-          "slug": "name",
-          "slogan": "Slogan",
-          "html_info": null,
-          "seo_title": null,
-          "seo_description": null,
-          "auto_follow": "None",
+          "order": 123,
+          "name": "string",
+          "name_synonyms": "string",
+          "slug": "string",
+          "slogan": "string",
+          "html_info": "string",
+          "seo_title": "string",
+          "seo_description": "string",
+          "auto_follow": "string",
           "active": true,
           "deleted": false,
           "image_original": "string",
@@ -275,9 +281,9 @@ This endpoint retrieves all uncommented discussions.
           "image_medium": "string",
           "image_small": "string",
           "emotional_image_original": "string",
-          "emotional_image_position": 50,
-          "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-          "stream_order_by": "recent"
+          "emotional_image_position": 123,
+          "lastmod_datetime": "2019-08-24T14:15:22Z",
+          "stream_order_by": "string",
         }
       ],
       "medias": [
@@ -314,7 +320,7 @@ This endpoint retrieves all uncommented discussions.
         "modified_at": "2019-08-24T14:15:22Z",
         "closed": true,
         "expiration_at": "2019-08-24T14:15:22Z",
-        "hidden": "string",
+        "hidden": false,
         "choices": [
           {
             "id": 0,
@@ -345,7 +351,13 @@ This endpoint retrieves all uncommented discussions.
         "cover": "string",
         "ext_id": "string",
         "tags": [],
-        "reputation": 111
+        "reputation": 111,
+        "followings_counter": 1,
+        "followers_counter": 1,
+        "posts_counter": 2,
+        "discussions_counter": 4,
+        "statuses_counter": 1,
+        "polls_counter": 6
       },
       "added_at": "2019-08-24T14:15:22Z",
       "html": "string",
@@ -353,15 +365,15 @@ This endpoint retrieves all uncommented discussions.
       "deleted": true,
       "collapsed": false,
       "comment_count": 0,
-      "vote_count": 0,
+      "vote_count": "string",
       "voted": false,
       "flag_count": 0,
       "share_count": 0,
-      "addressing": [0],
+      "addressing": [],
       "title": "string",
       "slug": "string",
-      "view_count": 0,
-      "follower_count": 0
+      "view_count": 1,
+      "follower_count": "string"
     }
   ]
 }
@@ -446,20 +458,19 @@ This endpoint perform search operation to discussions.
   "results": [
       {
         "id": 0,
-        "title": "string",
-        "slug": "string",
         "categories": [
           {
             "id": 0,
-            "order": 1,
-            "name": "name",
-            "name_synonyms": "synonyms",
-            "slug": "name",
-            "slogan": "Slogan",
-            "html_info": null,
-            "seo_title": null,
-            "seo_description": null,
-            "auto_follow": "None",
+            "tags": [],
+            "order": 123,
+            "name": "string",
+            "name_synonyms": "string",
+            "slug": "string",
+            "slogan": "string",
+            "html_info": "string",
+            "seo_title": "string",
+            "seo_description": "string",
+            "auto_follow": "string",
             "active": true,
             "deleted": false,
             "image_original": "string",
@@ -468,9 +479,9 @@ This endpoint perform search operation to discussions.
             "image_medium": "string",
             "image_small": "string",
             "emotional_image_original": "string",
-            "emotional_image_position": 50,
-            "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-            "stream_order_by": "recent"
+            "emotional_image_position": 123,
+            "lastmod_datetime": "2019-08-24T14:15:22Z",
+            "stream_order_by": "string",
           }
         ],
         "medias": [
@@ -539,7 +550,13 @@ This endpoint perform search operation to discussions.
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 111
+            "reputation": 111,
+            "followings_counter": 1,
+            "followers_counter": 1,
+            "posts_counter": 2,
+            "discussions_counter": 4,
+            "statuses_counter": 1,
+            "polls_counter": 6
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -547,11 +564,14 @@ This endpoint perform search operation to discussions.
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
-        "vote_count": 0,
+        "vote_count": "string",
         "voted": false,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [],
+        "title": "string",
+        "slug": "string",
+        "view_count": 1,
         "follower_count": "string",
         "matches": [
           {
@@ -562,7 +582,7 @@ This endpoint perform search operation to discussions.
                 "html": "string"
             },
             "author": {
-              "id": 0,
+              "id": 3,
               "username": "string",
               "real_name": "string",
               "date_joined": "2019-08-24T14:15:22Z",
@@ -578,7 +598,13 @@ This endpoint perform search operation to discussions.
               "cover": "string",
               "ext_id": "string",
               "tags": [],
-              "reputation": 111
+              "reputation": 111,
+              "followings_counter": 1,
+              "followers_counter": 1,
+              "posts_counter": 2,
+              "discussions_counter": 4,
+              "statuses_counter": 1,
+              "polls_counter": 6
             }
           }
         ]
@@ -745,20 +771,19 @@ This endpoint creates a discussion.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -767,9 +792,9 @@ This endpoint creates a discussion.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -820,7 +845,6 @@ This endpoint creates a discussion.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -838,7 +862,13 @@ This endpoint creates a discussion.
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111
+    "reputation": 111,
+    "followings_counter": 1,
+    "followers_counter": 1,
+    "posts_counter": 2,
+    "discussions_counter": 4,
+    "statuses_counter": 1,
+    "polls_counter": 6
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -846,11 +876,14 @@ This endpoint creates a discussion.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
-  "vote_count": 0,
+  "vote_count": "string",
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": [],
+  "title": "string",
+  "slug": "string",
+  "view_count": 1,
   "follower_count": "string"
 }
 ```
@@ -918,20 +951,19 @@ This endpoint retrieves a specific discussion using ID.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
       {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -940,9 +972,9 @@ This endpoint retrieves a specific discussion using ID.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -993,7 +1025,6 @@ This endpoint retrieves a specific discussion using ID.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -1011,7 +1042,13 @@ This endpoint retrieves a specific discussion using ID.
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111
+    "reputation": 111,
+    "followings_counter": 1,
+    "followers_counter": 1,
+    "posts_counter": 2,
+    "discussions_counter": 4,
+    "statuses_counter": 1,
+    "polls_counter": 6
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1019,11 +1056,14 @@ This endpoint retrieves a specific discussion using ID.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
-  "vote_count": 0,
+  "vote_count": "string",
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": [],
+  "title": "string",
+  "slug": "string",
+  "view_count": 1,
   "follower_count": "string"
 }
 ```
@@ -1181,20 +1221,19 @@ This endpoint update a specific discussion.
 ```json
 {
   "id": 0,
-  "title": "string",
-  "slug": "string",
   "categories": [
     {
       "id": 0,
-      "order": 1,
-      "name": "name",
-      "name_synonyms": "synonyms",
-      "slug": "name",
-      "slogan": "Slogan",
-      "html_info": null,
-      "seo_title": null,
-      "seo_description": null,
-      "auto_follow": "None",
+      "tags": [],
+      "order": 123,
+      "name": "string",
+      "name_synonyms": "string",
+      "slug": "string",
+      "slogan": "string",
+      "html_info": "string",
+      "seo_title": "string",
+      "seo_description": "string",
+      "auto_follow": "string",
       "active": true,
       "deleted": false,
       "image_original": "string",
@@ -1203,9 +1242,9 @@ This endpoint update a specific discussion.
       "image_medium": "string",
       "image_small": "string",
       "emotional_image_original": "string",
-      "emotional_image_position": 50,
-      "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-      "stream_order_by": "recent"
+      "emotional_image_position": 123,
+      "lastmod_datetime": "2019-08-24T14:15:22Z",
+      "stream_order_by": "string",
     }
   ],
   "medias": [
@@ -1256,7 +1295,6 @@ This endpoint update a specific discussion.
     ]
   },
   "last_activity_at": "2019-08-24T14:15:22Z",
-  "view_count": 0,
   "author": {
     "id": 0,
     "username": "string",
@@ -1274,7 +1312,13 @@ This endpoint update a specific discussion.
     "cover": "string",
     "ext_id": "string",
     "tags": [],
-    "reputation": 111
+    "reputation": 111,
+    "followings_counter": 1,
+    "followers_counter": 1,
+    "posts_counter": 2,
+    "discussions_counter": 4,
+    "statuses_counter": 1,
+    "polls_counter": 6
   },
   "added_at": "2019-08-24T14:15:22Z",
   "html": "string",
@@ -1282,11 +1326,14 @@ This endpoint update a specific discussion.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
-  "vote_count": 0,
+  "vote_count": "string",
   "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": [],
+  "title": "string",
+  "slug": "string",
+  "view_count": 1,
   "follower_count": "string"
 }
 ```
@@ -1467,20 +1514,19 @@ This endpoint retrieve related discussions
   "results": [
       {
         "id": 0,
-        "title": "string",
-        "slug": "string",
         "categories": [
             {
               "id": 0,
-              "order": 1,
-              "name": "name",
-              "name_synonyms": "synonyms",
-              "slug": "name",
-              "slogan": "Slogan",
-              "html_info": null,
-              "seo_title": null,
-              "seo_description": null,
-              "auto_follow": "None",
+              "tags": [],
+              "order": 123,
+              "name": "string",
+              "name_synonyms": "string",
+              "slug": "string",
+              "slogan": "string",
+              "html_info": "string",
+              "seo_title": "string",
+              "seo_description": "string",
+              "auto_follow": "string",
               "active": true,
               "deleted": false,
               "image_original": "string",
@@ -1489,9 +1535,9 @@ This endpoint retrieve related discussions
               "image_medium": "string",
               "image_small": "string",
               "emotional_image_original": "string",
-              "emotional_image_position": 50,
-              "lastmod_datetime": "2020-09-30T15:22:07.123058+02:00",
-              "stream_order_by": "recent"
+              "emotional_image_position": 123,
+              "lastmod_datetime": "2019-08-24T14:15:22Z",
+              "stream_order_by": "string",
           }
         ],
         "medias": [
@@ -1542,7 +1588,6 @@ This endpoint retrieve related discussions
           ]
         },
         "last_activity_at": "2019-08-24T14:15:22Z",
-        "view_count": 0,
         "author": {
             "id": 0,
             "username": "string",
@@ -1560,7 +1605,13 @@ This endpoint retrieve related discussions
             "cover": "string",
             "ext_id": "string",
             "tags": [],
-            "reputation": 111
+            "reputation": 111,
+            "followings_counter": 1,
+            "followers_counter": 1,
+            "posts_counter": 2,
+            "discussions_counter": 4,
+            "statuses_counter": 1,
+            "polls_counter": 6
         },
         "added_at": "2019-08-24T14:15:22Z",
         "html": "string",
@@ -1568,11 +1619,14 @@ This endpoint retrieve related discussions
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
-        "vote_count": 0,
+        "vote_count": "string",
         "voted": false,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [],
+        "title": "string",
+        "slug": "string",
+        "view_count": 1,
         "follower_count": "string"
       }
     ]
@@ -1684,7 +1738,13 @@ This endpoint retrieves all votes for a specific discussion.
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
+          "followings_counter": 1,
+          "followers_counter": 1,
+          "posts_counter": 2,
+          "discussions_counter": 5,
+          "statuses_counter": 1,
+          "polls_counter": 7
         },
         "voted_at": "2019-08-24T14:15:22Z"
       }
@@ -1916,7 +1976,13 @@ If the discussion has no poll associated the response status code is [404](https
               "created_at": "2019-08-24T14:15:22Z"
             }
           ],
-          "reputation":111
+          "reputation":111,
+          "followings_counter": 1,
+          "followers_counter": 1,
+          "posts_counter": 2,
+          "discussions_counter": 5,
+          "statuses_counter": 1,
+          "polls_counter": 7
         }
       }
   ]
@@ -2265,7 +2331,14 @@ This endpoint retrieves a List of Flags for a Specific Discussion.
                 "deleted": true,
                 "created_at": "2019-08-24T14:15:22Z"
               }
-            ]
+            ],
+            "reputation": 111,
+            "followings_counter": 1,
+            "followers_counter": 1,
+            "posts_counter": 2,
+            "discussions_counter": 5,
+            "statuses_counter": 1,
+            "polls_counter": 7
           },
           "added_at": "2019-08-24T14:15:22Z",
           "flag_type": 0,
