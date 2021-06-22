@@ -8,6 +8,7 @@
 ```json
 {
   "id": 0,
+  "action":"string",
   "categories": [
     {
       "id": 0,
@@ -86,13 +87,10 @@
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
-  "addressing": [
-    0
-  ]
+  "share_count": 0,
+  "addressing": []
 }
 
 ```
@@ -102,6 +100,7 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
+|action|string|true|none|none|
 |categories|list([Category](#schemacategory))|true|none|none|
 |media_type|string|false|read-only|none|
 |medias|list([Media](#schemamedia))|false|none|none|
@@ -133,6 +132,7 @@
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
@@ -211,13 +211,10 @@
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
-  "addressing": [
-    0
-  ],
+  "share_count": 0,
+  "addressing": [],
   "matches": [
     {
       "object": {
@@ -256,6 +253,7 @@
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer|false|read-only|none|
+|action|string|true|none|none|
 |categories|list([Category](#schemacategory))|true|none|none|
 |medias|list([Media](#schemamedia))|false|none|none|
 |location|object¦null|false|none|none|

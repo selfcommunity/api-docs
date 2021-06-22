@@ -60,6 +60,7 @@ This endpoint retrieves all statuses.
   "results": [
     {
       "id": 0,
+      "action": "string",
       "categories": [
         {
           "id": 0,
@@ -190,6 +191,7 @@ curl -X POST /api/v2/status/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
+    "action": "string",
     "text": "string",
     "categories": [0],
     "medias": [0],
@@ -204,6 +206,7 @@ curl -X POST /api/v2/status/ \
 
 ```javascript
 const inputBody = '{
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -244,6 +247,7 @@ This endpoint creates a status.
 
 ```json
 {
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -260,6 +264,7 @@ This endpoint creates a status.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|» action|body|string¦null|true|The action of the status|
 |» text|body|string|false|The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
@@ -267,11 +272,6 @@ This endpoint creates a status.
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|false|none|
-|»» choices|body|list(object)|true|none|
-|»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
@@ -281,6 +281,7 @@ This endpoint creates a status.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
@@ -365,10 +366,9 @@ This endpoint creates a status.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
@@ -441,6 +441,7 @@ This endpoint performs search operation to statuses.
   "results": [
       {
         "id": 0,
+        "action": "string",
         "categories": [
           {
             "id": 0,
@@ -525,10 +526,10 @@ This endpoint performs search operation to statuses.
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
         "vote_count": 0,
         "voted": false,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [],
         "matches": [
           {
@@ -638,6 +639,7 @@ This endpoint retrieves a specific status using ID.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
@@ -722,9 +724,9 @@ This endpoint retrieves a specific status using ID.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
   "voted": false,
+  "share_count": 0,
   "flag_count": 0,
   "addressing": []
 }
@@ -753,6 +755,7 @@ curl -X PUT /api/v2/status/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
+    "action": "string",
     "text": "string",
     "categories": [0],
     "medias": [0],
@@ -767,6 +770,7 @@ curl -X PUT /api/v2/status/{id}/ \
 
 ```javascript
 const inputBody = '{
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -807,6 +811,7 @@ This endpoint update a specific status.
 
 ```json
 {
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -823,6 +828,7 @@ This endpoint update a specific status.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
+|» action|body|string¦null|true|The action of the status|
 |» text|body|string|false|The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention)|
 |» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
 |» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
@@ -830,11 +836,6 @@ This endpoint update a specific status.
 |»» location|body|string¦null|true|none|
 |»» lat|body|number¦null|true|none|
 |»» lng|body|number¦null|true|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|false|none|
-|»» choices|body|list(object)|true|none|
-|»»» choice|body|string|true|none|
 |» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
 
 > Example responses
@@ -844,9 +845,11 @@ This endpoint update a specific status.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
+      "action": "string",
       "tags": [],
       "order": 123,
       "name": "string",
@@ -928,10 +931,9 @@ This endpoint update a specific status.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
