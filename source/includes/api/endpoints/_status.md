@@ -42,11 +42,11 @@ This endpoint retrieves all statuses.
 
 <h4 id="liststatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|limit|query|integer|false|Number of results to return per page.|
-|offset|query|integer|false|The initial index from which to return the results.|
-|ordering|query|string|false|Which field to use when ordering the results. For sorting desc use - in front of the field name. Default to -added_at. Available values are added_at, last_activity_at|
+| Name     | In    | Type    | Required | Description                                                                                                                                                            |
+|----------|-------|---------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| limit    | query | integer | false    | Number of results to return per page.                                                                                                                                  |
+| offset   | query | integer | false    | The initial index from which to return the results.                                                                                                                    |
+| ordering | query | string  | false    | Which field to use when ordering the results. For sorting desc use - in front of the field name. Default to -added_at. Available values are added_at, last_activity_at |
 
 > Example responses
 
@@ -60,6 +60,7 @@ This endpoint retrieves all statuses.
   "results": [
     {
       "id": 0,
+      "action": "string",
       "categories": [
         {
           "id": 0,
@@ -158,20 +159,20 @@ This endpoint retrieves all statuses.
 
 <h4 id="liststatuses-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| Status | Meaning                                                 | Description | Schema |
+|--------|---------------------------------------------------------|-------------|--------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | Inline |
 
 <h4 id="liststatus-responseschema">Response Schema</h4>
 
 Status Code **200**
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|list([Status](#schemastatus))|true|none|List of results|
+| Name       | Type                          | Required | Restrictions | Description         |
+|------------|-------------------------------|----------|--------------|---------------------|
+| » count    | integer                       | true     | none         | Total results count |
+| » next     | string¦null                   | false    | none         | Next page url       |
+| » previous | string¦null                   | false    | none         | Previous page url   |
+| » results  | list([Status](#schemastatus)) | true     | none         | List of results     |
 
 <aside class="notice">
 This operation requires authentication only if `content_availability` community option is false
@@ -190,6 +191,7 @@ curl -X POST /api/v2/status/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
+    "action": "string",
     "text": "string",
     "categories": [0],
     "medias": [0],
@@ -204,6 +206,7 @@ curl -X POST /api/v2/status/ \
 
 ```javascript
 const inputBody = '{
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -244,6 +247,7 @@ This endpoint creates a status.
 
 ```json
 {
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -258,21 +262,17 @@ This endpoint creates a status.
 
 <h4 id="createstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|» text|body|string|false|The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention)|
-|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
-|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
-|» location|body|object¦null|false|The Location object to associate with the status|
-|»» location|body|string¦null|true|none|
-|»» lat|body|number¦null|true|none|
-|»» lng|body|number¦null|true|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|false|none|
-|»» choices|body|list(object)|true|none|
-|»»» choice|body|string|true|none|
-|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
+| Name         | In   | Type          | Required | Description                                                                                          |
+|--------------|------|---------------|----------|------------------------------------------------------------------------------------------------------|
+| » action     | body | string¦null   | true     | The action of the status                                                                             |
+| » text       | body | string        | false    | The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention) |
+| » categories | body | list(integer) | true     | List of id of [Category](#schemacategory)                                                            |
+| » medias     | body | list(integer) | false    | List of id of [Media](#schemamedia)                                                                  |
+| » location   | body | object¦null   | false    | The Location object to associate with the status                                                     |
+| »» location  | body | string¦null   | true     | none                                                                                                 |
+| »» lat       | body | number¦null   | true     | none                                                                                                 |
+| »» lng       | body | number¦null   | true     | none                                                                                                 |
+| » addressing | body | list(integer) | false    | List of id of [Tag](#schematag)                                                                      |
 
 > Example responses
 
@@ -281,6 +281,7 @@ This endpoint creates a status.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
@@ -365,19 +366,18 @@ This endpoint creates a status.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
 
 <h4 id="createstatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|none|[Status](#schemastatus)|
+| Status | Meaning                                                      | Description | Schema                  |
+|--------|--------------------------------------------------------------|-------------|-------------------------|
+| 201    | [Created](https://tools.ietf.org/html/rfc7231#section-6.3.2) | none        | [Status](#schemastatus) |
 
 <aside class="notice">
 This operation requires authentication
@@ -425,9 +425,9 @@ This endpoint performs search operation to statuses.
 
 <h4 id="searchstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|search|query|string|false|A search term.|
+| Name   | In    | Type   | Required | Description    |
+|--------|-------|--------|----------|----------------|
+| search | query | string | false    | A search term. |
 
 > Example responses
 
@@ -441,6 +441,7 @@ This endpoint performs search operation to statuses.
   "results": [
       {
         "id": 0,
+        "action": "string",
         "categories": [
           {
             "id": 0,
@@ -525,10 +526,10 @@ This endpoint performs search operation to statuses.
         "deleted": true,
         "collapsed": false,
         "comment_count": 0,
-        "share_count": 0,
         "vote_count": 0,
         "voted": false,
         "flag_count": 0,
+        "share_count": 0,
         "addressing": [],
         "matches": [
           {
@@ -574,12 +575,12 @@ This endpoint performs search operation to statuses.
 
 Status Code **200**
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|list([SearchStatus](#schemasearchstatus))|true|none|List of results|
+| Name       | Type                                      | Required | Restrictions | Description         |
+|------------|-------------------------------------------|----------|--------------|---------------------|
+| » count    | integer                                   | true     | none         | Total results count |
+| » next     | string¦null                               | false    | none         | Next page url       |
+| » previous | string¦null                               | false    | none         | Previous page url   |
+| » results  | list([SearchStatus](#schemasearchstatus)) | true     | none         | List of results     |
 
 <aside class="notice">
 This operation requires authentication only if `content_availability` community option is false
@@ -627,9 +628,9 @@ This endpoint retrieves a specific status using ID.
 
 <h4 id="retrievestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 > Example responses
 
@@ -638,6 +639,7 @@ This endpoint retrieves a specific status using ID.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
@@ -722,9 +724,9 @@ This endpoint retrieves a specific status using ID.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
   "voted": false,
+  "share_count": 0,
   "flag_count": 0,
   "addressing": []
 }
@@ -732,9 +734,9 @@ This endpoint retrieves a specific status using ID.
 
 <h4 id="retrievestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Status](#schemastatus)|
+| Status | Meaning                                                 | Description | Schema                  |
+|--------|---------------------------------------------------------|-------------|-------------------------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | [Status](#schemastatus) |
 
 <aside class="notice">
 This operation requires authentication only if `content_availability` community option is false
@@ -753,6 +755,7 @@ curl -X PUT /api/v2/status/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
+    "action": "string",
     "text": "string",
     "categories": [0],
     "medias": [0],
@@ -767,6 +770,7 @@ curl -X PUT /api/v2/status/{id}/ \
 
 ```javascript
 const inputBody = '{
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -807,6 +811,7 @@ This endpoint update a specific status.
 
 ```json
 {
+  "action": "string",
   "text": "string",
   "categories": [0],
   "medias": [0],
@@ -821,21 +826,17 @@ This endpoint update a specific status.
 
 <h4 id="updatestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|» text|body|string|false|The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention)|
-|» categories|body|list(integer)|true|List of id of [Category](#schemacategory)|
-|» medias|body|list(integer)|false|List of id of [Media](#schemamedia)|
-|» location|body|object¦null|false|The Location object to associate with the status|
-|»» location|body|string¦null|true|none|
-|»» lat|body|number¦null|true|none|
-|»» lng|body|number¦null|true|none|
-|»» title|body|string|true|none|
-|»» multiple_choices|body|boolean|false|none|
-|»» expiration_at|body|string(date-time)|false|none|
-|»» choices|body|list(object)|true|none|
-|»»» choice|body|string|true|none|
-|» addressing|body|list(integer)|false|List of id of [Tag](#schematag)|
+| Name         | In   | Type          | Required | Description                                                                                          |
+|--------------|------|---------------|----------|------------------------------------------------------------------------------------------------------|
+| » action     | body | string¦null   | true     | The action of the status                                                                             |
+| » text       | body | string        | false    | The content of the status in html format, it can contain some [mentions](#selfcommunity-api-mention) |
+| » categories | body | list(integer) | true     | List of id of [Category](#schemacategory)                                                            |
+| » medias     | body | list(integer) | false    | List of id of [Media](#schemamedia)                                                                  |
+| » location   | body | object¦null   | false    | The Location object to associate with the status                                                     |
+| »» location  | body | string¦null   | true     | none                                                                                                 |
+| »» lat       | body | number¦null   | true     | none                                                                                                 |
+| »» lng       | body | number¦null   | true     | none                                                                                                 |
+| » addressing | body | list(integer) | false    | List of id of [Tag](#schematag)                                                                      |
 
 > Example responses
 
@@ -844,9 +845,11 @@ This endpoint update a specific status.
 ```json
 {
   "id": 0,
+  "action": "string",
   "categories": [
     {
       "id": 0,
+      "action": "string",
       "tags": [],
       "order": 123,
       "name": "string",
@@ -928,19 +931,18 @@ This endpoint update a specific status.
   "deleted": true,
   "collapsed": false,
   "comment_count": 0,
-  "share_count": 0,
   "vote_count": 0,
-  "voted": false,
   "flag_count": 0,
+  "share_count": 0,
   "addressing": []
 }
 ```
 
 <h4 id="updatestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[UpdateStatus](#schemaupdatestatus)|
+| Status | Meaning                                                 | Description | Schema                              |
+|--------|---------------------------------------------------------|-------------|-------------------------------------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | [UpdateStatus](#schemaupdatestatus) |
 
 <aside class="notice">
 This operation requires authentication. The logged user must be the status creator
@@ -985,15 +987,15 @@ This endpoint deletes a Status.
 
 <h4 id="destroystatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 <h4 id="destroystatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication. The logged user must be the status creator
@@ -1038,15 +1040,15 @@ This endpoint restores a Status.
 
 <h4 id="restorestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 <h4 id="restorestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication. The logged user must be the status creator
@@ -1093,11 +1095,11 @@ This endpoint retrieves all votes for a specific status.
 
 <h4 id="votestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
-|limit|query|integer|false|Number of results to return per page.|
-|offset|query|integer|false|The initial index from which to return the results.|
+| Name   | In    | Type    | Required | Description                                         |
+|--------|-------|---------|----------|-----------------------------------------------------|
+| id     | path  | string  | true     | A unique integer value identifying this status.     |
+| limit  | query | integer | false    | Number of results to return per page.               |
+| offset | query | integer | false    | The initial index from which to return the results. |
 
 > Example responses
 
@@ -1143,6 +1145,12 @@ This endpoint retrieves all votes for a specific status.
             }
           ],
           "reputation":111,
+          "followings_counter": 0,
+          "followers_counter": 0,
+          "posts_counter": 0,
+          "discussions_counter": 0,
+          "statuses_counter": 0,
+          "polls_counter": 0
         },
         "voted_at": "2019-08-24T14:15:22Z"
         }
@@ -1154,12 +1162,12 @@ This endpoint retrieves all votes for a specific status.
 
 Status Code **200**
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|true|none|Total results count|
-|» next|string¦null|false|none|Next page url|
-|» previous|string¦null|false|none|Previous page url|
-|» results|list([Vote](#schemavote))|true|none|List of results|
+| Name       | Type                      | Required | Restrictions | Description         |
+|------------|---------------------------|----------|--------------|---------------------|
+| » count    | integer                   | true     | none         | Total results count |
+| » next     | string¦null               | false    | none         | Next page url       |
+| » previous | string¦null               | false    | none         | Previous page url   |
+| » results  | list([Vote](#schemavote)) | true     | none         | List of results     |
 
 <aside class="notice">
 This operation requires authentication only if `content_availability` community option is false
@@ -1208,15 +1216,15 @@ This endpoint upvotes a specific status.
 
 <h4 id="votecreatestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 <h4 id="votecreatestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1265,15 +1273,15 @@ This endpoint removes an upvote for a specific status.
 
 <h4 id="votecreatestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 <h4 id="voteremovestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1320,9 +1328,9 @@ This endpoint retrieves a List of Flags for a Specific Status.
 
 <h4 id="flagstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 > Example responses
 
@@ -1382,9 +1390,9 @@ This endpoint retrieves a List of Flags for a Specific Status.
 
 <h4 id="flagstatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+| Status | Meaning                                                 | Description | Schema              |
+|--------|---------------------------------------------------------|-------------|---------------------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | [Flag](#schemaflag) |
 
 <aside class="notice">
 This operation requires moderation role.
@@ -1447,26 +1455,26 @@ This endpoint flag a specific status.
 
 <h4 id="flagcreatestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 flag_type|body|integer|true|A integer from 0 to 4|
 
 #### Enumerated Values
 
-|Parameter|Value|Description|
-|---|---|---|
-|flag_type|0|spam|
-|flag_type|1|aggressive|
-|flag_type|2|vulgar|
-|flag_type|3|poor|
-|flag_type|4|offtopic|
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| flag_type | 0     | spam        |
+| flag_type | 1     | aggressive  |
+| flag_type | 2     | vulgar      |
+| flag_type | 3     | poor        |
+| flag_type | 4     | offtopic    |
 
 <h4 id="flagcreatestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1529,26 +1537,26 @@ This endpoint removes a flag for a specific status.
 
 <h4 id="unflagcreatestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 flag_type|body|integer|true|A integer from 0 to 4|
 
 #### Enumerated Values
 
-|Parameter|Value|Description|
-|---|---|---|
-|flag_type|0|spam|
-|flag_type|1|aggressive|
-|flag_type|2|vulgar|
-|flag_type|3|poor|
-|flag_type|4|offtopic|
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| flag_type | 0     | spam        |
+| flag_type | 1     | aggressive  |
+| flag_type | 2     | vulgar      |
+| flag_type | 3     | poor        |
+| flag_type | 4     | offtopic    |
 
 <h4 id="unflagcreatestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1597,9 +1605,9 @@ Retrieve if exists a flag for this contribute created by the user logged
 
 <h4 id="flagstatusstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 > Example responses
 
@@ -1615,9 +1623,9 @@ Retrieve if exists a flag for this contribute created by the user logged
 
 <h4 id="flagstatusstatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+| Status | Meaning                                                 | Description | Schema              |
+|--------|---------------------------------------------------------|-------------|---------------------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | [Flag](#schemaflag) |
 
 <aside class="notice">
 This operation requires authentication
@@ -1666,16 +1674,16 @@ This Endpoint hide the [Status](#schemastatus) for the logged user. The status m
 
 <h4 id="hidestatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 
 <h4 id="hidestatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1723,16 +1731,16 @@ This Endpoint show the [Status](#schemastatus) for the logged user. The status m
 
 <h4 id="showstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 
 <h4 id="showstatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|none|None|
+| Status | Meaning                                                         | Description | Schema |
+|--------|-----------------------------------------------------------------|-------------|--------|
+| 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | none        | None   |
 
 <aside class="notice">
 This operation requires authentication
@@ -1780,9 +1788,9 @@ This Endpoint retrieve if the logged user has hidden the [Status](#schemastatus)
 
 <h4 id="hidestatusstatus-parameters">Parameters</h4>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|path|string|true|A unique integer value identifying this status.|
+| Name | In   | Type   | Required | Description                                     |
+|------|------|--------|----------|-------------------------------------------------|
+| id   | path | string | true     | A unique integer value identifying this status. |
 
 > Example responses
 
@@ -1796,9 +1804,9 @@ This Endpoint retrieve if the logged user has hidden the [Status](#schemastatus)
 
 <h4 id="hidestatusstatus-responses">Responses</h4>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Flag](#schemaflag)|
+| Status | Meaning                                                 | Description | Schema              |
+|--------|---------------------------------------------------------|-------------|---------------------|
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | [Flag](#schemaflag) |
 
 <aside class="notice">
 This operation requires authentication

@@ -11,6 +11,7 @@
    "sid": "1605259249000",
    "discussion": {...},
    "post": {...},
+   "status": {...},
    "aggregated": [
         {
           "is_new": false,
@@ -31,4 +32,5 @@
 |sid|string|true|read-only|Serialization id of the macro notification aggregate block.|
 |discussion|[Discussion](#schemadiscussion)|false|read-only|Primary object involved (object that is common to notifications group) if it is a discusssion. For some types of notifications it will not be present.|
 |post|[Post](#schemapost)|false|read-only|Primary object involved (object that is common to notifications group) if it is a post. For some types of notifications it will not be present.|
+|status|[Status](#schemastatus)|false|read-only|Primary object involved (object that is common to notifications group) if it is a status. For some types of notifications it will not be present.|
 |aggregated|list(Object)|false|read-only|List of aggregated notifications by type. Types Object: [NotificationTypeComment](#schemanotificationtypecomment), [NotificationTypeMention](#schemanotificationtypemention), [NotificationTypeConnectionAccept](#schemanotificationtypeconnectionaccept), [NotificationTypeConnectionRequest](#schemanotificationtypeconnectionrequest), [NotificationTypePrivateMessage](#schemanotificationtypeprivatemessage), [NotificationTypeFollow](#schemanotificationtypefollow), [NotificationTypeVoteUp](#schemanotificationtypevoteup), [NotificationTypeBlockedUser](#schemanotificationtypeblockeduser), [NotificationTypeUnBlockedUser](#schemanotificationtypeunblockeduser), [NotificationTypeKindlyNotice](#schemanotificationtypekindlynotice), [NotificationTypeCollapsedFor](#schemanotificationtypecollapsedfor), [NotificationTypeDeletedFor](#schemanotificationtypedeletedfor), [NotificationTypeCustomNotification](#schemanotificationtypecustomnotification) |

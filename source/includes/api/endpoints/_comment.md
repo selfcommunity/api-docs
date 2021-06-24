@@ -66,7 +66,11 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
 |Parameter|Value|Description|
 |---|---|---|
 |» ordering|added_at|Order by added_at comment field|
-|» ordering|connection|Order giving pripority to user connections (friends or followers) and then by added_at as second field|
+|» ordering|connection|Order giving pripority to user connections (friends or followers)|
+
+<aside class="notice">
+It is possible to perform multiple ordering by concatenating the params -connection and -added_at.
+</aside>
 
 > Example responses
 
