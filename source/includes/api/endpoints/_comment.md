@@ -35,13 +35,13 @@ fetch('/api/v2/comment/',
 ```
 This endpoint retrieves all comments. 
 
-If the `discussion` parameter is specified the endpoint retrieves all comments of a specific [Comment](#schemadiscussion).
+If the `discussion` parameter is specified the endpoint retrieves all comments of a specific [Discussion](#schemadiscussion).
 
 If the `post` parameter is specified the endpoint retrieves all comments of a specific [Post](#schemapost).
 
 If the `status` parameter is specified the endpoint retrieves all comments of a specific [Status](#schemastatus).
 
-The `discussion` , `post` and `status` parameters cannot be used together.
+The `discussion` , `post` and `status` parameters cannot be used together and one of these parameters is mandatory.
 
 If the `parent` parameter is specified the endpoint retrieves all comments of a specific [Discussion](#schemadiscussion) , [Post](#schemapost) or [Status](#schemastatus) that has the passed parent (nested comments).
 
@@ -55,9 +55,9 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|discussion|query|string|false|Id of the [Comment](#schemadiscussion)|
-|post|query|string|false|Id of the [Post](#schemapost)|
-|status|query|string|false|Id of the [Status](#schemastatus)|
+|discussion|query|string|false|Id of the [Discussion](#schemadiscussion), required if both post and status parameters are not set|
+|post|query|string|false|Id of the [Post](#schemapost), required if both discussion and status parameters are not set|
+|status|query|string|false|Id of the [Status](#schemastatus), required if both discussion and post parameters are not set|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to `added_at`|
 
