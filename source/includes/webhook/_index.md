@@ -1139,6 +1139,26 @@ The body of a webhook payload is a JSON object that describes the target that tr
             "follower_count": 0
         },
         "type": "string",
+        "user": {
+          "id": 1,
+          "username": "string",
+          "real_name": "string",
+          "email": "user@example.com",
+          "email_isvalid": true,
+          "date_joined": "2019-08-24T14:15:22Z",
+          "bio": "string",
+          "location": "string",
+          "location_lat_lng": "string",
+          "position_lat_lng": "string",
+          "date_of_birth": "2019-09-23",
+          "description": "string",
+          "gender": "Male",
+          "status": "a",
+          "website": "https://example.com",
+          "avatar": "string",
+          "cover": "string",
+          "ext_id": 3
+        },
         "active_at": "2021-06-07T12:07:01.701850+02:00"
     }
 }
@@ -1751,8 +1771,8 @@ The body of a webhook payload is a JSON object that describes the target that tr
 | notification.comment                   | a new comment of first level is created                                                   | ---                                                                        |
 | notification.nested_comment            | a new comment of second level is created                                                  | ---                                                                        |
 | notification.mention                   | a user is mentioned                                                                       | ---                                                                        |
-| notification.vote_up                   | a user vote up a post/discussion/comment                                                  | ---                                                                        |
-| notification.follow                    | a user follow a post/discussion                                                           | ---                                                                        |
+| notification.vote_up                   | a user vote up a post/discussion/status/comment                                           | ---                                                                        |
+| notification.follow                    | a user follow a post/discussion/status                                                    | ---                                                                        |
 | notification.private_message           | a user send a private message                                                             | ---                                                                        |
 | notification.deleted_for_advertising   | deleted content by moderators with motivation the content is advertising                  | ---                                                                        |
 | notification.deleted_for_aggressive    | deleted content by moderators with motivation the content is aggressive                   | ---                                                                        |
