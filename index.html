@@ -25601,13 +25601,13 @@ curl <span class="nt">-X</span> GET /api/v2/notification/ <span class="se">\</sp
 </tr>
 <tr>
 <td>vote_up*</td>
-<td>vote up a post/discussion/comment</td>
+<td>vote up a post/discussion/status/comment</td>
 <td>who received the voteup</td>
 </tr>
 <tr>
 <td>follow*</td>
-<td>follow a post/discussion</td>
-<td>author of the content (discussion/post)</td>
+<td>follow a post/discussion/status</td>
+<td>author of the content (discussion/post/status)</td>
 </tr>
 <tr>
 <td>private_message*</td>
@@ -39722,6 +39722,26 @@ Compare the signature (or signatures) in the header to the expected signature. F
             </span><span class="nl">"follower_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_joined"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"location_lat_lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"position_lat_lng"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ext_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"active_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-07T12:07:01.701850+02:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -40364,12 +40384,12 @@ Compare the signature (or signatures) in the header to the expected signature. F
 </tr>
 <tr>
 <td>notification.vote_up</td>
-<td>a user vote up a post/discussion/comment</td>
+<td>a user vote up a post/discussion/status/comment</td>
 <td>---</td>
 </tr>
 <tr>
 <td>notification.follow</td>
-<td>a user follow a post/discussion</td>
+<td>a user follow a post/discussion/status</td>
 <td>---</td>
 </tr>
 <tr>
