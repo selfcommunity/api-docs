@@ -55,9 +55,9 @@ If the `parent` parameter is specified the endpoint retrieves all comments of a 
 |---|---|---|---|---|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
-|discussion|query|string|false|Id of the [Discussion](#schemadiscussion), required if both post and status parameters are not set|
-|post|query|string|false|Id of the [Post](#schemapost), required if both discussion and status parameters are not set|
-|status|query|string|false|Id of the [Status](#schemastatus), required if both discussion and post parameters are not set|
+|discussion|query|string|true|Id of the [Discussion](#schemadiscussion), required if both post and status parameters are not set|
+|post|query|string|true|Id of the [Post](#schemapost), required if both discussion and status parameters are not set|
+|status|query|string|true|Id of the [Status](#schemastatus), required if both discussion and post parameters are not set|
 |parent|query|string|false|Id of the parent [Comment](#schemacomment), used for retrieve nested comments|
 |ordering|query|string|false|The field for sorting use - for order desc. Default to `added_at`|
 
@@ -597,18 +597,12 @@ curl -X PUT /api/v2/comment/{id}/ \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access_token}' \
   --data-raw '{
-    "discussion": 0,
-    "parent": 0,
-    "in_reply_to": 0,
     "text": "string"
   }'
 ```
 
 ```javascript
 const inputBody = '{
-  "discussion": 0,
-  "parent": 0,
-  "in_reply_to": 0,
   "text": "string"
 }';
 const headers = {
@@ -641,9 +635,6 @@ This endpoint update a specific comment.
 
 ```json
 {
-  "discussion": 0,
-  "parent": 0,
-  "in_reply_to": 0,
   "text": "string"
 }
 ```
