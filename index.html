@@ -22628,21 +22628,21 @@ fetch(</span><span class="dl">'</span><span class="o">/</span><span class="nx">a
 <td>discussion</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Id of the <a href="#schemadiscussion">Discussion</a>, required if both post and status parameters are not set</td>
 </tr>
 <tr>
 <td>post</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Id of the <a href="#schemapost">Post</a>, required if both discussion and status parameters are not set</td>
 </tr>
 <tr>
 <td>status</td>
 <td>query</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Id of the <a href="#schemastatus">Status</a>, required if both discussion and post parameters are not set</td>
 </tr>
 <tr>
@@ -23317,15 +23317,9 @@ curl <span class="nt">-X</span> PUT /api/v2/comment/<span class="o">{</span><spa
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access_token}'</span> <span class="se">\</span>
   <span class="nt">--data-raw</span> <span class="s1">'{
-    "discussion": 0,
-    "parent": 0,
-    "in_reply_to": 0,
     "text": "string"
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "discussion": 0,
-  "parent": 0,
-  "in_reply_to": 0,
   "text": "string"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -23357,9 +23351,6 @@ curl <span class="nt">-X</span> PUT /api/v2/comment/<span class="o">{</span><spa
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"discussion"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
