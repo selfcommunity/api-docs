@@ -30086,6 +30086,13 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/<span class=
 <td>true</td>
 <td>Valid values are: post, discussion, comment</td>
 </tr>
+<tr>
+<td>flag_type</td>
+<td>body</td>
+<td>integer</td>
+<td>false</td>
+<td>Filter results by flag_type</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -30949,7 +30956,7 @@ This operation require admin or moderation role.
 <td>boolean</td>
 <td>false</td>
 <td>read-only</td>
-<td>Email is valid. Default: False. Format: YYYY-MM-ddTHH:mm:ss.ss±hh:mm (ISO 8601).</td>
+<td>Email is valid. Default: False.</td>
 <td></td>
 </tr>
 <tr>
@@ -34019,7 +34026,10 @@ This operation require admin or moderation role.
   </span><span class="nl">"blocked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"days_blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"expire_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"low_visibility"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nl">"last_seen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email_isvalid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flags_given"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flags_received"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h4 id='properties'>Properties</h4>
@@ -34061,11 +34071,32 @@ This operation require admin or moderation role.
 <td>Date on which the auto unblock will take place</td>
 </tr>
 <tr>
-<td>low_visibility</td>
+<td>last_seen</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>read-only</td>
+<td>Date on which the user has been seen in the community</td>
+</tr>
+<tr>
+<td>email_isvalid</td>
 <td>boolean</td>
 <td>false</td>
-<td>none</td>
-<td>If true, it means that all contributions of this user will be set to low visibility</td>
+<td>read-only</td>
+<td>Email is valid</td>
+</tr>
+<tr>
+<td>flags_given</td>
+<td>integer</td>
+<td>false</td>
+<td>read-only</td>
+<td>Number of flags given by the user</td>
+</tr>
+<tr>
+<td>flags_received</td>
+<td>integer</td>
+<td>false</td>
+<td>read-only</td>
+<td>Number of flags received by the user (in his contents)</td>
 </tr>
 </tbody></table>
 <h3 id="tocS_Discussion">Discussion</h3>
