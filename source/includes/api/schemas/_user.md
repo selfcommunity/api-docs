@@ -57,7 +57,7 @@
 |username|string|false|read-only|The username of the user. Max 255 characters. Letters, numbers and -/_ characters.|
 |real_name|string|false|none|Real name. Max 255 characters.|
 |email|string(email)|false|read-only|Email of the user.|
-|email_isvalid|boolean|false|read-only|Email is valid. Default: False. Format: YYYY-MM-ddTHH:mm:ss.ss±hh:mm (ISO 8601).|
+|email_isvalid|boolean|false|read-only|Email is valid. Default: False.|
 |date_joined|string(date-time)|false|read-only|Date joined to the community.|
 |bio|string|false|none|User biography.|
 |location|string|false|none|User location. Max 100 characters.|
