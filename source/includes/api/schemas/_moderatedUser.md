@@ -11,7 +11,10 @@
   "blocked_at": "2019-08-24T14:15:22Z",
   "days_blocked": "string",
   "expire_at": "2019-08-24T14:15:22Z",
-  "low_visibility": true
+  "last_seen": "2019-08-24T14:15:22Z",
+  "email_isvalid": true,
+  "flags_given": 0,
+  "flags_received": 0
 }
 
 ```
@@ -24,4 +27,8 @@
 |blocked_at|string(date-time)|true|none|Block start date|
 |days_blocked|string|false|read-only|Number of days of block duration (if none and block date set, it means forever)|
 |expire_at|string(date-time)|true|none|Date on which the auto unblock will take place|
-|low_visibility|boolean|false|none|If true, it means that all contributions of this user will be set to low visibility|
+|last_seen|string(date-time)|false|read-only|Date on which the user has been seen in the community|
+|email_isvalid|boolean|false|read-only|Email is valid|
+|flags_given|integer|false|read-only|Number of flags given by the user|
+|flags_received|integer|false|read-only|Number of flags received by the user (in his contents)|
+

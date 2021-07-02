@@ -400,6 +400,7 @@ This endpoint retrieves all flags for a specific contribution.
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this Contribution.|
 |contribution_type|body|string|true|Valid values are: post, discussion, comment|
+|flag_type|body|integer|false|Filter results by flag_type|
 
 
 > Example responses
