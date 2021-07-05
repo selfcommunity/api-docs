@@ -94,7 +94,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {}
 }
 
@@ -103,7 +103,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 | Name    | Type   | Required | Description                                                                   |
 |---------|--------|----------|-------------------------------------------------------------------------------|
 | type    | string | true     | The name of the event that triggered the webhook                              |
-| created | string | true     | The time or date that the event was triggered at                              |
+| created | float  | true     | The time or date that the event was triggered at                              |
 | data    | object | true     | Object that contains information about the event associated with the webhook. |
 
 ### List of Category events
@@ -111,7 +111,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "category": {
             "id": 1,
@@ -180,7 +180,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 0,
         "discussion": 11,
@@ -232,7 +232,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "to_user": {
             "id": 33,
@@ -302,7 +302,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "to_user": {
             "id": 114,
@@ -386,7 +386,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "categories": [],
@@ -444,7 +444,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "added_at": "2021-06-07T09:46:39.536844+02:00",
         "user": {
@@ -543,7 +543,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "active": true,
@@ -572,7 +572,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "user": {
@@ -614,7 +614,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "choice": {
@@ -695,7 +695,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "categories": [],
@@ -754,7 +754,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "categories": [],
@@ -814,7 +814,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             1
@@ -906,7 +906,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             1
@@ -1027,7 +1027,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             7
@@ -1086,7 +1086,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             48
@@ -1168,7 +1168,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             32
@@ -1259,7 +1259,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             7
@@ -1317,7 +1317,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             110
@@ -1385,7 +1385,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             110
@@ -1534,7 +1534,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             4
@@ -1574,7 +1574,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             4
@@ -1616,7 +1616,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             114
@@ -1658,7 +1658,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             122
@@ -1678,7 +1678,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             122
@@ -1694,7 +1694,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "recipients": [
             4,
@@ -1745,7 +1745,7 @@ The body of a webhook payload is a JSON object that describes the target that tr
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "banner": {
             "title": "string",
@@ -1813,7 +1813,7 @@ All events with prefix notification.* include in the payload a field "recipients
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 1,
         "username": "string",
@@ -1850,7 +1850,7 @@ All events with prefix notification.* include in the payload a field "recipients
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "qa_frequency": 0,
         "email_notification_not_qa": 0,
@@ -1897,7 +1897,7 @@ All events with prefix notification.* include in the payload a field "recipients
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "id": 271,
         "user": {
@@ -1922,7 +1922,7 @@ All events with prefix notification.* include in the payload a field "recipients
 ```json
 {
     "type": "string",
-    "created": "string",
+    "created": 1625471209.139224,
     "data": {
         "user": {
             "id": 1,
