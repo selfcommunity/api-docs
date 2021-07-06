@@ -35,13 +35,13 @@
 |reputation_type|integer|false|read-only|Integer code|
 |reputation_type_description|string|false|read-only|String description of the code|
 |comment|string¦null|false|none|Custom comment for this score variation|
+|created_by|object|false|read-only|The moderator [User](#schemauser)|
 
 #### Reputation Types
 
 |reputation_type|reputation_type_description|
 |---|---|
 |1|gain_by_upvoted|
-|9|assigned_by_api|
 |10|assigned_by_moderator|
 |11|gain_by_cancelling_contribute_moderation|
 |12|gain_by_make_post|
