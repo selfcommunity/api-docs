@@ -95,7 +95,20 @@ This endpoint retrieves all users for moderation purpose.
       ],
       "blocked_at": "2019-08-24T14:15:22Z",
       "days_blocked": "string",
-      "expire_at": "2019-08-24T14:15:22Z"
+      "expire_at": "2019-08-24T14:15:22Z",
+      "last_seen": "2021-06-10T17:31:33.014024+02:00",
+      "flags_given": 0,
+      "flags_received": 0,
+      "last_score_variation": {
+          "score": 10,
+          "comment": "string",
+          "reputed_at": "2021-07-06T12:06:57.168320+02:00",
+          "created_by": {
+              "id": 1,
+              "username": "admin",
+              "avatar": "url"
+          }
+      }      
     }
   ]
 }

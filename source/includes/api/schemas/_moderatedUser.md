@@ -14,7 +14,17 @@
   "last_seen": "2019-08-24T14:15:22Z",
   "email_isvalid": true,
   "flags_given": 0,
-  "flags_received": 0
+  "flags_received": 0,
+  "last_score_variation": {
+      "score": 10,
+      "comment": "string",
+      "reputed_at": "2021-07-06T12:06:57.168320+02:00",
+      "created_by": {
+          "id": 1,
+          "username": "admin",
+          "avatar": "url"
+      }
+  }  
 }
 
 ```
