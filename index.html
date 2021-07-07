@@ -29968,7 +29968,13 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/ <span class
         </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">           
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -30105,6 +30111,40 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/<span class=
 <td>integer</td>
 <td>false</td>
 <td>Filter results by flag_type</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>flag_type</td>
+<td>0</td>
+<td>spam</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>1</td>
+<td>aggressive</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>2</td>
+<td>vulgar</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>3</td>
+<td>poor</td>
+</tr>
+<tr>
+<td>flag_type</td>
+<td>4</td>
+<td>offtopic</td>
 </tr>
 </tbody></table>
 
@@ -30265,7 +30305,7 @@ curl <span class="nt">-X</span> PATCH /api/v2/moderation/contribution/<span clas
 <td>An integer value to describe the moderation activity if action=hide or delete</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -37668,7 +37708,13 @@ This operation require admin or moderation role.
     </span><span class="nl">"in_reply_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"comment_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"vote_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="nl">"flag_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">    
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
