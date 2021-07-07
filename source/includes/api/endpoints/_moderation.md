@@ -328,7 +328,13 @@ This endpoint retrieves all flagged contributions.
             }
           ]
         },
-        "added_at": "2019-08-24T14:15:22Z",
+        "added_at": "2019-08-24T14:15:22Z",      
+        "categories": [
+            {
+                "id": 0,
+                "name": "string"
+            }
+        ],
         "title": "string",
         "html": "string",
         "summary": "string",
@@ -338,13 +344,11 @@ This endpoint retrieves all flagged contributions.
         "in_reply_to": "string",
         "comment_count": 0,
         "vote_count": 0,
-        "flag_count": 0,
-        "categories": [
-            {
-                "id": 0,
-                "name": "string"
-            }
-        ]           
+        "flag_count": 6,
+        "flag_count_detail": {
+            "0": 1,
+            "2": 5
+        }         
       },
       "last_flagged_at": "2019-08-24T14:15:22Z",
       "moderation_status": "string"
