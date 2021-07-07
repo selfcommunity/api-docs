@@ -50,7 +50,13 @@
     "in_reply_to": "string",
     "comment_count": 0,
     "vote_count": "string",
-    "flag_count": "string"
+    "flag_count": "string",
+    "categories": [
+        {
+            "id": 0,
+            "name": "string"
+        }
+    ]    
   },
   "last_flagged_at": "2019-08-24T14:15:22Z",
   "moderation_status": "string"

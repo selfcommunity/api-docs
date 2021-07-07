@@ -338,7 +338,13 @@ This endpoint retrieves all flagged contributions.
         "in_reply_to": "string",
         "comment_count": 0,
         "vote_count": 0,
-        "flag_count": 0
+        "flag_count": 0,
+        "categories": [
+            {
+                "id": 0,
+                "name": "string"
+            }
+        ]           
       },
       "last_flagged_at": "2019-08-24T14:15:22Z",
       "moderation_status": "string"
@@ -415,6 +421,15 @@ This endpoint retrieves all flags for a specific contribution.
 |contribution_type|body|string|true|Valid values are: post, discussion, comment|
 |flag_type|body|integer|false|Filter results by flag_type|
 
+#### Enumerated Values
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| flag_type | 0     | spam        |
+| flag_type | 1     | aggressive  |
+| flag_type | 2     | vulgar      |
+| flag_type | 3     | poor        |
+| flag_type | 4     | offtopic    |
 
 > Example responses
 
