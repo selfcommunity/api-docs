@@ -254,7 +254,7 @@ This endpoint create a Media. The allowed types for this endpoint are:
 
  - *url* for url fetch. The endpoint retrieve metadata associated with the given url and create a preview
 
- - *share* for sharing a community object ([Post](#schemapost) or [Discussion](#schemadiscussion))
+ - *share* for sharing a community object ([Post](#schemapost), [Discussion](#schemadiscussion) or [Status](#schemastatus))
 
  - *embed* for external objects. The endpoint create an association with an external object using [Embed](#schemaembed) format
 
