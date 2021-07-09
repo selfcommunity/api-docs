@@ -63,7 +63,17 @@
     }         
   },
   "last_flagged_at": "2019-08-24T14:15:22Z",
-  "moderation_status": "string"
+  "moderation_status": "string",
+  "moderation_type": "0",
+  "moderation_by": {
+      "id": 0,
+      "username": "string",
+      "real_name": "",
+      "avatar": "url",
+      "ext_id": null,
+      "tags": []
+  },
+  "moderation_at": "2021-07-07T12:20:12.472485+02:00"
 }
 
 ```
@@ -72,10 +82,13 @@
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|contribution_type|string|true|none|none|
-|contribution|[object]|true|none|none|
-|last_flagged_at|string(date-time)|true|none|none|
-|moderation_status|string|true|none|none|
+|contribution_type|string|true|none|post, discussion, status or comment|
+|contribution|[object]|true|none|the contribution|
+|last_flagged_at|string(date-time)|true|none|date time of the last flag|
+|moderation_status|string|true|none|moderation status|
+|moderation_type|integer|false|none|cause of the moderation|
+|moderation_by|[User](#schemauser)|false|none|moderator|
+|moderation_at|string(date-time)|true|none|date time of the moderation|
 
 #### Enumerated Values
 
@@ -87,4 +100,11 @@
 |moderation_status|ignored|
 |moderation_status|deleted|
 |moderation_status|hidden|
-|moderation_status|open|
+
+|Parameter|Value|Description|
+|---|---|---|
+|moderation_type|0|spam|
+|moderation_type|1|aggressive|
+|moderation_type|2|vulgar|
+|moderation_type|3|poor|
+|moderation_type|4|offtopic|

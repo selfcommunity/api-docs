@@ -1458,7 +1458,7 @@ This endpoint flag a specific status.
 | Name | In   | Type   | Required | Description                                     |
 |------|------|--------|----------|-------------------------------------------------|
 | id   | path | string | true     | A unique integer value identifying this status. |
-flag_type|body|integer|true|A integer from 0 to 4|
+|flag_type|body|integer|true|A integer from 0 to 4|
 
 #### Enumerated Values
 

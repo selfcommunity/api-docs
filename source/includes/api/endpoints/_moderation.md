@@ -45,7 +45,6 @@ This endpoint retrieves all users for moderation purpose.
 |---|---|---|---|---|
 |search|query|string|false|A search term.|
 |status|query|string|false|Valid values are: a, b, d, u|
-|low_visibility|query|integer|false|Valid values are 0, 1|
 |days_blocked|query|string|false|Number of days of block or the special value "forever"|
 |limit|query|integer|false|Number of results to return per page.|
 |offset|query|integer|false|The initial index from which to return the results.|
@@ -93,6 +92,11 @@ This endpoint retrieves all users for moderation purpose.
           "created_at": "2019-08-24T14:15:22Z"
         }
       ],
+      "reputation": 25,
+      "followings_counter": 3,
+      "followers_counter": 3,
+      "posts_counter": 2,
+      "polls_counter": 1,                                                                       
       "blocked_at": "2019-08-24T14:15:22Z",
       "days_blocked": "string",
       "expire_at": "2019-08-24T14:15:22Z",
@@ -182,7 +186,7 @@ fetch('/api/v2/moderation/user/{id}/',
 });
 
 ```
-This endpoint perform moderation for users; at least one parameter between "status" and "low_visibility" is required.
+This endpoint perform moderation for users.
 
 <h4 id="http-request">HTTP Request</h4>
 
@@ -201,8 +205,7 @@ This endpoint perform moderation for users; at least one parameter between "stat
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this user.|
-|low_visibility|body|integer|false|Valid values are 0, 1|
-|status|body|string|false|Valid values are: a, b, d, u|
+|status|body|string|true|Valid values are: a, b, d, u|
 |days_blocked|body|string|false|Number of days of block. If not passed the block will be forever (status must be "b")|
 |hard|body|integer|false|If the value is 1 and status is "d" it will perform an hard deletion (equivalent to status "u")|
 
@@ -351,7 +354,17 @@ This endpoint retrieves all flagged contributions.
         }         
       },
       "last_flagged_at": "2019-08-24T14:15:22Z",
-      "moderation_status": "string"
+      "moderation_status": "string",
+      "moderation_type": "0",
+      "moderation_by": {
+          "id": 0,
+          "username": "string",
+          "real_name": "",
+          "avatar": "url",
+          "ext_id": null,
+          "tags": []
+      },
+      "moderation_at": "2021-07-07T12:20:12.472485+02:00"
     }
   ]
 }
