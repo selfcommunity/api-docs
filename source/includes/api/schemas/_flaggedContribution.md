@@ -60,7 +60,9 @@
     "flag_count_detail": {
         "0": 1,
         "2": 5
-    }         
+    },
+    "media_count_detail": {},
+    "has_poll": false    
   },
   "last_flagged_at": "2019-08-24T14:15:22Z",
   "moderation_status": "string",
