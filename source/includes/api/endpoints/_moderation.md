@@ -263,6 +263,8 @@ This endpoint retrieves all flagged contributions.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |min_flags|query|integer|false|Minimum number of flags received by a contribute to display it in this list.|
+|contribution_type|query|string|false|Valid values are: post, discussion, status, comment|
+|contribution_id|query|string|false|A unique integer value identifying this Contribution.|
 |author|query|string|false|Username (or part of it) of the contributes' author|
 |flagged_by|query|string|false|Username (or part of it) of the contributes' flagger|
 |content|query|string|false|Content text (or part of it) of the contributes|
@@ -437,7 +439,7 @@ This endpoint retrieves all flags for a specific contribution.
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|path|string|true|A unique integer value identifying this Contribution.|
-|contribution_type|body|string|true|Valid values are: post, discussion, comment|
+|contribution_type|body|string|true|Valid values are: post, discussion, status, comment|
 |flag_type|body|integer|false|Filter results by flag_type|
 
 #### Enumerated Values
