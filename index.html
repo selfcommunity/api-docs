@@ -29807,6 +29807,20 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/ <span class
 <td>Minimum number of flags received by a contribute to display it in this list.</td>
 </tr>
 <tr>
+<td>contribution_type</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Valid values are: post, discussion, status, comment</td>
+</tr>
+<tr>
+<td>contribution_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>A unique integer value identifying this Contribution.</td>
+</tr>
+<tr>
 <td>author</td>
 <td>query</td>
 <td>string</td>
@@ -29969,7 +29983,9 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/ <span class
         </span><span class="nl">"flag_count_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nl">"2"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">         
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"media_count_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"has_poll"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -30108,7 +30124,7 @@ curl <span class="nt">-X</span> GET /api/v2/moderation/contribution/<span class=
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>Valid values are: post, discussion, comment</td>
+<td>Valid values are: post, discussion, status, comment</td>
 </tr>
 <tr>
 <td>flag_type</td>
@@ -37793,7 +37809,9 @@ This operation require admin or moderation role.
     </span><span class="nl">"flag_count_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"2"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-    </span><span class="p">}</span><span class="w">         
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"media_count_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"has_poll"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">    
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"last_flagged_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
