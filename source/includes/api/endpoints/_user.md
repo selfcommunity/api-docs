@@ -1391,6 +1391,105 @@ Some of the permissions in the list depend on global community settings.
 This operation requires authentication
 </aside>
 
+### Get User's Categories
+
+<a id="opIdcategoriesUser"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET /api/v2/user/{id}/categories/ \
+  -H 'Accept: application/json'
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/api/v2/user/{id}/categories/',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+Get User's Categories.
+
+<h4 id="http-request">HTTP Request</h4>
+
+`GET /api/v2/user/{id}/categories/`
+
+<h4 id="categoriesuser-parameters">Parameters</h4>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|path|string|true|A unique integer value identifying this user.|
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+  "id": 0,
+  "tags": [
+    {
+      "id": 0,
+      "active": true,
+      "type": "user",
+      "name": "string",
+      "description": "string",
+      "color": "string",
+      "visible": true,
+      "deleted": true,
+      "created_at": "2019-08-24T14:15:22Z"
+    }
+  ],
+  "order": -2147483648,
+  "name": "string",
+  "name_synonyms": "string",
+  "slug": "string",
+  "slogan": "string",
+  "html_info": "string",
+  "seo_title": "string",
+  "seo_description": "string",
+  "auto_follow": "none",
+  "active": true,
+  "deleted": true,
+  "image_original": "string",
+  "image_bigger": "string",
+  "image_big": "string",
+  "image_medium": "string",
+  "image_small": "string",
+  "emotional_image_original": "string",
+  "emotional_image_position": -2147483648,
+  "lastmod_datetime": "2019-08-24T14:15:22Z",
+  "stream_order_by": "recent"
+  },
+  {..}
+]
+```
+
+<h4 id="categoriesuser-responses">Responses</h4>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[Category](#schemacategory)|
+
+<aside class="notice">
+This operation does not require authentication
+</aside>
 
 ### Get User's Feed
 
