@@ -570,7 +570,7 @@ This endpoint provides actions for flagged contributions moderation
 |contribution_type|body|string|true|Valid values are: post, discussion, comment|
 |action|body|string|true|Valid values are: scold_author, scold_flagger, ignore, hide, delete|
 |user|body|integer|true|The user id of the contribution flagger to scold (use only with action=scold_flagger)|
-|moderation_type|body|integer|true|An integer value to describe the moderation activity if action is one between scold_author, hide or delete|
+|moderation_type|body|integer|true|An integer value to describe the moderation activity if action is one between scold_author, hide or delete. This param is not needed if the contribute is already hidden or deleted (you are restoring).|
 
 #### Enumerated Values
 
