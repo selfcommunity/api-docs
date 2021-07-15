@@ -44,7 +44,8 @@
     "categories": [
         {
             "id": 0,
-            "name": "string"
+            "name": "string",
+            "slug": "string"
         }
     ],
     "title": "string",
