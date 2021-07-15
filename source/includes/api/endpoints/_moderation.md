@@ -355,7 +355,9 @@ This endpoint retrieves all flagged contributions.
             "2": 5
         },
         "media_count_detail": {},
-        "has_poll": false
+        "has_poll": false,
+        "thread_id": 0,
+        "thread_type": "string"
       },
       "last_flagged_at": "2019-08-24T14:15:22Z",
       "moderation_status": "string",

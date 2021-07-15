@@ -62,7 +62,9 @@
         "2": 5
     },
     "media_count_detail": {},
-    "has_poll": false    
+    "has_poll": false,
+    "thread_id": 0,
+    "thread_type": "string"
   },
   "last_flagged_at": "2019-08-24T14:15:22Z",
   "moderation_status": "string",
@@ -110,3 +112,15 @@
 |moderation_type|2|vulgar|
 |moderation_type|3|poor|
 |moderation_type|4|offtopic|
+
+#### Field media_count_detail possible keys
+|Key|
+|---|
+|vimeo|
+|url|
+|embed|
+|image|
+|eimage|
+|doc|
+|share|
+
